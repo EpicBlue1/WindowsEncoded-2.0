@@ -3,7 +3,7 @@ import Style from './Input.module.scss'
 
 const Input = (props) => {
     return (
-        <input className={`${props.className ? props.className : ""}${props.type === "Search" ? Style.Search : ""}`}/>
+        <input placeholder={props.placeholder} className={`${props.className ? props.className : ""}${props.type === "Search" ? Style.Search : props.type === "Login" ? Style.Login : ""}`}/>
     );
 };
 

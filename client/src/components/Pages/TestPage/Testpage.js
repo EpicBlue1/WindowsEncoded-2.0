@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../../subcomponents/Buttons/Button';
 import Input from '../../subcomponents/Inputs/Input';
 import CodeArea from '../../subcomponents/CodeArea/CodeArea';
+import TextArea from '../../subcomponents/TextArea/TextArea';
 
 const Testpage = () => {
 
@@ -18,13 +19,15 @@ const Testpage = () => {
 
             <h2>Heading Two - Inputs</h2>
             <label>Search</label>
-            <Input/>
+            <Input type="Search"  placeholder="Search"/>
             <br></br>
             <label>Primary Input</label>
             <Input/>
             <label>Code Area</label>
 
             <CodeArea language="text" className="CodeArea">{code}</CodeArea>
+
+            <TextArea> auhsdka</TextArea>
 
             
         </div>
