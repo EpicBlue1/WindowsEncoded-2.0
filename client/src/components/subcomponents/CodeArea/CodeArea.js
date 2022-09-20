@@ -1,6 +1,6 @@
 import React from 'react';
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import docco from 'react-syntax-highlighter/dist/esm/styles/hljs/docco';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import Style from './CodeArea.module.scss';
 
 const CodeArea = (props) => {
@@ -9,7 +9,7 @@ const CodeArea = (props) => {
     console.log(props.language);
 
     return (
-    <div className={props.className}>
+    <div className={`${props.className} ${Style.DefaultStyle}`}>
         <SyntaxHighlighter language={props.language} style={docco}>
             {codeString}
         </SyntaxHighlighter>
