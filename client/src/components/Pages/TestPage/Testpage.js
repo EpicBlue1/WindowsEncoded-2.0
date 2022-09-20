@@ -1,8 +1,12 @@
 import React from 'react';
 import Button from '../../subcomponents/Buttons/Button';
 import Input from '../../subcomponents/Inputs/Input';
+import CodeArea from '../../subcomponents/CodeArea/CodeArea';
 
 const Testpage = () => {
+
+    const code = 'const lolos = lol'
+
     return (
         <div className='testPage'>
             <h1>Heading One - Buttons</h1>
@@ -18,6 +22,11 @@ const Testpage = () => {
             <br></br>
             <label>Primary Input</label>
             <Input/>
+            <label>Code Area</label>
+
+            <CodeArea language="text" className="CodeArea">{code}</CodeArea>
+
+            
         </div>
     );
 };
