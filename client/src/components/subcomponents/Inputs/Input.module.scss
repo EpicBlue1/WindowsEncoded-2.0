@@ -1,10 +1,11 @@
 @import '../../../index.scss';
 
 .Login {
-    width: 60%;
-    height: 35px;
+    width: 85vh;
+    height: 30px;
     border-radius: 20px;
     padding-left: 20px;
+    border: 1px solid black;
 }
 
 .InputWidth{
@@ -19,6 +20,7 @@
     background-color: $Primary_White;  
     border-radius: 20px;
     padding-left: 20px;
+    border: 1px solid black;
 }
 
 .Icon{
@@ -30,4 +32,8 @@
     background-image: url('../../../Icons/search.svg');
     @include backgroundImages;
     background-size: 30%;
+}
+
+.hide{
+    display: none;
 }

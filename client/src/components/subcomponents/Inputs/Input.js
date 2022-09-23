@@ -3,10 +3,12 @@ import Style from './Input.module.scss'
 
 const Input = (props) => {
     return (
-        <div className={Style.InputWidth}>
-        <input placeholder={props.placeholder} className={`${props.className ? props.className : ""}${props.type === "Search" ? Style.Search : props.type === "Login" ? Style.Login : ""}`}/>
-        <div className={props.type === 'Search' ? Style.Icon : ""}></div>
-        </div>
+
+    <div className={Style.InputWidth}>
+        <input type={props.type} placeholder={props.placeholder}  className={`${props.className ? props.className : ""} ${props.Intype === "Search" ? Style.Search : props.Intype === "Login" ? Style.Login : ""}`}/>
+        <div className={props.type === 'Search' ? Style.Icon : "hide"}></div>
+    </div>
+
     );
 };
 
