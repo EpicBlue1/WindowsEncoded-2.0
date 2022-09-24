@@ -21,8 +21,11 @@ const Testpage = () => {
 
             <h2>Heading Two - Inputs</h2>
             <h3>Heading Three - Search and Regular</h3>
+            <div className='White-Box'>
             <p> Width based on parent (80%)</p>
+            <p> Needs White Background</p>
             <Input Intype="Search"  placeholder="Search"/>
+            </div>
             <h3>Heading Three - Primary</h3>
             <p> Width based on parent (60%)</p>
             <Input Intype="Login"/>

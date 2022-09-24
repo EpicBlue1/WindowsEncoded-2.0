@@ -25,8 +25,11 @@
 @mixin LogNReg{
     padding: 2%;
     border-radius: 20px;
-    position: absolute;
-    top: 0 !important;
+    position: fixed;
+    position: fixed;
+    top: 40%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
     background-color: white;
 }
 
