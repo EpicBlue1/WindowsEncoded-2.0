@@ -1,17 +1,19 @@
 @import '../../../index.scss';
 
 .Login {
-    width: 85vh;
-    height: 30px;
+    width: 100%;
+    height: 35px;
     border-radius: 20px;
     padding-left: 20px;
-    border: 1px solid black;
+    border: none;
+    background-color: #f9f9f9;
+    @include InputShadow()
 }
 
 .InputWidth{
-    width: 80%;
-    height: 35px;
-    display: flex;
+    width: 90%;
+    height: 40px;
+    // display: flex;
 }
 
 .Search{
@@ -20,18 +22,18 @@
     background-color: $Primary_White;  
     border-radius: 20px;
     padding-left: 20px;
-    border: 1px solid black;
+    border: none;
 }
 
 .Icon{
     width: 10%;
     position: relative;
-    right: 8%;
+    right: 7%;
     // top: px;
     height: 40px;
     background-image: url('../../../Icons/search.svg');
     @include backgroundImages;
-    background-size: 30%;
+    background-size: 25%;
 }
 
 .hide{

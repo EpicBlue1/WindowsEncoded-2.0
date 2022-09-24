@@ -23,13 +23,23 @@
 }
 
 @mixin LogNReg{
-    box-shadow:
-    6.8px 6.8px 5.7px rgba(0, 0, 0, 0.017),
-    18.8px 18.8px 15.7px rgba(0, 0, 0, 0.025),
-    45.2px 45.2px 37.7px rgba(0, 0, 0, 0.033),
-    150px 150px 125px rgba(0, 0, 0, 0.05);  
     padding: 2%;
     border-radius: 20px;
     position: absolute;
     top: 0 !important;
+    background-color: white;
+}
+
+@mixin Shadow{
+    box-shadow:
+    7px 7px 6px rgba(0, 0, 0, 0.04),
+    18px 18px 15px rgba(0, 0, 0, 0.04),
+    45px 45px 38px rgba(0, 0, 0, 0.040),
+    150px 150px 125px rgba(0, 0, 0, 0.04);  
+}
+
+@mixin InputShadow{
+    box-shadow:
+    inset 3px 3px 0px rgba(0, 0, 0, 0.04),
+    inset 5px 5px 0px rgba(0, 0, 0, 0.04),
 }

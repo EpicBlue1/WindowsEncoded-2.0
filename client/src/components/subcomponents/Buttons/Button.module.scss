@@ -2,19 +2,21 @@
 
 .primary{
     width: 250px;
-    height: 50px;
+    height: 40px;
     background-color: white;
     color: white;
     border-radius: 20px;
     background-color: $Primary_LightBlue;
     border: none;
     cursor: pointer;
-    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.15);
+    font-size: 14px;
+    font-weight: bold;
+    @include Shadow()
 }
 
 .secondary{
     width: 150px;
-    height: 50px;
+    height: 40px;
     background-color: white;
     color: rgb(0, 0, 0);
     border: none;
@@ -30,14 +32,12 @@
 
 .tertiary{
     width: 120px;
-    height: 50px;
+    height: 40px;
     background-color: white;
     border: 1px solid black;
     border-radius: 20px;
     cursor: pointer;
 }
-
-
 
 .closebtn{
     width: 500px;

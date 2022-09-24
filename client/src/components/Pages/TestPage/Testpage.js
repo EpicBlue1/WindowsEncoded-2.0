@@ -22,10 +22,10 @@ const Testpage = () => {
             <h2>Heading Two - Inputs</h2>
             <h3>Heading Three - Search and Regular</h3>
             <p> Width based on parent (80%)</p>
-            <Input type="Search"  placeholder="Search"/>
+            <Input Intype="Search"  placeholder="Search"/>
             <h3>Heading Three - Primary</h3>
             <p> Width based on parent (60%)</p>
-            <Input type="Login"/>
+            <Input Intype="Login"/>
             <h3>Heading Three - Code Area</h3>
             <p> Width based on parent (90%)</p>
             <CodeArea language="javascript" className="CodeArea">{code}</CodeArea>
