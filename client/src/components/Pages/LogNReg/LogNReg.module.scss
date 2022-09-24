@@ -26,12 +26,93 @@
     margin: 0 auto;
     margin-top: 5%;
     width: 450px;
-    height: 600px;
-    z-index: 2;
+    height: 60vh;
+    z-index: 3;
     opacity: 100%;
     transition: width 1s, left 1s, opacity 0.5s;
     @include LogNReg();
     @include Shadow();
+  }
+
+  .SignupText{
+    left: 65%;
+    margin: 0 auto;
+    margin-top: 12%;
+    width: 450px;
+    height: 60vh;
+    z-index: 1;
+    opacity: 100%;
+    // background-color: green;
+    // transition-delay: 10s;
+    transition: width 1s, left 1s, opacity 0.5s;
+    @include LogNReg();
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .SignupTextBack{
+    left: 35%;
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 450px;
+    height: 60vh;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0);
+    opacity: 0%;
+    // background-color: green;
+    // transition-delay: 10s;
+    transition: width 1s, left 0.25s, opacity 0.1s;
+    @include LogNReg();
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  //https://css-tricks.com/snippets/css/typewriter-effect/
+
+  .SignupText h2 {
+    width: max-content;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 10px solid rgba(255, 255, 255, 0); /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 2s steps(40, end),
+      blink-caret .8s step-end infinite;
+  }
+
+  .SignupText li {
+    width: max-content;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 10px solid rgba(255, 255, 255, 0); /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 1.65s steps(40, end),
+      blink-caret .8s step-end infinite;
+  }
+
+  .SignupText p {
+    width: max-content;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 10px solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+    typing 2s steps(40, end),
+    blink-caret .8s step-end infinite;
+  }
+
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+/* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
   }
   
   .SignupBack{
@@ -39,7 +120,7 @@
     margin: 0 auto;
     margin-top: 5%;
     width: 450px;
-    height: 600px;
+    height: 60vh;
     z-index: 1;
     opacity: 0%;  
     transition: width 1s, left 1s, z-index 1s, opacity 0.5s;
@@ -54,7 +135,7 @@
     height: 60vh;
     border-radius: 20px;
     z-index: 1;
-    opacity: 15%;
+    opacity: 5%;
     transition: width 1s, left 1s, z-index 1s, opacity 0.5s, box-shadow 2s;
     @include LogNReg();
     box-shadow:
