@@ -1,1 +1,79 @@
 @import '../../../index.scss';
+
+
+.leftNav {
+    width: 20%;
+    height: 1000px;
+    // border-right: 1px solid black;
+    @include Shadow();
+
+    position: relative;
+    z-index: 10000;
+}
+
+.Home {
+    width: 90%;
+    height: 70px;
+    position: absolute;
+    top: 50px;
+    left: 5%;
+    border-radius: 20px;
+}
+
+.Home:hover{
+    transition: ease-in-out 0.5s;
+    @include Shadow();
+
+}
+
+.Questions {
+    width: 90%;
+    height: 70px;
+    position: absolute;
+    top: 130px;
+    left: 5%;
+    border-radius: 20px;
+
+}
+
+.Questions:hover {
+    transition: ease-in-out 0.5s;
+    @include Shadow();
+}
+
+.IconSpot {
+    background-color: white;
+    margin: 5px;
+    margin-left: 20px;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    @include Shadow();
+    position: relative;
+}
+
+.Icon {
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    left: 10px;
+    top: 10px;
+    background-image: url(../../../Icons/Home.svg);
+    @include backgroundImages;
+}
+
+.Icon2 {
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    left: 10px;
+    top: 10px;
+    background-image: url(../../../Icons/ChatBox.svg);
+    @include backgroundImages;
+}
+
+.text {
+    position: absolute;
+    left: 30%;
+    top: 25%;
+}
