@@ -1,0 +1,24 @@
+@import '../../../index.scss';
+
+
+.topNav {
+    width: 100%;
+    height: 80px;
+    background-color: red;
+}
+
+.LOGO {
+    margin: 4px;
+    width: 20%;
+    height: 90%;
+    float: left;
+    background-color: blue;
+}
+
+.ProfileImage {
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+    float: right;
+}

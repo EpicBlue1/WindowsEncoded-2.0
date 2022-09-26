@@ -4,6 +4,7 @@ import {Route, Routes, useNavigate} from 'react-router-dom';
 import Testpage from './components/Pages/TestPage/Testpage';
 import Landing from './components/Pages/Landing/Landing';
 import LogNReg from './components/Pages/LogNReg/LogNReg';
+import Profile from './components/Pages/Profile/Profile';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LogNReg/>}/>
         <Route path="/TestPage" element={<Testpage/>}/>
+        <Route path="/Profile" element={<Profile/>}/>
+
       </Routes>
     </div>
   );
