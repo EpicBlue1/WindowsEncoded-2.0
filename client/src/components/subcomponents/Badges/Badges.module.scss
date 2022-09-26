@@ -2,5 +2,24 @@
 
 
 .BadgeBox {
+    float: left;
+    margin-left: 25px;
+    width: 30%;
+    height: 80%;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    @include Shadow();
+
+}
+
+.Badge {
+    margin: auto;
+    margin-top: 10px;
+    width: 90%;
+    height: 60%;
+    
+    background-image: url(../../../Icons/ChatBox.svg);
+    @include backgroundImages;
 
 }
