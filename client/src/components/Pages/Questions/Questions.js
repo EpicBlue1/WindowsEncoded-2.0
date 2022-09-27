@@ -16,7 +16,6 @@ const Questions = () => {
 
                 <QuestionCard/>
                 <QuestionCard/>
-                <QuestionCard/>
             </div>
         </div>
     );

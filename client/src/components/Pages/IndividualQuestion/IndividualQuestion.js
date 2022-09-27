@@ -1,9 +1,11 @@
 import React from 'react';
 import TopNav from '../../subcomponents/TopNav/TopNav';
 import LeftNav from '../../subcomponents/LeftNav/LeftNav';
-import Style from './IndividualQuestion.module.scss'
+import Style from './IndividualQuestion.module.scss';
 import CodeArea from '../../subcomponents/CodeArea/CodeArea';
 import TextArea from '../../subcomponents/TextArea/TextArea';
+import Answer from '../../subcomponents/Answers/Answers';
+import VotingSystem from '../../subcomponents/VotingSystem/VotingSystem';
 
 const IndividualQuestion = () => {
 
@@ -15,6 +17,11 @@ const IndividualQuestion = () => {
             <LeftNav/>
 
             <div className={Style.questionBlock}>
+
+                <div className={Style.left}>
+                    <VotingSystem/>
+                </div>
+
                 <div className={Style.questionIntro}>
                     <div className={Style.profileImg}></div>
                     <p className={Style.username}>Username</p>
@@ -42,6 +49,7 @@ const IndividualQuestion = () => {
 
                     <hr className={Style.horisontalLine}/>
                     <h2 className={Style.heading}>Answers</h2>
+                    <Answer/>
                 </div>
             </div>
         </div>
