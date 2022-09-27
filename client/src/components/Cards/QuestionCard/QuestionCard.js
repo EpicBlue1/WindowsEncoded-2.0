@@ -1,9 +1,17 @@
 import React from 'react';
-import Style from './QuestionCard.module.scss'
+import Style from './QuestionCard.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionCard = (props) => {
+
+    let navigate = useNavigate();
+
+    const viewQuestion = () => {
+        navigate('/IndividualQuestion');
+    }
+
     return (
-        <div className={Style.QuestionCard}>
+        <div className={Style.QuestionCard} onClick={viewQuestion}>
             <div className={Style.Left}>
                 <div className={Style.profileImg}></div>
                 <p className={Style.username}>Username</p>

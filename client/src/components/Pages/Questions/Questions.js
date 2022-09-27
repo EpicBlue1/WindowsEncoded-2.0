@@ -15,6 +15,8 @@ const Questions = () => {
                 <h2 className={Style.heading}>ASK A QUESTION</h2>
 
                 <QuestionCard/>
+                <QuestionCard/>
+                <QuestionCard/>
             </div>
         </div>
     );

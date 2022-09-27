@@ -3,6 +3,7 @@ import TopNav from '../../subcomponents/TopNav/TopNav';
 import LeftNav from '../../subcomponents/LeftNav/LeftNav';
 import Style from './IndividualQuestion.module.scss'
 import CodeArea from '../../subcomponents/CodeArea/CodeArea';
+import TextArea from '../../subcomponents/TextArea/TextArea';
 
 const IndividualQuestion = () => {
 
@@ -34,6 +35,10 @@ const IndividualQuestion = () => {
                     <br/>
 
                     <CodeArea language="javascript" className="CodeArea">{code}</CodeArea>
+
+                    <hr className={Style.horisontalLine}/>
+                    <h2 className={Style.heading}>Answer Question</h2>
+                    <TextArea/>
 
                     <hr className={Style.horisontalLine}/>
                     <h2 className={Style.heading}>Answers</h2>
