@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<LogNReg/>}/>
         <Route path="/TestPage" element={<Testpage/>}/>
         <Route path="/Profile" element={<Profile/>}/>
+        <Route path="/Landing" element={<Landing/>}/>
         <Route path="/Questions" element={<Questions/>}/> 
         <Route path="/IndividualQuestion" element={<IndividualQuestion/>}/>
       </Routes>
