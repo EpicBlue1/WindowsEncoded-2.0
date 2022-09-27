@@ -3,14 +3,18 @@
 
 .leftNav {
     width: 17%;
-    height: 1000px;
+    height: 91.7vh;
     // border-right: 1px solid black;
     @include Shadow();
-
     position: relative;
     z-index: 10000;
+<<<<<<< Updated upstream
     background-color: rgb(255, 255, 255);
 
+=======
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(16px);
+>>>>>>> Stashed changes
 }
 
 .Home {
@@ -20,12 +24,13 @@
     top: 50px;
     left: 5%;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .Home:hover{
     transition: ease-in-out 0.5s;
     @include Shadow();
-
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .Questions {
@@ -35,12 +40,13 @@
     top: 130px;
     left: 5%;
     border-radius: 20px;
-
+    cursor: pointer;
 }
 
 .Questions:hover {
     transition: ease-in-out 0.5s;
     @include Shadow();
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .IconSpot {
@@ -48,16 +54,16 @@
     margin: 5px;
     margin-left: 20px;
     border-radius: 30px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     @include Shadow();
     position: relative;
 }
 
 .Icon {
     position: absolute;
-    width: 65%;
-    height: 65%;
+    width: 55%;
+    height: 55%;
     left: 10px;
     top: 10px;
     background-image: url(../../../Icons/Home.svg);
@@ -66,8 +72,8 @@
 
 .Icon2 {
     position: absolute;
-    width: 65%;
-    height: 65%;
+    width: 55%;
+    height: 55%;
     left: 10px;
     top: 10px;
     background-image: url(../../../Icons/ChatBox.svg);
@@ -77,7 +83,7 @@
 .text {
     position: absolute;
     left: 30%;
-    top: 25%;
+    top: 20%;
 }
 
 
@@ -88,7 +94,10 @@
     
     top: 35%;
     left: 10%;
+<<<<<<< Updated upstream
     
 border-radius: 20px;
+=======
+>>>>>>> Stashed changes
 }
 
