@@ -9,6 +9,10 @@ const Questions = () => {
         <div className={Style.body}>
             <TopNav/>
             <LeftNav/>
+            
+            <div className={Style.questionBlock}>
+                <Button className={Style.addButton} type="Primary">+</Button>
+            </div>
         </div>
     );
 };
