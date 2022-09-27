@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './TopNav.module.scss';
 import Input from '../Inputs/Input'
+import { Link } from 'react-router-dom';
 
 
 const TopNav = () => {
@@ -12,7 +13,10 @@ const TopNav = () => {
                 <Input Intype="Search" />
             </div>
             
-            <div className={Style.ProfileImage}></div>
+            <Link to="/Profile">
+                <div className={Style.ProfileImage}></div>
+            </Link>
+            
         </div>
     );
 };

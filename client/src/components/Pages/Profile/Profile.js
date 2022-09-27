@@ -21,7 +21,9 @@ const Profile = () => {
       </div>
       <div className={Style.QuestionSection}>
         <h1>YOUR ACTIVITY</h1>
-        <div className={Style.DropDown}></div>
+        <div className={Style.DropDown}>
+          Questios
+        </div>
         <ProfileQuestion/>
         <ProfileQuestion/>
         <ProfileQuestion/>
