@@ -14,10 +14,12 @@
 
 .LOGO {
     margin: 4px;
+    margin-left: -40px;
     width: 20%;
     height: 90%;
     position: absolute;
     background-image: url('../../../Img/Logo.svg');
+    @include backgroundImages
 }
 
 
