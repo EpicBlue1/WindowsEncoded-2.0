@@ -12,7 +12,7 @@ const ProfileSection = () => {
             <div className={Style.ProfileDisplayBadge}></div>
             <h2 className={Style.Username}>Username</h2>
             <h3 className={Style.MemberLength}>Member for 1 year, 2 months</h3>
-            <div className={Style.Progress}></div>
+            <div className={Style.Progress}> progressbar</div>
 
             <div className={Style.TotalAsked}>
                 <h1 className={Style.Scores}>1</h1>

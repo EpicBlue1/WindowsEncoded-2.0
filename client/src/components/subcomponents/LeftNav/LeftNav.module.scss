@@ -9,6 +9,8 @@
 
     position: relative;
     z-index: 10000;
+    background-color: rgb(227, 226, 226);
+
 }
 
 .Home {
@@ -81,8 +83,25 @@
 
 .Topics {
     position: absolute;
-    width: 100%;
+    width: 80%;
     height: 30%;
-    background-color: red;
+    
     top: 35%;
+    left: 10%;
+    @include Shadow();
+border-radius: 20px;
 }
+
+// .CheckBox {
+//     width: 15px;
+//     height: 15px;
+//     float: left;
+// }
+
+// .CheckBox:hover {
+//     background: red;
+// }
+
+// .label {
+//     font-size: 15px;
+// }

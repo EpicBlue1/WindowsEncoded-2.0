@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckBox from '../CheckBox/CheckBox';
 import Style from './LeftNav.module.scss';
 
 
@@ -20,6 +21,16 @@ const LeftNav = () => {
             </div>
 
             <div className={Style.Topics}>
+                <h2>Topics</h2>
+
+<CheckBox/>
+<CheckBox/>
+<CheckBox/>
+<CheckBox/>
+
+                {/* <input id='1' type="checkbox" className={Style.CheckBox}/>
+                <label for="1" className={Style.label}> Css </label> */}
+
                 
             </div>
 

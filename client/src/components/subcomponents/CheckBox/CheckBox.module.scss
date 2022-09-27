@@ -1,0 +1,22 @@
+@import '../../../index.scss';
+
+.CheckBox {
+    width: 60%;
+    height: 30px;
+    margin-left: 15px;
+    float: left;
+}
+
+.Check {
+    width: 15px;
+    height: 15px;
+    float: left;
+}
+
+.Check:hover {
+    background: red;
+}
+
+.label {
+    font-size: 15px;
+}
