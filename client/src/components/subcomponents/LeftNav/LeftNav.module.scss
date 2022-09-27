@@ -9,7 +9,7 @@
 
     position: relative;
     z-index: 10000;
-    background-color: rgb(227, 226, 226);
+    background-color: rgb(255, 255, 255);
 
 }
 
@@ -88,20 +88,7 @@
     
     top: 35%;
     left: 10%;
-    @include Shadow();
+    
 border-radius: 20px;
 }
 
-// .CheckBox {
-//     width: 15px;
-//     height: 15px;
-//     float: left;
-// }
-
-// .CheckBox:hover {
-//     background: red;
-// }
-
-// .label {
-//     font-size: 15px;
-// }

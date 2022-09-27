@@ -11,8 +11,8 @@ const ProfileQuestion = () => {
 
             <div className={Style.TagSection}>
             <QuestionTag/>
-<QuestionTag/>
-<QuestionTag/>
+            <QuestionTag/>
+            <QuestionTag/>
             </div>
 
 

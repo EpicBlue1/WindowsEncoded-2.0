@@ -7,7 +7,7 @@
     position: relative;
     border-radius: 20px;
     @include Shadow();
-
+    background-color: white;
 }
 
 .EditButton {
@@ -68,7 +68,7 @@
 .Progress {
     width: 100%;
     height: 50px;
-    background-color: red;
+    text-align: center;
     position: absolute;
     top: 42%;
 }
