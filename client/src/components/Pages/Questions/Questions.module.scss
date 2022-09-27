@@ -26,8 +26,9 @@
     text-align: center;
     float: left;
     color: white;
-    margin-right: 3%;
+    margin-right: 2%;
     cursor: pointer;
+    @include Shadow();
 }
 
 .addButton:hover{
@@ -36,4 +37,5 @@
 
 .heading{
     margin-top: 0.5%;
+    margin-bottom: 3%;
 }

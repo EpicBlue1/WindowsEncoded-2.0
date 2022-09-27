@@ -5,20 +5,21 @@
     height: 220px;
     border-radius: 20px;
     display: flex;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
     @include Shadow()
 }
 
 .Left{
-    width: 97%;
-    height: 220px;
+    width: 90%;
+    padding: 2%;
+    height: auto;
 }
 
 .Right{
     width: 3%;
-    height: 220px;
-    // background-color: green;
-    // padding: 2%;
+    height: auto;
+    padding: 1%;
 }
 
 .BottomVote{
@@ -32,8 +33,36 @@
 .TopVote{
     width: 65%;
     height: 90px;
-    margin-top: 20px;
+    margin-top: 5px;
     background-color: $Semantic_Green;
     border-top-left-radius: 20px;
     border-top-Right-radius: 20px;
+}
+
+.profileImg{
+    width: 20px;
+    height: 20px;
+    background-image: url('../../../Icons/Profile.svg');
+    float: left;
+    @include backgroundImages
+}
+
+.username{
+    margin: 0.1%;
+    margin-left: 1%;
+    float: left;
+}
+
+.heading{
+    margin-bottom: 0.2%;
+}
+
+.tag{
+    float: left;
+    margin-right: 1%;
+    width: fit-content;
+    border-radius: 10px;
+    font-size: smaller;
+    padding: 0.5% 2%;
+    background-color: $Primary_LightGray;
 }
