@@ -19,6 +19,10 @@ const LeftNav = () => {
                 <h2 className={Style.text}>Home</h2>
             </div>
 
+            <div className={Style.Topics}>
+                
+            </div>
+
         </div>
     );
 };

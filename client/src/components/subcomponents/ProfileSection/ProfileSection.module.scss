@@ -4,8 +4,10 @@
 .MainProfileSection {
     width: 100%;
     height: 100%;
-    background-color: green;
     position: relative;
+    border-radius: 20px;
+    @include Shadow();
+
 }
 
 .EditButton {
@@ -14,8 +16,18 @@
     top: 10px;
     width: 60px;
     height: 60px;
-    background-color: red;
+    background-color: rgb(58, 58, 58);
     border-radius: 10px;
+    
+
+}
+
+.EditPen {
+    width: 70%;
+    height: 70%;
+    background-image: url(../../../Icons/Pen.svg);
+    @include backgroundImages;
+    margin: 9px;
 }
 
 .ProfileImage {
@@ -23,7 +35,7 @@
     width: 140px;
     height: 140px;
     background-color: red;
-    left: 38%;
+    left: 35%;
     top: 10%;
     border-radius: 80px;
 }
@@ -36,4 +48,77 @@
     left: 58%;
     top: 23%;
     border-radius: 80px;
+}
+
+.Username {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    text-align: center;
+}
+
+.MemberLength {
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    text-align: center;
+
+}
+
+.Progress {
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    top: 42%;
+}
+
+.TotalAsked {
+    width: 80%;
+    height: 16%;
+    position: absolute;
+    top: 50%;
+
+    
+    border: 0.5px solid black;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+
+    text-align: center;
+   
+}
+
+.Scores {
+    margin-top: 10px;
+}
+
+.ScoreText {
+    margin-top: -10px;
+}
+
+.TotalAnswered {
+    width: 80%;
+    height: 16%;
+    position: absolute;
+    top: 66%;
+    
+
+    border-bottom: 0.5px solid black;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    
+    text-align: center;
+
+}
+
+.ReliabilityScore {
+    width: 80%;
+    height: 16%;
+    position: absolute;
+    top: 82%;
+    border-bottom: 0px solid black;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    text-align: center;
+    
 }

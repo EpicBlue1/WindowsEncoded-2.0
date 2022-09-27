@@ -13,14 +13,14 @@ const Profile = () => {
       <TopNav/>
       <LeftNav/>
       <div className={Style.BadgeSection}>
-          <h1>Badges</h1>
+          <h1>BADGES</h1>
         <Badges/>
         <Badges/>
         <Badges/>
 
       </div>
       <div className={Style.QuestionSection}>
-        <h1>Your Activity</h1>
+        <h1>YOUR ACTIVITY</h1>
         <div className={Style.DropDown}></div>
         <ProfileQuestion/>
         <ProfileQuestion/>
