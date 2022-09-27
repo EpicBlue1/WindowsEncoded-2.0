@@ -11,7 +11,8 @@ const Questions = () => {
             <LeftNav/>
             
             <div className={Style.questionBlock}>
-                <Button className={Style.addButton} type="Primary">+</Button>
+                <div className={Style.addButton}>+</div>
+                <h2 className={Style.heading}>ASK A QUESTION</h2>
             </div>
         </div>
     );

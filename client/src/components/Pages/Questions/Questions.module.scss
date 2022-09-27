@@ -10,6 +10,30 @@
 
 .questionBlock{
     float: left;
-    width: 83%;
-    height: 91.7vh;
+    width: 80%;
+    margin-left: 3%;
+    margin-top: 2%;
+    height: auto;
+}
+
+.addButton{
+    width: 25px;
+    padding: 1%;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+    background-color: $Primary_LightBlue;
+    text-align: center;
+    float: left;
+    color: white;
+    margin-right: 3%;
+    cursor: pointer;
+}
+
+.addButton:hover{
+    background-color: $Primary_DarkBlue;
+}
+
+.heading{
+    margin-top: 0.5%;
 }
