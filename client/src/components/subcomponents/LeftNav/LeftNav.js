@@ -30,8 +30,6 @@ const LeftNav = () => {
 
                 {/* <input id='1' type="checkbox" className={Style.CheckBox}/>
                 <label for="1" className={Style.label}> Css </label> */}
-
-                
             </div>
 
         </div>

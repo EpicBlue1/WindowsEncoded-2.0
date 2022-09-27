@@ -1,9 +1,10 @@
 @import '../../../index.scss';
 
 .body {
+    width: 100%;
+    height: 100vh;
     position: relative;
     background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
-    z-index: 1;
 }
 
 
@@ -13,7 +14,6 @@
     top: 10%;
     width: 50%;
     height: 400px;
-    
 }
 
 
