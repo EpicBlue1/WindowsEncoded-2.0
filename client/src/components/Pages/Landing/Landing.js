@@ -7,9 +7,7 @@ import TopNav from '../../subcomponents/TopNav/TopNav';
 
 const Landing = () => {
     return (
-      <div className={Style.body}>
-        <TopNav/>
-        <LeftNav/>  
+      <div className={Style.body}> 
 
         <div className={Style.LandingArea}>
             <div className={Style.Block}></div>

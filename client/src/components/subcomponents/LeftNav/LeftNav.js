@@ -5,6 +5,7 @@ import Style from "./LeftNav.module.scss";
 
 const LeftNav = () => {
   return (
+  <div className={Style.Bounds}>
     <div className={Style.leftNav}>
       <Link to="/Landing">
         <div className={Style.Home}>
@@ -31,10 +32,7 @@ const LeftNav = () => {
         <CheckBox />
         <CheckBox />
         <CheckBox />
-
-       
       </div>
-
       <Link to="/">
         <div className={Style.Logout}>
           <div className={Style.LogImg}></div>
@@ -42,6 +40,7 @@ const LeftNav = () => {
         </div>
       </Link>
     </div>
+  </div>
   );
 };
 

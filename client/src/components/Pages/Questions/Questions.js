@@ -7,16 +7,11 @@ import QuestionCard from '../../Cards/QuestionCard/QuestionCard';
 const Questions = () => {
     return (
         <div className={Style.body}>
-            <TopNav/>
-            <LeftNav/>
-            
-            <div className={Style.questionBlock}>
-                <div className={Style.addButton}>+</div>
-                <h2 className={Style.heading}>ASK A QUESTION</h2>
+            <div className={Style.addButton}>+</div>
+            <h2 className={Style.heading}>ASK A QUESTION</h2>
 
-                <QuestionCard/>
-                <QuestionCard/>
-            </div>
+            <QuestionCard/>
+            <QuestionCard/>
         </div>
     );
 };

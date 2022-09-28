@@ -13,8 +13,6 @@ const IndividualQuestion = () => {
 
     return (
         <div className={Style.body}>
-            <TopNav/>
-            <LeftNav/>
 
             <div className={Style.questionBlock}>
 
