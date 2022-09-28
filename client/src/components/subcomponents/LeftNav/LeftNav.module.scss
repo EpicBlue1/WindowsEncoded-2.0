@@ -1,20 +1,23 @@
 @import '../../../index.scss';
 
 .Bounds{
-    width: 37vh;
-    height: 92vh;
+    width: 35vh;
+    height: 100vh;
     float: left;
+    // background-color: red;
 }
 
 .leftNav {
-    position: fixed;
-    top: 55px;
+    // position: fixed;
+    // top: 55px;
     width: 35vh;
-    height: 92vh;
+    height: 90vh;
     @include Shadow();
-    z-index: 999;
+    // float: left;
+    // z-index: 999;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(16px);
+    border-bottom-right-radius: 20px;
 }
 
 .Home {

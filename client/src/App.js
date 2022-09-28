@@ -28,8 +28,12 @@ function App() {
   return (
     <div className='App'>
       <TopNav show={ShowNav}/>
-      <LeftNav show={ShowNav}/>
-      <div className='Content'>
+
+      <div className='LeftContentCon'>
+        <LeftNav show={ShowNav}/>
+      </div>
+
+      <div className='RightContentCon'>
         <Routes>
           <Route path="/LogNReg" element={<LogNReg/>}/>
           <Route path="/TestPage" element={<Testpage/>}/>

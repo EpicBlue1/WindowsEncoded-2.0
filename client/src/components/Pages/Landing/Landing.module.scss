@@ -1,42 +1,35 @@
 @import '../../../index.scss';
 
-.body {
-    width: 100%;
-    height: max-content;
-    // max content
-    background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
-}
+// .body {
+//     // height: max-content;
+//     // max content
+//     // background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
+// }
 
 .LandingArea{
     padding: 10px;
-    width: 80%;
-    display: flex;
-    .Block{
-        width: 150px;
-        height: 150px;
-        background-color: white;
-        border-radius: 20px;
-    }
-    
 }
 
-.Content   {
-    flex: 1;
+.Block{
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.LanContent   {
     padding-right: 20px;
     padding:15px;
-
+    // float: left;
 }
 
 .Heading{
-    flex: 1;
     padding: 15px;
-    margin-left: 260px;
 }
 
 .Row{
     width: 80%;
     height: 240px;
-    margin-left: 260px;
     // background-color: greenyellow;
     display: flex;
 }

@@ -12,7 +12,7 @@ body {
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
+  background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
 }
 
 .Search{
@@ -21,4 +21,19 @@ body {
 
 .hide{
   display: none;
+}
+
+.LeftContentCon{
+  height: 100vh;
+  width: 35vh !important;
+  float: left;
+  // background-color: green;
+}
+
+.RightContentCon{
+  // width: max-conten;
+  width: 145vh;
+  height: 100vh;
+  float: left;
+  // background-color: red;
 }

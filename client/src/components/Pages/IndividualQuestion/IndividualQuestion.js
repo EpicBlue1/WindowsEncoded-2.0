@@ -12,7 +12,7 @@ const IndividualQuestion = () => {
     const code = '<div className={Question ? Questiontrue : Questionfalse}></div>'
 
     return (
-        <div className={Style.body}>
+        // <div className={Style.body}>
 
             <div className={Style.questionBlock}>
 
@@ -50,7 +50,7 @@ const IndividualQuestion = () => {
                     <Answer/>
                 </div>
             </div>
-        </div>
+        // </div>
     );
 };
 

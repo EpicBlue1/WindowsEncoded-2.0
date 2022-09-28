@@ -6,7 +6,7 @@ import Style from "./LeftNav.module.scss";
 const LeftNav = (props) => {
   return (
   <div className={props.show? Style.Bounds : "hide"}>
-    <div className={props.show? Style.leftNav  : "hide"}>
+    <div className={Style.leftNav}>
       <Link to="/">
         <div className={Style.Home}>
           <div className={Style.IconSpot}>
