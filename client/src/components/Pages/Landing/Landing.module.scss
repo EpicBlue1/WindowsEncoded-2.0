@@ -4,34 +4,22 @@
     width: 100%;
     height: 100vh;
     // max content
-    position: relative;
     background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
 }
 
-.LandingImg{
- position: absolute;
- width: 176px;
- height: 160px;
- left: 366px;
- top: 175px;
- background-color: grey;
+.LandingArea{
+    background-color: greenyellow;
+    margin-left:265px;
+    padding: 10px;
+    display: flex;
+    .Block{
+        width: 150px;
+        height: 150px;
+        background-color: white;
+    }
+    
+    .Paragraph{
+        flex: 1;
+    }
 }
 
-.heading{
-position: absolute;
-width: 199px;
-height: 41px;
-left: 573px;
-top: 199px;
-}
-
-.text{
-position: absolute;
-left: 39.79%;
-right: 16.18%;
-top: 30.63%;
-bottom: 69.63%;
- 
- 
-
-}

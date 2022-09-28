@@ -41,7 +41,7 @@ const IndividualQuestion = () => {
                     <br/>
                     <br/>
 
-                    <CodeArea language="javascript" className="CodeArea">{code}</CodeArea>
+                    <CodeArea language="html" className="CodeArea">{code}</CodeArea>
 
                     <hr className={Style.horisontalLine}/>
                     <h2 className={Style.heading}>Answer Question</h2>
