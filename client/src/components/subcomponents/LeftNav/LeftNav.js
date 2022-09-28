@@ -36,7 +36,7 @@ const LeftNav = (props) => {
       <Link to="/LogNReg">
         <div className={Style.Logout}>
           <div className={Style.LogImg}></div>
-          <h2 className={Style.LogoutText}>Logout</h2>
+          <h3 className={Style.LogoutText}>Logout</h3>
         </div>
       </Link>
     </div>
