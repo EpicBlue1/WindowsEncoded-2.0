@@ -2,24 +2,81 @@
 
 .body {
     width: 100%;
-    height: 100vh;
+    height: max-content;
     // max content
     background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
 }
 
 .LandingArea{
-    background-color: greenyellow;
-    margin-left:265px;
     padding: 10px;
+    width: 80%;
     display: flex;
     .Block{
         width: 150px;
         height: 150px;
         background-color: white;
+        border-radius: 20px;
     }
     
-    .Paragraph{
-        flex: 1;
-    }
 }
 
+.Content   {
+    flex: 1;
+    padding-right: 20px;
+    padding:15px;
+
+}
+
+.Heading{
+    flex: 1;
+    padding: 15px;
+    margin-left: 260px;
+}
+
+.Row{
+    width: 80%;
+    height: 240px;
+    margin-left: 260px;
+    // background-color: greenyellow;
+    display: flex;
+}
+
+.Container{
+    width: 33%;
+    height: 190px;
+    background-color: white;
+    margin-left: 15px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ImageOne{
+    background-image: url('../../../Img/HtmlLogo.png');
+    width: 100%;
+    height: 120px;
+    background-position: center center;
+    background-size: 28%;
+    background-repeat: no-repeat;
+    margin-bottom: 25px;
+}
+
+.ImageTwo{
+    background-image: url('../../../Img/JavaScript\ logo.png');
+    width: 100%;
+    height: 120px;
+    background-position: center center;
+    background-size: 28%;
+    background-repeat: no-repeat;
+    margin-bottom: 25px;
+}
+
+.ImageThree{
+    background-image: url('../../../Img/React-icon.png');
+    width: 100%;
+    height: 120px;
+    background-position: center center;
+    background-size: 28%;
+    background-repeat: no-repeat;
+    margin-bottom: 25px;
+}
