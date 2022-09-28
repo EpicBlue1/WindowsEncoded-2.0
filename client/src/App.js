@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Route, Routes, useNavigate} from 'react-router-dom';
 //pages
 import Testpage from './components/Pages/TestPage/Testpage';
@@ -12,16 +12,29 @@ import LeftNav from './components/subcomponents/LeftNav/LeftNav';
 import TopNav from './components/subcomponents/TopNav/TopNav';
 
 function App() {
+
+  const [ShowNav, setShowNav] = useState(true);
+
+  useEffect(() => {
+
+    if (window.location.href.indexOf("LogNReg") > -1) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+
+  }, [])
+
   return (
     <div className='App'>
-      <TopNav/>
-      <LeftNav/>
+      <TopNav show={ShowNav}/>
+      <LeftNav show={ShowNav}/>
       <div className='Content'>
         <Routes>
-          <Route path="/" element={<LogNReg/>}/>
+          <Route path="/LogNReg" element={<LogNReg/>}/>
           <Route path="/TestPage" element={<Testpage/>}/>
           <Route path="/Profile" element={<Profile/>}/>
-          <Route path="/Landing" element={<Landing/>}/>
+          <Route path="/" element={<Landing/>}/>
           <Route path="/Questions" element={<Questions/>}/> 
           <Route path="/IndividualQuestion" element={<IndividualQuestion/>}/>
         </Routes>

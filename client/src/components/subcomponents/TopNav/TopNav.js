@@ -4,10 +4,10 @@ import Input from '../Inputs/Input'
 import { Link } from 'react-router-dom';
 
 
-const TopNav = () => {
+const TopNav = (props) => {
     return (
-    <div className={Style.Bounds}>
-        <div className={Style.topNav}>
+    <div className={props.show? Style.Bounds : "hide"}>
+        <div className={props.show? Style.topNav  : "hide"}>
             <div className={Style.LOGO}></div>
             {/* <Input Intype="Search" className={Style.SearchBar}/> */}
             <Input className='Search' Intype="Search" />

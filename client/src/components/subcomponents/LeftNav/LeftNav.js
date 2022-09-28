@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
 import Style from "./LeftNav.module.scss";
 
-const LeftNav = () => {
+const LeftNav = (props) => {
   return (
-  <div className={Style.Bounds}>
-    <div className={Style.leftNav}>
-      <Link to="/Landing">
+  <div className={props.show? Style.Bounds : "hide"}>
+    <div className={props.show? Style.leftNav  : "hide"}>
+      <Link to="/">
         <div className={Style.Home}>
           <div className={Style.IconSpot}>
             <div className={Style.Icon}></div>
@@ -33,7 +33,7 @@ const LeftNav = () => {
         <CheckBox />
         <CheckBox />
       </div>
-      <Link to="/">
+      <Link to="/LogNReg">
         <div className={Style.Logout}>
           <div className={Style.LogImg}></div>
           <h2 className={Style.LogoutText}>Logout</h2>

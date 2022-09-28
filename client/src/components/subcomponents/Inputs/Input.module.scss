@@ -11,14 +11,14 @@
 }
 
 .InputWidth{
-    width: 40%;
+    width: 80%;
     height: 40px;
     // display: flex;
     // background-color: red;
 }
 
 .Search{
-    width: 90%;
+    width: 50%;
     height: 35px;
     background-color: $Primary_White;  
     border-radius: 20px;
@@ -33,12 +33,12 @@
     width: 3%;
     margin-top: 6px;
     position: relative;
-    right: 4vh;
+    right: 5vh;
     float: left;
     height: 35px;
     background-image: url('../../../Icons/search.svg');
     @include backgroundImages;
-    background-size: 100%;
+    background-size: 60%;
 }
 
 .hide{
