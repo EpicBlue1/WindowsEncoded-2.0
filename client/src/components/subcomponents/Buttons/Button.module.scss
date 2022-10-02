@@ -9,7 +9,7 @@
     background-color: $Primary_LightBlue;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     @include Shadow()
 }
@@ -26,7 +26,7 @@
 }
 
 .secondary:hover{
-    background-color: $Primary_LightBlue;
+    // background-color: $Primary_LightBlue;
     border: none;
 }
 

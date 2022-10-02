@@ -10,19 +10,20 @@ const Register = (props) => {
     const Image = useRef()
 
     const [PreviewImage, setPreviewImage] = useState(AddImageIcon),
-    [PreviewText, setPreviewText] = useState('No image selected')
+    [PreviewText, setPreviewText] = useState('No image selected'),
+    [ShowProfileModal, setShowProfileModal] = useState(false)
 
-    const ImagePreview = () => {
+    // const ImagePreview = () => {
 
-    }
+    // }
 
     return (
         <>
-            <ProfilesCard/>
+            <ProfilesCard ShowProfileModal={ShowProfileModal} setShowProfileModal={setShowProfileModal}/>
             <div className={props.changeCards ? Style.SignupBack : Style.Signup}>
             <h1 className={Style.Spacing}>Register!</h1>
             <form className={Style.Form}>
-                <div className={Style.Preview} style={{backgroundImage: `url(${PreviewImage})`}}></div>
+                <div onClick={() => {setShowProfileModal(!ShowProfileModal)}} className={Style.Preview} style={{backgroundImage: `url(${PreviewImage})`}}></div>
                 <p><b>{PreviewText}</b></p>
                 <Input required='true' placeholder='Username' Intype='Login'/>
                 <Input required='true' placeholder='Email' Intype='Login'/>

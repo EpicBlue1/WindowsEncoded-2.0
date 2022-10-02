@@ -31,3 +31,24 @@ p{
     font-size: 14px;
     margin-top: 0; 
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    @include InputShadow();
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $Primary_LightBlue;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

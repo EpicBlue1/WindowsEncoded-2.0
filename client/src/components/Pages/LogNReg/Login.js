@@ -12,7 +12,7 @@ const Login = (props) => {
                 <Input placeholder='Email' className={Style.margin} Intype='Login'/>
 
                 <Input placeholder='Password' className={Style.margin} Intype='Login'/>
-
+                <br></br>
                 <p>Forgot Password?</p>
                 <p className={Style.Spacing} onClick={() => {props.setChangeCard(!props.changeCards)}}>Don't have an account? Register now!</p>
 
