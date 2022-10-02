@@ -26,7 +26,7 @@
     margin: 0 auto;
     margin-top: 5%;
     width: 450px;
-    height: 60vh;
+    height: 67vh;
     z-index: 3;
     opacity: 100%;
     transition: width 1s, left 1s, opacity 0.5s;
@@ -34,8 +34,20 @@
     @include Shadow();
   }
 
+  .SignupBack{
+    left: 50%;
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 450px;
+    height: 67vh;
+    z-index: 1;
+    opacity: 0%;  
+    transition: width 1s, left 1s, z-index 1s, opacity 0.5s;
+    @include LogNReg();
+  }
+
   .SignupText{
-    left: 65%;
+    left: 70%;
     margin: 0 auto;
     margin-top: 12%;
     width: 450px;
@@ -115,18 +127,6 @@
     50% { border-color: white; }
   }
   
-  .SignupBack{
-    left: 50%;
-    margin: 0 auto;
-    margin-top: 5%;
-    width: 450px;
-    height: 60vh;
-    z-index: 1;
-    opacity: 0%;  
-    transition: width 1s, left 1s, z-index 1s, opacity 0.5s;
-    @include LogNReg();
-  }
-  
   .LoginBack{
     left: 50%;
     margin: 0 auto;
@@ -180,6 +180,44 @@
 }
 
 .Spacing{
-  margin-bottom: 10vh !important;
+  margin-bottom: 5vh !important;
 }
+
+.Form{
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.Preview{
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid $Primary_LightGray;
+  margin-bottom: 2vh !important;
+  @include backgroundImages;
+  background-size: 30%;
+}
+
+.Preview:hover{
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
 
