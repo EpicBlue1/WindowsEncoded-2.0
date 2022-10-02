@@ -14,6 +14,7 @@ import TopNav from './components/subcomponents/TopNav/TopNav';
 function App() {
 
   const [ShowNav, setShowNav] = useState(true);
+  const [LogOut, setLogOut] = useState()
 
   useEffect(() => {
 
@@ -23,14 +24,14 @@ function App() {
       setShowNav(true);
     }
 
-  }, [])
+  }, [LogOut])
 
   return (
     <div className='App'>
       <TopNav show={ShowNav}/>
 
       <div className='LeftContentCon'>
-        <LeftNav show={ShowNav}/>
+        <LeftNav show={ShowNav} LogOut={LogOut} setLogOut={setLogOut}/>
       </div>
 
       <div className='RightContentCon'>

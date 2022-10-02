@@ -1,0 +1,8 @@
+@import '../../../index.scss';
+
+.Modal{
+    width: 350px;
+    height: 150px;
+    background-color: white;
+    @include Shadow();
+}

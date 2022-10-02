@@ -3,6 +3,7 @@ import Style from './LogNReg.module.scss';
 import Input from '../../subcomponents/Inputs/Input';
 import Button from '../../subcomponents/Buttons/Button';
 import AddImageIcon from '../../../Icons/user-plus.svg';
+import ProfilesCard from '../../Cards/ProfilesCard/ProfilesCard';
 
 const Register = (props) => {
 
@@ -17,6 +18,7 @@ const Register = (props) => {
 
     return (
         <>
+            <ProfilesCard/>
             <div className={props.changeCards ? Style.SignupBack : Style.Signup}>
             <h1 className={Style.Spacing}>Register!</h1>
             <form className={Style.Form}>
