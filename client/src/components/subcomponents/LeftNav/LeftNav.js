@@ -9,16 +9,16 @@ const LeftNav = (props) => {
     <div className={Style.leftNav}>
       <Link to="/">
         <div className={Style.Home}>
-          <div className={Style.IconSpot}>
+          <div className={Style.IconSpot1}>
             <div className={Style.Icon}></div>
           </div>
-          <h3 className={Style.text}>Home</h3>
+          <h3 className={Style.homeText}>Home</h3>
         </div>
       </Link>
 
       <Link to="/Questions">
         <div className={Style.Questions}>
-          <div className={Style.IconSpot}>
+          <div className={Style.IconSpot2}>
             <div className={Style.Icon2}></div>
           </div>
           <h3 className={Style.text}>Questions</h3>
