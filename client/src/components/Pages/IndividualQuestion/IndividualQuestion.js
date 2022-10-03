@@ -24,7 +24,7 @@ const IndividualQuestion = () => {
                     <div className={Style.profileImg}></div>
                     <p className={Style.username}>Username</p>
                     <br/>
-                    <h2 className={Style.heading}>Question Title</h2>
+                    <h2 className={Style.headingQuestion}>Question Title</h2>
                 </div>
 
                 <div className={Style.questionDetails}>
