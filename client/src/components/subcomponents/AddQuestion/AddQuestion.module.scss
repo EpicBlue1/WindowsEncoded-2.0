@@ -1,0 +1,11 @@
+.addQuestionCard{
+    margin-left: 15%;
+    margin-top: 10%;
+    position: absolute;
+    z-index: 500;
+    width: 50%;
+    height: 50vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(9px);
+}
