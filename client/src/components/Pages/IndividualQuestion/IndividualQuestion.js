@@ -9,7 +9,7 @@ import VotingSystem from '../../subcomponents/VotingSystem/VotingSystem';
 
 const IndividualQuestion = () => {
 
-    const code = '<div className={Question ? Questiontrue : Questionfalse}></div>'
+    const code = '<div className={Question ? Questiontrue : Questionfalse}></div>';
 
     return (
         // <div className={Style.body}>

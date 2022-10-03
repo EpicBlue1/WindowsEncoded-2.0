@@ -9,7 +9,17 @@ const ProfilesCard = (props) => {
         </div>
         <div className={props.ShowProfileModal ? Style.SelectModal : 'hide'}>
             <h1>Select Profile Picture</h1>
-            <div className={Style.Container}></div>
+            <div className={Style.Container}>
+            <div className={Style.PfBlock}>
+                </div>
+                <div className={Style.PfBlockUp}>
+                <div class={Style.upload_btn_wrapper}>
+                    <button class={Style}>Upload a file</button>
+                    <input type="file" name="myfile" />
+                </div>                
+            </div>
+
+            </div>
             <br></br>
             <Button type='Primary'>Select</Button>
             <br></br>

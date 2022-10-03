@@ -27,8 +27,11 @@ const Testpage = () => {
             <Input Intype="Search"  placeholder="Search"/>
             </div>
             <h3>Heading Three - Primary</h3>
-            <p> Width based on parent (60%)</p>
+            <p> Width based on parent</p>
             <Input Intype="Login"/>
+            <h3>Heading Three - ModalInput</h3>
+            <p> Width based on parent </p>
+            <Input Intype="ModalInput"/>
             <h3>Heading Three - Code Area</h3>
             <p> Width based on parent (90%)</p>
             <CodeArea language="javascript" className="CodeArea">{code}</CodeArea>

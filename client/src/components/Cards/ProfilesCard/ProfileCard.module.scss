@@ -38,4 +38,55 @@
     border-top-right-radius: 5px;
     @include InputShadow();
     padding: 5px;
+    display: grid;
+    overflow-y: auto;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
+
+.PfBlock{
+    // flex: 1 1 100px !important;
+    height: 25%;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 2px;
+    @include Shadow();
+}
+
+.PfBlockUp{
+    height: 25%;
+    height: 100px;
+    background-color: $Primary_LightBlue;
+    border-radius: 20px;
+    margin: 2px;
+    @include Shadow();
+  }
+
+.upload_btn_wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    // height: px;
+    width: 95%;
+    margin-top: 35%;
+  }
+  
+  .btn {
+    border: 0px solid gray;
+    color: black;
+    background-color: $Primary_LightBlue ;
+    padding: 2px 8px;
+    border-radius: 10px;
+    // cursor: pointer;
+  }
+  
+  .upload_btn_wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    // display: none;
+  }
+
