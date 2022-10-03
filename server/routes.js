@@ -58,7 +58,10 @@ router.post('/register', (req, res) => {
         res.json(item);
     })
     .catch(err => {
-        res.status(400).send(err);
+        res.status(400).send(err.response);
+        console.log(err.response);
+        console.log(err.request);
+        console.log(err.message)
     });
 })
 
