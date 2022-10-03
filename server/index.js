@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const routes = require('./routes');
 //dotenv allows to use .env file.
-require('dotenv/config')
+require('dotenv/config');
 
 const app = express();
 

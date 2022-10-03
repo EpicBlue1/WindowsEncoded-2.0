@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+## Repo Info
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GitHub repo size](https://img.shields.io/github/repo-size/EpicBlue1/Lib_ECommerce_Dev_T3)
+![GitHub watchers](https://img.shields.io/github/watchers/EpicBlue1/Lib_ECommerce_Dev_T3)
+![GitHub language count](https://img.shields.io/github/languages/count/EpicBlue1/Lib_ECommerce_Dev_T3)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/EpicBlue1/Lib_ECommerce_Dev_T3)
 
-## Available Scripts
 
-In the project directory, you can run:
+Reinhardt de Beer
+21100115 - DV_200_T3
 
-### `npm start`
+# LIB - Development Term 3
+<p align="center">
+    <img src="assets/Logo.png" align="center" height="300" width="300" >
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Utilising the MERN stack's other technologies, including Node.js, Express.js, and MongoDB Atlas. I implemented these technologies inside a mock e-commerce web application. Choosing lenses and accessories as my niche product and theming around that. From which the project LIB was designed and developed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Table of contents
 
-### `npm test`
+* [Installation](#Installation)
+* [Build With](#Build-With)
+* [Features](#Features-and-Functions)
+* [Development-Process](#Development-Process)
+    * [Ideation](#Ideation)
+    * [Wireframes](#Wireframes)
+    * [Challenges](#Challenges)
+    * [Challenges](#Above-And-Beyond)
+    * [Challenges](#Future-Implementation)
+* [Final-Outcome](#Final-Outcome)
+    * [Mockups](#Mockups)
+    * [Video-Demonstration](#Video-Demonstration)
+    * [Final-Outcome](#Final-Outcome)
+* [Authors](#Authors)
+* [License](#License)
+* [Contact](#Contact)
+* [Acknowledgements](#Acknowledgements)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+1. GitHub Desktop </br>
+Enter `https://github.com/EpicBlue1/Lib_ECommerce_Dev_T3.git` into the URL field and press the `Clone` button.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Clone Repository </br>
+Run the following in the command-line to clone the project:
+   ```sh
+   git clone https://github.com/EpicBlue1/OOP_21100115_ReinhardtdeBeer.git
+   ```
+    Open `Software` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install Dependencies </br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run the following in the command-line to install all the required dependencies inside the server and client folder:
+   ```sh
+   npm i
+   ```
 
-### `npm run eject`
+4. An API key is not required
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Build With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Name              | Link                                                                     |
+| ----------------- | ------------------------------------------------------------------------ |
+| <p>Node Js</p> |  https://nodejs.org/ |
+| <p>MongoDB</p> |  https://www.mongodb.com/ |
+| <p>multer</p> |  https://github.com/expressjs/multer |
+| <p>Bootstrap React</p> |  https://react-bootstrap.github.io/ |
+| <p>Express</p> |  https://expressjs.com/ |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Features and Functions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Log In and Validation
+- Individual Product pages
+- Cart: add and remove
+- Update, delete and add if admin on Inventory page
+- Filter and sort on all products page
+- An Image Slider on Landing page
 
-## Learn More
+## Development Process
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Ideation
+[Pinterest Board For Concept](https://za.pinterest.com/debeer0072/dev_200-term-3/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Wireframes
 
-### Code Splitting
+Initial wireframes:
+<p align="center">
+    <img src="assets/Initial_Wireframes.png" align="center" height="450" >
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Final wireframes:
+<p align="center">
+    <img src="assets/Final_Wireframs.png" align="center" height="450" >
+</p>
 
-### Analyzing the Bundle Size
+## Challenges
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Not focussing on the core functionality first.
+* Server crashes (the result of a spelling mistake, the way I pass my data to the backend, and so on.)
+* Keeping track of props ( I utilized a lot of props I kept losing track, a better alternative would be sessionstorage.)
 
-### Making a Progressive Web App
+## Above And Beyond
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Filter and sort on all product page
+* UseReduser used to update and rerender components
 
-### Advanced Configuration
+## Future Implementation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* Complete individual page: add variations, make add to cart and quantity work.
+* Complete checkout and its backend functionality
+* Orders Page
+* Search
+* Add product qts together if same product
 
-### Deployment
+## Final Outcome
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Mockups
 
-### `npm run build` fails to minify
+<p align="center">
+    <img src="assets/Mockup_1.jpg" align="left" height="200" >
+    <img src="assets/Mockup_2.jpg" align="left" height="200" >
+    <img src="assets/Mockup_3.jpg" align="left" height="200" >
+    <img src="assets/Mockup_4.jpg" align="left" height="200" >
+    <img src="assets/Mockup_5.jpg" height="200" >
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Video Demonstration
+
+To see a run through of the application, click below:
+
+[View Demonstration](https://youtu.be/DBMcaTIUYoc)
+
+## Authors
+
+* **Reinhardt de Beer** - [EpicBlue1](https://github.com/EpicBlue1)
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+* **Reinhardt de Beer** - [21100115@virtualwindow.co.za](mailto:21100115@virtualwindow.co.za) - [@rdb_fotopatat](https://www.instagram.com/rdb_fotopatat/) 
+* **Project Link** - https://github.com/EpicBlue1/Lib_ECommerce_Dev_T3
+
+## Acknowledgements
+
+* **Contexts and useReducers** - [Leander van Aarde Github](https://github.com/LeandervanAarde)
+ 
