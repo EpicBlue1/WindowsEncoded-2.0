@@ -1,5 +1,22 @@
 @import '../../../index.scss';
 
+
+.BackgroundBlur{
+    width: 80%;
+    margin-top: -20px;
+    margin-left: -20px;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    position: absolute;
+    z-index: 500;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 .addQuestionCard{
     padding: 2%;
     top: 50%;
@@ -7,8 +24,9 @@
     transform: translate(-50%, -50%);
     position: absolute;
     z-index: 500;
-    width: 25%;
-    height: 50vh;
+    width: 32%;
+    height: 50%;
+    height: auto;
     border-radius: 20px;
     @include ModalColor;
 }
@@ -25,6 +43,10 @@
     color: white;
     cursor: pointer;
     @include Shadow();
+}
+
+.closeButton:hover{
+    background-color: $Primary_LightBlue;
 }
 
 .closeIcon{
@@ -54,9 +76,22 @@
 
 .textBox{
     margin-top: 2%;
-    width: 74.4%;
+    width: 69%;
     float: left;
     border-radius: 20px;
-    height: 95px;
+    height: 70px;
     margin-left: 3%;
+    padding: 3%;
+}
+
+.codeBox{
+    width: 94%;
+    border-radius: 20px; 
+    height: 95px;
+    margin-bottom: 5%;
+    padding: 3%;
+}
+
+.Button{
+    text-align: center;
 }

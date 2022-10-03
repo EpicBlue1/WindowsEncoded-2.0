@@ -6,12 +6,16 @@
     background-color: white;
     color: white;
     border-radius: 20px;
-    background-color: $Primary_LightBlue;
+    background-color: $Primary_DarkBlue;
     border: none;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     @include Shadow()
+}
+
+.primary:hover{
+    background-color: $Primary_LightBlue;
 }
 
 .secondary{
