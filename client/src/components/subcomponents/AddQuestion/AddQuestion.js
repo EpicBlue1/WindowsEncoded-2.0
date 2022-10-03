@@ -7,7 +7,7 @@ const AddQuestion = () => {
         <div className={Style.addQuestionCard}>
             <div className={Style.close}></div>
 
-            <Input Intype="Login"/>
+            <Input Intype="Login" placeholder="Title..."/>
             
         </div>
     );

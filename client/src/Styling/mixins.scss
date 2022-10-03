@@ -4,6 +4,11 @@
     background-repeat: no-repeat;
 }
 
+@mixin ModalColor {
+    background-color: rgba(41, 29, 137, 0.4);
+    backdrop-filter: blur(16px);
+}
+
 //example use case
 //long way
 .BackgroundContainerThing{
