@@ -1,13 +1,56 @@
 @import '../../../index.scss';
 
 .addQuestionCard{
+    padding: 2%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
     z-index: 500;
-    width: 50%;
+    width: 25%;
     height: 50vh;
     border-radius: 20px;
     @include ModalColor;
+}
+
+.closeButton{
+    width: 25px;
+    padding: 1%;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+    background-color: $Primary_DarkBlue;
+    text-align: center;
+    float: right;
+    color: white;
+    cursor: pointer;
+    @include Shadow();
+}
+
+.closeIcon{
+    width: 20px;
+    height: 20px;
+    background-image: url('../../../Icons/white_cross.svg');
+    // @include background-image;
+}
+
+.Preview{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid $Primary_LightGray;
+    margin-bottom: 2vh !important;
+    @include backgroundImages;
+    background-size: 30%;
+    float: left;
+}
+
+.Preview:hover{
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.textBox{
+    float: left;
 }
