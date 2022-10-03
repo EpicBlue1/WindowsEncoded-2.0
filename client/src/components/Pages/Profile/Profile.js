@@ -17,13 +17,26 @@ const Profile = () => {
         <Badges/>
         <Badges/>
         <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+        <Badges/>
+
+
+
+        
 
       </div>
       <div className={Style.QuestionSection}>
         <h1>YOUR ACTIVITY</h1>
-        <div className={Style.DropDown}>
-          Questios
-        </div>
+        
         <ProfileQuestion/>
         <ProfileQuestion/>
         <ProfileQuestion/>

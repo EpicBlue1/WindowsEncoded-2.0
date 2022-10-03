@@ -8,8 +8,11 @@ const ProfileSection = () => {
             <div className={Style.EditButton}>
                 <div className={Style.EditPen}></div>
             </div>
+            <div className={Style.ProfileImages}>
             <div className={Style.ProfileImage}></div>
             <div className={Style.ProfileDisplayBadge}></div>
+            </div>
+            
             <h2 className={Style.Username}>Username</h2>
             <h3 className={Style.MemberLength}>Member for 1 year, 2 months</h3>
             <div className={Style.Progress}> progressbar</div>

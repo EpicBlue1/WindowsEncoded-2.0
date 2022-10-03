@@ -4,20 +4,21 @@
 .BadgeBox {
     float: left;
     margin-left: 25px;
-    width: 20%;
-    height: 60%;
+    width: 10%;
+    height: 40%;
     background-color: rgb(240, 239, 239);
     border-radius: 20px;
     text-align: center;
     @include Shadow();
 
+    margin-bottom: 10px;
 }
 
 .Badge {
     margin: auto;
     margin-top: 10px;
     width: 90%;
-    height: 60%;
+    height: 50%;
     
     background-image: url(../../../Icons/ChatBox.svg);
     @include backgroundImages;

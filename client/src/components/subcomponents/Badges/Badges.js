@@ -5,8 +5,8 @@ const Badges = () => {
     return (
         <div className={Style.BadgeBox}>
             <div className={Style.Badge}></div>
-            <h3>10</h3>
-            <h4>Gold Badges</h4>
+            <h4>10</h4>
+            <h6>Gold Badges</h6>
         </div>
     );
 };
