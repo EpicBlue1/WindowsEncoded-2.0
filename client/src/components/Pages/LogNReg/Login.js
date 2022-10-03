@@ -2,10 +2,17 @@ import React from 'react';
 import Style from './LogNReg.module.scss';
 import Input from '../../subcomponents/Inputs/Input';
 import Button from '../../subcomponents/Buttons/Button';
+import ForgetPassword from '../../subcomponents/ForgetPassword/ForgetPassword';
+import {useState} from 'react';
 
 const Login = (props) => {
+
+    const [forgotPassword, setForgotPassword] = useState(false)
+
     return (
+        <>
         <div className={props.changeCards ? Style.Login : Style.LoginBack}>
+        <ForgetPassword forgotPassword={forgotPassword} setForgotPassword={setForgotPassword}/>
             <div className={Style.LogLeft}>
                 <h1 className={Style.Spacing}>Welcome back!</h1>
 
@@ -13,7 +20,8 @@ const Login = (props) => {
 
                 <Input placeholder='Password' className={Style.margin} Intype='Login'/>
                 <br></br>
-                <p>Forgot Password?</p>
+                <p onClick ={()=> {setForgotPassword(true)}}>Forgot Password?</p>
+            
                 <p className={Style.Spacing} onClick={() => {props.setChangeCard(!props.changeCards)}}>Don't have an account? Register now!</p>
 
                 <Button className={Style.Button} type='Primary'>Log In</Button>
@@ -24,6 +32,7 @@ const Login = (props) => {
             </div>
 
         </div>
+        </>
     );
 };
 
