@@ -50,16 +50,20 @@
     background-color: white;
     border-radius: 20px;
     margin: 2px;
+    @include backgroundImages;
+    background-size: 80%;
     @include Shadow();
+    cursor: pointer;
 }
 
 .PfBlockUp{
     height: 25%;
     height: 100px;
-    background-color: $Primary_LightBlue;
+    background-color: $Primary_DarkBlue;
     border-radius: 20px;
     margin: 2px;
     @include Shadow();
+    cursor: pointer;
   }
 
 .upload_btn_wrapper {
@@ -67,18 +71,26 @@
     overflow: hidden;
     display: inline-block;
     cursor: pointer;
-    // height: px;
+    height: 100px;
+    padding-top: 35%;
     width: 95%;
-    margin-top: 35%;
+    cursor: pointer;
+    // margin-top: 35%;
   }
   
   .btn {
     border: 0px solid gray;
-    color: black;
-    background-color: $Primary_LightBlue ;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
     padding: 2px 8px;
     border-radius: 10px;
-    // cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: $Primary_LightBlue;
   }
   
   .upload_btn_wrapper input[type=file] {

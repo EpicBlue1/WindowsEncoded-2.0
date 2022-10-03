@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './ProfileCard.module.scss';
 import Button from '../../subcomponents/Buttons/Button';
+import ProfileTemp from '../../../Img/LogInIllustration.jpg' 
 
 const ProfilesCard = (props) => {
     return (
@@ -10,11 +11,12 @@ const ProfilesCard = (props) => {
         <div className={props.ShowProfileModal ? Style.SelectModal : 'hide'}>
             <h1>Select Profile Picture</h1>
             <div className={Style.Container}>
-            <div className={Style.PfBlock}>
-                </div>
+            <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
+            <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
+            <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
                 <div className={Style.PfBlockUp}>
                 <div class={Style.upload_btn_wrapper}>
-                    <button class={Style}>Upload a file</button>
+                    <button class={Style.btn}>Upload a file</button>
                     <input type="file" name="myfile" />
                 </div>                
             </div>
