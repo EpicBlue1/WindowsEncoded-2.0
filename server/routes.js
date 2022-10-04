@@ -59,9 +59,8 @@ router.post('/login', async (req, res) => {
         email: req.body.email
     });
 
-    console.log(req.body)
+    console.log(req.body);
 
-    //check if user is found
     if(findUser){
         const validPass = await bcrypt.compare(req.body.password, findUser.password);
         if(validPass){

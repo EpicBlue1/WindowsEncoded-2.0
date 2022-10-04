@@ -1,26 +1,22 @@
 @import '../../../index.scss';
 
-
 .BadgeBox {
     float: left;
-    margin-left: 25px;
-    width: 10%;
-    height: 40%;
+    margin-right: 25px;
+    width: 100px;
+    height: max-content;
     background-color: rgb(240, 239, 239);
     border-radius: 20px;
     text-align: center;
-    @include Shadow();
-
+    // @include Shadow();
     margin-bottom: 10px;
 }
 
 .Badge {
     margin: auto;
     margin-top: 10px;
-    width: 90%;
-    height: 50%;
-    
+    width: 70px;
+    height: 70px;
     background-image: url(../../../Icons/ChatBox.svg);
     @include backgroundImages;
-
 }

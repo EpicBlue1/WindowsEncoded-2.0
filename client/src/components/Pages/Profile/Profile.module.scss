@@ -6,24 +6,21 @@
     // background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
 }
 
-
 .BadgeSection {
-    position: absolute;
     left: 19%;
     top: 10%;
-    width: 50%;
-    height: 400px;
+    width: 82%;
+    height: 38vh;
+    overflow: auto;
 }
 
-
 .QuestionSection {
-    position: absolute;
-    left: 20%;
-    top: 50%;
-    width: 50%;
-    height: 450px;
-    margin-top: 50px;
-    
+    left: 19%;
+    top: 10%;
+    width: 75%;
+    height: 38vh;
+    overflow: auto;
+    padding-bottom: 4vh !important;
 }
 
 .DropDown {
@@ -41,14 +38,8 @@
 
 .ProfileSection {
     position: absolute;
-    left: 72.5%;
-    top: 15%;
+    left: 78%;
+    top: 10%;
     width: 20%;
-    height: 75vh;
-    
+    height: 87vh;
 }
-
-// h1 {
-//     margin-left: 25px;
-//     margin-top: 15px;
-// }

@@ -15,8 +15,6 @@ const ProfileQuestion = () => {
             <QuestionTag/>
             </div>
 
-
-
             <div className={Style.Qscore}>
                 <h1 className={Style.Score}>1</h1>
             </div>

@@ -1,11 +1,11 @@
 @import '../../../index.scss';
 
 .Modal{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200vh;
+    width: 195vh;
     height: 100vh;
     backdrop-filter: blur(4px);
     @include Shadow();
@@ -16,7 +16,7 @@
     width: 450px;
     height: 68vh;
     @include ModalColor;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

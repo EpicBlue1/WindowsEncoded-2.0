@@ -9,6 +9,7 @@
 
 body {
   margin: 0;
+  height: max-content;
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,7 +26,7 @@ body {
 }
 
 .LeftContentCon{
-  height: 100vh;
+  height: max-content;
   width: 35vh !important;
   float: left;
   // background-color: green;
@@ -33,8 +34,9 @@ body {
 
 .RightContentCon{
   // width: max-conten;
-  width: 150vh;
-  height: 100vh;
+  padding-top: 15px;
+  width: 155vh;
+  height: max-content;
   float: left;
   // background-color: red;
 }

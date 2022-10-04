@@ -13,49 +13,43 @@
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    
+    overflow: auto;
 }
 
 .EditButton {
     position: absolute;
     right: 10px;
     top: 10px;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background-color: #5067EB;
     border-radius: 10px;
-    
-
-}
-
-.EditPen {
-    width: 70%;
-    height: 70%;
     background-image: url(../../../Icons/Pen.svg);
     @include backgroundImages;
-    margin: 9px;
+    background-size: 70%;
+}
+
+.ProfileImages{
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    margin-top: 5%;
 }
 
 .ProfileImage {
-    margin-top: 30%;
-    position: relative;
-}
-
-.ProfileImage {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     background-color: rgb(196, 194, 194);
     border-radius: 80px;
 }
 
 .ProfileDisplayBadge {
-    position: absolute;
-    right: 30%;
-    top: 20%;
-    width: 50px;
-    height: 50px;
+    position: relative;
+    top: -30px;
+    left: 80px;
+    width: 40px;
+    height: 40px;
     background-color: #5067EB;
-    
     border-radius: 80px;
 }
 
@@ -71,21 +65,18 @@
 }
 
 .Progress {
-    width: 100%;
     height: 50px;
     text-align: center;
     
 }
 
 .TotalAsked {
-    width: 80%;
+    // width: 80%;
     height: 16%;
-    
     border: 0.5px solid black;
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
     text-align: center;
-   
 }
 
 .Scores {
@@ -97,9 +88,8 @@
 }
 
 .TotalAnswered {
-    width: 80%;
+    // width: 80%;
     height: 16%;
-   
     border-bottom: 0.5px solid black;
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
@@ -107,11 +97,10 @@
 }
 
 .ReliabilityScore {
-    width: 80%;
+    // width: 80%;
     height: 16%;
     border-bottom: 0px solid black;
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
-    text-align: center;
-    
+     text-align: center; 
 }
