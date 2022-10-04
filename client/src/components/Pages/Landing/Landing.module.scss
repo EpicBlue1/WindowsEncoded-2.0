@@ -8,10 +8,11 @@
 
 .LandingArea{
     padding: 10px;
+    display: flex;
 }
 
 .Block{
-    width: 150px;
+    width: 25vh;
     height: 150px;
     background-color: white;
     border-radius: 20px;
