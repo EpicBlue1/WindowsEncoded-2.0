@@ -21,7 +21,7 @@ const Register = (props) => {
     [emailValid, setEmailValid] = useState(''),
     [passwordValid, setPasswordValid] = useState(''),
     [passwordConValid, setpasswordConValid] = useState(''),
-    [FormValid, setFormValid] = useState('Make sure all the fields are green')
+    [FormValid, setFormValid] = useState('')
 
     const [UsernameText, setUsernameText] = useState(),
     [EmailText, setEmailText] = useState(),
@@ -124,24 +124,24 @@ const Register = (props) => {
 
     return (
         <>
-            <ProfilesCard ShowProfileModal={ShowProfileModal} setShowProfileModal={setShowProfileModal}/>
+        <ProfilesCard ShowProfileModal={ShowProfileModal} setShowProfileModal={setShowProfileModal}/>
             <div className={props.changeCards ? Style.SignupBack : Style.Signup}>
             <h1 className={Style.Spacing}>Register!</h1>
-            <form onChange={FormValues} className={Style.Form}>
-                <div onClick={() => {setShowProfileModal(!ShowProfileModal)}} className={Style.Preview} style={{backgroundImage: `url(${PreviewImage})`}}></div>
-                <p><b>{PreviewText}</b></p>
-                <Input ref={username} text={UsernameText} Valid={UsernameValid} required='true' placeholder='Username' Intype='Login'/>
-                <div className={Style.InSpacing}></div>
-                <Input ref={email} text={EmailText} Valid={emailValid} required='true' placeholder='Email' Intype='Login'/>
-                <div className={Style.InSpacing}></div>
-                <Input ref={password} text={PasswordText} Valid={passwordValid} required='true' placeholder='Password' Intype='Login'/>
-                <div className={Style.InSpacing}></div>
-                <Input ref={passwordVal} text={PasswordValText} Valid={passwordConValid} required='true' className={Style.Spacing} placeholder='Confirm Password' Intype='Login'/>
-                <div className={Style.Spacing}></div>
-                <p className={Style.Red}>{FormValid}</p>
-                <p onClick={() => {props.setChangeCard(!props.changeCards)}}>Already have an account? Login now!</p>
-                <Button onClick={addUser} type='Primary'>Register</Button>
-            </form>
+                <form onChange={FormValues} className={Style.Form}>
+                    <div onClick={() => {setShowProfileModal(!ShowProfileModal)}} className={Style.Preview} style={{backgroundImage: `url(${PreviewImage})`}}></div>
+                    <p><b>{PreviewText}</b></p>
+                    <Input ref={username} text={UsernameText} Valid={UsernameValid} required='true' placeholder='Username' Intype='Login'/>
+                    <div className={Style.InSpacing}></div>
+                    <Input ref={email} text={EmailText} Valid={emailValid} required='true' placeholder='Email' Intype='Login'/>
+                    <div className={Style.InSpacing}></div>
+                    <Input ref={password} text={PasswordText} Valid={passwordValid} required='true' placeholder='Password' Intype='Login'/>
+                    <div className={Style.InSpacing}></div>
+                    <Input ref={passwordVal} text={PasswordValText} Valid={passwordConValid} required='true' className={Style.Spacing} placeholder='Confirm Password' Intype='Login'/>
+                    <div className={Style.Spacing}></div>
+                    <p className={Style.Red}>{FormValid}</p>
+                    <p onClick={() => {props.setChangeCard(!props.changeCards)}}>Already have an account? Login now!</p>
+                    <Button onClick={addUser} type='Primary'>Register</Button>
+                </form>
             </div>
 
             <div className={props.changeCards ? Style.SignupTextBack : Style.SignupText}>
