@@ -11,7 +11,13 @@
   margin-top: 5%;
   background-color: gold;
   width: 100vh;
-  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+  height: max-content;
   border-radius: 20px;
   z-index: 2;
   transition: width 1s, left 1s, opacity 0.5s, box-shadow 0.2s;
@@ -24,7 +30,7 @@
   margin: 0 auto;
   margin-top: 5%;
   width: 450px;
-  height: 67vh;
+  height: max-content;
   z-index: 3;
   opacity: 100%;
   transition: width 1s, left 1s, opacity 0.5s;
@@ -37,7 +43,7 @@
   margin: 0 auto;
   margin-top: 5%;
   width: 450px;
-  height: 67vh;
+  height: max-content;
   z-index: 1;
   opacity: 0%;  
   transition: width 1s, left 1s, z-index 1s, opacity 0.5s;
@@ -130,7 +136,13 @@
   margin: 0 auto;
   margin-top: 5%;
   width: 600px;
-  height: 60vh;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
   border-radius: 20px;
   z-index: 1;
   opacity: 5%;
@@ -146,9 +158,8 @@
   
 .LogLeft{
   width: 50%;
-  height: 50vh;
+  height: max-content;
   float: left;
-  margin-top: 5vh;
 }
 
 .LogRight{
@@ -178,7 +189,7 @@
 }
 
 .Spacing{
-  margin-bottom: 4vh !important;
+  margin-bottom: 2vh !important;
 }
 
 .Form{
@@ -216,6 +227,15 @@
 .Preview:hover{
   background-color: #f2f2f2;
   cursor: pointer;
+}
+
+.InSpacing{
+  height: 8px;
+}
+
+
+.Red{
+  color: red;
 }
 
 

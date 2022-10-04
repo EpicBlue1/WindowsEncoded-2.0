@@ -42,6 +42,7 @@ const Login = (props) => {
         <ForgetPassword forgotPassword={forgotPassword} setForgotPassword={setForgotPassword}/>
             <div className={Style.LogLeft}>
                 <h1 className={Style.Spacing}>Welcome back!</h1>
+                <br></br>
 
                 <Input ref={email} placeholder='Email' className={Style.margin} Intype='Login'/>
 

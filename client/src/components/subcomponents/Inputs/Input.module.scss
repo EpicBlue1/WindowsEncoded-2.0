@@ -2,6 +2,7 @@
 
 .Login {
     width: 85%;
+    float: left;
     height: 35px;
     border-radius: 20px;
     padding-left: 20px;
@@ -50,6 +51,52 @@
     background-image: url('../../../Icons/search.svg');
     @include backgroundImages;
     background-size: 60%;
+}
+
+.Valid{
+    width: 3.8%;
+    margin-top: 23px;
+    position: relative;
+    right: 3.5vh;
+    float: left;
+    height: 35px;
+    background-image: url('../../../Icons/InputValid.svg');
+    @include backgroundImages;
+    background-size: 110%;
+    cursor: pointer;
+}
+
+.InValid{
+    width: 3.8%;
+    margin-top: 23px;
+    position: relative;
+    right: 3.5vh;
+    float: left;
+    height: 35px;
+    background-image: url('../../../Icons/InputInValid.svg');
+    @include backgroundImages;
+    background-size: 110%;
+    cursor: pointer;
+}
+
+.HoverModalCon{
+    width: 1px;
+    height: 1px;
+  }
+
+.HoverModal{
+    position: relative;
+    left: 6vh;
+    width: max-content;
+    height: 30px;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    font-weight: 800;
+    @include Shadow();
+    background-color: $Semantic_Red;
+    border-radius: 20px;
 }
 
 .hide{
