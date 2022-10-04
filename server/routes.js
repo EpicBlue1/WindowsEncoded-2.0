@@ -27,18 +27,6 @@ const usersSchema = require('./models/Users');
 //     });
 // });
 
-// encrypt password before saving
-// UserSchema.pre('save', async function(next){
-//     try {
-//         const salt = await bcrypt.genSalt(10);
-//         const hashedPassword = await bcrypt.hash(this.password, salt);
-//         this.password = hashedPassword;
-//         next();
-//     } catch (error) {
-//         next(error);
-//     }
-// })
-
 router.post('/register', (req, res) => {
 
     const newUser = new usersSchema(
@@ -65,33 +53,35 @@ router.post('/register', (req, res) => {
     });
 })
 
-// router.post('./login', async (req, res) => {
+router.post('/login', async (req, res) => {
     
-//     const findUser = await usersSchema.findOne({
-//         email: req.body.email
-//     });
+    const findUser = await usersSchema.findOne({
+        email: req.body.email
+    });
 
-//     //check if user is found
-//     if(findUser){
-//         const validPass = await bcrypt.compare(req.body.password, findUser.password);
-//         if(validPass){
-//             res.status(200).json(
-//                 {
-//                     Message: "Valid",
-//                 }
-//             );
-//         } else {
-//             res.status(500).json(
-//                 {
-//                     Message: "Password doesnt match",
-//                 }
-//             );
-//         }
-//     } else {
-//         res.json({user: false});
-//         console.log("user doesn't exist")
-//     }
+    console.log(req.body)
 
-// })
+    //check if user is found
+    if(findUser){
+        const validPass = await bcrypt.compare(req.body.password, findUser.password);
+        if(validPass){
+            res.json(
+                {
+                    Message: "Valid",
+                }
+            );
+        } else {
+            res.json(
+                {
+                    Message: "InValid",
+                }
+            );
+        }
+    } else {
+        res.json({user: false});
+        console.log("user doesn't exist")
+    }
+
+})
 
 module.exports = router;
