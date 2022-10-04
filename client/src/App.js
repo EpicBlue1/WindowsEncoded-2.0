@@ -24,19 +24,19 @@ function App() {
       setShowNav(true);
     }
 
-  }, [LogOut])
+  }, [ShowNav])
 
   return (
     <div className='App'>
       <TopNav show={ShowNav}/>
 
       <div className='LeftContentCon'>
-        <LeftNav show={ShowNav} LogOut={LogOut} setLogOut={setLogOut}/>
+        <LeftNav setShowNav={setShowNav} show={ShowNav} LogOut={LogOut} setLogOut={setLogOut}/>
       </div>
 
       <div className='RightContentCon'>
         <Routes>
-          <Route path="/LogNReg" element={<LogNReg/>}/>
+          <Route path="/LogNReg" element={<LogNReg setShowNav={setShowNav} show={ShowNav} LogOut={LogOut} setLogOut={setLogOut}/>}/>
           <Route path="/TestPage" element={<Testpage/>}/>
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/" element={<Landing/>}/>

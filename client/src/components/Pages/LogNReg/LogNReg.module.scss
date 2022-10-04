@@ -238,4 +238,25 @@
   color: red;
 }
 
+.closeButton{
+  position: fixed;
+  width: 25px;
+  padding: 1%;
+  top: 2vh;
+  right: 2vh;
+  font-size: larger;
+  font-weight: bolder;
+  border-radius: 10px;
+  background-color: $Primary_DarkBlue;
+  text-align: center;
+  float: right;
+  color: white;
+  cursor: pointer;
+  @include Shadow();
+}
+
+.closeButton:hover{
+  background-color: $Primary_LightBlue;
+}
+
 

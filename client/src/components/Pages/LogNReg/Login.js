@@ -5,6 +5,7 @@ import axios from 'axios';
 import Button from '../../subcomponents/Buttons/Button';
 import ForgetPassword from '../../subcomponents/ForgetPassword/ForgetPassword';
 import {useState} from 'react';
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
 
@@ -54,7 +55,6 @@ const Login = (props) => {
     const login = (e) => {
         e.preventDefault();
         // const newProduct = new FormData()
-
         if(password.current.value !== '' && password.current.value !== ''){
             let userCreds = {
                 email: email.current.value,
@@ -83,13 +83,16 @@ const Login = (props) => {
             setPasswordValid(false);
             setEmailValid(false)
         }
-
-
     }
 
     return (
         <>
         <div className={props.changeCards ? Style.Login : Style.LoginBack}>
+            <div className={Style.closeButton}>
+                <Link to="/">
+                    <div onClick={() => {props.setShowNav(true)}}>x</div>
+                </Link>
+            </div>
         <ForgetPassword forgotPassword={forgotPassword} setForgotPassword={setForgotPassword}/>
             <div className={Style.LogLeft}>
                 <h1 className={Style.Spacing}>Welcome back!</h1>

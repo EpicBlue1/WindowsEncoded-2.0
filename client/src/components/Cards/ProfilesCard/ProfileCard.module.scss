@@ -14,7 +14,7 @@
 
 .SelectModal{
     width: 450px;
-    height: 68vh;
+    height: max-content;
     @include ModalColor;
     position: fixed;
     top: 50%;
