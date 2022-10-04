@@ -24,7 +24,7 @@ function App() {
       setShowNav(true);
     }
 
-  }, [ShowNav])
+  }, [])
 
   return (
     <div className='App'>
