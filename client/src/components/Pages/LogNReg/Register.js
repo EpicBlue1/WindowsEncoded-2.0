@@ -28,13 +28,9 @@ const Register = (props) => {
     [PasswordText, setPasswordText] = useState(),
     [PasswordValText, setPasswordValText] = useState()
 
-    const [AllTrue, setAlltrue] = useState()
-
-
     const addUser = (e) => {
         e.preventDefault();
         if(UsernameValid && emailValid && passwordVal && passwordConValid){
-            setAlltrue(true);
             setFormValid('');
 
         // // const newProduct = new FormData()
@@ -64,7 +60,6 @@ const Register = (props) => {
         // // props.setShow(false);
 
         } else {
-            setAlltrue(false);
             setFormValid('Make sure all the fields are green');
         }
     }

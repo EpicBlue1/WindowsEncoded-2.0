@@ -255,6 +255,10 @@
   @include Shadow();
 }
 
+.White{
+  color: white;
+}
+
 .closeButton:hover{
   background-color: $Primary_LightBlue;
 }

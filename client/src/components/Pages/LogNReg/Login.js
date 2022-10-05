@@ -39,7 +39,7 @@ const Login = (props) => {
         }
 
         //Password
-        if(!password.current.value.length > 0){
+        if(password.current.value.length !== 1 && password.current.value.length <= 1){
             setPasswordValid(false);
             setPasswordText('Please enter Password');
         } else {
@@ -47,9 +47,9 @@ const Login = (props) => {
             setPasswordText('All good');
         }
 
-        // if(password.current.value === ''){
-        //     setPasswordValid('');
-        // }
+        if(password.current.value === ''){
+            setPasswordValid('');
+        }
     }
 
     const login = (e) => {
@@ -66,9 +66,17 @@ const Login = (props) => {
                 console.log(res.data.Message);
                 console.log(res);
                     if(res.data.Message === 'Valid'){
-                        
+                        setFormText("")
+                        setEmailValid(true);
+                        setPasswordValid(true);
+                        setPasswordText('All Good');
+                        setEmailText('All Good');
                     } else {
                         setFormText("Password or Email doesn't match")
+                        setEmailValid(false);
+                        setPasswordValid(false);
+                        setPasswordText('Double Check Password');
+                        setEmailText('Double Check Email');
                     }
                 // form.current.reset();
                 // setRender(prev => !prev)
@@ -90,7 +98,7 @@ const Login = (props) => {
         <div className={props.changeCards ? Style.Login : Style.LoginBack}>
             <div className={Style.closeButton}>
                 <Link to="/">
-                    <div onClick={() => {props.setShowNav(true)}}>x</div>
+                    <div className={Style.White} onClick={() => {props.setShowNav(true)}}>x</div>
                 </Link>
             </div>
         <ForgetPassword forgotPassword={forgotPassword} setForgotPassword={setForgotPassword}/>
