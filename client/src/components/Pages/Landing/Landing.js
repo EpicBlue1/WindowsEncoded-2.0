@@ -16,9 +16,11 @@ const Landing = () => {
         <h1 className={Style.Heading}>About Us</h1>
 
         <div className={Style.Row}>
-            <div className={Style.Container}></div>
-            <div className={Style.Container}></div>
-            <div className={Style.Container}></div>
+            <div className={Style.Container}><h2 className={Style.text}>Ask Questions</h2></div>
+            <div className={Style.Container}><h2>Answer Questions</h2></div>
+            <div className={Style.Container2}><h2>Earn Badges</h2>
+            <div className={Style.badge}></div>
+            </div>
         </div>
 
         <h1 className={Style.Heading}>CATEGORIES/TAGS</h1>

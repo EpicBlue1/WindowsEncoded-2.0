@@ -12,9 +12,12 @@
 }
 
 .Block{
+    background-image: url('../../../Img/Male-3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
     width: 25vh;
     height: 150px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
 }
 
@@ -38,11 +41,30 @@
 .Container{
     width: 33%;
     height: 160px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
     margin-left: 15px;
     border-radius: 20px;
     padding: 20px;
     text-align: center;
+}
+
+.Container2{
+   width: 33%;
+   height: 160px;
+   background-color: rgba(255, 255, 255, 0.6);
+   margin-left: 15px;
+   border-radius: 20px;
+   padding: 20px;
+   text-align: center;
+   background-image: url('../../../Img/Silver.png');
+   background-position: center;
+   background-size: 25%;
+   background-repeat: no-repeat;
+
+}
+
+.text{
+    margin-bottom: 20px;
 }
 
 .ImageOne{
@@ -74,3 +96,4 @@
     background-repeat: no-repeat;
     margin-bottom: 25px;
 }
+
