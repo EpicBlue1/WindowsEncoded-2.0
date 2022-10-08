@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Style from './AddQuestion.module.scss';
-import AddImageIcon from '../../../Icons/user-plus.svg';
 import Input from '../Inputs/Input';
 import Button from '../../subcomponents/Buttons/Button';
 
@@ -33,8 +32,10 @@ const AddQuestion = (props) => {
     }
 
     const addQuestion = () => {
-        console.log(questionInputs);
-        console.log(image);
+        // console.log(questionInputs);
+        // console.log(image);
+
+        const payloadData = new FormData();
     }
 
     return (
@@ -45,24 +46,24 @@ const AddQuestion = (props) => {
                     <div>x</div>
                 </div>
 
-                <h2>Add a Question</h2>
+                <form>
+                    <h2>Add a Question</h2>
 
-                <Input Intype="ModalInput" placeholder="Title..." name="questionTitle" onChange={questionInfo}/>
+                    <Input Intype="ModalInput" placeholder="Title..." name="questionTitle" onChange={questionInfo}/>
 
+                    <div className={Style.PfBlockUp}>
+                        <div className={Style.upload_btn_wrapper}>
+                            <img id='prev_img'/>
+                            <button className={Style.btn}>Upload a file</button>
+                            <input type="file" name="image" onChange={getImage}/>
+                        </div>                
+                    </div>
 
-                {/* <div className={Style.Preview} style={{backgroundImage: `url(${AddImageIcon})`}}></div>  */}
-                <div className={Style.PfBlockUp}>
-                    <div className={Style.upload_btn_wrapper}>
-                        <img id='prev_img'/>
-                        <button className={Style.btn}>Upload a file</button>
-                        <input type="file" name="image" onChange={getImage}/>
-                    </div>                
-                </div>
+                    <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo}></textarea>
+                    <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo}></textarea>
 
-                <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo}></textarea>
-                <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo}></textarea>
-
-                <Button type="Primary" onClick={addQuestion}>Add Question</Button>
+                    <Button type="Primary" onClick={addQuestion}>Add Question</Button>
+                </form>
             </div>
         </div>
     );
