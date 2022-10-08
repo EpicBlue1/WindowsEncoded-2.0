@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const AddQuestion = (props) => {
 
+    const [imageName, setImageName] = useState("Upload a file")
     const [questionInputs, setQuestionInputs] = useState();
     const [questionImage, setQuestionImage] = useState();
 
@@ -22,6 +23,10 @@ const AddQuestion = (props) => {
 
         let imageFile = e.target.files[0];
         setQuestionImage(imageFile);
+
+        let value = e.target.value;
+        let imageName = value.substring(12);
+        setImageName(imageName);
 
         let reader = new FileReader();
         reader.onload = () => {
@@ -70,7 +75,7 @@ const AddQuestion = (props) => {
                     <div className={Style.PfBlockUp}>
                         <div className={Style.upload_btn_wrapper}>
                             <img id='prev_img'/>
-                            <button className={Style.btn}>Upload a file</button>
+                            <button className={Style.btn}>{imageName}</button>
                             <input type="file" name="image" onChange={getImage}/>
                         </div>                
                     </div>

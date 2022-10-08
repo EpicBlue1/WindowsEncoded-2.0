@@ -4,7 +4,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const usersSchema = require('./models/Users');
 const multer = require('multer');
-const questionModel = require('./models/Questions')
+const questionModel = require('./models/Questions');
 
 // multer middleware
 //Question Images
@@ -47,6 +47,12 @@ router.post('/api/newQuestion', uploadQuestionImage.single('image'), (req, res) 
 router.get('/api/allQuestions', async (req, res) => {
     const findQuestions = await questionModel.find();
     res.json(findQuestions);
+});
+
+// get one question
+router.get('/api/oneQuestion/:id', async (req, res) => {
+    const findQuestion = await questionModel.findById(req.params.id);
+    res.json(findQuestion);
 });
 
 //add Profile Images
