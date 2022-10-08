@@ -22,7 +22,6 @@ const IndividualQuestion = () => {
     })
 
     useEffect(() => {
-
         axios.get('http://localhost:2000/api/oneQuestion/' + questionId)
         .then(res => {
             let data = res.data;
