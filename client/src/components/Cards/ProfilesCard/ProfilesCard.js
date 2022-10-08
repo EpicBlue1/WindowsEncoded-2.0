@@ -14,7 +14,7 @@ const ProfilesCard = (props) => {
             <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
             <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
             <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
-                <div className={Style.PfBlockUp}>
+            <div className={Style.PfBlockUp}>
                 <div class={Style.upload_btn_wrapper}>
                     <button class={Style.btn}>Upload a file</button>
                     <input type="file" name="myfile" />
