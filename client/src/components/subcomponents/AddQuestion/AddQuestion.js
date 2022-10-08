@@ -51,6 +51,7 @@ const AddQuestion = (props) => {
         payloadData.append("image", questionImage);
 
         axios.post('http://localhost:2000/api/newQuestion', payloadData);
+        props.rerender()
     }
 
     return (

@@ -20,6 +20,7 @@ const storedQuestionImage = multer.diskStorage({
 
 const uploadQuestionImage = multer({storage: storedQuestionImage});
 
+//add question
 router.post('/api/newQuestion', uploadQuestionImage.single('image'), (req, res) => {
 
     let data = JSON.parse(req.body.information);
@@ -40,6 +41,12 @@ router.post('/api/newQuestion', uploadQuestionImage.single('image'), (req, res) 
     .catch(err => {n
         res.status(400).json({msg: "There is an Error:", err})
     })
+});
+
+// get all questions
+router.get('/api/allQuestions', async (req, res) => {
+    const findQuestions = await questionModel.find();
+    res.json(findQuestions);
 });
 
 //add Profile Images

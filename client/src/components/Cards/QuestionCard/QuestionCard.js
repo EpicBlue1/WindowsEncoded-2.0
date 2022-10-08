@@ -7,6 +7,7 @@ const QuestionCard = (props) => {
     let navigate = useNavigate();
 
     const viewQuestion = () => {
+        sessionStorage.setItem('questionId', props.questionId)
         navigate('/IndividualQuestion');
     }
 
@@ -18,7 +19,7 @@ const QuestionCard = (props) => {
 
                 <br/>
 
-                <h2 className={Style.heading}>Question Title</h2>
+                <h2 className={Style.heading}>{props.questionTitle}</h2>
 
                 <div className={Style.tag}>CSS</div>
                 <div className={Style.tag}>JavaScript</div>
@@ -26,7 +27,7 @@ const QuestionCard = (props) => {
                 <br/>
                 <br/>
 
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to...</p>
+                <p>{props.questionDescription}</p>
             </div>
             <div className={Style.Right}>
                 <div className={Style.TopVote}></div>
