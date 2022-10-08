@@ -3,6 +3,44 @@ const router = express();
 const path = require('path');
 const bcrypt = require('bcrypt');
 const usersSchema = require('./models/Users');
+const multer = require('multer');
+const questionModel = require('./models/Questions')
+
+// multer middleware
+//Question Images
+const storedQuestionImage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, './QuestionImages');
+    },
+
+    filename: (req, file, callBack) => {
+        callBack(null, Date.now() + path.extname(file.originalname))
+    }
+});
+
+const uploadQuestionImage = multer({storage: storedQuestionImage});
+
+router.post('/api/newQuestion', uploadQuestionImage.single('image'), (req, res) => {
+
+    let data = JSON.parse(req.body.information);
+    console.log(req.file.filename);
+
+    const newQuestion = new questionModel({
+        questionTitle: data.questionTitle,
+        questionDescription: data.questionDescription,
+        codeSnippet:data.codeSnippet,
+        date: data.date,
+        image: req.file.filename
+    })
+
+    newQuestion.save()
+    .then(item => {
+        res.json(item);
+    })
+    .catch(err => {n
+        res.status(400).json({msg: "There is an Error:", err})
+    })
+});
 
 //add Profile Images
 // router.post('/addProfileImg', (req, res) => {

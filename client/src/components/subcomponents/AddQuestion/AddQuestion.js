@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Style from './AddQuestion.module.scss';
 import Input from '../Inputs/Input';
 import Button from '../../subcomponents/Buttons/Button';
+import axios from 'axios';
 
 const AddQuestion = (props) => {
 
     const [questionInputs, setQuestionInputs] = useState();
-    const [image, setImage] = useState();
+    const [questionImage, setQuestionImage] = useState();
 
     const closeModal = () => {
         props.rerender()
@@ -20,7 +21,7 @@ const AddQuestion = (props) => {
     const getImage = (e) =>{
 
         let imageFile = e.target.files[0];
-        setImage(imageFile);
+        setQuestionImage(imageFile);
 
         let reader = new FileReader();
         reader.onload = () => {
@@ -31,11 +32,25 @@ const AddQuestion = (props) => {
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    const addQuestion = () => {
+    const addQuestion = (e) => {
+        e.preventDefault()
         // console.log(questionInputs);
         // console.log(image);
 
         const payloadData = new FormData();
+
+        let payload = {
+            questionTitle: questionInputs.questionTitle,
+            questionDescription: questionInputs.questionDescription,
+            codeSnippet: questionInputs.codeSnippet,
+        }
+
+        console.log(payload);
+
+        payloadData.append("information", JSON.stringify(payload));
+        payloadData.append("image", questionImage);
+
+        axios.post('http://localhost:2000/api/newQuestion', payloadData);
     }
 
     return (

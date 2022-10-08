@@ -3,15 +3,11 @@ const mongoose = require('mongoose');
 const QuestionSchema = mongoose.Schema({
     userId: {
         type: String,
-        required: true
+        // required: true
     },
     username: {
         type: String,
-        required: true
-    },
-    questionImage: {
-        type: String,
-        required: true
+        // required: true
     },
     questionTitle: {
         type: String,
@@ -25,46 +21,53 @@ const QuestionSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    date: { 
+        type: Date, default: 
+        Date.now 
+    },
     tags: {
         type: Array,
-        required: true
+        // required: true
     },
     upvotes: {
         type: Number,
-        required: true
+        // required: true
     },
     downvotes: {
         type: Number,
-        required: true
+        // required: true
     },
     score: {
         type: Number,
-        required: true
+        // required: true
     },
     Answers: {
         userId: {
             type: String,
-            required: true
+            // required: true
         },
         username: {
             type: String,
-            required: true
+            // required: true
         },
         Answer: {
             type: String,
-            required: true
+            // required: true
         },
         upvotes: {
             type: Number,
-            required: true
+            // required: true
         },
         downvotes: {
             type: Number,
-            required: true
+            // required: true
         },
         score: {
             type: Number,
-            required: true
+            // required: true
         },
-    }
+    },
+    image: {type: String, required: true}
 })
+
+module.exports = mongoose.model('Questions', QuestionSchema);
