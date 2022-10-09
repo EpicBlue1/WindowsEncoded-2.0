@@ -9,6 +9,7 @@
 
 body {
   margin: 0;
+  padding: 0 !important;
   height: max-content;
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,16 +28,45 @@ body {
 
 .LeftContentCon{
   height: max-content;
-  width: 35vh !important;
+  // width: 35vh !important;
   float: left;
   // background-color: green;
 }
 
 .RightContentCon{
-  // width: max-conten;
+  // width: max-content;
   padding-top: 15px;
-  width: 155vh;
+  width: 142vh;
   height: max-content;
   float: left;
-  // background-color: red;
+}
+
+@media (max-height: 1000px) {
+  .RightContentCon{
+    // width: max-content;
+    padding-top: 15px;
+    width: 160vh;
+    height: max-content;
+    float: left;
+  }
+}
+
+@media (max-height: 800px) {
+  .RightContentCon{
+    // width: max-content;
+    padding-top: 15px;
+    width: 173vh;
+    height: max-content;
+    float: left;
+  }
+}
+
+@media (max-height: 600px) {
+  .RightContentCon{
+    // width: max-content;
+    padding-top: 15px;
+    width: 90vh;
+    height: max-content;
+    float: left;
+  }
 }
