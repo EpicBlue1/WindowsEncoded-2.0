@@ -1,39 +1,42 @@
 //Styling
-@import './Styling/variables.scss';
-@import './Styling/mixins.scss';
-@import './Styling/presetStyling.scss';
+@import "./Styling/variables.scss";
+@import "./Styling/mixins.scss";
+@import "./Styling/presetStyling.scss";
 
 //Pages
-@import './components/Pages/TestPage/TestPage.scss';
-
+@import "./components/Pages/TestPage/TestPage.scss";
 
 body {
   margin: 0;
   padding: 0 !important;
   height: max-content;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
+  background: linear-gradient(
+    47deg,
+    rgba(253, 30, 74, 0.45) 0%,
+    rgba(80, 103, 235, 0.5) 80%
+  );
   height: max-content;
 }
 
-.Search{
+.Search {
   margin-top: 5px;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
-.LeftContentCon{
+.LeftContentCon {
   height: max-content;
   // width: 35vh !important;
   float: left;
   // background-color: green;
 }
 
-.RightContentCon{
+.RightContentCon {
   // width: max-content;
   padding-top: 15px;
   width: 142vh;
@@ -42,31 +45,34 @@ body {
 }
 
 @media (max-height: 1000px) {
-  .RightContentCon{
+  .RightContentCon {
     // width: max-content;
     padding-top: 15px;
-    width: 160vh;
+    width: 132vh;
     height: max-content;
     float: left;
+    background-color: green;
   }
 }
 
 @media (max-height: 800px) {
-  .RightContentCon{
+  .RightContentCon {
     // width: max-content;
     padding-top: 15px;
-    width: 173vh;
+    width: 165vh;
     height: max-content;
     float: left;
+    background-color: red;
   }
 }
 
 @media (max-height: 600px) {
-  .RightContentCon{
+  .RightContentCon {
     // width: max-content;
     padding-top: 15px;
     width: 90vh;
     height: max-content;
     float: left;
+    background-color: blue;
   }
 }
