@@ -9,6 +9,11 @@ const AddQuestion = (props) => {
     const [imageName, setImageName] = useState("Upload a file")
     const [questionInputs, setQuestionInputs] = useState();
     const [questionImage, setQuestionImage] = useState();
+    let userData = sessionStorage.getItem("UserData");
+
+    userData = JSON.parse(userData);
+
+    console.log(userData.username);
 
     const closeModal = () => {
         props.rerender()
@@ -45,9 +50,11 @@ const AddQuestion = (props) => {
         const payloadData = new FormData();
 
         let payload = {
+            userId: userData._id,
+            username: userData.username,
             questionTitle: questionInputs.questionTitle,
             questionDescription: questionInputs.questionDescription,
-            codeSnippet: questionInputs.codeSnippet,
+            codeSnippet: questionInputs.codeSnippet
         }
 
         console.log(payload);
@@ -56,7 +63,7 @@ const AddQuestion = (props) => {
         payloadData.append("image", questionImage);
 
         axios.post('http://localhost:2000/api/newQuestion', payloadData);
-        props.rerender()
+        props.rerender();
     }
 
     return (

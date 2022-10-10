@@ -7,15 +7,14 @@ const QuestionCard = (props) => {
     let navigate = useNavigate();
 
     const viewQuestion = () => {
-        sessionStorage.setItem('questionId', props.questionId)
-        navigate('/IndividualQuestion');
+        navigate('/IndividualQuestion', {state:{allData: props.allData}});
     }
 
     return (
         <div className={Style.QuestionCard} onClick={viewQuestion}>
             <div className={Style.Left}>
                 <div className={Style.profileImg}></div>
-                <p className={Style.username}>Username</p>
+                <p className={Style.username}>{props.username}</p>
 
                 <br/>
 

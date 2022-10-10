@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const QuestionSchema = mongoose.Schema({
     userId: {
         type: String,
-        // required: true
+        required: true
     },
     username: {
         type: String,
-        // required: true
+        required: true
     },
     questionTitle: {
         type: String,
