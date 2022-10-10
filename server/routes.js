@@ -7,7 +7,7 @@ const multer = require("multer");
 const questionModel = require("./models/Questions");
 
 // multer middleware
-//Question Images
+// Question Images
 const storedQuestionImage = multer.diskStorage({
   destination: (req, file, callBack) => {
     callBack(null, "./QuestionImages");
@@ -28,7 +28,10 @@ router.post(
     let data = JSON.parse(req.body.information);
     console.log(req.file.filename);
 
+    //TODO: Fix error
     const newQuestion = new questionModel({
+      userId: data.userId,
+      username: data.username,
       questionTitle: data.questionTitle,
       questionDescription: data.questionDescription,
       codeSnippet: data.codeSnippet,
@@ -42,7 +45,6 @@ router.post(
         res.json(item);
       })
       .catch((err) => {
-        n;
         res.status(400).json({ msg: "There is an Error:", err });
       });
   }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, json } from "react-router-dom";
 import Answer from "../../subcomponents/Answers/Answers";
 import CodeArea from "../../subcomponents/CodeArea/CodeArea";
 import TextArea from "../../subcomponents/TextArea/TextArea";
@@ -10,32 +10,24 @@ import Style from "./IndividualQuestion.module.scss";
 const IndividualQuestion = () => {
   
   let navigate = useNavigate();
-  let questionId = sessionStorage.getItem("questionId");
-  const [imgageUrl, setImageUrl] = useState();
+  let location = useLocation();
+  const [imageUrl, setImageUrl] = useState();
+
+  console.log(location.state);
 
   const [questionData, setQuestionData] = useState({
     questionTitle: "",
     questionDescription: "",
     codeSnippet: "",
+    userId: "",
+    username: "",
   });
 
   useEffect(() => {
-    axios
-      .get("http://localhost:2000/api/oneQuestion/" + questionId)
-      .then((res) => {
-        let data = res.data;
-        clg
-        const code = data.codeSnippet;
-        setQuestionData({
-          questionTitle: data.questionTitle,
-          questionDescription: data.questionDescription,
-          codeSnippet: code,
-        });
-        console.log(data.image);
-        let URL = "http://localhost:2000/api/oneQuestion/" + data.image;
-        setImageUrl(URL);
-      });
-  }, []);
+    let URL = "http://localhost:2000/QuestionImages/" + location.state.allData.image;
+    console.log(location.state.allData.image);
+    setImageUrl(URL);
+  }, [])
 
   return (
     <div className={Style.questionBlock}>
@@ -45,17 +37,17 @@ const IndividualQuestion = () => {
 
       <div className={Style.questionIntro}>
         <div className={Style.profileImg}></div>
-        <p className={Style.username}>Username</p>
+        <p className={Style.username}>{location.state.allData.username}</p>
         <br />
-        <h2 className={Style.headingQuestion}>{questionData.questionTitle}</h2>
+        <h2 className={Style.headingQuestion}>{location.state.allData.questionTitle}</h2>
       </div>
 
       <div className={Style.questionDetails}>
         <div className={Style.questionImage}>
-          <img src={imgageUrl} />
+          <img src={imageUrl} />
         </div>
         <p className={Style.questionDescription}>
-          {questionData.questionDescription}
+          {location.state.allData.questionDescription}
         </p>
 
         <br />
@@ -64,14 +56,14 @@ const IndividualQuestion = () => {
         <br />
 
         <CodeArea language="html" className="CodeArea">
-          {questionData.codeSnippet}
+          {location.state.allData.codeSnippet}
         </CodeArea>
 
         <hr className={Style.horisontalLine} />
         <h2 className={Style.heading}>Answer Question</h2>
         <TextArea name="answer"/>
 
-        <hr className={Style.horisontalLine} />
+        <hr className={Style.horisontalLine}/>
         <h2 className={Style.heading}>Answers</h2>
         <Answer />
       </div>

@@ -24,12 +24,15 @@ const Questions = () => {
             let URL = 'http://localhost:2000/QuestionImages/';
             let renderQuestions = questionData.map((item) => <QuestionCard
                 key={item._id}
+                userId={item.userId}
+                username={item.username}
                 questionId={item._id}
                 questionTitle={item.questionTitle}
                 questionDescription={item.questionDescription}
                 codeSnippet={item.codeSnippet}
                 image={URL + item.image}
                 editRender={setRenderQuestions}
+                allData={item}
             />)
 
             setQuestions(renderQuestions);
