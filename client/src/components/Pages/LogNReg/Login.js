@@ -75,7 +75,7 @@ const Login = (props) => {
             setPasswordValid(true);
             setPasswordText("All Good");
             setEmailText("All Good");
-            // Navigate("/");
+            Navigate("/");
             sessionStorage.setItem("UserData", JSON.stringify(res.data.user));
           } else {
             setFormText("Password or Email doesn't match");
