@@ -1,11 +1,11 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
-.LogNReg{
+.LogNReg {
   height: 100vh;
   text-align: center;
 }
 
-.Login{
+.Login {
   left: 50%;
   margin: 0 auto;
   margin-top: 5%;
@@ -24,8 +24,8 @@
   @include LogNReg();
   @include Shadow();
 }
-  
-.Signup{
+
+.Signup {
   left: 35%;
   margin: 0 auto;
   margin-top: 5%;
@@ -38,19 +38,19 @@
   @include Shadow();
 }
 
-.SignupBack{
+.SignupBack {
   left: 50%;
   margin: 0 auto;
   margin-top: 5%;
   width: 450px;
   height: max-content;
   z-index: 1;
-  opacity: 0%;  
+  opacity: 0%;
   transition: width 1s, left 1s, z-index 1s, opacity 0.5s;
   @include LogNReg();
 }
 
-.SignupText{
+.SignupText {
   left: 70%;
   margin: 0 auto;
   margin-top: 12%;
@@ -65,7 +65,7 @@
   background-color: rgba(0, 0, 0, 0);
 }
 
-.SignupTextBack{
+.SignupTextBack {
   left: 35%;
   margin: 0 auto;
   margin-top: 5%;
@@ -89,10 +89,8 @@
   border-right: 10px solid rgba(255, 255, 255, 0); /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-  typing 2s steps(40, end),
-  blink-caret .8s step-end infinite;
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 2s steps(40, end), blink-caret 0.8s step-end infinite;
 }
 
 .SignupText li {
@@ -101,10 +99,8 @@
   border-right: 10px solid rgba(255, 255, 255, 0); /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 1.65s steps(40, end),
-    blink-caret .8s step-end infinite;
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 1.65s steps(40, end), blink-caret 0.8s step-end infinite;
 }
 
 .SignupText p {
@@ -113,25 +109,32 @@
   border-right: 10px solid white; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-  typing 2s steps(40, end),
-  blink-caret .8s step-end infinite;
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 2s steps(40, end), blink-caret 0.8s step-end infinite;
 }
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: white; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
 }
-  
-.LoginBack{
+
+.LoginBack {
   left: 50%;
   margin: 0 auto;
   margin-top: 5%;
@@ -148,51 +151,47 @@
   opacity: 5%;
   transition: width 1s, left 1s, z-index 1s, opacity 0.5s, box-shadow 2s;
   @include LogNReg();
-  box-shadow:
-  7px 7px 6px rgba(0, 0, 0, 0.15),
-  18px 18px 15px rgba(0, 0, 0, 0.1),
-  45px 45px 38px rgba(0, 0, 0, 0.1),
-  150px 150px 125px rgba(0, 0, 0, 0.1);  
+  box-shadow: 7px 7px 6px rgba(0, 0, 0, 0.15), 18px 18px 15px rgba(0, 0, 0, 0.1),
+    45px 45px 38px rgba(0, 0, 0, 0.1), 150px 150px 125px rgba(0, 0, 0, 0.1);
 }
 
-  
-.LogLeft{
+.LogLeft {
   width: 50%;
   height: max-content;
   float: left;
 }
 
-.LogRight{
+.LogRight {
   width: 50%;
   float: left;
   height: 50vh;
   margin-top: 9vh;
 }
 
-.LogImage{
+.LogImage {
   width: 80%;
   height: 35vh;
   margin-left: 5vh;
   margin-bottom: 2vh;
   border-radius: 20px;
-  background-image: url('../../../Img/LogInIllustration.jpg');
+  background-image: url("../../../Img/LogInIllustration.jpg");
   @include backgroundImages;
 }
 
-.margin{
-    margin: 0 auto;
-    margin-bottom: 10px !important;
+.margin {
+  margin: 0 auto;
+  margin-bottom: 10px !important;
 }
 
-.Button{
+.Button {
   text-align: center;
 }
 
-.Spacing{
+.Spacing {
   margin-bottom: 2vh !important;
 }
 
-.Form{
+.Form {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -213,7 +212,7 @@
   align-items: center;
 }
 
-.Preview{
+.Preview {
   width: 100px;
   height: 100px;
   background-color: white;
@@ -224,21 +223,25 @@
   background-size: 30%;
 }
 
-.Preview:hover{
+.Preview:hover {
   background-color: #f2f2f2;
   cursor: pointer;
 }
 
-.InSpacing{
+.InSpacing {
   height: 8px;
 }
 
-
-.Red{
+.Red {
   color: red;
+  cursor: pointer;
 }
 
-.closeButton{
+.Cursor {
+  cursor: pointer;
+}
+
+.closeButton {
   position: fixed;
   width: 25px;
   padding: 1%;
@@ -255,12 +258,10 @@
   @include Shadow();
 }
 
-.White{
+.White {
   color: white;
 }
 
-.closeButton:hover{
+.closeButton:hover {
   background-color: $Primary_LightBlue;
 }
-
-

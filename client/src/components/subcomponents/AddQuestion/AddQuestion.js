@@ -1,100 +1,112 @@
-import React, { useState } from 'react';
-import Style from './AddQuestion.module.scss';
-import Input from '../Inputs/Input';
-import Button from '../../subcomponents/Buttons/Button';
-import axios from 'axios';
+import axios from "axios";
+import React, { useState } from "react";
+import Button from "../../subcomponents/Buttons/Button";
+import Input from "../Inputs/Input";
+import Style from "./AddQuestion.module.scss";
 
 const AddQuestion = (props) => {
+  const [imageName, setImageName] = useState("Upload a file");
+  const [questionInputs, setQuestionInputs] = useState();
+  const [questionImage, setQuestionImage] = useState();
+  let userData = sessionStorage.getItem("UserData");
 
-    const [imageName, setImageName] = useState("Upload a file")
-    const [questionInputs, setQuestionInputs] = useState();
-    const [questionImage, setQuestionImage] = useState();
-    let userData = sessionStorage.getItem("UserData");
+  userData = JSON.parse(userData);
 
-    userData = JSON.parse(userData);
+  // console.log(userData.username);
 
-    console.log(userData.username);
+  const closeModal = () => {
+    props.rerender();
+  };
 
-    const closeModal = () => {
-        props.rerender()
-    }
+  const questionInfo = (e) => {
+    const { name, value } = e.target;
+    setQuestionInputs({ ...questionInputs, [name]: value });
+  };
 
-    const questionInfo = (e) => {
-        const {name, value} = e.target;
-        setQuestionInputs({...questionInputs, [name]: value});
-    }
+  const getImage = (e) => {
+    let imageFile = e.target.files[0];
+    setQuestionImage(imageFile);
 
-    const getImage = (e) =>{
+    let value = e.target.value;
+    let imageName = value.substring(12);
+    setImageName(imageName);
 
-        let imageFile = e.target.files[0];
-        setQuestionImage(imageFile);
+    let reader = new FileReader();
+    reader.onload = () => {
+      let output = document.getElementById("prev_img");
+      output.src = reader.result;
+    };
 
-        let value = e.target.value;
-        let imageName = value.substring(12);
-        setImageName(imageName);
+    reader.readAsDataURL(e.target.files[0]);
+  };
 
-        let reader = new FileReader();
-        reader.onload = () => {
-            let output = document.getElementById('prev_img');
-            output.src = reader.result;
-        }
+  const addQuestion = (e) => {
+    e.preventDefault();
+    // console.log(questionInputs);
+    // console.log(image);
 
-        reader.readAsDataURL(e.target.files[0]);
-    }
+    const payloadData = new FormData();
 
-    const addQuestion = (e) => {
-        e.preventDefault()
-        // console.log(questionInputs);
-        // console.log(image);
+    let payload = {
+      userId: userData._id,
+      username: userData.username,
+      questionTitle: questionInputs.questionTitle,
+      questionDescription: questionInputs.questionDescription,
+      codeSnippet: questionInputs.codeSnippet,
+    };
 
-        const payloadData = new FormData();
+    console.log(payload);
 
-        let payload = {
-            userId: userData._id,
-            username: userData.username,
-            questionTitle: questionInputs.questionTitle,
-            questionDescription: questionInputs.questionDescription,
-            codeSnippet: questionInputs.codeSnippet
-        }
+    payloadData.append("information", JSON.stringify(payload));
+    payloadData.append("image", questionImage);
 
-        console.log(payload);
+    axios.post("http://localhost:2000/api/newQuestion", payloadData);
+    props.rerender();
+  };
 
-        payloadData.append("information", JSON.stringify(payload));
-        payloadData.append("image", questionImage);
-
-        axios.post('http://localhost:2000/api/newQuestion', payloadData);
-        props.rerender();
-    }
-
-    return (
-        <div className={Style.BackgroundBlur}>
-            <div className={Style.addQuestionCard}>
-
-                <div className={Style.closeButton} onClick={closeModal}>
-                    <div>x</div>
-                </div>
-
-                <form>
-                    <h2>Add a Question</h2>
-
-                    <Input Intype="ModalInput" placeholder="Title..." name="questionTitle" onChange={questionInfo}/>
-
-                    <div className={Style.PfBlockUp}>
-                        <div className={Style.upload_btn_wrapper}>
-                            <img id='prev_img'/>
-                            <button className={Style.btn}>{imageName}</button>
-                            <input type="file" name="image" onChange={getImage}/>
-                        </div>                
-                    </div>
-
-                    <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo}></textarea>
-                    <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo}></textarea>
-
-                    <Button type="Primary" onClick={addQuestion}>Add Question</Button>
-                </form>
-            </div>
+  return (
+    <div className={Style.BackgroundBlur}>
+      <div className={Style.addQuestionCard}>
+        <div className={Style.closeButton} onClick={closeModal}>
+          <div>x</div>
         </div>
-    );
+
+        <form>
+          <h2>Add a Question</h2>
+
+          <Input
+            Intype="ModalInput"
+            placeholder="Title..."
+            name="questionTitle"
+            onChange={questionInfo}
+          />
+
+          <div className={Style.PfBlockUp}>
+            <div className={Style.upload_btn_wrapper}>
+              <img id="prev_img" />
+              <button className={Style.btn}>{imageName}</button>
+              <input type="file" name="image" onChange={getImage} />
+            </div>
+          </div>
+
+          <textarea
+            className={Style.textBox}
+            name="questionDescription"
+            onChange={questionInfo}
+          ></textarea>
+          <textarea
+            className={Style.codeBox}
+            name="codeSnippet"
+            onChange={questionInfo}
+          ></textarea>
+
+          <Button type="Primary" onClick={addQuestion}>
+            Add Question
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default AddQuestion;

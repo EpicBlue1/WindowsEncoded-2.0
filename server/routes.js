@@ -5,7 +5,9 @@ const bcrypt = require("bcrypt");
 const usersSchema = require("./models/Users");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
-const jwt = require('jsonWebToken');
+const jwt = require("jsonWebToken");
+const { json } = require("express");
+const { exists } = require("./models/Users");
 
 // multer middleware
 // Question Images
@@ -22,28 +24,31 @@ const storedQuestionImage = multer.diskStorage({
 const uploadQuestionImage = multer({ storage: storedQuestionImage });
 
 //add question
-router.post( "/api/newQuestion", uploadQuestionImage.single("image"), (req, res) => {
-  let data = JSON.parse(req.body.information);
+router.post(
+  "/api/newQuestion",
+  uploadQuestionImage.single("image"),
+  (req, res) => {
+    let data = JSON.parse(req.body.information);
 
-  //TODO: Fix error
-  const newQuestion = new questionModel({
-    userId: data.userId,
-    username: data.username,
-    questionTitle: data.questionTitle,
-    questionDescription: data.questionDescription,
-    codeSnippet: data.codeSnippet,
-    date: data.date,
-    image: req.file.filename,
-  });
-
-  newQuestion
-    .save()
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => {
-      res.status(400).json({ msg: "There is an Error:", err });
+    //TODO: Fix error
+    const newQuestion = new questionModel({
+      userId: data.userId,
+      username: data.username,
+      questionTitle: data.questionTitle,
+      questionDescription: data.questionDescription,
+      codeSnippet: data.codeSnippet,
+      date: data.date,
+      image: req.file.filename,
     });
+
+    newQuestion
+      .save()
+      .then((item) => {
+        res.json(item);
+      })
+      .catch((err) => {
+        res.status(400).json({ msg: "There is an Error:", err });
+      });
   }
 );
 
@@ -65,8 +70,8 @@ router.post("api/newAnswer", (req, res) => {
     Answers: {
       userId: data.userId,
       username: data.username,
-      Answer: data.answer
-    }
+      Answer: data.answer,
+    },
   });
 });
 
@@ -94,8 +99,7 @@ router.post("api/newAnswer", (req, res) => {
 // });
 
 router.post("/register", (req, res) => {
-
-  let data =req.body;
+  let data = req.body;
 
   const newUser = new usersSchema({
     email: req.body.email,
@@ -107,38 +111,46 @@ router.post("/register", (req, res) => {
     admin: false,
   });
 
-  newUser
-    .save()
-    .then( async item => {
-      res.json(item);
+  const findUser = usersSchema.findOne({
+    email: req.body.email,
+  });
 
-      //Send conformation email has move here to only run on successfull add 
-      const mailerOutput = `
+  if (!findUser) {
+    newUser
+      .save()
+      .then(async (item) => {
+        res.json(item);
+        res.json({
+          exists: false,
+        });
+
+        //Send conformation email has move here to only run on successfull add
+        const mailerOutput = `
       <h1>Welcome ${data.username} to the website</h1>
       <p>Before you login please verify your account, using the link below</p>
-      <a href= '#'>Click to verify</a>`
-      ;
-
-      const transporter = nodemailer.createTransport({
-        host:"welcome@windowsEncoded.com",
-        port: 465,
-        secure:true,
-         auth:{
-           user: "",
-           pass: "",
-
-         }
-
-
-
+      <a href= '#'>Click to verify</a>`;
+        const transporter = nodemailer.createTransport({
+          host: "welcome@windowsEncoded.com",
+          port: 465,
+          secure: true,
+          auth: {
+            user: "",
+            pass: "",
+          },
+        });
       })
-    })
-    .catch((err) => {
-      res.status(400).send(err.response);
-      console.log(err.response);
-      console.log(err.request);
-      console.log(err.message);
+      .catch((err) => {
+        res.status(400).send(err.response);
+        console.log(err.response);
+        console.log(err.request);
+        console.log(err.message);
+      });
+  } else {
+    console.log("Already exists");
+    res.json({
+      exists: true,
     });
+  }
 });
 
 router.post("/login", async (req, res) => {
