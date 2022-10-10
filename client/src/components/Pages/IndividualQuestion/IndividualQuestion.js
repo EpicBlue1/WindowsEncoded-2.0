@@ -8,6 +8,7 @@ import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
 
 const IndividualQuestion = () => {
+  
   let navigate = useNavigate();
   let questionId = sessionStorage.getItem("questionId");
   const [imgageUrl, setImageUrl] = useState();
@@ -68,7 +69,7 @@ const IndividualQuestion = () => {
 
         <hr className={Style.horisontalLine} />
         <h2 className={Style.heading}>Answer Question</h2>
-        <TextArea />
+        <TextArea name="answer"/>
 
         <hr className={Style.horisontalLine} />
         <h2 className={Style.heading}>Answers</h2>
