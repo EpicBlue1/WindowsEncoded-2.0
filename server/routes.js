@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const usersSchema = require("./models/Users");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
+const jwt = require('jsonWebToken');
 
 // multer middleware
 //Question Images
@@ -84,6 +85,9 @@ router.get("/api/oneQuestion/:id", async (req, res) => {
 // });
 
 router.post("/register", (req, res) => {
+
+  let data =req.body;
+
   const newUser = new usersSchema({
     email: req.body.email,
     username: req.body.username,
@@ -96,8 +100,29 @@ router.post("/register", (req, res) => {
 
   newUser
     .save()
-    .then((item) => {
+    .then( async item => {
       res.json(item);
+
+      //Send conformation email has move here to only run on successfull add 
+      const mailerOutput = `
+      <h1>Welcome ${data.username} to the website</h1>
+      <p>Before you login please verify your account, using the link below</p>
+      <a href= '#'>Click to verify</a>`
+      ;
+
+      const transporter = nodemailer.createTransport({
+        host:"welcome@windowsEncoded.com",
+        port: 465,
+        secure:true,
+         auth:{
+           user: "",
+           pass: "",
+
+         }
+
+
+
+      })
     })
     .catch((err) => {
       res.status(400).send(err.response);
