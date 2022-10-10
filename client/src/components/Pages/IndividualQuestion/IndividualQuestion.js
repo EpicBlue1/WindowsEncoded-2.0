@@ -23,6 +23,7 @@ const IndividualQuestion = () => {
       .get("http://localhost:2000/api/oneQuestion/" + questionId)
       .then((res) => {
         let data = res.data;
+        clg
         const code = data.codeSnippet;
         setQuestionData({
           questionTitle: data.questionTitle,
@@ -30,7 +31,7 @@ const IndividualQuestion = () => {
           codeSnippet: code,
         });
         console.log(data.image);
-        let URL = "http://localhost:2000/QuestionImages/" + data.image;
+        let URL = "http://localhost:2000/api/oneQuestion/" + data.image;
         setImageUrl(URL);
       });
   }, []);
