@@ -1,32 +1,13 @@
 const mongoose = require('mongoose');
 
 const QuestionSchema = mongoose.Schema({
-    userId: {
-        type: String,
-        required: true
-    },
-    username: {
-        type: String,
-        required: true
-    },
-    questionTitle: {
-        type: String,
-        required: true
-    },
-    questionDescription: {
-        type: String,
-        required: true
-    },
-    codeSnippet: {
-        type: String,
-        required: true
-    },
-    date: { 
-        type: Date, default: 
-        Date.now 
-    },
-    tags: {
-        type: Array,
+    userId: { type: String, required: true },
+    username: { type: String, required: true },
+    questionTitle: { type: String, required: true },
+    questionDescription: { type: String, required: true },
+    codeSnippet: { type: String, required: true },
+    date: { type: Date, default: Date.now },
+    tags: { type: Array,
         // required: true
     },
     upvotes: {
@@ -42,18 +23,9 @@ const QuestionSchema = mongoose.Schema({
         // required: true
     },
     Answers: {
-        userId: {
-            type: String,
-            // required: true
-        },
-        username: {
-            type: String,
-            // required: true
-        },
-        Answer: {
-            type: String,
-            // required: true
-        },
+        userId: { type: String, required: true },
+        username: { type: String, required: true },
+        Answer: { type: String, required: true },
         upvotes: {
             type: Number,
             // required: true

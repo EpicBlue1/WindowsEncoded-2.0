@@ -3,31 +3,45 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, json } from "react-router-dom";
 import Answer from "../../subcomponents/Answers/Answers";
 import CodeArea from "../../subcomponents/CodeArea/CodeArea";
-import TextArea from "../../subcomponents/TextArea/TextArea";
 import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
+import Button from "../../subcomponents/Buttons/Button";
 
 const IndividualQuestion = () => {
   
   let navigate = useNavigate();
   let location = useLocation();
   const [imageUrl, setImageUrl] = useState();
+  const [answer, setAnswer] = useState();
+  const [renderAnswers, setRenderAnswers] = useState();
+  let userData = sessionStorage.getItem("UserData");
 
-  console.log(location.state);
-
-  const [questionData, setQuestionData] = useState({
-    questionTitle: "",
-    questionDescription: "",
-    codeSnippet: "",
-    userId: "",
-    username: "",
-  });
+  userData = JSON.parse(userData);
 
   useEffect(() => {
     let URL = "http://localhost:2000/QuestionImages/" + location.state.allData.image;
-    console.log(location.state.allData.image);
     setImageUrl(URL);
   }, [])
+
+  const answerInfo = (e) => {
+    const {name, value} = e.target;
+    setAnswer({...answer, [name]: value});
+  }
+
+  const answerQuestion = () =>{
+    console.log(answer);
+
+    let payload = {
+      Answers: {
+        userId: userData._id,
+        username: userData.username,
+        Answer: answer.answer
+      }
+    }
+
+    console.log(payload);
+    // axios.post('http://localhost:2000/api/newAnswer', payload);
+  }
 
   return (
     <div className={Style.questionBlock}>
@@ -59,9 +73,10 @@ const IndividualQuestion = () => {
           {location.state.allData.codeSnippet}
         </CodeArea>
 
-        <hr className={Style.horisontalLine} />
+        <hr className={Style.horisontalLine}/>
         <h2 className={Style.heading}>Answer Question</h2>
-        <TextArea name="answer"/>
+        <textarea onChange={answerInfo} name="answer"></textarea>
+        <Button type="Primary" onClick={answerQuestion}>Answer Question</Button>
 
         <hr className={Style.horisontalLine}/>
         <h2 className={Style.heading}>Answers</h2>

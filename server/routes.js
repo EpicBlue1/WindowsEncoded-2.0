@@ -22,32 +22,28 @@ const storedQuestionImage = multer.diskStorage({
 const uploadQuestionImage = multer({ storage: storedQuestionImage });
 
 //add question
-router.post(
-  "/api/newQuestion",
-  uploadQuestionImage.single("image"),
-  (req, res) => {
-    let data = JSON.parse(req.body.information);
-    console.log(req.file.filename);
+router.post( "/api/newQuestion", uploadQuestionImage.single("image"), (req, res) => {
+  let data = JSON.parse(req.body.information);
 
-    //TODO: Fix error
-    const newQuestion = new questionModel({
-      userId: data.userId,
-      username: data.username,
-      questionTitle: data.questionTitle,
-      questionDescription: data.questionDescription,
-      codeSnippet: data.codeSnippet,
-      date: data.date,
-      image: req.file.filename,
+  //TODO: Fix error
+  const newQuestion = new questionModel({
+    userId: data.userId,
+    username: data.username,
+    questionTitle: data.questionTitle,
+    questionDescription: data.questionDescription,
+    codeSnippet: data.codeSnippet,
+    date: data.date,
+    image: req.file.filename,
+  });
+
+  newQuestion
+    .save()
+    .then((item) => {
+      res.json(item);
+    })
+    .catch((err) => {
+      res.status(400).json({ msg: "There is an Error:", err });
     });
-
-    newQuestion
-      .save()
-      .then((item) => {
-        res.json(item);
-      })
-      .catch((err) => {
-        res.status(400).json({ msg: "There is an Error:", err });
-      });
   }
 );
 
@@ -61,6 +57,17 @@ router.get("/api/allQuestions", async (req, res) => {
 router.get("/api/oneQuestion/:id", async (req, res) => {
   const findQuestion = await questionModel.findById(req.params.id);
   res.json(findQuestion);
+});
+
+// add answer
+router.post("api/newAnswer", (req, res) => {
+  const newAnswer = new questionModel({
+    Answers: {
+      userId: data.userId,
+      username: data.username,
+      Answer: data.answer
+    }
+  });
 });
 
 //add Profile Images
