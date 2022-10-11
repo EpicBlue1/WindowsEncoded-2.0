@@ -65,24 +65,27 @@ router.get("/api/oneQuestion/:id", async (req, res) => {
 });
 
 // add answer
-router.post("api/newAnswer", (req, res) => {
+router.post("/api/newAnswer", (req, res) => {
+  let data = req.body.Answers;
+
   const newAnswer = new questionModel({
-    Answers: {
-      userId: data.userId,
-      username: data.username,
-      Answer: data.answer,
-    },
+    userId: data.userId,
+    username: data.username,
+    Answer: data.answer,
   });
 
   newAnswer
-  .save()
-  .then((item) => {
-    res.json(item);
-  })
-  .catch((err) => {
-    res.status(400).json({ msg: "There is an Error:", err });
-  });
-
+    .save()
+    .then((item) => {
+      res.json(item);
+      console.log("Nothing");
+    })
+    .catch((err) => {
+      res.status(400).json({ msg: "There is an Error:", err });
+      console.log(err.response);
+      console.log(err.request);
+      console.log(err.message);
+    });
 });
 
 //add Profile Images

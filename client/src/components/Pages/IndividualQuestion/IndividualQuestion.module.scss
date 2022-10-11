@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 // .body {
 //     // width: 100%;
@@ -8,76 +8,77 @@
 //     background: linear-gradient(47deg, #fd1e4a73 0%, #5067eb80 80%);
 // }
 
-.questionBlock{
-    width: 150vh !important;
-    margin-left: 2vh;
-    padding-bottom: 2%;
-    margin-top: 1%;
-    height: auto;
+.questionBlock {
+  width: 150vh !important;
+  margin-left: 2vh;
+  padding-bottom: 2%;
+  margin-top: 1%;
+  height: auto;
 }
 
-.headingQuestion{
-    margin-top: -20px;
+.headingQuestion {
+  margin-top: -20px;
 }
 
-.left{
-    margin-top: -0.3%;
-    float: left;
-    margin-right: 1.5%;
+.left {
+  margin-top: -0.3%;
+  float: left;
+  margin-right: 1.5%;
 }
 
-.questionIntro{
-    width: 100%;
+.questionIntro {
+  width: 100%;
 }
 
-.profileImg{
-    width: 20px;
-    height: 20px;
-    background-image: url('../../../Icons/Profile.svg');
-    float: left;
-    @include backgroundImages
+.profileImg {
+  width: 20px;
+  height: 20px;
+  background-image: url("../../../Icons/Profile.svg");
+  float: left;
+  @include backgroundImages;
 }
 
-.username{
-    margin: 0.1%;
-    // float: left;
+.username {
+  margin: 0.1%;
+  // float: left;
 }
 
-.heading{
-    margin-top: 0.1%;
-    margin-bottom: 1%;
+.heading {
+  margin-top: 0.1%;
+  margin-bottom: 1%;
 }
 
-.questionDetails{
-    width: 100%;
+.questionDetails {
+  width: 100%;
 }
 
-.questionImage{
-    width: 25%;
-    height: 25vh;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin-right: 3%;
-    float: left;
+.questionImage {
+  width: 25%;
+  height: 25vh;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-right: 3%;
+  float: left;
+  @include backgroundImages;
 }
 
-.questionImage img{
-    width: 100%;
-    height: 35vh;
-    border-radius: 20px;
+.questionImage img {
+  width: 100%;
+  height: 35vh;
+  border-radius: 20px;
 }
 
-.questionDescription{
-    width: 90%;
-    height: 150px;
-    margin-top: 2%;
+.questionDescription {
+  width: 90%;
+  height: 150px;
+  margin-top: 2%;
 }
 
-textarea{
-    outline: none;
-    width: 90%;
-    border-radius: 20px; 
-    height: 95px;
-    padding: 3%;
-    background-color: rgba(255, 255, 255, 0.6);
+textarea {
+  outline: none;
+  width: 90%;
+  border-radius: 20px;
+  height: 95px;
+  padding: 3%;
+  background-color: rgba(255, 255, 255, 0.6);
 }
