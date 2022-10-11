@@ -6,13 +6,14 @@ import CodeArea from "../../subcomponents/CodeArea/CodeArea";
 import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
 import Button from "../../subcomponents/Buttons/Button";
+import LoginAlert from '../../subcomponents/LoginModal/LoginAlert';
 
 const IndividualQuestion = () => {
   
-  let navigate = useNavigate();
   let location = useLocation();
   const [imageUrl, setImageUrl] = useState();
   const [answer, setAnswer] = useState();
+  const [loginAlert, setLoginAlert] = useState();
   const [renderAnswers, setRenderAnswers] = useState();
   let userData = sessionStorage.getItem("UserData");
   let questionId = sessionStorage.getItem('questionId');
@@ -33,20 +34,27 @@ const IndividualQuestion = () => {
   const answerQuestion = () =>{
     console.log(answer);
 
-    let payload = {
-      Answers: {
-        userId: userData._id,
-        username: userData.username,
-        Answer: answer.answer
-      }
-    }
+    let user = sessionStorage.getItem('UserData');
 
-    console.log(payload);
-    axios.post('http://localhost:2000/api/newAnswer', payload);
+    if(user === '' || user === null){
+      setLoginAlert(<LoginAlert rerender={setLoginAlert}/>)
+    } else {
+      let payload = {
+        Answers: {
+          userId: userData._id,
+          username: userData.username,
+          Answer: answer.answer
+        }
+      }
+  
+      console.log(payload);
+      axios.post('http://localhost:2000/api/newAnswer', payload);
+    }
   }
 
   return (
     <div className={Style.questionBlock}>
+      {loginAlert}
       <div className={Style.left}>
         <VotingSystem />
       </div>

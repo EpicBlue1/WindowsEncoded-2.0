@@ -24,7 +24,7 @@ const LoginAlert = (props) => {
           <div>x</div>
         </div>
 
-        <h2>Please Login before asking a question.</h2>
+        <h2>Please Login first.</h2>
         <Button type="Primary" onClick={viewQuestion}>Login</Button>
       </div>
     </div>
