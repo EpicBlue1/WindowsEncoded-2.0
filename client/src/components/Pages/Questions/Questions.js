@@ -50,7 +50,7 @@ const Questions = (props) => {
         props.setRender((prev) => !prev);
       })
       .catch((err) => console.log(err));
-  }, [renderQuestions]);
+  }, [props.Render]);
 
   return (
     <div className={Style.body}>

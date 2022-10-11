@@ -82,17 +82,20 @@ const IndividualQuestion = () => {
         <br />
         <br />
 
-        <CodeArea language="html" className="CodeArea">
+        <CodeArea language="html">
           {location.state.allData.codeSnippet}
         </CodeArea>
 
         <hr className={Style.horisontalLine} />
         <h2 className={Style.heading}>Answer Question</h2>
         <textarea onChange={answerInfo} name="answer"></textarea>
+        <br></br>
+        <br></br>
         <Button type="Primary" onClick={answerQuestion}>
           Answer Question
         </Button>
-
+        <br></br>
+        <br></br>
         <hr className={Style.horisontalLine} />
         <h2 className={Style.heading}>Answers</h2>
         <Answer />

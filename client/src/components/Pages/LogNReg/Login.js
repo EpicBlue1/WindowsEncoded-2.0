@@ -104,6 +104,7 @@ const Login = (props) => {
 
   return (
     <>
+      <div className=""></div>
       <div className={props.changeCards ? Style.Login : Style.LoginBack}>
         <div className={Style.closeButton}>
           <Link to="/">

@@ -1,36 +1,78 @@
-import React from 'react';
-import Style from './ProfileCard.module.scss';
-import Button from '../../subcomponents/Buttons/Button';
-import ProfileTemp from '../../../Img/LogInIllustration.jpg' 
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import ProfileTemp from "../../../Img/LogInIllustration.jpg";
+import Button from "../../subcomponents/Buttons/Button";
+import Style from "./ProfileCard.module.scss";
+import ProfileImg from "./ProfileSelect/ProfileImg";
 
 const ProfilesCard = (props) => {
-    return (
-        <>
-        <div onClick={() => {props.setShowProfileModal(!props.ShowProfileModal)}} className={props.ShowProfileModal ? Style.Modal : 'hide'}>
-        </div>
-        <div className={props.ShowProfileModal ? Style.SelectModal : 'hide'}>
-            <h1>Select Profile Picture</h1>
-            <div className={Style.Container}>
-            <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
-            <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
-            <div className={Style.PfBlock}  style={{backgroundImage: `url(${ProfileTemp})`}}></div>
-            <div className={Style.PfBlockUp}>
-                <div class={Style.upload_btn_wrapper}>
-                    <button class={Style.btn}>Upload a file</button>
-                    <input type="file" name="myfile" />
-                </div>                
-            </div>
+  const [ProfileSelection, setProfileSelection] = useState("No image selected");
+  const [display, setDisplay] = useState("One");
+  const [render, setRender] = useState("lol");
+  const [Images, setImages] = useState();
+  let tempData = ["One", "Two", "Three", "Four"];
 
-            </div>
-            <br></br>
-            <Button type='Primary'>Select</Button>
-            <br></br>
-            <br></br>
-            <Button onClick={() => {props.setShowProfileModal(!props.ShowProfileModal)}} type='Secondary'>Cancel</Button>
-        </div>
-        </>
+  //   console.log(ProfileSelection);
+  useEffect(() => {
+    console.log(ProfileSelection);
+    props.setImageName(ProfileSelection);
+    props.setPreviewText(ProfileSelection);
+    // props.setShowProfileModal(!props.ShowProfileModal);
+  }, [render]);
 
-    );
+  useEffect(() => {
+    console.log("Updated");
+    axios
+      .get("http://localhost:2000/api/allProfiles/")
+      .then((res) => {
+        let data = res.data;
+        console.log(res.data);
+
+        let URL = `http://localhost:2000/ProfileImages/`;
+        console.log(URL);
+
+        let images = data.map((item) => (
+          <ProfileImg
+            setRender={setRender}
+            setProfileID={props.setProfileID}
+            data={item}
+            setPreviewImage={props.setPreviewImage}
+            setProfileSelection={setProfileSelection}
+            IMG={URL + item.imageLocation}
+          />
+        ));
+
+        setImages(images);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <>
+      <div
+        onClick={() => {
+          props.setShowProfileModal(!props.ShowProfileModal);
+        }}
+        className={props.ShowProfileModal ? Style.Modal : "hide"}
+      ></div>
+      <div className={props.ShowProfileModal ? Style.SelectModal : "hide"}>
+        <h1>Select Profile Picture</h1>
+        <div className={Style.Container}>{Images}</div>
+        <br></br>
+        <Button type="Primary">Select</Button>
+        <br></br>
+        <br></br>
+        <Button
+          onClick={() => {
+            props.setShowProfileModal(!props.ShowProfileModal);
+          }}
+          type="Secondary"
+        >
+          Cancel
+        </Button>
+      </div>
+    </>
+  );
 };
 
 export default ProfilesCard;

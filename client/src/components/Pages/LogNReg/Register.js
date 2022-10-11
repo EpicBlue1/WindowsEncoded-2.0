@@ -18,12 +18,14 @@ const Register = (props) => {
     [PreviewText, setPreviewText] = useState(
       "No image selected, default image will be used."
     ),
+    [ProfileID, setProfileID] = useState(""),
     [ShowProfileModal, setShowProfileModal] = useState(false),
     [UsernameValid, setUsernameValid] = useState(""),
     [emailValid, setEmailValid] = useState(""),
     [passwordValid, setPasswordValid] = useState(""),
     [passwordConValid, setpasswordConValid] = useState(""),
-    [FormValid, setFormValid] = useState("");
+    [FormValid, setFormValid] = useState(""),
+    [ImageName, setImageName] = useState("Female-1");
 
   const [UsernameText, setUsernameText] = useState(),
     [EmailText, setEmailText] = useState(),
@@ -33,7 +35,13 @@ const Register = (props) => {
   const addUser = (e) => {
     e.preventDefault();
 
-    if (UsernameValid && emailValid && passwordVal && passwordConValid) {
+    if (
+      UsernameValid &&
+      emailValid &&
+      passwordVal &&
+      passwordConValid &&
+      PreviewText !== "No image selected"
+    ) {
       setFormValid("");
 
       let userCreds = {
@@ -41,7 +49,7 @@ const Register = (props) => {
         username: username.current.value,
         accStatus: false,
         password: password.current.value,
-        profile: "profile",
+        profile: ProfileID,
         score: 50,
         admin: false,
       };
@@ -73,7 +81,13 @@ const Register = (props) => {
 
       // // props.setShow(false);
     } else {
-      setFormValid("Make sure all the fields have green circles");
+      if (PreviewText === "No image selected") {
+        setFormValid(
+          "Make sure you select an image and all the fields have green circles"
+        );
+      } else {
+        setFormValid("Make sure all the fields have green circles");
+      }
     }
   };
 
@@ -144,6 +158,10 @@ const Register = (props) => {
       <ProfilesCard
         ShowProfileModal={ShowProfileModal}
         setShowProfileModal={setShowProfileModal}
+        setImageName={setImageName}
+        setPreviewText={setPreviewText}
+        setPreviewImage={setPreviewImage}
+        setProfileID={setProfileID}
       />
       <div className={props.changeCards ? Style.SignupBack : Style.Signup}>
         <h1 className={Style.Spacing}>Register!</h1>

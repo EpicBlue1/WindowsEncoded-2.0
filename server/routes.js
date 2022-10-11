@@ -3,6 +3,7 @@ const router = express();
 const path = require("path");
 const bcrypt = require("bcrypt");
 const usersSchema = require("./models/Users");
+const ProfileSchema = require("./models/ProfileImages");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
 const jwt = require("jsonWebToken");
@@ -22,6 +23,18 @@ const storedQuestionImage = multer.diskStorage({
 });
 
 const uploadQuestionImage = multer({ storage: storedQuestionImage });
+
+const storedProfileImage = multer.diskStorage({
+  destination: (req, file, callBack) => {
+    callBack(null, "./ProfileImages");
+  },
+
+  filename: (req, file, callBack) => {
+    callBack(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const uploadProfileImage = multer({ storage: storedProfileImage });
 
 //add question
 router.post(
@@ -57,13 +70,19 @@ router.post(
 
 // get all questions
 router.get("/api/allQuestions", async (req, res) => {
-  const findQuestions = await questionModel.find();
-  res.json(findQuestions);
+  const allQuestions = await questionModel.find();
+  res.json(allQuestions);
 });
 
 // get one question
 router.get("/api/oneQuestion/:id", async (req, res) => {
   const findQuestion = await questionModel.findById(req.params.id);
+  res.json(findQuestion);
+});
+
+// get all profile
+router.get("/api/allProfiles/", async (req, res) => {
+  const findQuestion = await ProfileSchema.find();
   res.json(findQuestion);
 });
 
@@ -92,27 +111,35 @@ router.post("/api/newAnswer", (req, res) => {
 });
 
 //add Profile Images
-// router.post('/addProfileImg', (req, res) => {
-//     const newImage = new usersSchema(
-//         {
-//             imageLocation: req.body.imageLocation,
-//             imageName: req.body.imageName
-//         }
-//     );
+router.post(
+  "/api/addProfileImg",
+  uploadProfileImage.single("pfp"),
+  (req, res) => {
+    let data = JSON.parse(req.body.imgData);
 
-//     newImage.save()
-//     .then(item => {
-//         res.json(item);
-//     })
-//     .catch(err => {
-//         res.status(400).json(
-//             {
-//                 Message: "There was an error",
-//                 err: err
-//             }
-//         );
-//     });
-// });
+    const newProfile = new ProfileSchema({
+      imageLocation: req.file.filename,
+      imageName: data.imageName,
+    });
+
+    console.log(newProfile);
+
+    newProfile
+      .save()
+      .then((item) => {
+        res.json({
+          Message: "Added",
+          user: item,
+        });
+      })
+      .catch((err) => {
+        res.status(400).json({ Message: "Not Added", err });
+        console.log(err.response);
+        console.log(err.request);
+        console.log(err.message);
+      });
+  }
+);
 
 router.post("/register", (req, res) => {
   let data = req.body;
@@ -122,7 +149,7 @@ router.post("/register", (req, res) => {
     username: req.body.username,
     accStatus: false,
     password: req.body.password,
-    profile: "profile",
+    profile: req.body.profile,
     score: 50,
     admin: false,
   });
@@ -131,7 +158,7 @@ router.post("/register", (req, res) => {
     email: req.body.email,
   });
 
-  if (!findUser) {
+  if (findUser) {
     newUser
       .save()
       .then(async (item) => {
