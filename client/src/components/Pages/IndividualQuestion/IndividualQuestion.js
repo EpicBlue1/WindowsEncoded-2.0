@@ -42,7 +42,7 @@ const IndividualQuestion = () => {
     }
 
     console.log(payload);
-    axios.post('http://localhost:2000/api/newAnswer', payload, questionId);
+    axios.post('http://localhost:2000/api/newAnswer', payload);
   }
 
   return (
@@ -82,7 +82,7 @@ const IndividualQuestion = () => {
 
         <hr className={Style.horisontalLine}/>
         <h2 className={Style.heading}>Answers</h2>
-        <Answer />
+        <Answer/>
       </div>
     </div>
   );
