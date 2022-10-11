@@ -9,6 +9,8 @@ const app = express();
 
 const PORT = process.env.PORT || 2000;
 
+app.use('/QuestionImages', express.static('QuestionImages'));
+
 //middleware
 app.use(cors({origin: "http://localhost:3000"}))
 app.use(express.json());

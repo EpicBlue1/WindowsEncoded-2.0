@@ -7,6 +7,7 @@ const QuestionCard = (props) => {
     let navigate = useNavigate();
 
     const viewQuestion = () => {
+        sessionStorage.setItem('questionId', props.productId);
         navigate('/IndividualQuestion', {state:{allData: props.allData}});
     }
 

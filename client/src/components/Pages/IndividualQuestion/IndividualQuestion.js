@@ -15,12 +15,14 @@ const IndividualQuestion = () => {
   const [answer, setAnswer] = useState();
   const [renderAnswers, setRenderAnswers] = useState();
   let userData = sessionStorage.getItem("UserData");
+  let questionId = sessionStorage.getItem('questionId');
 
   userData = JSON.parse(userData);
 
   useEffect(() => {
     let URL = "http://localhost:2000/QuestionImages/" + location.state.allData.image;
     setImageUrl(URL);
+    console.log(URL);
   }, [])
 
   const answerInfo = (e) => {
@@ -40,7 +42,7 @@ const IndividualQuestion = () => {
     }
 
     console.log(payload);
-    // axios.post('http://localhost:2000/api/newAnswer', payload);
+    axios.post('http://localhost:2000/api/newAnswer', payload, questionId);
   }
 
   return (
@@ -58,7 +60,7 @@ const IndividualQuestion = () => {
 
       <div className={Style.questionDetails}>
         <div className={Style.questionImage}>
-          <img src={imageUrl} />
+          <img src={imageUrl}/>
         </div>
         <p className={Style.questionDescription}>
           {location.state.allData.questionDescription}
