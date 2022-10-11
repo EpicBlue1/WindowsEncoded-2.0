@@ -48,6 +48,9 @@ router.post(
       })
       .catch((err) => {
         res.status(400).json({ msg: "There is an Error:", err });
+        console.log(err.response);
+        console.log(err.request);
+        console.log(err.message);
       });
   }
 );

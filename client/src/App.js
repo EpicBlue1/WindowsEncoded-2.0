@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 //pages
 import IndividualQuestion from "./components/Pages/IndividualQuestion/IndividualQuestion";
@@ -10,10 +10,16 @@ import Testpage from "./components/Pages/TestPage/Testpage";
 //components
 import LeftNav from "./components/subcomponents/LeftNav/LeftNav";
 import TopNav from "./components/subcomponents/TopNav/TopNav";
+//Context
+import { RenderContext } from "./components/Contexts/RenderContext";
 
 function App() {
   const [ShowNav, setShowNav] = useState(true);
   const [LogOut, setLogOut] = useState();
+
+  const { render, setRender } = useContext(RenderContext);
+
+  console.log(render);
 
   useEffect(() => {
     if (window.location.href.indexOf("LogNReg") > -1) {
@@ -21,14 +27,16 @@ function App() {
     } else {
       setShowNav(true);
     }
-  }, []);
+  }, [render]);
 
   return (
     <div className="App">
-      <TopNav show={ShowNav} />
+      <TopNav Render={render} setRender={setRender} show={ShowNav} />
 
       <div className="LeftContentCon">
         <LeftNav
+          Render={render}
+          setRender={setRender}
           setShowNav={setShowNav}
           show={ShowNav}
           LogOut={LogOut}
@@ -52,7 +60,10 @@ function App() {
           <Route path="/TestPage" element={<Testpage />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/" element={<Landing />} />
-          <Route path="/Questions" element={<Questions />} />
+          <Route
+            path="/Questions"
+            element={<Questions setRender={setRender} Render={render} />}
+          />
           <Route path="/IndividualQuestion" element={<IndividualQuestion />} />
         </Routes>
       </div>
