@@ -2,17 +2,24 @@ import React, { useState, useEffect } from 'react';
 import Style from './Questions.module.scss';
 import QuestionCard from '../../Cards/QuestionCard/QuestionCard';
 import AddQuestion from '../../subcomponents/AddQuestion/AddQuestion';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import LoginAlert from '../../subcomponents/LoginModal/LoginAlert';
 
 const Questions = () => {
 
     const [addQuestionModal, setAddQuestionModal] = useState();
     const [questions, setQuestions] = useState();
     const [renderQuestions, setRenderQuestions] = useState(false);
+    const [loginAlert, setLoginAlert] = useState();
 
     const addQuestion = () => {
-        setAddQuestionModal(<AddQuestion rerender={setAddQuestionModal}/>)
+        let user = sessionStorage.getItem('UserData');
+
+        if(user === '' || user === null){
+            setLoginAlert(<LoginAlert rerender={setLoginAlert}/>)
+        } else {
+            setAddQuestionModal(<AddQuestion rerender={setAddQuestionModal}/>)
+        }
     }
 
     useEffect(() => {
@@ -44,6 +51,7 @@ const Questions = () => {
     return (
         <div className={Style.body}>
 
+            {loginAlert}
             {addQuestionModal}
 
             <div className={Style.addButton} onClick={addQuestion}>+</div>

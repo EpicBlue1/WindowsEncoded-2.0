@@ -24,7 +24,6 @@ const storedQuestionImage = multer.diskStorage({
 const uploadQuestionImage = multer({ storage: storedQuestionImage });
 
 //add question
-<<<<<<< Updated upstream
 router.post(
   "/api/newQuestion",
   uploadQuestionImage.single("image"),
@@ -50,31 +49,6 @@ router.post(
       .catch((err) => {
         res.status(400).json({ msg: "There is an Error:", err });
       });
-=======
-router.post( "/api/newQuestion", uploadQuestionImage.single("image"), (req, res) => {
-  let data = JSON.parse(req.body.information);
-
-  //TODO: Fix error
-  const newQuestion = new questionModel({
-    userId: data.userId,
-    username: data.username,
-    questionTitle: data.questionTitle,
-    questionDescription: data.questionDescription,
-    codeSnippet: data.codeSnippet,
-    date: data.date,
-    image: req.file.filename,
-  });
-
-  newQuestion
-  .save()
-  .then((item) => {
-    res.json(item);
-  })
-  .catch((err) => {
-    res.status(400).json({ msg: "There is an Error:", err });
-  });
-
->>>>>>> Stashed changes
   }
 );
 
@@ -91,7 +65,7 @@ router.get("/api/oneQuestion/:id", async (req, res) => {
 });
 
 // add answer
-router.post("api/newAnswer/:id", (req, res) => {
+router.post("api/newAnswer", (req, res) => {
   const newAnswer = new questionModel({
     Answers: {
       userId: data.userId,
