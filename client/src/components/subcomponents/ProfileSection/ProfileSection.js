@@ -1,7 +1,9 @@
 import { Axios } from 'axios';
 import React, { useState } from 'react';
 import EditProfile from '../Edit Profile/EditProfile';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import Style from './ProfileSection.module.scss'
+import { Line, Circle } from 'rc-progress';
 
 
 const ProfileSection = (props) => {
@@ -84,7 +86,10 @@ const ProfileSection = (props) => {
             </div>
             
             <h2 className={Style.Username}>{UserData.username}</h2>
+        {/* <Line percent={10} strokeWidth={4} strokeColor="#D3D3D3" /> */}
+           
             <h3 className={Style.MemberLength}>Member for 1 year, 2 months</h3>
+            {/* <ProgressBar/> */}
             <div className={Style.Progress}> <h1>Score: {UserData.score}</h1> </div>
 
             <div className={Style.TotalAsked}>

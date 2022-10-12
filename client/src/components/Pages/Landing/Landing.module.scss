@@ -48,6 +48,14 @@
     text-align: center;
 }
 
+
+
+.Container:hover {
+
+    border: 3px solid $Primary_LightBlue;
+    transition: transform 300ms;
+}
+
 .Container2{
    width: 33%;
    height: 160px;
@@ -61,6 +69,12 @@
    background-size: 25%;
    background-repeat: no-repeat;
 
+}
+
+.Container2:hover {
+
+    border: 3px solid $Primary_LightBlue;
+    transition: transform 300ms;
 }
 
 .text{

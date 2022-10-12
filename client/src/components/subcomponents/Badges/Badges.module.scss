@@ -17,6 +17,8 @@
     margin-top: 10px;
     width: 70px;
     height: 70px;
-    background-image: url(../../../Icons/ChatBox.svg);
+    // background-image: url(../../../Icons/ChatBox.svg);
+   background-image: url('../../../Img/Silver.png');
+
     @include backgroundImages;
 }
