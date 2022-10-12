@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
-import Register from './Register';
-import Login from './Login';
-import Style from './LogNReg.module.scss';
+import React, { useRef, useState } from "react";
+import Confirmation from "./Confirmation";
+import Login from "./Login";
+import Style from "./LogNReg.module.scss";
+import Register from "./Register";
 
 const LogNReg = (props) => {
+  const confirmDiv = useRef();
+  const [changeCards, setChangeCard] = useState(true);
+  const [showConfirm, setShowConfirm] = useState(false);
 
-    const [changeCards, setChangeCard] = useState(true);
-
-    return (
-        <div className={Style.LogNReg}>
-            <Register changeCards={changeCards} setChangeCard={setChangeCard}/>
-            <Login setShowNav={props.setShowNav} changeCards={changeCards} setChangeCard={setChangeCard}/>
-        </div>
-    );
+  return (
+    <div className={Style.LogNReg}>
+      <Confirmation
+        confirmDiv={confirmDiv}
+        setShowConfirm={setShowConfirm}
+        showConfirm={showConfirm}
+      />
+      <Register
+        showConfirm={showConfirm}
+        setShowConfirm={setShowConfirm}
+        changeCards={changeCards}
+        setChangeCard={setChangeCard}
+      />
+      <Login
+        setShowNav={props.setShowNav}
+        changeCards={changeCards}
+        setChangeCard={setChangeCard}
+      />
+    </div>
+  );
 };
 
 export default LogNReg;

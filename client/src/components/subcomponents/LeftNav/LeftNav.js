@@ -35,7 +35,8 @@ const LeftNav = (props) => {
             <h3
               onClick={() => {
                 props.setShowNav(false);
-                props.setRender((prev) => !prev);
+                sessionStorage.clear();
+                // props.setRender((prev) => !prev);
               }}
               className={Style.LogoutText}
             >

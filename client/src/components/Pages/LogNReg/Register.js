@@ -72,6 +72,8 @@ const Register = (props) => {
           } else {
             console.log(res.data);
             RegisterForm.current.reset();
+            props.setChangeCard(!props.changeCards);
+            props.setShowConfirm(!props.showConfirm);
           }
           // setRender(prev => !prev)
         })
