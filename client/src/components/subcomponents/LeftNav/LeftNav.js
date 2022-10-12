@@ -4,6 +4,14 @@ import CheckBox from "../CheckBox/CheckBox";
 import Style from "./LeftNav.module.scss";
 
 const LeftNav = (props) => {
+
+  // const Logout = () => {
+  //   sessionStorage.clear();
+  //   navigate('/')
+  // }
+
+
+
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
       <div className={Style.leftNav}>

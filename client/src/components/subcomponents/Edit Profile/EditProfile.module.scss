@@ -1,0 +1,80 @@
+@import '../../../index.scss';
+
+
+.backGroundModal{
+    width: 150%;
+    margin-top: -20px;
+    margin-left: -800px;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    position: absolute;
+    z-index: 500;
+    animation: fadeIn 1s;
+    // position: relative;
+}
+
+
+
+.EditProfile{
+    padding: 2%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 500;
+    width: 50%;
+    
+    height:40vh;
+    border-radius: 20px;
+    // @include ModalColor;
+    @include ModalColor;
+
+}
+
+.Image {
+    width: 100px;
+    height: 100px;
+    background-color: $Primary_DarkBlue;
+    padding: 10px;
+    color: white;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    border-radius: 20px;
+    @include InputShadow()
+
+}
+
+.Image:hover{
+    background-color: $Primary_LightBlue;
+}
+
+
+.closeButton{
+    width: 25px;
+    padding: 1%;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+    background-color: $Primary_DarkBlue;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    cursor: pointer;
+    @include Shadow();
+}
+
+.closeButton:hover{
+    background-color: $Primary_LightBlue;
+}
+
+
+.Del {
+    position: absolute;
+    bottom: -10px;
+    
+}
+
+.Del:hover {
+    color: red;
+    cursor: pointer;
+}

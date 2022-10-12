@@ -1,11 +1,81 @@
-import React from 'react';
+import { Axios } from 'axios';
+import React, { useState } from 'react';
+import EditProfile from '../Edit Profile/EditProfile';
 import Style from './ProfileSection.module.scss'
 
 
-const ProfileSection = () => {
+const ProfileSection = (props) => {
+
+    const [EditProfileModal, setEditProfileModal] = useState()
+    const [modalArea, setModal] = useState();
+
+
+    // const EditProfile = () => {
+    //     let user = sessionStorage.getItem('UserData');
+
+    //     console.log(user)
+        
+    //         // setEditProfileModal(<AddQuestion rerender={setAddQuestionModal}/>)
+        
+    // }
+    const UserData = JSON.parse(sessionStorage.getItem("UserData"))
+
+    console.log(UserData)
+
+    const edit = () => {
+        setModal(<EditProfile 
+          close={setModal}
+          username={UserData.username}
+          email={UserData.email}
+          password={UserData.password}
+          profile={UserData.profile}
+
+        //   id={props.productId}
+        //   SKU={props.SKU}
+        //   ProductName={props.ProductName}
+        //   stock={props.stock}
+        //   Price={props.Price}
+        //   DiscPrice={props.DiscPrice}
+        //   Desc={props.Desc}
+        //   Sizes={props.Sizes}
+        //   SizeOne={props.Sizes.sevenHalf}
+        //   SizeTwo={props.Sizes.eight}
+        //   SizeThree={props.Sizes.eightHalf}
+        //   editRender={props.editRender}
+        />)
+      }
+
+      const deleteItem = () => {
+        // console.log(props.productId);
+    
+        // if(window.confirm("are you sure you want to delete: " + props.ProductName) === true){
+        //   console.log("deleted Item")
+    
+        //   Axios.delete("http://localhost:5000/api/deleteproduct/" + props.productId)
+        //   .then((res)=>{
+        //     if(res){
+        //       console.log("Deleted: " + props.ProductName);
+        //       props.editRender(true);
+        //       //alert or something saying it was deleted
+        //     }
+        //   })
+        //   .catch(function (error) {console.log(error)});
+        // } 
+      }
+
+
+
+    
+    
+
+
+    
     return (
+        <>
+        {modalArea}
+
         <div className={Style.MainProfileSection}>
-            <div className={Style.EditButton}>
+            <div onClick={edit} className={Style.EditButton}>
             </div>
             
             <div className={Style.ProfileImages}>
@@ -13,9 +83,9 @@ const ProfileSection = () => {
                 <div className={Style.ProfileDisplayBadge}></div>
             </div>
             
-            <h2 className={Style.Username}>Username</h2>
+            <h2 className={Style.Username}>{UserData.username}</h2>
             <h3 className={Style.MemberLength}>Member for 1 year, 2 months</h3>
-            <div className={Style.Progress}> progressbar</div>
+            <div className={Style.Progress}> <h1>Score: {UserData.score}</h1> </div>
 
             <div className={Style.TotalAsked}>
                 <h2 className={Style.Scores}>1</h2>
@@ -32,6 +102,7 @@ const ProfileSection = () => {
                 <h3 className={Style.ScoreText}>Reliability Score</h3>
             </div>
         </div>
+        </>
     );
 };
 
