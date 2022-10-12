@@ -6,6 +6,8 @@ const usersSchema = require("./models/Users");
 const ProfileSchema = require("./models/ProfileImages");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
+const nodemailer = require('nodemailer');
+const addUser = require('./models/Users');
 const jwt = require("jsonWebToken");
 const { json } = require("express");
 const { exists } = require("./models/Users");
@@ -221,6 +223,123 @@ router.post("/login", async (req, res) => {
   } else {
     res.json({ user: false });
     console.log("user doesn't exist");
+  }
+});
+
+//node mailer 
+
+router.post('/api/newUser', (req, res) =>{
+
+  let data = req.body;
+
+  const regUser = new newUser({
+      first: data.first,
+      last: data.last,
+      email: data.email,
+      username: data.username,
+      password: data.password
+  }); 
+
+  regUser.save()
+  .then( async item => {
+
+      res.json(item);
+
+      const findUser = await addUser.findOne({
+          username: req.body.username
+      });
+
+      let userIdLink = "http://localhost:3000/auth?id=" + findUser._id;
+    
+      // Send confirmation email has moved here to only run on successful add
+      const mailerOutput = `
+      <h1>Welcome ${data.username} to the website</h1>
+      <p>Before you can login, please verify your account using the link below</p>
+      <a href=${userIdLink}>Click to Verify</a>
+  `;
+
+  const transporter = nodemailer.createTransport({
+      host: "mail.patterntry.com", 
+      port: 465, 
+      secure: true, 
+      auth: {
+          user: "mailer@patterntry.com", 
+          pass: "4d%T0Q{9v$mR"
+      }
+  })
+
+  const mailOptions = {
+      from: '"Website Mailer Client" <mailer@patterntry.com>',
+      to: data.email, 
+      subject: 'New User Registration', 
+      html: mailerOutput
+  }
+
+  transporter.sendMail(mailOptions, (error, info) =>{
+      if(error){
+          return console.log(error)
+      } 
+      console.log("Message Sent:", info.messageId);
+  });
+
+
+  })
+  .catch(err => {
+     res.status(400).json({msg:"There is an error", err}); 
+  });
+});
+
+router.post('/api/loginuser', async (req, res) => {
+  const findUser = await addUser.findOne({
+      username: req.body.username
+  });
+
+  if(findUser) {
+      if(await bcrypt.compare(req.body.password, findUser.password)) {
+          if(findUser.accountStatus) {
+              res.send("You are authenticated")
+          } else {
+              res.send("Account not verified")
+          }
+      } else {
+          res.send("The Username or Password is incorrect")
+      }
+  } else {
+      res.send("No User Found")
+  }
+});
+
+router.patch('/api/validate/:id', async (req, res) => {
+  let userId = req.params.id;
+
+  const findUser = await addUser.findOne({
+      _id: userId
+  });
+
+  if(findUser) {
+      try {
+          const tokenDecrypt = jwt.verify(findUser.token, process.env.ACCESS_TOKEN_SECRET);
+          const authUser = await addUser.findOne({
+              _id: userId,
+              username: tokenDecrypt.username,
+              email: tokenDecrypt.email
+          });
+
+          if(authUser) {
+              const updateAccountStatus = await addUser.updateOne(
+                  {_id: req.params.id},
+                  {$set: {accountStatus: true}}
+              )
+
+              res.json({user: authUser.username, success: true, msg: "Profile Verified"})
+          } else {
+              res.json({success: false, msg: "Profile not verified"})
+          }
+      } catch {
+          res.json({success: false, msg: "Invalid Token"})
+      }
+  } else {
+      res.json({success: false, msg: "Verification failed: Contact System Admin"});
   }
 });
 
