@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./Landing.module.scss";
 
 const Landing = () => {
-  const UserData = JSON.parse(sessionStorage.getItem("UserData"))
+  const [displayText, setDisplayText] = useState();
 
-  console.log(UserData)
+  useEffect(() => {
+    if (
+      JSON.parse(sessionStorage.getItem("UserData")) === null ||
+      JSON.parse(sessionStorage.getItem("UserData")) === undefined
+    ) {
+      setDisplayText("User");
+    } else {
+      setDisplayText(JSON.parse(sessionStorage.getItem("UserData")));
+    }
+  }, []);
 
+  // const UserData = JSON.parse(sessionStorage.getItem("UserData"));
+
+  // console.log(UserData);
 
   return (
     <div className={Style.body}>
       <div className={Style.LandingArea}>
         <div className={Style.Block}></div>
         <div className={Style.LanContent}>
-          <h2 className={Style.heading}>HELLO, {UserData.username}!</h2>
+          <h2 className={Style.heading}>HELLO, {displayText}!</h2>
           <p className={Style.Paragraph}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text

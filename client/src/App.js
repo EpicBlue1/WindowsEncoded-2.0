@@ -19,8 +19,6 @@ function App() {
 
   const { render, setRender } = useContext(RenderContext);
 
-  console.log(render);
-
   useEffect(() => {
     if (window.location.href.indexOf("LogNReg") > -1) {
       setShowNav(false);
