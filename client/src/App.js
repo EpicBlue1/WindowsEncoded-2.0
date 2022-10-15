@@ -31,39 +31,44 @@ function App() {
     <div className="App">
       <TopNav Render={render} setRender={setRender} show={ShowNav} />
 
-      <div className="LeftContentCon">
-        <LeftNav
-          Render={render}
-          setRender={setRender}
-          setShowNav={setShowNav}
-          show={ShowNav}
-          LogOut={LogOut}
-          setLogOut={setLogOut}
-        />
-      </div>
+      <div className="Containers">
+        <div className="LeftContentCon">
+          <LeftNav
+            Render={render}
+            setRender={setRender}
+            setShowNav={setShowNav}
+            show={ShowNav}
+            LogOut={LogOut}
+            setLogOut={setLogOut}
+          />
+        </div>
 
-      <div className="RightContentCon">
-        <Routes>
-          <Route
-            path="/LogNReg"
-            element={
-              <LogNReg
-                setShowNav={setShowNav}
-                show={ShowNav}
-                LogOut={LogOut}
-                setLogOut={setLogOut}
-              />
-            }
-          />
-          <Route path="/TestPage" element={<Testpage />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/" element={<Landing />} />
-          <Route
-            path="/Questions"
-            element={<Questions setRender={setRender} Render={render} />}
-          />
-          <Route path="/IndividualQuestion" element={<IndividualQuestion />} />
-        </Routes>
+        <div className="RightContentCon">
+          <Routes>
+            <Route
+              path="/LogNReg"
+              element={
+                <LogNReg
+                  setShowNav={setShowNav}
+                  show={ShowNav}
+                  LogOut={LogOut}
+                  setLogOut={setLogOut}
+                />
+              }
+            />
+            <Route path="/TestPage" element={<Testpage />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/" element={<Landing />} />
+            <Route
+              path="/Questions"
+              element={<Questions setRender={setRender} Render={render} />}
+            />
+            <Route
+              path="/IndividualQuestion"
+              element={<IndividualQuestion />}
+            />
+          </Routes>
+        </div>
       </div>
     </div>
   );

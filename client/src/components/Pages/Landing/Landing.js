@@ -33,8 +33,11 @@ const Landing = () => {
           </p>
         </div>
       </div>
+      <br></br>
 
-      <h1 className={Style.Heading}>About Us</h1>
+      <hr className={Style.Line}></hr>
+
+      <h1 className={Style.Heading}>For you</h1>
 
       <div className={Style.Row}>
         <div className={Style.Container}>
@@ -43,7 +46,7 @@ const Landing = () => {
         <div className={Style.Container}>
           <h2>Answer Questions</h2>
         </div>
-        <div className={Style.Container2}>
+        <div className={Style.Container}>
           <h2>Earn Badges</h2>
           <div className={Style.badge}></div>
         </div>

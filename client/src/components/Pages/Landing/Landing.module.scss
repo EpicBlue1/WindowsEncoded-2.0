@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 // .body {
 //     // height: max-content;
@@ -6,108 +6,112 @@
 //     // background: linear-gradient(47deg, rgba(253,30,74,0.45) 0%, rgba(80,103,235,0.5) 80%);
 // }
 
-.LandingArea{
-    padding: 10px;
-    display: flex;
+.LandingArea {
+  padding: 10px;
+  display: flex;
+  //   background-color: white;
+  color: #2b2b2b;
 }
 
-.Block{
-    background-image: url('../../../Img/Male-3.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 25vh;
-    height: 150px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
+.Block {
+  background-image: url("../../../Img/Male-3.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 25vh;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 1);
+  @include Shadow();
+  border-radius: 20px;
 }
 
-.LanContent   {
-    padding-right: 20px;
-    padding:15px;
-    // float: left;
+.LanContent {
+  padding-right: 20px;
+  padding: 15px;
+  // float: left;
 }
 
-.Heading{
-    padding: 15px;
+.Heading {
+  padding: 15px;
 }
 
-.Row{
-    width: 80%;
-    height: 240px;
-    // background-color: greenyellow;
-    display: flex;
+.Row {
+  width: 80%;
+  height: 240px;
+  // background-color: greenyellow;
+  display: flex;
 }
 
-.Container{
-    width: 33%;
-    height: 160px;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin-left: 15px;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
+.Container {
+  width: 33%;
+  height: 160px;
+  background-color: rgba(255, 255, 255, 1);
+  //   background-color: #fd1e4b4c;
+  @include Shadow();
+  margin-left: 15px;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
 }
-
-
 
 .Container:hover {
-
-    border: 3px solid $Primary_LightBlue;
-    transition: transform 300ms;
+  border: 3px solid $Primary_LightBlue;
+  transition: transform 300ms;
 }
 
-.Container2{
-   width: 33%;
-   height: 160px;
-   background-color: rgba(255, 255, 255, 0.6);
-   margin-left: 15px;
-   border-radius: 20px;
-   padding: 20px;
-   text-align: center;
-   background-image: url('../../../Img/Silver.png');
-   background-position: center;
-   background-size: 25%;
-   background-repeat: no-repeat;
-
+.Container2 {
+  width: 33%;
+  height: 160px;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-left: 15px;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  background-image: url("../../../Img/Silver.png");
+  background-position: center;
+  background-size: 25%;
+  background-repeat: no-repeat;
 }
 
 .Container2:hover {
-
-    border: 3px solid $Primary_LightBlue;
-    transition: transform 300ms;
+  border: 3px solid $Primary_LightBlue;
+  transition: transform 300ms;
 }
 
-.text{
-    margin-bottom: 20px;
+.text {
+  margin-bottom: 20px;
 }
 
-.ImageOne{
-    background-image: url('../../../Img/HtmlLogo.png');
-    width: 100%;
-    height: 100px;
-    background-position: center center;
-    background-size: 25%;
-    background-repeat: no-repeat;
-    margin-bottom: 25px;
+.ImageOne {
+  background-image: url("../../../Img/HtmlLogo.png");
+  width: 100%;
+  height: 100px;
+  background-position: center center;
+  background-size: 25%;
+  background-repeat: no-repeat;
+  margin-bottom: 25px;
 }
 
-.ImageTwo{
-    background-image: url('../../../Img/JavaScript\ logo.png');
-    width: 100%;
-    height: 100px;
-    background-position: center center;
-    background-size: 25%;
-    background-repeat: no-repeat;
-    margin-bottom: 25px;
+.ImageTwo {
+  background-image: url("../../../Img/JavaScript\ logo.png");
+  width: 100%;
+  height: 100px;
+  background-position: center center;
+  background-size: 25%;
+  background-repeat: no-repeat;
+  margin-bottom: 25px;
 }
 
-.ImageThree{
-    background-image: url('../../../Img/React-icon.png');
-    width: 100%;
-    height: 100px;
-    background-position: center center;
-    background-size: 25%;
-    background-repeat: no-repeat;
-    margin-bottom: 25px;
+.ImageThree {
+  background-image: url("../../../Img/React-icon.png");
+  width: 100%;
+  height: 100px;
+  background-position: center center;
+  background-size: 25%;
+  background-repeat: no-repeat;
+  margin-bottom: 25px;
 }
 
+.Line {
+  background-color: $Semantic_Red;
+}
