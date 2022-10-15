@@ -4,7 +4,6 @@
   width: 100%;
   height: 100vh;
   float: left;
-  // background-color: red;
 }
 
 .leftNav {
@@ -135,11 +134,12 @@
 
 .LogoutText {
   float: left;
-  margin-top: 9px;
+  margin-top: 10px;
 }
 
 .Logout:hover {
   transition: ease-in-out 0.3s;
   @include Shadow();
-  background-color: #f1f1f1;
+  background-color: $Primary_LightBlue;
+  color: white;
 }

@@ -1,24 +1,22 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .BadgeBox {
-    float: left;
-    margin-right: 25px;
-    width: 100px;
-    height: max-content;
-    background-color: rgb(240, 239, 239);
-    border-radius: 20px;
-    text-align: center;
-    // @include Shadow();
-    margin-bottom: 10px;
+  float: left;
+  margin-right: 25px;
+  width: 100px;
+  height: max-content;
+  background-color: white;
+  @include Shadow();
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .Badge {
-    margin: auto;
-    margin-top: 10px;
-    width: 70px;
-    height: 70px;
-    // background-image: url(../../../Icons/ChatBox.svg);
-   background-image: url('../../../Img/Silver.png');
-
-    @include backgroundImages;
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Silver.png");
+  @include backgroundImages;
 }

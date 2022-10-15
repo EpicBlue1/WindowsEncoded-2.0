@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
 import Style from "./LeftNav.module.scss";
 
 const LeftNav = (props) => {
+  const [logOut, setlogOut] = useState("Log In");
+  // const [profile, setProfile] = useState(Logo);
+  let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
-  // const Logout = () => {
-  //   sessionStorage.clear();
-  //   navigate('/')
-  // }
-
-
+  useEffect(() => {
+    if (
+      seshStorage === "undefined" ||
+      seshStorage === null ||
+      seshStorage === ""
+    ) {
+      console.log("nee tjommie");
+    } else {
+      // setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile})`);
+      setlogOut("Log Out");
+    }
+  }, []);
 
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
@@ -42,13 +51,11 @@ const LeftNav = (props) => {
             <div className={Style.LogImg}></div>
             <h3
               onClick={() => {
-                props.setShowNav(false);
                 sessionStorage.clear();
-                // props.setRender((prev) => !prev);
               }}
               className={Style.LogoutText}
             >
-              Logout
+              {logOut}
             </h3>
           </div>
         </Link>

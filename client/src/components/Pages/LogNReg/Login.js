@@ -76,11 +76,11 @@ const Login = (props) => {
             setPasswordValid(true);
             setPasswordText("All Good");
             setEmailText("All Good");
-            // Navigate("/");
             sessionStorage.setItem(
               "UserData",
               JSON.stringify(res.data.userData)
             );
+            Navigate("/");
           } else {
             setFormText("Password or Email doesn't match");
             setEmailValid(false);
@@ -131,6 +131,7 @@ const Login = (props) => {
           <br></br>
           <form onChange={FormValues}>
             <Input
+              type="email"
               text={EmailText}
               Valid={emailValid}
               ref={email}
@@ -140,6 +141,7 @@ const Login = (props) => {
             />
 
             <Input
+              type="password"
               text={PasswordText}
               Valid={passwordValid}
               ref={password}

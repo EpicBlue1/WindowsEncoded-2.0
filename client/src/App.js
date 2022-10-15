@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 //pages
 import IndividualQuestion from "./components/Pages/IndividualQuestion/IndividualQuestion";
 import Landing from "./components/Pages/Landing/Landing";
@@ -18,29 +18,26 @@ function App() {
   const [LogOut, setLogOut] = useState();
 
   const { render, setRender } = useContext(RenderContext);
-
-  useEffect(() => {
-    if (window.location.href.indexOf("LogNReg") > -1) {
-      setShowNav(false);
-    } else {
-      setShowNav(true);
-    }
-  }, [render]);
+  const hideNav = useLocation();
 
   return (
     <div className="App">
-      <TopNav Render={render} setRender={setRender} show={ShowNav} />
+      {hideNav.pathname === "/LogNReg" ? null : (
+        <TopNav Render={render} setRender={setRender} show={ShowNav} />
+      )}
 
       <div className="Containers">
         <div className="LeftContentCon">
-          <LeftNav
-            Render={render}
-            setRender={setRender}
-            setShowNav={setShowNav}
-            show={ShowNav}
-            LogOut={LogOut}
-            setLogOut={setLogOut}
-          />
+          {hideNav.pathname === "/LogNReg" ? null : (
+            <LeftNav
+              Render={render}
+              setRender={setRender}
+              setShowNav={setShowNav}
+              show={ShowNav}
+              LogOut={LogOut}
+              setLogOut={setLogOut}
+            />
+          )}
         </div>
 
         <div className="RightContentCon">

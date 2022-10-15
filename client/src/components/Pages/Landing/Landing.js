@@ -3,21 +3,23 @@ import Style from "./Landing.module.scss";
 
 const Landing = () => {
   const [displayText, setDisplayText] = useState();
+  const [ForYou, setForYou] = useState();
 
   useEffect(() => {
+    let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
     if (
-      JSON.parse(sessionStorage.getItem("UserData")) === null ||
-      JSON.parse(sessionStorage.getItem("UserData")) === undefined
+      seshStorage === "undefined" ||
+      seshStorage === null ||
+      seshStorage === ""
     ) {
+      console.log("nee tjommie");
+      setForYou("About us");
       setDisplayText("User");
     } else {
-      setDisplayText(JSON.parse(sessionStorage.getItem("UserData")));
+      console.log(seshStorage.username);
+      setDisplayText(seshStorage.username);
     }
   }, []);
-
-  // const UserData = JSON.parse(sessionStorage.getItem("UserData"));
-
-  // console.log(UserData);
 
   return (
     <div className={Style.body}>

@@ -1,101 +1,102 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .Login {
-    width: 80%;
-    float: left;
-    height: 35px;
-    border-radius: 20px;
-    padding-left: 20px;
-    margin-top: 0 !important;
-    border: none;
-    background-color: #f9f9f9;
-    @include InputShadow()
+  width: 80%;
+  float: left;
+  height: 35px;
+  border-radius: 20px;
+  padding-left: 20px;
+  margin-top: 0 !important;
+  border: none;
+  background-color: #f9f9f9;
+  @include InputShadow();
 }
 
-.InputWidth{
-    width: 100%;
-    height: 40px;
+.InputWidth {
+  width: 100%;
+  height: 40px;
 }
 
-.Search{
-    width: 50%;
-    height: 35px;
-    background-color: $Primary_White;  
-    border-radius: 20px;
-    padding-left: 20px;
-    background-color: #f2f2f2;
-    @include InputShadow();
-    border: none;
-    float: left;
+.Search {
+  margin-top: 0 !important;
+  width: 65%;
+  height: 35px;
+  background-color: $Primary_White;
+  border-radius: 20px;
+  padding-left: 20px;
+  background-color: #f2f2f2;
+  @include InputShadow();
+  border: none;
+  float: left;
 }
 
-.ModalInput{
-    margin: 0;
-    width: 95%;
-    height: 35px;
-    border-radius: 20px;
-    padding-left: 20px;
-    border: none;
-    background-color: #f9f9f9;
-    @include InputShadow()
+.ModalInput {
+  margin: 0;
+  width: 95%;
+  height: 35px;
+  border-radius: 20px;
+  padding-left: 20px;
+  border: none;
+  background-color: #f9f9f9;
+  @include InputShadow();
 }
 
-.Icon{
-    width: 3%;
-    margin-top: 6px;
-    position: relative;
-    right: 5vh;
-    float: left;
-    height: 35px;
-    background-image: url('../../../Icons/search.svg');
-    @include backgroundImages;
-    background-size: 60%;
+.Icon {
+  width: 3%;
+  margin-top: 1px;
+  position: relative;
+  right: 6vh;
+  float: left;
+  height: 35px;
+  background-image: url("../../../Icons/search.svg");
+  @include backgroundImages;
+  background-size: 60%;
 }
 
-.Valid{
-    width: 3.8%;
-    position: relative;
-    right: 3.5vh;
-    float: left;
-    height: 35px;
-    background-image: url('../../../Icons/InputValid.svg');
-    @include backgroundImages;
-    background-size: 110%;
-    cursor: pointer;
+.Valid {
+  width: 3.8%;
+  position: relative;
+  right: 3.5vh;
+  float: left;
+  height: 35px;
+  background-image: url("../../../Icons/InputValid.svg");
+  @include backgroundImages;
+  background-size: 110%;
+  cursor: pointer;
 }
 
-.InValid{
-    width: 3.8%;
-    position: relative;
-    right: 3.5vh;
-    float: left;
-    height: 35px;
-    background-image: url('../../../Icons/InputInValid.svg');
-    @include backgroundImages;
-    background-size: 110%;
-    cursor: pointer;
+.InValid {
+  width: 3.8%;
+  position: relative;
+  right: 3.5vh;
+  float: left;
+  height: 35px;
+  background-image: url("../../../Icons/InputInValid.svg");
+  @include backgroundImages;
+  background-size: 110%;
+  cursor: pointer;
 }
 
-.HoverModalCon{
-    width: 1px;
-    height: 1px;
-  }
-
-.HoverModal{
-    position: relative;
-    left: 6vh;
-    width: max-content;
-    height: 30px;
-    padding-top: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: white;
-    font-weight: 800;
-    @include Shadow();
-    background-color: $Semantic_Red;
-    border-radius: 20px;
+.HoverModalCon {
+  width: 1px;
+  height: 1px;
 }
 
-.hide{
-    display: none;
+.HoverModal {
+  position: relative;
+  left: 6vh;
+  width: max-content;
+  height: 30px;
+  padding-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-weight: 800;
+  @include Shadow();
+  background-color: $Semantic_Red;
+  border-radius: 20px;
+}
+
+.hide {
+  display: none;
 }
