@@ -202,51 +202,25 @@ router.post("/api/login/", async (req, res) => {
   const findUser = await usersSchema.findOne({
     email: req.body.email,
   });
-  // .select("password");
 
   if (findUser) {
-    console.log("user exist");
-    const validPass = await bcrypt.compare(
-      req.body.password,
-      findUser.password,
-      function (err, result) {
-        if (err) {
-          throw result;
-        }
-        console.log(result);
-      }
-    );
-    console.log(validPass);
-    if (validPass) {
+    console.log("user found!");
+    if (await bcrypt.compare(req.body.password, findUser.password)) {
+      console.log("Is a match");
       res.json({
-        Message: "InValid",
-        user: findUser,
+        valid: true,
+        msg: "Pass matches",
+        userData: findUser,
       });
     } else {
       res.json({
-        Message: "Valid",
-        user: findUser,
+        valid: false,
+        msg: "Pass no matches",
       });
     }
+  } else {
+    console.log("user not found!");
   }
-
-  // const validPass = await bcrypt.compare(
-  //   req.body.password,
-  //   findUser.password,
-  //   function (err, result) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     console.log(result);
-  //   }
-  // );
-
-  // if (!validPass) {
-  //   console.log("pass doesnt exist");
-  //   res.status(404).json({ msg: "lol" });
-  // }
-
-  // res.status(200).json(findUser);
 });
 
 //node mailer

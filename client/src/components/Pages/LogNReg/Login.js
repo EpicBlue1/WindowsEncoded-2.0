@@ -69,16 +69,18 @@ const Login = (props) => {
       axios
         .post("http://localhost:2000/api/login/", userCreds)
         .then((res) => {
-          console.log(res.data.Message);
           console.log(res.data);
-          if (res.data.Message === "Valid") {
+          if (res.data.valid) {
             setFormText("");
             setEmailValid(true);
             setPasswordValid(true);
             setPasswordText("All Good");
             setEmailText("All Good");
-            Navigate("/");
-            sessionStorage.setItem("UserData", JSON.stringify(res.data.user));
+            // Navigate("/");
+            sessionStorage.setItem(
+              "UserData",
+              JSON.stringify(res.data.userData)
+            );
           } else {
             setFormText("Password or Email doesn't match");
             setEmailValid(false);
@@ -146,7 +148,6 @@ const Login = (props) => {
               Intype="Login"
             />
           </form>
-          <br></br>
           <p className={Style.Red}>{FormText}</p>
           <p
             onClick={() => {
@@ -155,7 +156,12 @@ const Login = (props) => {
           >
             Forgot Password?
           </p>
-
+          <br></br>
+          <Button onClick={login} className={Style.Button} type="Primary">
+            Log In
+          </Button>
+          <br></br>
+          <br></br>
           <p
             className={Style.Spacing}
             onClick={() => {
@@ -164,10 +170,6 @@ const Login = (props) => {
           >
             Don't have an account? Register now!
           </p>
-
-          <Button onClick={login} className={Style.Button} type="Primary">
-            Log In
-          </Button>
         </div>
         <div className={Style.LogRight}>
           <div className={Style.LogImage}></div>

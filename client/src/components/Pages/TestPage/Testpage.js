@@ -49,7 +49,7 @@ const Testpage = () => {
         let images = data.map((item) => (
           <div
             style={{
-              backgroundImage: `url(${URL})`,
+              backgroundImage: `url(http://localhost:2000/ProfileImages/${item.imageLocation})`,
               width: `200px`,
               height: `200px`,
               backgroundColor: `white`,
@@ -58,8 +58,9 @@ const Testpage = () => {
               marginRight: `15px`,
               borderRadius: `25px`,
             }}
-          ></div>
-          // <img src={URL} />
+          >
+            {console.log(item)}
+          </div>
         ));
 
         setImages(images);

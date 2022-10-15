@@ -216,6 +216,10 @@ const Register = (props) => {
           />
           <div className={Style.Spacing}></div>
           <p className={Style.Red}>{FormValid}</p>
+          <Button onClick={addUser} type="Primary">
+            Register
+          </Button>
+          <br></br>
           <p
             className={Style.Cursor}
             onClick={() => {
@@ -224,9 +228,6 @@ const Register = (props) => {
           >
             Already have an account? Login now!
           </p>
-          <Button onClick={addUser} type="Primary">
-            Register
-          </Button>
         </form>
       </div>
 
