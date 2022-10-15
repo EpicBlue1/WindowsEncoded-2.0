@@ -21,15 +21,12 @@ const ProfilesCard = (props) => {
   }, [render]);
 
   useEffect(() => {
-    console.log("Updated");
     axios
       .get("http://localhost:2000/api/allProfiles/")
       .then((res) => {
         let data = res.data;
-        console.log(res.data);
 
         let URL = `http://localhost:2000/ProfileImages/`;
-        console.log(URL);
 
         let images = data.map((item) => (
           <ProfileImg

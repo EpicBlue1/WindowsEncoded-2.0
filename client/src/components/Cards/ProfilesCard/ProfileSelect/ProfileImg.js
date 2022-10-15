@@ -2,7 +2,6 @@ import React from "react";
 import Style from "../ProfileCard.module.scss";
 
 const ProfileImg = (props) => {
-  console.log(props.data.imageName);
   let Name = props.data.imageName;
   Name = Name.slice(0, -4);
   return (

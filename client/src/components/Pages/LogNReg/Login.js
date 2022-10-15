@@ -64,12 +64,9 @@ const Login = (props) => {
         password: password.current.value,
       };
 
-      console.log(password.current.value, email.current.value);
-
       axios
         .post("http://localhost:2000/api/login/", userCreds)
         .then((res) => {
-          console.log(res.data);
           if (res.data.valid) {
             setFormText("");
             setEmailValid(true);
