@@ -95,13 +95,10 @@ const ProfileSection = (props) => {
 
         <h2 className={Style.Username}>{userName}</h2>
         {/* <Line percent={10} strokeWidth={4} strokeColor="#D3D3D3" /> */}
-
+        <ProgressBar/>
         <h3 className={Style.MemberLength}>Member for 1 year, 2 months</h3>
-        {/* <ProgressBar/> */}
-        <div className={Style.Progress}>
-          {" "}
-          {/* <h1>Score: {UserData.score}</h1>{" "} */}
-        </div>
+        
+        
 
         <div className={Style.TotalAsked}>
           <h2 className={Style.Scores}>1</h2>

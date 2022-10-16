@@ -4,13 +4,24 @@ import { Line, Circle } from 'rc-progress';
 
 
 const ProgressBar = () => {
+
+    let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+
+    
+
+    const value = seshStorage.score;
+    const max = 100;
+
+    console.log(value)
+
     return (
-        <Line percent={10} strokeWidth={4} strokeColor="#D3D3D3" />
-        // <div  className={Style.Parentdiv}>
-        //     <div  className={Style.Childdiv}>
-        //         <span className={Style.progresstext}></span>
-        //     </div>
-        // </div>
+        <>
+        <span>{(value / max) * 100}% Towards next badge !</span>
+        
+        <progress value={value} max={max} className={Style.bar}/>
+        
+         
+        </>
     );
 };
 
