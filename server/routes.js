@@ -156,46 +156,101 @@ router.post("/register", (req, res) => {
     admin: false,
   });
 
-  const findUser = usersSchema.findOne({
-    email: req.body.email,
+  
+  newUser.save()
+  .then(async (item) => {
+
+    res.json(item);
+
+const findUser = usersSchema.findOne({
+    // email: req.body.email,
+    username: req.body.username
   });
 
-  if (findUser) {
-    newUser
-      .save()
-      .then(async (item) => {
-        res.json(item);
-        res.json({
-          exists: false,
-        });
+    // const findUser = await addUser.findOne({
+    //   username: req.body.username,
+    // });
 
-        //Send conformation email has move here to only run on successfull add
-        const mailerOutput = `
-      <h1>Welcome ${data.username} to the website</h1>
-      <p>Before you login please verify your account, using the link below</p>
-      <a href= '#'>Click to verify</a>`;
-        const transporter = nodemailer.createTransport({
-          host: "welcome@windowsEncoded.com",
-          port: 465,
-          secure: true,
-          auth: {
-            user: "",
-            pass: "",
-          },
-        });
-      })
-      .catch((err) => {
-        res.status(400).send(err.response);
-        console.log(err.response);
-        console.log(err.request);
-        console.log(err.message);
-      });
-  } else {
-    console.log("Already exists");
-    res.json({
-      exists: true,
+    let userIdLink = "http://localhost:2000/auth?id=" + findUser._id;
+
+    // Send confirmation email has moved here to only run on successful add
+    const mailerOutput = `
+    <h1>Welcome ${data.username} to Windows-Encoded</h1>
+    <p>Before you can login, please verify your account using the link below</p>
+    <a href=${userIdLink}>Click to Verify</a>
+`;
+// style a buttong instead of an Href - inline styling
+// use src with http link for image
+
+    const transporter = nodemailer.createTransport({
+      host: "hakushu.aserv.co.za",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "_mainaccount@encoded-noreply.co.za",
+        pass: "wNyPan4qVd4fCBr",
+      },
     });
-  }
+
+    const mailOptions = {
+      from: '"Windows-Encoded Register" <_mainaccount@encoded-noreply.co.za>',
+      to: data.email,
+      subject: "New User Registration",
+      html: mailerOutput,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log("Message Sent:", info.messageId);
+    });
+  })
+  .catch((err) => {
+    res.status(400).json({ msg: "There is an error", err });
+  });
+
+
+
+  // if (findUser) {
+  //   newUser
+  //     .save()
+  //     .then(async (item) => {
+  //       res.json(item);
+  //       res.json({
+  //         exists: false,
+  //       });
+
+  //       //Send conformation email has move here to only run on successfull add
+  //       const mailerOutput = `
+  //     <h1>Welcome ${data.username} to the website</h1>
+  //     <p>Before you login please verify your account, using the link below</p>
+  //     <a href= '#'>Click to verify</a>`;
+  //       const transporter = nodemailer.createTransport({
+  //         host: "welcome@windowsEncoded.com",
+  //         port: 465,
+  //         secure: true,
+  //         auth: {
+  //           user: "",
+  //           pass: "",
+  //         },
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       res.status(400).send(err.response);
+  //       console.log(err.response);
+  //       console.log(err.request);
+  //       console.log(err.message);
+  //     });
+  // } else {
+  //   console.log("Already exists");
+  //   res.json({
+  //     exists: true,
+  //   });
+  // }
+
+
+  
 });
 
 router.post("/api/login/", async (req, res) => {
@@ -225,86 +280,67 @@ router.post("/api/login/", async (req, res) => {
 
 //node mailer
 
-router.post("/api/newUser", (req, res) => {
-  let data = req.body;
+// router.post("/api/newUser", (req, res) => {
+//   let data = req.body;
 
-  const regUser = new newUser({
-    first: data.first,
-    last: data.last,
-    email: data.email,
-    username: data.username,
-    password: data.password,
-  });
-
-  regUser
-    .save()
-    .then(async (item) => {
-      res.json(item);
-
-      const findUser = await addUser.findOne({
-        username: req.body.username,
-      });
-
-      let userIdLink = "http://localhost:3000/auth?id=" + findUser._id;
-
-      // Send confirmation email has moved here to only run on successful add
-      const mailerOutput = `
-      <h1>Welcome ${data.username} to the website</h1>
-      <p>Before you can login, please verify your account using the link below</p>
-      <a href=${userIdLink}>Click to Verify</a>
-  `;
-
-      const transporter = nodemailer.createTransport({
-        host: "mail.patterntry.com",
-        port: 465,
-        secure: true,
-        auth: {
-          user: "mailer@patterntry.com",
-          pass: "4d%T0Q{9v$mR",
-        },
-      });
-
-      const mailOptions = {
-        from: '"Website Mailer Client" <mailer@patterntry.com>',
-        to: data.email,
-        subject: "New User Registration",
-        html: mailerOutput,
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return console.log(error);
-        }
-        console.log("Message Sent:", info.messageId);
-      });
-    })
-    .catch((err) => {
-      res.status(400).json({ msg: "There is an error", err });
-    });
-});
-
-// router.post("/api/loginuser", async (req, res) => {
-//   const findUser = await addUser.findOne({
-//     username: req.body.username,
+//   const regUser = new newUser({
+//     first: data.first,
+//     last: data.last,
+//     email: data.email,
+//     username: data.username,
+//     password: data.password,
 //   });
 
-//   if (findUser) {
-//     if (await bcrypt.compare(req.body.password, findUser.password)) {
-//       res.send("Valid");
-//       if (findUser.accStatus) {
-//         res.send("You are authenticated");
-//       } else {
-//         res.send("Account not verified");
-//       }
-//     } else {
-//       res.send("The Username or Password is incorrect");
-//       res.send("InValid");
-//     }
-//   } else {
-//     res.send("No User Found");
-//     res.send("InValid");
-//   }
+//   regUser
+//     .save()
+//     .then(async (item) => {
+//       res.json(item);
+
+//       const findUser = await addUser.findOne({
+//         username: req.body.username,
+//       });
+
+//       let userIdLink = "http://localhost:3000/auth?id=" + findUser._id;
+
+//       // Send confirmation email has moved here to only run on successful add
+//       const mailerOutput = `
+//       <h1>Welcome ${data.username} to Windows-Encoded</h1>
+//       <p>Before you can login, please verify your account using the link below</p>
+//       <a href=${userIdLink}>Click to Verify</a>
+//   `;
+//   // style a buttong instead of an Href - inline styling
+//   // use src with http link for image
+
+//       const transporter = nodemailer.createTransport({
+//         host: "hakushu.aserv.co.za",
+//         port: 465,
+//         secure: true,
+//         auth: {
+//           user: "mainaccount@encoded-noreply.co.za",
+//           pass: "wNyPan4qVd4fCBr",
+//         },
+//       });
+
+//       const mailOptions = {
+//         from: '"Windows-Encoded Register" <mainaccount@encoded-noreply.co.za>',
+//         to: data.email,
+//         subject: "New User Registration",
+//         html: mailerOutput,
+//       };
+
+//       transporter.sendMail(mailOptions, (error, info) => {
+//         if (error) {
+//           return console.log(error);
+//         }
+//         console.log("Message Sent:", info.messageId);
+//       });
+//     })
+//     .catch((err) => {
+//       res.status(400).json({ msg: "There is an error", err });
+//     });
 // });
+
+
 
 router.patch("/api/validate/:id", async (req, res) => {
   let userId = req.params.id;
@@ -325,6 +361,7 @@ router.patch("/api/validate/:id", async (req, res) => {
         email: tokenDecrypt.email,
       });
 
+  
       if (authUser) {
         const updateAccountStatus = await addUser.updateOne(
           { _id: req.params.id },
@@ -349,5 +386,30 @@ router.patch("/api/validate/:id", async (req, res) => {
     });
   }
 });
+
+
+// router.post("/api/loginuser", async (req, res) => {
+//   const findUser = await addUser.findOne({
+//     username: req.body.username,
+//   });
+
+//   if (findUser) {
+//     if (await bcrypt.compare(req.body.password, findUser.password)) {
+//       res.send("Valid");
+//       if (findUser.accStatus) {
+//         res.send("You are authenticated");
+//       } else {
+//         res.send("Account not verified");
+//       }
+//     } else {
+//       res.send("The Username or Password is incorrect");
+//       res.send("InValid");
+//     }
+//   } else {
+//     res.send("No User Found");
+//     res.send("InValid");
+//   }
+// });
+
 
 module.exports = router;

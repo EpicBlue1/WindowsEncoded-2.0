@@ -67,38 +67,11 @@ const ProfileSection = (props) => {
   //         email={UserData.email}
   //         password={UserData.password}
   //         profile={UserData.profile}
-
-  //         //   id={props.productId}
-  //         //   SKU={props.SKU}
-  //         //   ProductName={props.ProductName}
-  //         //   stock={props.stock}
-  //         //   Price={props.Price}
-  //         //   DiscPrice={props.DiscPrice}
-  //         //   Desc={props.Desc}
-  //         //   Sizes={props.Sizes}
-  //         //   SizeOne={props.Sizes.sevenHalf}
-  //         //   SizeTwo={props.Sizes.eight}
-  //         //   SizeThree={props.Sizes.eightHalf}
-  //         //   editRender={props.editRender}
   //       />
   //     );
   //   };
 
-  const deleteItem = () => {
-    // console.log(props.productId);
-    // if(window.confirm("are you sure you want to delete: " + props.ProductName) === true){
-    //   console.log("deleted Item")
-    //   Axios.delete("http://localhost:5000/api/deleteproduct/" + props.productId)
-    //   .then((res)=>{
-    //     if(res){
-    //       console.log("Deleted: " + props.ProductName);
-    //       props.editRender(true);
-    //       //alert or something saying it was deleted
-    //     }
-    //   })
-    //   .catch(function (error) {console.log(error)});
-    // }
-  };
+ 
 
   return (
     <>

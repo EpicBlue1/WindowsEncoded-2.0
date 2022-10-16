@@ -54,6 +54,9 @@ const Register = (props) => {
         admin: false,
       };
 
+      
+
+
       axios
         .post("http://localhost:2000/register", userCreds)
         .then((res) => {

@@ -33,7 +33,7 @@ const TopNav = (props) => {
         {/* <Input Intype="Search" className={Style.SearchBar}/> */}
         <Input className="Search" Intype="Search" />
         <h4 className={Style.Heading}>{userName}</h4>
-        <Link to="/">
+        <Link to="/Profile">
           <div
             className={Style.ProfileImage}
             style={{

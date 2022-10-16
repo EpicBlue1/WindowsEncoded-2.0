@@ -18,6 +18,9 @@ const ProfileQuestion = () => {
             <div className={Style.Qscore}>
                 <h1 className={Style.Score}>1</h1>
             </div>
+            <div className={Style.Qscore}>
+                <h1 className={Style.Score}>1</h1>
+            </div>
         </div>
     );
 };
