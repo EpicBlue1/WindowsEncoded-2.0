@@ -13,7 +13,7 @@ const Profile = (props) => {
   useEffect(() => {
     const USER = sessionStorage.getItem("UserData");
     if (USER === "" || USER === null || USER === undefined || USER === false) {
-      Navigate("/");
+      Navigate("/LogNReg");
     } else if (USER) {
       // Navigate("/");
       setBusy(false);

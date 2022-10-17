@@ -9,7 +9,7 @@ const AnswerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  answerTitle: {
+  questionId: {
     type: String,
     required: true,
   },

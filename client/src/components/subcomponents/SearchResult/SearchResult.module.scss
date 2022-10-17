@@ -1,0 +1,60 @@
+@import "../../../index.scss";
+
+@mixin ContainerStyling {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: center;
+  position: fixed;
+  padding: 20px;
+  width: 75%;
+  height: 75vh;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  @include Shadow();
+}
+
+.Container {
+  top: 100%;
+  left: 50%;
+  opacity: 100%;
+  transform: translate(-50%, 5%);
+  @include ContainerStyling();
+  transition: opacity 200ms, left 100ms, transform 50ms;
+}
+
+.ContainerClosed {
+  opacity: 0%;
+  @include Shadow();
+  top: 100%;
+  left: 0%;
+  transform: translate(-100%, 5%);
+  @include ContainerStyling();
+  transition: opacity 200ms, left 100ms, transform 50ms;
+}
+
+.Underline {
+  text-decoration: underline;
+  font-size: 36px;
+  text-decoration-color: $Primary_LightBlue;
+}
+
+.ResultContainer {
+  width: 97%;
+  height: 50vh;
+  overflow: auto;
+  background-color: white;
+  border-radius: 20px;
+  padding-top: 10px;
+}
+
+.ResultCard {
+  width: 98%;
+  height: 200px;
+  background-color: red;
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}

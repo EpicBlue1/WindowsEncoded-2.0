@@ -3,7 +3,6 @@
 .topNav {
   width: 100% !important;
   height: 55px;
-  // position: fixed;
   @include Shadow();
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(16px);
@@ -20,8 +19,6 @@
   margin: 4px;
   width: 12%;
   height: 90%;
-  // margin-right: 10%;
-  // position: absolute;
   background-image: url("../../../Img/Logo.svg");
   @include backgroundImages;
   background-size: 80%;
@@ -33,7 +30,7 @@
   @include backgroundImages();
   @include Shadow();
   background-size: 80%;
-  border-radius: 100px;
+  border-radius: 100px !important;
   margin-right: 10px;
 }
 
@@ -41,5 +38,9 @@
   height: 20px;
   width: 38vh;
   padding-top: 22px;
-  // background-color: red;
+}
+
+.Results {
+  width: 20px;
+  height: 20px;
 }

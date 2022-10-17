@@ -8,6 +8,22 @@
 //     background: linear-gradient(47deg, #fd1e4a73 0%, #5067eb80 80%);
 // }
 
+.closeButton {
+  width: 25px;
+  padding: 1%;
+  top: 2vh;
+  right: 2vh;
+  font-size: larger;
+  font-weight: bolder;
+  border-radius: 10px;
+  background-color: $Primary_DarkBlue;
+  text-align: center;
+  float: right;
+  color: white;
+  cursor: pointer;
+  @include Shadow();
+}
+
 .questionBlock {
   width: 150vh !important;
   margin-left: 2vh;
@@ -74,13 +90,13 @@
   margin-top: 2%;
 }
 
-.votes{
+.votes {
   float: left;
   margin-right: 2%;
   color: $Primary_gray;
 }
 
-.reply{
+.reply {
   float: right;
   text-decoration: underline;
   color: $Primary_gray;

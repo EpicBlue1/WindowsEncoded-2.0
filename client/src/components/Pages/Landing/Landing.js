@@ -3,6 +3,7 @@ import Style from "./Landing.module.scss";
 
 const Landing = () => {
   const [displayText, setDisplayText] = useState();
+  const [profile, setProfile] = useState();
   const [ForYou, setForYou] = useState();
 
   useEffect(() => {
@@ -18,13 +19,17 @@ const Landing = () => {
     } else {
       console.log(seshStorage.username);
       setDisplayText(seshStorage.username);
+      setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile}`);
     }
   }, []);
 
   return (
     <div className={Style.body}>
       <div className={Style.LandingArea}>
-        <div className={Style.Block}></div>
+        <div
+          className={Style.Block}
+          style={{ backgroundImage: `url(${profile})` }}
+        ></div>
         <div className={Style.LanContent}>
           <h2 className={Style.heading}>HELLO, {displayText}!</h2>
           <p className={Style.Paragraph}>

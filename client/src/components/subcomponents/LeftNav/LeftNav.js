@@ -51,7 +51,7 @@ const LeftNav = (props) => {
             <div className={Style.LogImg}></div>
             <h3
               onClick={() => {
-                sessionStorage.clear();
+                sessionStorage.clear("UserData");
               }}
               className={Style.LogoutText}
             >
