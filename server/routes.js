@@ -177,23 +177,25 @@ const findUser = usersSchema.findOne({
     const mailerOutput = `
     <h1>Welcome ${data.username} to Windows-Encoded</h1>
     <p>Before you can login, please verify your account using the link below</p>
-    <a href=${userIdLink}>Click to Verify</a>
+    <button style="width: 200px; height: 50px; background-color: #5067EB;
+      border-radius: 20px; Color: White;" href=${userIdLink}>Click to Verify </button>
+   
 `;
 // style a buttong instead of an Href - inline styling
 // use src with http link for image
 
     const transporter = nodemailer.createTransport({
-      host: "hakushu.aserv.co.za",
+      host: "mail.encoded-noreply.co.za",
       port: 465,
       secure: true,
       auth: {
-        user: "_mainaccount@encoded-noreply.co.za",
-        pass: "wNyPan4qVd4fCBr",
+        user: "windows@encoded-noreply.co.za",
+        pass: "_#y#,)rb8,k^",
       },
     });
 
     const mailOptions = {
-      from: '"Windows-Encoded Register" <_mainaccount@encoded-noreply.co.za>',
+      from: '"Windows-Encoded Register" <windows@encoded-noreply.co.za>',
       to: data.email,
       subject: "New User Registration",
       html: mailerOutput,

@@ -123,6 +123,11 @@ const Testpage = () => {
           Upload
         </Button>
       </form>
+
+    <div className="EmailButton">
+      verfiy Account
+    </div>
+
     </div>
   );
 };
