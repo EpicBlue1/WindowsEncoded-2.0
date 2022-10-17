@@ -78,5 +78,6 @@
     border-radius: 10px;
     font-size: smaller;
     padding: 0.5% 2%;
-    background-color: $Primary_LightGray;
+    color: $Primary_DarkBlue;
+    @include ModalColor;
 }

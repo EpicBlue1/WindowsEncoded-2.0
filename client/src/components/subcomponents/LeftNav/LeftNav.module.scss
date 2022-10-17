@@ -35,7 +35,7 @@
   // padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  border-bottom: 2px solid $Semantic_Red;
+  border-bottom: 2px solid $Primary_LightBlue;
   cursor: pointer;
 }
 
@@ -43,7 +43,7 @@
   transition: ease-in-out 0.3s;
   @include Shadow();
   color: white;
-  background-color: $Semantic_Red;
+  background-color: $Primary_LightBlue;
 }
 
 .Questions {
@@ -59,7 +59,7 @@
   // padding: 2.5px;
   padding-left: 10px;
   padding-right: 10px;
-  border-bottom: 2px solid $Semantic_Red;
+  border-bottom: 2px solid $Primary_LightBlue;
   cursor: pointer;
 }
 
@@ -67,7 +67,7 @@
   transition: ease-in-out 0.3s;
   @include Shadow();
   color: white;
-  background-color: $Semantic_Red;
+  background-color: $Primary_LightBlue;
 }
 
 .IconSpot1 {

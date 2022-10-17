@@ -79,7 +79,8 @@ const AddQuestion = (props) => {
             <option>Kotlin</option>
           </select>
 
-          <Input Intype="ModalInput" placeholder="Title..." name="questionTitle" onChange={questionInfo}/>
+          <Input Intype="ModalInput" placeholder="eg. Making a div float right." name="questionTitle" onChange={questionInfo}/>
+          <p>Add a brief description of your Question</p>
 
           <div className={Style.PfBlockUp}>
             <div className={Style.upload_btn_wrapper}>
@@ -89,8 +90,12 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo}></textarea>
-          <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo}></textarea>
+          <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo} placeholder="Please explain your question in detail..."></textarea>
+          <p>Explain your question in detail. Be specific.</p>
+          <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo} placeholder="Add your code here."></textarea>
+          <p>Add your code here</p>
+
+          {/* TODO: Add Tags */}
 
           <Button type="Primary" onClick={addQuestion}>Add Question</Button>
         </form>

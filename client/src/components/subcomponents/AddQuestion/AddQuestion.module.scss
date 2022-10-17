@@ -14,6 +14,10 @@
   animation: fadeIn 1s;
 }
 
+p{
+  color: $Primary_DarkBlue;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -81,14 +85,15 @@
   height: 70px;
   margin-left: 3%;
   padding: 3%;
+  background-color: white;
 }
 
 .codeBox {
   width: 93%;
   border-radius: 20px;
   height: 95px;
-  margin-bottom: 5%;
   padding: 3%;
+  background-color: white;
 }
 
 .Button {
