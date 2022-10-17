@@ -79,7 +79,7 @@ const AddQuestion = (props) => {
             <option>Kotlin</option>
           </select>
 
-          <Input Intype="ModalInput" placeholder="eg. Making a div float right." name="questionTitle" onChange={questionInfo}/>
+          <Input Intype="ModalInput" placeholder="eg. Making use of UseStates in React" name="questionTitle" onChange={questionInfo}/>
           <p>Add a brief description of your Question</p>
 
           <div className={Style.PfBlockUp}>
@@ -90,9 +90,9 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo} placeholder="Please explain your question in detail..."></textarea>
+          <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo} placeholder="eg. I would like one of my components to pop up with the click of a button."></textarea>
           <p>Explain your question in detail. Be specific.</p>
-          <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo} placeholder="Add your code here."></textarea>
+          <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo} placeholder="eg. const [modal, setModal] = useState();"></textarea>
           <p>Add your code here</p>
 
           {/* TODO: Add Tags */}
