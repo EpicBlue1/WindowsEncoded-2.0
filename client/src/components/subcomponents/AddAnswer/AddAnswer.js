@@ -7,6 +7,7 @@ import Style from "./AddAnswer.module.scss";
 const AddAnswer = (props) => {
 
     let userData = sessionStorage.getItem("UserData");
+    let user = JSON.parse(userData);
     const [answer, setAnswer] = useState();
 
     const closeModal = () => {
@@ -18,16 +19,20 @@ const AddAnswer = (props) => {
         setAnswer({ ...answer, [name]: value });
     };
 
-    const addAnswer = () => {
+    const addAnswer = (e) => {
+        e.preventDefault()
+        console.log(answer)
+        
         let payload = {
             Answers: {
-                userId: userData._id,
-                username: userData.username,
-                Answer: answer.answer,
+                userId: user._id,
+                username: user.username,
+                answerDescription: answer.answerDescription,
+                codeSnippet: answer.codeSnippet
             },
         };
         console.log(payload);
-        // axios.post("http://localhost:2000/api/newAnswer", payload);
+        axios.post("http://localhost:2000/api/newAnswer", payload);
     };
 
 
@@ -41,7 +46,7 @@ const AddAnswer = (props) => {
         <form>
           <h2>Add an Answer</h2>
 
-          <textarea className={Style.textBox} name="questionDescription" onChange={answerInfo}></textarea>
+          <textarea className={Style.textBox} name="answerDescription" onChange={answerInfo}></textarea>
           <textarea className={Style.codeBox} name="codeSnippet" onChange={answerInfo}></textarea>
 
           <Button type="Primary" onClick={addAnswer}> Add Question </Button>

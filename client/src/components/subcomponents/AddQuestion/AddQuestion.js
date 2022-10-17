@@ -12,8 +12,6 @@ const AddQuestion = (props) => {
 
   userData = JSON.parse(userData);
 
-  // console.log(userData.username);
-
   const closeModal = () => {
     props.rerender();
   };
@@ -42,8 +40,6 @@ const AddQuestion = (props) => {
 
   const addQuestion = (e) => {
     e.preventDefault();
-    // console.log(questionInputs);
-    // console.log(image);
 
     const payloadData = new FormData();
 
@@ -53,6 +49,7 @@ const AddQuestion = (props) => {
       questionTitle: questionInputs.questionTitle,
       questionDescription: questionInputs.questionDescription,
       codeSnippet: questionInputs.codeSnippet,
+      language: questionInputs.language
     };
 
     console.log(payload);
@@ -60,7 +57,7 @@ const AddQuestion = (props) => {
     payloadData.append("information", JSON.stringify(payload));
     payloadData.append("image", questionImage);
 
-    axios.post("http://localhost:2000/api/newQuestion", payloadData);
+    axios.post("http://localhost:2000/api/newQuestion/", payloadData);
     props.rerender();
   };
 
@@ -74,12 +71,15 @@ const AddQuestion = (props) => {
         <form>
           <h2>Add a Question</h2>
 
-          <Input
-            Intype="ModalInput"
-            placeholder="Title..."
-            name="questionTitle"
-            onChange={questionInfo}
-          />
+          <select name="language" onChange={questionInfo}>
+            <option>Please Select a Language...</option>
+            <option>Javascript</option>
+            <option>PHP</option>
+            <option>Swift</option>
+            <option>Kotlin</option>
+          </select>
+
+          <Input Intype="ModalInput" placeholder="Title..." name="questionTitle" onChange={questionInfo}/>
 
           <div className={Style.PfBlockUp}>
             <div className={Style.upload_btn_wrapper}>
@@ -89,20 +89,10 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea
-            className={Style.textBox}
-            name="questionDescription"
-            onChange={questionInfo}
-          ></textarea>
-          <textarea
-            className={Style.codeBox}
-            name="codeSnippet"
-            onChange={questionInfo}
-          ></textarea>
+          <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo}></textarea>
+          <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo}></textarea>
 
-          <Button type="Primary" onClick={addQuestion}>
-            Add Question
-          </Button>
+          <Button type="Primary" onClick={addQuestion}>Add Question</Button>
         </form>
       </div>
     </div>

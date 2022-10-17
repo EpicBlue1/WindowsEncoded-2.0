@@ -8,8 +8,11 @@ import Style from "./Questions.module.scss";
 const Questions = (props) => {
   const [addQuestionModal, setAddQuestionModal] = useState();
   const [questions, setQuestions] = useState();
+  const [imageUrl, setImageUrl] = useState();
   const [renderQuestions, setRenderQuestions] = useState(false);
   const [loginAlert, setLoginAlert] = useState();
+  let userData = sessionStorage.getItem("UserData");
+  let user = JSON.parse(userData);
 
   const addQuestion = () => {
     let user = sessionStorage.getItem("UserData");
@@ -26,9 +29,7 @@ const Questions = (props) => {
       .get("http://localhost:2000/api/allQuestions")
       .then((res) => {
         let questionData = res.data;
-        // console.log(questionData)
 
-        let URL = "http://localhost:2000/QuestionImages/";
         let renderQuestions = questionData.map((item) => (
           <QuestionCard
             key={item._id}
@@ -38,6 +39,7 @@ const Questions = (props) => {
             questionTitle={item.questionTitle}
             questionDescription={item.questionDescription}
             codeSnippet={item.codeSnippet}
+            language={item.language}
             image={URL + item.image}
             editRender={setRenderQuestions}
             allData={item}

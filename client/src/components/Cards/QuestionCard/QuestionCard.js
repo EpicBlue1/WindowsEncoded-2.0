@@ -30,8 +30,7 @@ const QuestionCard = (props) => {
                 <p>{props.questionDescription}</p>
             </div>
             <div className={Style.Right}>
-                <div className={Style.TopVote}></div>
-                <div className={Style.BottomVote}></div>
+                
             </div>
         </div>
     );

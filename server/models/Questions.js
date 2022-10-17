@@ -7,6 +7,7 @@ const QuestionSchema = mongoose.Schema({
     questionDescription: { type: String, required: true },
     codeSnippet: { type: String, required: true },
     date: { type: Date, default: Date.now },
+    language: {type: String},
     tags: { type: Array,
         // required: true
     },
@@ -23,9 +24,10 @@ const QuestionSchema = mongoose.Schema({
         // required: true
     },
     Answers: {
-        userId: { type: String, required: true },
-        username: { type: String, required: true },
-        Answer: { type: String, required: true },
+        userId: { type: String},
+        username: { type: String},
+        answerDescription: { type: String},
+        codeSnippet: {type: String},
         upvotes: {
             type: Number,
             // required: true

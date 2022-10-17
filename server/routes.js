@@ -45,13 +45,13 @@ router.post(
   (req, res) => {
     let data = JSON.parse(req.body.information);
 
-    //TODO: Fix error
     const newQuestion = new questionModel({
       userId: data.userId,
       username: data.username,
       questionTitle: data.questionTitle,
       questionDescription: data.questionDescription,
       codeSnippet: data.codeSnippet,
+      language: data.language,
       date: data.date,
       image: req.file.filename,
     });
@@ -95,7 +95,8 @@ router.post("/api/newAnswer", (req, res) => {
   const newAnswer = new questionModel({
     userId: data.userId,
     username: data.username,
-    Answer: data.answer,
+    answerDescription: data.answer,
+    codeSnippet: data.codeSnippet,
   });
 
   newAnswer
