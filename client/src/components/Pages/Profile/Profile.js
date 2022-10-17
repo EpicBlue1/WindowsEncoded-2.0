@@ -8,13 +8,15 @@ import Style from "./Profile.module.scss";
 
 const Profile = (props) => {
   const Navigate = useNavigate();
+  const [Busy, setBusy] = useState(true);
 
   useEffect(() => {
     const USER = sessionStorage.getItem("UserData");
     if (USER === "" || USER === null || USER === undefined || USER === false) {
       Navigate("/");
-    } else if (!USER) {
-      Navigate("/");
+    } else if (USER) {
+      // Navigate("/");
+      setBusy(false);
     }
   }, []);
   // const [user, setUser] = useState();
@@ -105,7 +107,7 @@ const Profile = (props) => {
   //   .catch()
   // }, []);
 
-  return (
+  return Busy ? null : (
     <div className={Style.body}>
       <h1>BADGES</h1>
       <div className={Style.BadgeSection}>

@@ -31,7 +31,6 @@ const UserSchema = mongoose.Schema({
     type: Boolean,
     required: true,
   },
-
   token: {
     type: String,
   },

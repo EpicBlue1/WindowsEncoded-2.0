@@ -88,30 +88,52 @@ router.get("/api/allProfiles/", async (req, res) => {
   res.json(findQuestion);
 });
 
-// add answer
-router.post("/api/newAnswer", (req, res) => {
-  let data = req.body.Answers;
+router.patch("/api/newAnswer/:id", async (req, res) => {
+  const addAnswer = await questionModel.updateOne(
+    { id: req.params.id },
+    {
+      $push: {
+        userId: data.userId,
+        username: data.username,
+        answerDescription: data.answer,
+        codeSnippet: data.codeSnippet,
+      },
+    }
+  );
 
-  const newAnswer = new questionModel({
-    userId: data.userId,
-    username: data.username,
-    answerDescription: data.answer,
-    codeSnippet: data.codeSnippet,
-  });
-
-  newAnswer
-    .save()
-    .then((item) => {
-      res.json(item);
-      console.log("Nothing");
-    })
-    .catch((err) => {
-      res.status(400).json({ msg: "There is an Error:", err });
-      console.log(err.response);
-      console.log(err.request);
-      console.log(err.message);
-    });
+  try {
+    res.json(addAnswer);
+  } catch (err) {
+    console.log(err.response);
+    console.log(err.request);
+    console.log(err.message);
+  }
 });
+
+// add answer
+// router.patch("/api/newAnswer", (req, res) => {
+//   let data = req.body.Answers;
+
+//   const newAnswer = new questionModel({
+//     userId: data.userId,
+//     username: data.username,
+//     answerDescription: data.answer,
+//     codeSnippet: data.codeSnippet,
+//   });
+
+//   newAnswer
+//     .save()
+//     .then((item) => {
+//       res.json(item);
+//       console.log("Nothing");
+//     })
+//     .catch((err) => {
+//       res.status(400).json({ msg: "There is an Error:", err });
+//       console.log(err.response);
+//       console.log(err.request);
+//       console.log(err.message);
+//     });
+// });
 
 //add Profile Images
 router.post(
@@ -157,63 +179,60 @@ router.post("/register", (req, res) => {
     admin: false,
   });
 
-  
-  newUser.save()
-  .then(async (item) => {
+  newUser
+    .save()
+    .then(async (item) => {
+      res.json(item);
 
-    res.json(item);
+      const findUser = usersSchema.findOne({
+        // email: req.body.email,
+        username: req.body.username,
+      });
 
-const findUser = usersSchema.findOne({
-    // email: req.body.email,
-    username: req.body.username
-  });
+      // const findUser = await addUser.findOne({
+      //   username: req.body.username,
+      // });
 
-    // const findUser = await addUser.findOne({
-    //   username: req.body.username,
-    // });
+      let userIdLink = "http://localhost:2000/auth?id=" + findUser._id;
 
-    let userIdLink = "http://localhost:2000/auth?id=" + findUser._id;
-
-    // Send confirmation email has moved here to only run on successful add
-    const mailerOutput = `
+      // Send confirmation email has moved here to only run on successful add
+      const mailerOutput = `
     <h1>Welcome ${data.username} to Windows-Encoded</h1>
     <p>Before you can login, please verify your account using the link below</p>
     <button style="width: 200px; height: 50px; background-color: #5067EB;
       border-radius: 20px; Color: White;" href=${userIdLink}>Click to Verify </button>
    
 `;
-// style a buttong instead of an Href - inline styling
-// use src with http link for image
+      // style a buttong instead of an Href - inline styling
+      // use src with http link for image
 
-    const transporter = nodemailer.createTransport({
-      host: "mail.encoded-noreply.co.za",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "windows@encoded-noreply.co.za",
-        pass: "_#y#,)rb8,k^",
-      },
+      const transporter = nodemailer.createTransport({
+        host: "mail.encoded-noreply.co.za",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "windows@encoded-noreply.co.za",
+          pass: "_#y#,)rb8,k^",
+        },
+      });
+
+      const mailOptions = {
+        from: '"Windows-Encoded Register" <windows@encoded-noreply.co.za>',
+        to: data.email,
+        subject: "New User Registration",
+        html: mailerOutput,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log("Message Sent:", info.messageId);
+      });
+    })
+    .catch((err) => {
+      res.status(400).json({ msg: "There is an error", err });
     });
-
-    const mailOptions = {
-      from: '"Windows-Encoded Register" <windows@encoded-noreply.co.za>',
-      to: data.email,
-      subject: "New User Registration",
-      html: mailerOutput,
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
-      }
-      console.log("Message Sent:", info.messageId);
-    });
-  })
-  .catch((err) => {
-    res.status(400).json({ msg: "There is an error", err });
-  });
-
-
 
   // if (findUser) {
   //   newUser
@@ -251,9 +270,6 @@ const findUser = usersSchema.findOne({
   //     exists: true,
   //   });
   // }
-
-
-  
 });
 
 router.post("/api/login/", async (req, res) => {
@@ -343,8 +359,6 @@ router.post("/api/login/", async (req, res) => {
 //     });
 // });
 
-
-
 router.patch("/api/validate/:id", async (req, res) => {
   let userId = req.params.id;
 
@@ -364,7 +378,6 @@ router.patch("/api/validate/:id", async (req, res) => {
         email: tokenDecrypt.email,
       });
 
-  
       if (authUser) {
         const updateAccountStatus = await addUser.updateOne(
           { _id: req.params.id },
@@ -390,7 +403,6 @@ router.patch("/api/validate/:id", async (req, res) => {
   }
 });
 
-
 // router.post("/api/loginuser", async (req, res) => {
 //   const findUser = await addUser.findOne({
 //     username: req.body.username,
@@ -413,6 +425,5 @@ router.patch("/api/validate/:id", async (req, res) => {
 //     res.send("InValid");
 //   }
 // });
-
 
 module.exports = router;
