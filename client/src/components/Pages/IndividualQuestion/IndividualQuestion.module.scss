@@ -74,6 +74,19 @@
   margin-top: 2%;
 }
 
+.votes{
+  float: left;
+  margin-right: 2%;
+  color: $Primary_gray;
+}
+
+.reply{
+  float: right;
+  text-decoration: underline;
+  color: $Primary_gray;
+  cursor: pointer;
+}
+
 textarea {
   outline: none;
   width: 90%;
