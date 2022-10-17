@@ -210,6 +210,7 @@ router.post("/register", (req, res) => {
         host: "mail.encoded-noreply.co.za",
         port: 465,
         secure: true,
+        secureConnection: true,
         auth: {
           user: "windows@encoded-noreply.co.za",
           pass: "_#y#,)rb8,k^",
