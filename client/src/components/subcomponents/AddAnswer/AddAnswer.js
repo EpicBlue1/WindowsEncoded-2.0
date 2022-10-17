@@ -80,8 +80,11 @@ const AddAnswer = (props) => {
             </div>
           </div>
 
-          <textarea className={Style.textBox} name="answerDescription" onChange={answerInfo}></textarea>
-          <textarea className={Style.codeBox} name="codeSnippet" onChange={answerInfo}></textarea>
+          <textarea className={Style.textBox} name="answerDescription" onChange={answerInfo} placeholder="eg. Set your imported component that you wish to use in your useState"></textarea>
+          <p>Explain your answer in detail. Be specific.</p>
+
+          <textarea className={Style.codeBox} name="codeSnippet" onChange={answerInfo} placeholder="eg. setModal(<Modal/>);"></textarea>
+          <p>Add your code here</p>
 
           <Button type="Primary" onClick={addAnswer}>Add Answer</Button>
         </form>

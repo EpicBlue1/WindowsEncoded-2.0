@@ -18,8 +18,7 @@ const IndividualQuestion = () => {
   let user = JSON.parse(userData);
 
   useEffect(() => {
-    let URL =
-      "http://localhost:2000/QuestionImages/" + location.state.allData.image;
+    let URL = "http://localhost:2000/QuestionImages/" + location.state.allData.image;
     setImageUrl(URL);
   }, [location.state.allData.image]);
 
@@ -66,7 +65,6 @@ const IndividualQuestion = () => {
         <br />
         <br />
         <br />
-        <br />
 
         <CodeArea language="html">
           {location.state.allData.codeSnippet}
@@ -83,12 +81,13 @@ const IndividualQuestion = () => {
             Reply
           </p>
         </div>
-        <br />
-        <br />
-        <hr className={Style.horisontalLine} />
+
+        <hr/>
+
         <br />
         <h2 className={Style.heading}>Answers</h2>
         <Answer />
+        
       </div>
     </div>
   );

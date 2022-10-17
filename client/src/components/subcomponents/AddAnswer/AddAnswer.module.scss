@@ -14,6 +14,12 @@
   animation: fadeIn 1s;
 }
 
+p{
+  margin-bottom: 4%;
+  color: $Primary_DarkBlue;
+  font-size:  small !important;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -55,22 +61,39 @@
   background-color: $Primary_LightBlue;
 }
 
-.textBox {
+.Preview {
   margin-top: 2%;
-  width: 68.4%;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid $Primary_LightGray;
+  margin-bottom: 2vh !important;
+  @include backgroundImages;
+  background-size: 30%;
+  float: left;
+}
+
+.Preview:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+.textBox {
+  width: 71.7%;
   float: left;
   border-radius: 20px;
-  height: 70px;
-  margin-left: 3%;
+  height: 40px;
   padding: 3%;
+  background-color: white;
 }
-  
+
 .codeBox {
-  width: 94%;
+  width: 93%;
   border-radius: 20px;
-  height: 95px;
-  margin-bottom: 5%;
+  height: 60px;
   padding: 3%;
+  background-color: white;
 }
 
 // Image Input
@@ -79,8 +102,7 @@
   height: 100px;
   background-color: $Primary_DarkBlue;
   border-radius: 20px;
-  margin-top: 2%;
-  margin-bottom: 3%;
+  margin-right: 3%;
   @include Shadow();
   cursor: pointer;
   float: left;
