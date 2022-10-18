@@ -6,6 +6,7 @@ const usersSchema = require("./models/Users");
 const ProfileSchema = require("./models/ProfileImages");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
+const answerModel = require("./models/Answer");
 const nodemailer = require("nodemailer");
 const addUser = require("./models/Users");
 const jwt = require("jsonWebToken");
@@ -110,29 +111,44 @@ router.patch("/api/newAnswer/:id", async (req, res) => {
 });
 
 // add answer
-// router.patch("/api/newAnswer", (req, res) => {
-//   let data = req.body.Answers;
+router.post(
+  "/api/newAnswer",
+  uploadQuestionImage.single("image"),
+  (req, res) => {
+    let data = JSON.parse(req.body.information).Answers;
+    console.log(data);
 
-//   const newAnswer = new questionModel({
-//     userId: data.userId,
-//     username: data.username,
-//     answerDescription: data.answer,
-//     codeSnippet: data.codeSnippet,
-//   });
+    const newAnswer = new answerModel({
+      userId: data.userId,
+      ParentQuestionId: data.ParentQuestionId,
+      username: data.username,
+      answerDescription: data.answerDescription,
+      codeSnippet: data.codeSnippet,
+      image: req.file.filename,
+      language: "Java",
+      upvotes: 0,
+      downvotes: 0,
+    });
 
-//   newAnswer
-//     .save()
-//     .then((item) => {
-//       res.json(item);
-//       console.log("Nothing");
-//     })
-//     .catch((err) => {
-//       res.status(400).json({ msg: "There is an Error:", err });
-//       console.log(err.response);
-//       console.log(err.request);
-//       console.log(err.message);
-//     });
-// });
+    newAnswer
+      .save()
+      .then((item) => {
+        res.json(item);
+        console.log("Nothing");
+      })
+      .catch((err) => {
+        res.status(400).json({ msg: "There is an Error:", err });
+        console.log(err.response);
+        console.log(err.request);
+        console.log(err.message);
+      });
+  }
+);
+
+router.get("/api/allAnswers", async (req, res) => {
+  const allAnswers = await answerModel.find();
+  res.json(allAnswers);
+});
 
 //add Profile Images
 router.post(
@@ -410,28 +426,5 @@ router.patch("/api/validate/:id", async (req, res) => {
     });
   }
 });
-
-// router.post("/api/loginuser", async (req, res) => {
-//   const findUser = await addUser.findOne({
-//     username: req.body.username,
-//   });
-
-//   if (findUser) {
-//     if (await bcrypt.compare(req.body.password, findUser.password)) {
-//       res.send("Valid");
-//       if (findUser.accStatus) {
-//         res.send("You are authenticated");
-//       } else {
-//         res.send("Account not verified");
-//       }
-//     } else {
-//       res.send("The Username or Password is incorrect");
-//       res.send("InValid");
-//     }
-//   } else {
-//     res.send("No User Found");
-//     res.send("InValid");
-//   }
-// });
 
 module.exports = router;

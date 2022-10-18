@@ -5,11 +5,11 @@ const AnswerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  username: {
+  ParentQuestionId: {
     type: String,
     required: true,
   },
-  questionId: {
+  username: {
     type: String,
     required: true,
   },
@@ -30,11 +30,11 @@ const AnswerSchema = mongoose.Schema({
   },
   upvotes: {
     type: Number,
-    // required: true
+    required: true,
   },
   downvotes: {
     type: Number,
-    // required: true
+    required: true,
   },
   image: {
     type: String,

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AddAnswer from "../../subcomponents/AddAnswer/AddAnswer";
@@ -13,20 +14,36 @@ const IndividualQuestion = () => {
   const [imageUrl, setImageUrl] = useState();
   const [answerModal, setAnswerModal] = useState();
   const [loginAlert, setLoginAlert] = useState();
+  const [Answers, setAnswers] = useState();
   //const [renderAnswers, setRenderAnswers] = useState();
   let userData = sessionStorage.getItem("UserData");
   let user = JSON.parse(userData);
 
   useEffect(() => {
-    let URL = "http://localhost:2000/QuestionImages/" + location.state.allData.image;
+    let URL =
+      "http://localhost:2000/QuestionImages/" + location.state.allData.image;
     setImageUrl(URL);
+    console.log(location.state.allData);
   }, [location.state.allData.image]);
+
+  useEffect(() => {
+    axios.get("http://localhost:2000/api/allAnswers").then((res) => {
+      let questionData = res.data;
+      console.log(questionData);
+
+      let renderAnswers = questionData.map((item) => <Answer allData={item} />);
+
+      setAnswers(renderAnswers);
+    });
+  }, []);
 
   const reply = () => {
     if (user === "" || user === null) {
       setLoginAlert(<LoginAlert rerender={setLoginAlert} />);
     } else {
-      setAnswerModal(<AddAnswer rerender={setAnswerModal} />);
+      setAnswerModal(
+        <AddAnswer allData={location.state.allData} rerender={setAnswerModal} />
+      );
     }
   };
 
@@ -82,12 +99,11 @@ const IndividualQuestion = () => {
           </p>
         </div>
 
-        <hr/>
+        <hr />
 
         <br />
         <h2 className={Style.heading}>Answers</h2>
-        <Answer />
-        
+        {Answers}
       </div>
     </div>
   );
