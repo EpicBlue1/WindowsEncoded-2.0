@@ -52,12 +52,14 @@ const AddQuestion = (props) => {
       language: questionInputs.language
     };
 
+    console.log(payload)
+
     payloadData.append("information", JSON.stringify(payload));
     payloadData.append("image", questionImage);
 
     console.log(payloadData);
 
-    // axios.post("http://localhost:2000/api/newQuestion/", payloadData);
+    axios.post("http://localhost:2000/api/newQuestion", payloadData);
     props.rerender();
   };
 

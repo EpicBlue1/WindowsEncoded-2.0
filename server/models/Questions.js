@@ -7,7 +7,7 @@ const QuestionSchema = mongoose.Schema({
   questionDescription: { type: String, required: true },
   codeSnippet: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  language: { type: String },
+  language: { type: String, required: true },
   tags: {
     type: Array,
     // required: true
