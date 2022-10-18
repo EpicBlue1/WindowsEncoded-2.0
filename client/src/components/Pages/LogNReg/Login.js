@@ -133,7 +133,7 @@ const Login = (props) => {
               Valid={emailValid}
               ref={email}
               placeholder="Email"
-              className={Style.margin}
+              //className={Style.margin}
               Intype="Login"
             />
 
@@ -143,7 +143,7 @@ const Login = (props) => {
               Valid={passwordValid}
               ref={password}
               placeholder="Password"
-              className={Style.margin}
+             // className={Style.margin}
               Intype="Login"
             />
           </form>
@@ -173,7 +173,7 @@ const Login = (props) => {
         <div className={Style.LogRight}>
           <div className={Style.LogImage}></div>
           <a href="https://www.freepik.com/free-vector/hand-coding-concept-illustration_21864184.htm#query=coding&position=17&from_view=search">
-            Image by storyset on Freepik
+            
           </a>
         </div>
       </div>

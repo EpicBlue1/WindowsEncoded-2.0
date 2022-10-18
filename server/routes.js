@@ -203,6 +203,7 @@ router.post("/register", (req, res) => {
     <p>Before you can login, please verify your account using the link below</p>
     <a style="width: 200px; height: 50px; background-color: #5067EB;
       border-radius: 20px; Color: White;" href=${userIdLink}>Click to Verify </a>
+      <img src="https://drive.google.com/file/d/1XLTvZ9Nn1W39nGBc0CO7cMBRzrbxlhyW/view?usp=sharing"></img>
    
 `;
       // style a buttong instead of an Href - inline styling
