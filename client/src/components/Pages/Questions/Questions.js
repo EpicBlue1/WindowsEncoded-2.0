@@ -48,8 +48,6 @@ const Questions = (props) => {
 
         setQuestions(renderQuestions);
         setRenderQuestions(false);
-
-        props.setRender((prev) => !prev);
       })
       .catch((err) => console.log(err));
   }, [props.Render]);

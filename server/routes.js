@@ -179,8 +179,6 @@ router.post("/register", (req, res) => {
     .then(async (item) => {
       res.json(item);
 
-
-
       const findUser = await usersSchema.findOne({
         // email: req.body.email,
         username: req.body.username,
@@ -279,20 +277,19 @@ router.post("/api/login/", async (req, res) => {
   if (findUser) {
     console.log("user found!");
     if (await bcrypt.compare(req.body.password, findUser.password)) {
-      if(findUser.accStatus) {
+      if (findUser.accStatus) {
         res.json({
           valid: true,
           msg: "Pass matches",
           userData: findUser,
         });
-    } else {
+      } else {
         res.json({
           valid: false,
           msg: "Account not verified. Please check your email.",
         });
-    }
+      }
       console.log("Is a match");
-
     } else {
       res.json({
         valid: false,

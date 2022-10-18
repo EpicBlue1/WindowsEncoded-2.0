@@ -29,6 +29,8 @@
 
 .Row {
   height: 240px;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

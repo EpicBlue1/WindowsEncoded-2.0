@@ -1,4 +1,6 @@
-import React, { useEffect, useLocation, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import Input from "../Inputs/Input";
 import SearchResult from "../SearchResult/SearchResult";
@@ -23,13 +25,20 @@ const TopNav = (props) => {
     }
   };
 
+  const clearInput = useLocation();
+
+  useEffect(() => {
+    if (clearInput.pathname === "/IndividualQuestion") {
+      setResultsModal(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (
       seshStorage === "undefined" ||
       seshStorage === null ||
       seshStorage === ""
     ) {
-      // setProfile(Logo);
       setNavigate("/");
     } else {
       setNavigate("/Profile");

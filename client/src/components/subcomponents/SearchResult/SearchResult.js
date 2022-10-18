@@ -1,15 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import QuestionCard from "../../Cards/QuestionCard/QuestionCard";
 import SearchCard from "./SearchCard";
 import Style from "./SearchResult.module.scss";
 
 const SearchResult = (props) => {
   const [Card, setCard] = useState();
+  const [Count, setCount] = useState(0);
 
-  var data = props.ResultData;
-  let firstLetterUpper = data.slice(0, 1).toUpperCase();
+  var search = props.ResultData;
+  let firstLetterUpper = search.slice(0, 1).toUpperCase();
 
-  let Result = firstLetterUpper + data.slice(1, data.length).toLowerCase();
+  let Result = firstLetterUpper + search.slice(1, search.length).toLowerCase();
 
   useEffect(() => {
     console.log("Updated");
@@ -18,15 +20,44 @@ const SearchResult = (props) => {
 
       let filteredData = res.data;
 
-      for (let i = 0; data.length < 0; i++) {
-        filteredData = data[i].includes.includes(props.ResultData);
-      }
+      console.log(filteredData);
 
-      let searchCard = filteredData.map((card) => (
-        <SearchCard allData={card} />
-      ));
+      let searchCard = data
+        .filter((val) => {
+          if (search === "") {
+            return val;
+          } else if (
+            val.questionTitle.toLowerCase().includes(search.toLowerCase()) ||
+            val.questionDescription.toLowerCase().includes(search.toLowerCase())
+          ) {
+            setCount(val.length);
+            return val;
+          }
+        })
+        .map((item) => (
+          <div onClick={() => props.setResultsModal(false)}>
+            <QuestionCard
+              key={item._id}
+              userId={item.userId}
+              username={item.username}
+              questionId={item._id}
+              questionTitle={item.questionTitle}
+              questionDescription={item.questionDescription}
+              codeSnippet={item.codeSnippet}
+              language={item.language}
+              image={URL + item.image}
+              allData={item}
+            />
+          </div>
+        ));
 
       setCard(searchCard);
+
+      if (searchCard.length === 1) {
+        setCount(searchCard.length + " Result");
+      } else if (searchCard.length > 1) {
+        setCount(searchCard.length + " Results");
+      }
 
       console.log(filteredData);
     });
@@ -39,7 +70,9 @@ const SearchResult = (props) => {
       <h3>
         Showing Results For: <u className={Style.Underline}>{Result}</u>
       </h3>
-      <p>results</p>
+      <p>{Count}</p>
+      <hr></hr>
+
       <div className={Style.ResultContainer}>{Card}</div>
     </div>
   );

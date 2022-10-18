@@ -1,7 +1,7 @@
 @import "../../../index.scss";
 
 .QuestionCard {
-  width: 80%;
+  width: 85%;
   height: 190px;
   border-radius: 20px;
   display: flex;
@@ -65,6 +65,7 @@
   margin: 0.1%;
   margin-left: 1%;
   float: left;
+  color: $Primary_DarkBlue !important;
 }
 
 .heading {
@@ -79,6 +80,7 @@
   font-size: smaller;
   padding: 0.5% 2%;
   color: $Primary_DarkBlue;
+  z-index: 100;
   @include ModalColor;
 }
 
@@ -97,6 +99,7 @@
   height: 32%;
   white-space: nowrap;
   overflow: hidden;
+  color: $Primary_DarkBlue !important;
   text-overflow: ellipsis;
   //   background-color: red;
 }

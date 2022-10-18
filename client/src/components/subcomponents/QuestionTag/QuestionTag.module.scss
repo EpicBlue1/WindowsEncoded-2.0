@@ -1,13 +1,13 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .MainTag {
-    width: 100px;
-    height: 25px;
-    background-color: rgb(155, 153, 153);
-    border-radius: 5px;
-    text-align: center;
-    padding-top: 5px;
-    margin-left: 10px;
-    float: left;
+  width: 100px;
+  height: 25px;
+  background-color: rgb(155, 153, 153);
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 5px;
+  margin-left: 10px;
+  z-index: 100 !important;
+  float: left;
 }

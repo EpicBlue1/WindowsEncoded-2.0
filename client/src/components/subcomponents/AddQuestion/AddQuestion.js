@@ -49,17 +49,18 @@ const AddQuestion = (props) => {
       questionTitle: questionInputs.questionTitle,
       questionDescription: questionInputs.questionDescription,
       codeSnippet: questionInputs.codeSnippet,
-      language: questionInputs.language
+      language: questionInputs.language,
     };
 
-    console.log(payload)
+    console.log(payload);
 
     payloadData.append("information", JSON.stringify(payload));
     payloadData.append("image", questionImage);
 
     console.log(payloadData);
+    console.log(payload);
 
-    axios.post("http://localhost:2000/api/newQuestion", payloadData);
+    // axios.post("http://localhost:2000/api/newQuestion/", payload);
     props.rerender();
   };
 
@@ -81,7 +82,12 @@ const AddQuestion = (props) => {
             <option>Kotlin</option>
           </select>
 
-          <Input Intype="ModalInput" placeholder="eg. Making use of UseStates in React" name="questionTitle" onChange={questionInfo}/>
+          <Input
+            Intype="ModalInput"
+            placeholder="eg. Making use of UseStates in React"
+            name="questionTitle"
+            onChange={questionInfo}
+          />
           <p>Add a brief description of your Question</p>
 
           <div className={Style.PfBlockUp}>
@@ -92,14 +98,26 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea className={Style.textBox} name="questionDescription" onChange={questionInfo} placeholder="eg. I would like one of my components to pop up with the click of a button."></textarea>
+          <textarea
+            className={Style.textBox}
+            name="questionDescription"
+            onChange={questionInfo}
+            placeholder="eg. I would like one of my components to pop up with the click of a button."
+          ></textarea>
           <p>Explain your question in detail. Be specific.</p>
-          <textarea className={Style.codeBox} name="codeSnippet" onChange={questionInfo} placeholder="eg. const [modal, setModal] = useState();"></textarea>
+          <textarea
+            className={Style.codeBox}
+            name="codeSnippet"
+            onChange={questionInfo}
+            placeholder="eg. const [modal, setModal] = useState();"
+          ></textarea>
           <p>Add your code here</p>
 
           {/* TODO: Add Tags */}
 
-          <Button type="Primary" onClick={addQuestion}>Add Question</Button>
+          <Button type="Primary" onClick={addQuestion}>
+            Add Question
+          </Button>
         </form>
       </div>
     </div>

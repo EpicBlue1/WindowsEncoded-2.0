@@ -11,9 +11,13 @@
   padding: 20px;
   width: 75%;
   height: 75vh;
-  background-color: #f7f7f7;
+  background-color: #f8f8f8;
   border-radius: 20px;
-  @include Shadow();
+  box-shadow: 0px 0px 2.6px rgba(0, 0, 0, 0.017),
+    0px 0px 5.9px rgba(0, 0, 0, 0.02), 0px 0px 10.2px rgba(0, 0, 0, 0.021),
+    0px 0px 16.3px rgba(0, 0, 0, 0.022), 0px 0px 25.1px rgba(0, 0, 0, 0.025),
+    0px 0px 39.2px rgba(0, 0, 0, 0.03), 0px 0px 65.1px rgba(0, 0, 0, 0.042),
+    0px 0px 130px rgba(0, 0, 0, 0.1);
 }
 
 .Container {
@@ -23,6 +27,14 @@
   transform: translate(-50%, 5%);
   @include ContainerStyling();
   transition: opacity 200ms, left 100ms, transform 50ms;
+
+  h3 {
+    color: #2b2b2b;
+  }
+
+  p {
+    color: #2b2b2b;
+  }
 }
 
 .ContainerClosed {
@@ -42,19 +54,10 @@
 }
 
 .ResultContainer {
-  width: 97%;
-  height: 50vh;
+  width: 95%;
+  height: 60vh;
   overflow: auto;
-  background-color: white;
   border-radius: 20px;
   padding-top: 10px;
-}
-
-.ResultCard {
-  width: 98%;
-  height: 200px;
-  background-color: red;
-  margin: 0 auto;
-  border-radius: 20px;
-  margin-bottom: 15px;
+  padding-left: 5%;
 }
