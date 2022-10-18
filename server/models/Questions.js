@@ -24,25 +24,6 @@ const QuestionSchema = mongoose.Schema({
     type: Number,
     // required: true
   },
-  Answers: {
-    userId: { type: String },
-    username: { type: String },
-    answerDescription: { type: String },
-    codeSnippet: { type: String },
-    image: { type: String, required: true },
-    upvotes: {
-      type: Number,
-      // required: true
-    },
-    downvotes: {
-      type: Number,
-      // required: true
-    },
-    score: {
-      type: Number,
-      // required: true
-    },
-  },
   image: { type: String, required: true },
 });
 

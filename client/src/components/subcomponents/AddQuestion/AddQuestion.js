@@ -57,10 +57,15 @@ const AddQuestion = (props) => {
     payloadData.append("information", JSON.stringify(payload));
     payloadData.append("image", questionImage);
 
-    console.log(payloadData);
+    for (var pair of payloadData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    for (let [key, value] of payloadData) {
+      console.log(`${key}: ${value}`);
+    }
     console.log(payload);
 
-    // axios.post("http://localhost:2000/api/newQuestion/", payload);
+    axios.post("http://localhost:2000/api/newQuestion/", payloadData);
     props.rerender();
   };
 

@@ -39,7 +39,10 @@ const storedProfileImage = multer.diskStorage({
 const uploadProfileImage = multer({ storage: storedProfileImage });
 
 //add question
-router.post("/api/newQuestion", uploadQuestionImage.single("image"), (req, res) => {
+router.post(
+  "/api/newQuestion",
+  uploadQuestionImage.single("image"),
+  (req, res) => {
     let data = JSON.parse(req.body.information);
 
     const newQuestion = new questionModel({
@@ -52,16 +55,17 @@ router.post("/api/newQuestion", uploadQuestionImage.single("image"), (req, res) 
       image: req.file.filename,
     });
 
-    newQuestion.save()
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => {
-      res.status(400).json({ msg: "There is an Error:", err });
-      console.log(err.response);
-      console.log(err.request);
-      console.log(err.message);
-    });
+    newQuestion
+      .save()
+      .then((item) => {
+        res.json(item);
+      })
+      .catch((err) => {
+        res.status(400).json({ msg: "There is an Error:", err });
+        console.log(err.response);
+        console.log(err.request);
+        console.log(err.message);
+      });
   }
 );
 
