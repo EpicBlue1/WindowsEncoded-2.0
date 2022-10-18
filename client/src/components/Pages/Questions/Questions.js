@@ -11,6 +11,7 @@ const Questions = (props) => {
   const [imageUrl, setImageUrl] = useState();
   const [renderQuestions, setRenderQuestions] = useState(false);
   const [loginAlert, setLoginAlert] = useState();
+  const [updateRender, setUpdateRender] = useState();
   let userData = sessionStorage.getItem("UserData");
   let user = JSON.parse(userData);
 
@@ -20,7 +21,13 @@ const Questions = (props) => {
     if (user === "" || user === null) {
       setLoginAlert(<LoginAlert rerender={setLoginAlert} />);
     } else {
-      setAddQuestionModal(<AddQuestion rerender={setAddQuestionModal} />);
+      setAddQuestionModal(
+        <AddQuestion
+          updateRender={updateRender}
+          setUpdateRender={setUpdateRender}
+          rerender={setAddQuestionModal}
+        />
+      );
     }
   };
 
@@ -29,6 +36,7 @@ const Questions = (props) => {
       .get("http://localhost:2000/api/allQuestions")
       .then((res) => {
         let questionData = res.data;
+        console.log("Updated");
 
         let renderQuestions = questionData.map((item) => (
           <QuestionCard
@@ -50,7 +58,7 @@ const Questions = (props) => {
         setRenderQuestions(false);
       })
       .catch((err) => console.log(err));
-  }, [props.Render]);
+  }, [updateRender]);
 
   return (
     <div className={Style.body}>

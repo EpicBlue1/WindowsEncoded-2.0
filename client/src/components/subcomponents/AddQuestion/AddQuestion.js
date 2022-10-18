@@ -67,6 +67,7 @@ const AddQuestion = (props) => {
 
     axios.post("http://localhost:2000/api/newQuestion/", payloadData);
     props.rerender();
+    props.setUpdateRender(!props.updateRender);
   };
 
   return (
