@@ -34,18 +34,14 @@ const Landing = () => {
           <h2 className={Style.heading}>HELLO, {displayText}!</h2>
           <p className={Style.Paragraph}>
             <h3>Welcome to windows Encoded</h3>
+            The best online platfrom from dev students for dev students! Ask any
+            and answer development related questions.
             <br />
-            An online platfrom where students of open window can ask and answer
-            development related questions regarding their majors or modules
             <br />
-            You aswell as fellow students are able ask and rate quesitons, you
-            are able to earn and display your badges on your profile
+            Play fair, help out fellow developers, upvote and downvote, earn and
+            display your badges on your profile
             <br />
             If you are top rated you may even get the status of being an admin !
-            {/* Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to...s */}
           </p>
         </div>
       </div>

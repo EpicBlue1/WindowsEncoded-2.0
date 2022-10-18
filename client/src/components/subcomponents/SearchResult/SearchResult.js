@@ -14,13 +14,10 @@ const SearchResult = (props) => {
   let Result = firstLetterUpper + search.slice(1, search.length).toLowerCase();
 
   useEffect(() => {
-    console.log("Updated");
     axios.get("http://localhost:2000/api/allQuestions").then((res) => {
       let data = res.data;
 
-      let filteredData = res.data;
-
-      console.log(filteredData);
+      // let filteredData = res.data;
 
       let searchCard = data
         .filter((val) => {
@@ -58,8 +55,6 @@ const SearchResult = (props) => {
       } else if (searchCard.length > 1) {
         setCount(searchCard.length + " Results");
       }
-
-      console.log(filteredData);
     });
   }, [props.ResultData]);
 
