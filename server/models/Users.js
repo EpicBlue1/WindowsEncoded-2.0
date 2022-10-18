@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
   },
   accStatus: {
     type: Boolean,
-    required: true,
+    default:false,
   },
   profile: {
     type: String,
