@@ -184,7 +184,9 @@ router.post("/register", (req, res) => {
     .then(async (item) => {
       res.json(item);
 
-      const findUser = usersSchema.findOne({
+
+
+      const findUser = await usersSchema.findOne({
         // email: req.body.email,
         username: req.body.username,
       });
@@ -193,14 +195,14 @@ router.post("/register", (req, res) => {
       //   username: req.body.username,
       // });
 
-      let userIdLink = "http://localhost:2000/auth?id=" + findUser._id;
+      let userIdLink = "http://localhost:3000/auth?id=" + findUser._id;
 
-      // Send confirmation email has moved here to only run on successful add
+      // Send confirmation email has moved here to only run on successful add user to the database.
       const mailerOutput = `
     <h1>Welcome ${data.username} to Windows-Encoded</h1>
     <p>Before you can login, please verify your account using the link below</p>
-    <button style="width: 200px; height: 50px; background-color: #5067EB;
-      border-radius: 20px; Color: White;" href=${userIdLink}>Click to Verify </button>
+    <a style="width: 200px; height: 50px; background-color: #5067EB;
+      border-radius: 20px; Color: White;" href=${userIdLink}>Click to Verify </a>
    
 `;
       // style a buttong instead of an Href - inline styling
@@ -281,16 +283,24 @@ router.post("/api/login/", async (req, res) => {
   if (findUser) {
     console.log("user found!");
     if (await bcrypt.compare(req.body.password, findUser.password)) {
+      if(findUser.accStatus) {
+        res.json({
+          valid: true,
+          msg: "Pass matches",
+          userData: findUser,
+        });
+    } else {
+        res.json({
+          valid: false,
+          msg: "Account not verified. Please check your email.",
+        });
+    }
       console.log("Is a match");
-      res.json({
-        valid: true,
-        msg: "Pass matches",
-        userData: findUser,
-      });
+
     } else {
       res.json({
         valid: false,
-        msg: "Pass no matches",
+        msg: "Password does not match with your email address.",
       });
     }
   } else {
@@ -382,7 +392,7 @@ router.patch("/api/validate/:id", async (req, res) => {
       if (authUser) {
         const updateAccountStatus = await addUser.updateOne(
           { _id: req.params.id },
-          { $set: { accountStatus: true } }
+          { $set: { accStatus: true } }
         );
 
         res.json({

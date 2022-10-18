@@ -79,7 +79,7 @@ const Login = (props) => {
             );
             Navigate("/");
           } else {
-            setFormText("Password or Email doesn't match");
+            setFormText(res.data.msg);
             setEmailValid(false);
             setPasswordValid(false);
             setPasswordText("Double Check Password");

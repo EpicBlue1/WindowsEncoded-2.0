@@ -7,6 +7,7 @@ import LogNReg from "./components/Pages/LogNReg/LogNReg";
 import Profile from "./components/Pages/Profile/Profile";
 import Questions from "./components/Pages/Questions/Questions";
 import Testpage from "./components/Pages/TestPage/Testpage";
+import Auth from "./Auth";
 //components
 import LeftNav from "./components/subcomponents/LeftNav/LeftNav";
 import TopNav from "./components/subcomponents/TopNav/TopNav";
@@ -64,6 +65,7 @@ function App() {
               path="/IndividualQuestion"
               element={<IndividualQuestion />}
             />
+               <Route path="/auth" element={<Auth/>} />
           </Routes>
         </div>
       </div>
