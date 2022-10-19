@@ -26,12 +26,16 @@ const IndividualQuestion = () => {
     console.log(location.state.allData);
   }, [location.state.allData.image]);
 
+  //all answers
   useEffect(() => {
     axios.get("http://localhost:2000/api/allAnswers").then((res) => {
       let questionData = res.data;
-      console.log(questionData);
 
-      let renderAnswers = questionData.map((item) => <Answer allData={item} />);
+      let ChildId = location.state.allData._id;
+
+      let renderAnswers = questionData
+        .filter((data) => data.ParentQuestionId === ChildId)
+        .map((item) => <Answer allData={item} />);
 
       setAnswers(renderAnswers);
     });
