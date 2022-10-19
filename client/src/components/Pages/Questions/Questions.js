@@ -11,7 +11,7 @@ const Questions = (props) => {
   const [imageUrl, setImageUrl] = useState();
   const [renderQuestions, setRenderQuestions] = useState(false);
   const [loginAlert, setLoginAlert] = useState();
-  const [updateRender, setUpdateRender] = useState();
+  const [updateRender, setUpdateRender] = useState(false);
   let userData = sessionStorage.getItem("UserData");
   let user = JSON.parse(userData);
 
@@ -58,7 +58,7 @@ const Questions = (props) => {
         setRenderQuestions(false);
       })
       .catch((err) => console.log(err));
-  }, [updateRender]);
+  }, [updateRender, addQuestionModal]);
 
   return (
     <div className={Style.body}>
