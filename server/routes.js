@@ -250,43 +250,6 @@ router.post("/register", (req, res) => {
     .catch((err) => {
       res.status(400).json({ msg: "There is an error", err });
     });
-
-  // if (findUser) {
-  //   newUser
-  //     .save()
-  //     .then(async (item) => {
-  //       res.json(item);
-  //       res.json({
-  //         exists: false,
-  //       });
-
-  //       //Send conformation email has move here to only run on successfull add
-  //       const mailerOutput = `
-  //     <h1>Welcome ${data.username} to the website</h1>
-  //     <p>Before you login please verify your account, using the link below</p>
-  //     <a href= '#'>Click to verify</a>`;
-  //       const transporter = nodemailer.createTransport({
-  //         host: "welcome@windowsEncoded.com",
-  //         port: 465,
-  //         secure: true,
-  //         auth: {
-  //           user: "",
-  //           pass: "",
-  //         },
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       res.status(400).send(err.response);
-  //       console.log(err.response);
-  //       console.log(err.request);
-  //       console.log(err.message);
-  //     });
-  // } else {
-  //   console.log("Already exists");
-  //   res.json({
-  //     exists: true,
-  //   });
-  // }
 });
 
 router.post("/api/login/", async (req, res) => {
@@ -318,6 +281,10 @@ router.post("/api/login/", async (req, res) => {
     }
   } else {
     console.log("user not found!");
+    res.json({
+      valid: false,
+      msg: "Account does not exist",
+    });
   }
 });
 
@@ -411,6 +378,7 @@ router.patch("/api/validate/:id", async (req, res) => {
         res.json({
           user: authUser.username,
           success: true,
+          data: findUser,
           msg: "Profile Verified",
         });
       } else {

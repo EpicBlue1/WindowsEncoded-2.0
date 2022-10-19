@@ -36,6 +36,7 @@ const Login = (props) => {
 
     if (email.current.value === "") {
       setEmailValid("");
+      setFormText("");
     }
 
     //Password
@@ -52,6 +53,7 @@ const Login = (props) => {
 
     if (password.current.value === "") {
       setPasswordValid("");
+      setFormText("");
     }
   };
 
@@ -143,7 +145,7 @@ const Login = (props) => {
               Valid={passwordValid}
               ref={password}
               placeholder="Password"
-             // className={Style.margin}
+              // className={Style.margin}
               Intype="Login"
             />
           </form>
@@ -172,9 +174,7 @@ const Login = (props) => {
         </div>
         <div className={Style.LogRight}>
           <div className={Style.LogImage}></div>
-          <a href="https://www.freepik.com/free-vector/hand-coding-concept-illustration_21864184.htm#query=coding&position=17&from_view=search">
-            
-          </a>
+          <a href="https://www.freepik.com/free-vector/hand-coding-concept-illustration_21864184.htm#query=coding&position=17&from_view=search"></a>
         </div>
       </div>
     </>
