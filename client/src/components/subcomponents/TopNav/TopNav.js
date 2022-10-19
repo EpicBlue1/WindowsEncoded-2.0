@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
+import DefaultIcon from "../../../Icons/Profile.svg";
 import Input from "../Inputs/Input";
 import SearchResult from "../SearchResult/SearchResult";
 import Style from "./TopNav.module.scss";
@@ -9,7 +10,7 @@ import Style from "./TopNav.module.scss";
 const TopNav = (props) => {
   const Result = useRef();
   const [userName, setuserName] = useState("Please Log In");
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState(DefaultIcon);
   const [Navigate, setNavigate] = useState("/");
   const [ResultsModal, setResultsModal] = useState(false);
   const [ResultData, setResultData] = useState("");
@@ -39,6 +40,7 @@ const TopNav = (props) => {
       seshStorage === null ||
       seshStorage === ""
     ) {
+      // setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile}`);
       setNavigate("/");
     } else {
       setNavigate("/Profile");

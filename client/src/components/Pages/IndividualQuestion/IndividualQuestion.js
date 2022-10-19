@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import AddAnswer from "../../subcomponents/AddAnswer/AddAnswer";
 import Answer from "../../subcomponents/Answers/Answers";
 import CodeArea from "../../subcomponents/CodeArea/CodeArea";
+import ImagePreview from "../../subcomponents/ImagePreview/ImagePreview";
 import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
 import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
@@ -16,7 +17,8 @@ const IndividualQuestion = () => {
   const [answerModal, setAnswerModal] = useState();
   const [loginAlert, setLoginAlert] = useState();
   const [Answers, setAnswers] = useState();
-  //const [renderAnswers, setRenderAnswers] = useState();
+  const [ShowPreview, setShowPreview] = useState(false);
+
   let userData = sessionStorage.getItem("UserData");
   let user = JSON.parse(userData);
 
@@ -57,6 +59,11 @@ const IndividualQuestion = () => {
       <div onClick={() => Navigate(-1)} className={Style.closeButton}>
         <div className={Style.White}>x</div>
       </div>
+      <ImagePreview
+        IMG={""}
+        setShowPreview={setShowPreview}
+        ShowPreview={ShowPreview}
+      />
 
       {loginAlert}
       {answerModal}
@@ -76,6 +83,7 @@ const IndividualQuestion = () => {
 
       <div className={Style.questionDetails}>
         <div
+          onClick={() => setShowPreview(!ShowPreview)}
           className={Style.questionImage}
           style={{ backgroundImage: `url(${imageUrl})` }}
         ></div>
