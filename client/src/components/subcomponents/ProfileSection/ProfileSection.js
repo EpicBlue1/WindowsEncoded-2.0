@@ -1,4 +1,4 @@
-import { Axios } from "axios";
+import axios, { Axios } from "axios";
 import { Circle, Line } from "rc-progress";
 import React, { useEffect, useState } from "react";
 import Logo from "../../../Icons/Profile.svg";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import EditProfile from "../Edit Profile/EditProfile";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Style from "./ProfileSection.module.scss";
+import ProfileQuestion from "../ProfileQuestion/ProfileQuestion";
 
 const ProfileSection = (props) => {
   const [EditProfileModal, setEditProfileModal] = useState();
@@ -15,9 +16,11 @@ const ProfileSection = (props) => {
   const [profile, setProfile] = useState(Logo);
   const [userData, setuserData] = useState();
   const [userName, setUserName] = useState("No User");
+  const [QuestionCount, setQuestionCount] = useState();
   const Navigate = useNavigate();
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+  console.log(seshStorage)
 
   useEffect(() => {
     if (
@@ -46,6 +49,30 @@ const ProfileSection = (props) => {
       console.log(seshStorage);
     }
   }, []);
+
+
+
+  useEffect(() => {
+    
+    axios.get("http://localhost:2000/api/allQuestions")
+    .then((res) => {
+      console.log(res.data)
+      
+
+      let data = res.data;
+        let render = 
+        (data.filter((filterData)=> 
+        seshStorage._id === filterData.userId))
+        console.log(render)
+        setQuestionCount(render.length)
+    });
+    
+
+  }, []);
+ 
+
+
+
 
   // const EditProfile = () => {
   //     let user = sessionStorage.getItem('UserData');
@@ -101,7 +128,7 @@ const ProfileSection = (props) => {
         
 
         <div className={Style.TotalAsked}>
-          <h2 className={Style.Scores}>1</h2>
+          <h2 className={Style.Scores}>{QuestionCount}</h2>
           <h3 className={Style.ScoreText}>Questions Asked</h3>
         </div>
 

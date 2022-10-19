@@ -1,4 +1,3 @@
-import { Circle, Line } from "rc-progress";
 import React from "react";
 import Style from "./ProgressBar.module.scss";
 
@@ -8,7 +7,7 @@ const ProgressBar = () => {
   const value = seshStorage.score;
   const max = 100;
 
-  console.log(value);
+
 
   return (
     <>

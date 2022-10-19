@@ -4,10 +4,15 @@ import Style from './ProfileQuestion.module.scss'
 
 
 
-const ProfileQuestion = () => {
+const ProfileQuestion = (props) => {
+
+    let QuesData = props.alldata;
+    console.log(QuesData)
+
+
     return (
         <div className={Style.ProfQ}>
-            <h1 className={Style.Qtitle}>Question Title</h1>
+            <h1 className={Style.Qtitle}>{QuesData.questionTitle}</h1>
 
             <div className={Style.TagSection}>
             <QuestionTag/>

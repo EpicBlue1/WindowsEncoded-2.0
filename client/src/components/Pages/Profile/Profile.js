@@ -1,3 +1,4 @@
+import axios from "axios";
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,105 +8,49 @@ import ProfileSection from "../../subcomponents/ProfileSection/ProfileSection";
 import Style from "./Profile.module.scss";
 
 const Profile = (props) => {
+
+  const [ProfileData, setProfileData] = useState();
+  const [ProfileQuestions, setProfileQuestions] = useState();
+
   const Navigate = useNavigate();
   const [Busy, setBusy] = useState(true);
 
   useEffect(() => {
     const USER = sessionStorage.getItem("UserData");
+    let user = JSON.parse(USER);
     if (USER === "" || USER === null || USER === undefined || USER === false) {
       Navigate("/LogNReg");
     } else if (USER) {
       // Navigate("/");
       setBusy(false);
     }
+
+    setProfileData(user)
+    console.log(user)
+
+    let UserId = user._id;
+
+    
+    
+    axios.get("http://localhost:2000/api/allQuestions")
+    .then((res) => {
+      console.log(res.data[0].userId)
+      console.log(UserId)
+
+      let data = res.data;
+        let render = 
+        setProfileQuestions(data.filter((filterData)=> 
+        UserId === filterData.userId
+        ).map((Ques) => 
+          <ProfileQuestion  alldata={Ques} />
+        ));
+    });
+    
+
   }, []);
-  // const [user, setUser] = useState();
+ 
 
-  // const UserData = JSON.parse(sessionStorage.getItem("UserData"))
 
-  // console.log(UserData.email)
-
-  //  let data =  sessionStorage.getItem("UserData");
-
-  //  let user = JSON.parse(userStr, (key, value) => {
-  //   if (typeof value === 'string') {
-  //     return value.toUpperCase();
-  //   }
-  //   return value;
-  // });
-
-  // console.log(user);
-
-  //   const data = JSON.parse(UserData)
-
-  //  console.log(data)
-
-  //  const [userData, setUserData] = useState({
-  //   username: "",
-  //   email: "",
-  //   score: "",
-  //   profile: ""
-  // });
-
-  // useEffect(()=>{
-  //   Axios.get('http://localhost:2000/api/user/' + UserData)
-  //   .then(res => {
-  //     let data = res.data;
-  //     console.log(data)
-  //     setProductData({
-  //       ProductName: data.ProductName,
-  //       Description: data.Description,
-  //       Price: data.Price,
-  //       DiscPrice: data.DiscountedPrice,
-  //       stock: data.stock,
-  //       SizeOne: data.Sizes.sevenHalf,
-  //       SizeTwo: data.Sizes.eight,
-  //       SizeThree: data.Sizes.eightHalf
-  //     })
-  //     let URL = 'http://localhost:5000/productImages/' + data.image;
-  //     setImgURL(URL);
-  //   })
-  //   .catch()
-  // }, []);
-
-  //  let dataUser =  sessionStorage.getItem("UserData", JSON.parse(UserData));
-
-  //  let dataUser =  sessionStorage.getItem("UserData", JSON.parse(data));
-
-  //  let UserData =  sessionStorage.getItem("UserData", JSON.parse(UserData));
-
-  //  let UserData =  sessionStorage.getItem("UserData");
-
-  //  console.log(dataUser)
-  //  console.log(UserData.username)
-
-  //  const [userData, setUserData] = useState({
-  //   username: "",
-  //   email: "",
-  //   score: "",
-  //   profile: ""
-  // });
-
-  // useEffect(()=>{
-  //   Axios.get('http://localhost:2000/api/user/' + UserData)
-  //   .then(res => {
-  //     let data = res.data;
-  //     console.log(data)
-  //     setProductData({
-  //       ProductName: data.ProductName,
-  //       Description: data.Description,
-  //       Price: data.Price,
-  //       DiscPrice: data.DiscountedPrice,
-  //       stock: data.stock,
-  //       SizeOne: data.Sizes.sevenHalf,
-  //       SizeTwo: data.Sizes.eight,
-  //       SizeThree: data.Sizes.eightHalf
-  //     })
-  //     let URL = 'http://localhost:5000/productImages/' + data.image;
-  //     setImgURL(URL);
-  //   })
-  //   .catch()
-  // }, []);
 
   return Busy ? null : (
     <div className={Style.body}>
@@ -129,9 +74,8 @@ const Profile = (props) => {
       <br></br>
       <h1>YOUR ACTIVITY</h1>
       <div className={Style.QuestionSection}>
-        <ProfileQuestion />
-        <ProfileQuestion />
-        <ProfileQuestion />
+        {ProfileQuestions}
+        {console.log(ProfileQuestions)}
       </div>
       <div className={Style.ProfileSection}>
         <ProfileSection />

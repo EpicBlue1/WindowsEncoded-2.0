@@ -7,6 +7,7 @@ import CodeArea from "../../subcomponents/CodeArea/CodeArea";
 import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
 import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
+import Button from "../../subcomponents/Buttons/Button";
 
 const IndividualQuestion = () => {
   let location = useLocation();
@@ -98,9 +99,9 @@ const IndividualQuestion = () => {
           <p className={Style.votes}>
             <strong>Downvotes: </strong>100
           </p>
-          <p className={Style.reply} onClick={reply}>
+          <Button type="Primary" className={Style.reply} onClick={reply}>
             Reply
-          </p>
+          </Button>
         </div>
 
         <hr />

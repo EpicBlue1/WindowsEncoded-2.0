@@ -31,7 +31,7 @@ const Landing = () => {
           style={{ backgroundImage: `url(${profile})` }}
         ></div>
         <div className={Style.LanContent}>
-          <h2 className={Style.heading}>HELLO, {displayText}!</h2>
+          <h2 className={Style.heading}>Hello, {displayText}!</h2>
           <p className={Style.Paragraph}>
             <h3>Welcome to windows Encoded</h3>
             The best online platfrom from dev students for dev students! Ask any
