@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../subcomponents/Buttons/Button";
 import ForgetPassword from "../../subcomponents/ForgetPassword/ForgetPassword";
 import Input from "../../subcomponents/Inputs/Input";
+import Confirmation from "./Confirmation";
 import Style from "./LogNReg.module.scss";
 
 const Login = (props) => {
@@ -107,19 +108,21 @@ const Login = (props) => {
 
   return (
     <>
+      <Confirmation />
       <div className=""></div>
       <div className={props.changeCards ? Style.Login : Style.LoginBack}>
         <div className={Style.closeButton}>
-          <Link to="/">
-            <div
-              className={Style.White}
-              onClick={() => {
-                props.setShowNav(true);
-              }}
-            >
-              x
-            </div>
-          </Link>
+          <div
+            className={Style.White}
+            onClick={() => {
+              props.setShowConfirm(true);
+              props.setAreSure(
+                "Are you sure? You wont be able to ask or answer questions."
+              );
+            }}
+          >
+            x
+          </div>
         </div>
         <ForgetPassword
           forgotPassword={forgotPassword}
