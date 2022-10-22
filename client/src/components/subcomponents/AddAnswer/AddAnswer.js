@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../../subcomponents/Buttons/Button";
 import LoginAlert from "../LoginModal/LoginAlert";
 import Style from "./AddAnswer.module.scss";
@@ -10,6 +10,13 @@ const AddAnswer = (props) => {
   const [answer, setAnswer] = useState();
   const [answerImage, setAnswerImage] = useState();
   const [imageName, setImageName] = useState("Upload a file");
+  const [Valid, setValid] = useState("");
+
+  const Form = useRef();
+  const Image = useRef();
+  const Desc = useRef();
+  const Code = useRef();
+  const LangSelect = useRef();
 
   const closeModal = () => {
     props.rerender();
@@ -39,31 +46,44 @@ const AddAnswer = (props) => {
 
   const addAnswer = (e) => {
     e.preventDefault();
-    console.log(props.allData._id);
+    console.log(Form.current.value);
+    if (
+      Form.current.value === "undefined" ||
+      Image.current.value === "" ||
+      Desc.current.value === "" ||
+      Code.current.value === "" ||
+      LangSelect.current.value === "Please Select the Language..."
+    ) {
+      setValid("Please make sure to fill in all the fields");
+    } else {
+      console.log(props.allData._id);
 
-    const payloadData = new FormData();
+      const payloadData = new FormData();
 
-    console.log(answer.codeSnippet);
+      console.log(answer.codeSnippet);
 
-    let payload = {
-      Answers: {
-        userId: user._id,
-        ParentQuestionId: props.allData._id,
-        username: user.username,
-        answerDescription: answer.answerDescription,
-        codeSnippet: answer.codeSnippet,
-      },
-    };
+      let payload = {
+        Answers: {
+          userId: user._id,
+          ParentQuestionId: props.allData._id,
+          username: user.username,
+          answerDescription: answer.answerDescription,
+          codeSnippet: answer.codeSnippet,
+          language: LangSelect.current.value,
+        },
+      };
 
-    payloadData.append("information", JSON.stringify(payload));
-    payloadData.append("image", answerImage);
+      payloadData.append("information", JSON.stringify(payload));
+      payloadData.append("image", answerImage);
 
-    console.log(payload);
-    for (let [key, value] of payloadData) {
-      console.log(`${key}: ${value}`);
+      console.log(payload);
+      for (let [key, value] of payloadData) {
+        console.log(`${key}: ${value}`);
+      }
+      setValid("");
+      axios.post("http://localhost:2000/api/newAnswer", payloadData);
+      props.rerender();
     }
-    axios.post("http://localhost:2000/api/newAnswer", payloadData);
-    // props.rerender();
   };
 
   return (
@@ -73,28 +93,38 @@ const AddAnswer = (props) => {
           <div>x</div>
         </div>
 
-        <form>
+        <form ref={Form}>
           <h2>Add a Answer</h2>
 
           <div className={Style.PfBlockUp}>
             <div className={Style.upload_btn_wrapper}>
               <img id="prev_img" />
               <button className={Style.btn}>{imageName}</button>
-              <input type="file" name="image" onChange={getImage} />
+              <input ref={Image} type="file" name="image" onChange={getImage} />
             </div>
           </div>
 
           <textarea
             className={Style.textBox}
             name="answerDescription"
+            ref={Desc}
             onChange={answerInfo}
             placeholder="eg. Set your imported component that you wish to use in your useState"
           ></textarea>
           <p>Explain your answer in detail. Be specific.</p>
 
+          <select ref={LangSelect} name="language">
+            <option>Please Select the Language...</option>
+            <option>Javascript</option>
+            <option>PHP</option>
+            <option>Swift</option>
+            <option>Kotlin</option>
+          </select>
+
           <textarea
             className={Style.codeBox}
             name="codeSnippet"
+            ref={Code}
             onChange={answerInfo}
             placeholder="eg. setModal(<Modal/>);"
           ></textarea>
@@ -103,6 +133,9 @@ const AddAnswer = (props) => {
           <Button type="Primary" onClick={addAnswer}>
             Add Answer
           </Button>
+          <br />
+          <br />
+          <h3 className={Style.TextRed}>{Valid}</h3>
         </form>
       </div>
     </div>

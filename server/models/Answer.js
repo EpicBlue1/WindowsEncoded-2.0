@@ -27,6 +27,7 @@ const AnswerSchema = mongoose.Schema({
   },
   language: {
     type: String,
+    required: true,
   },
   upvotes: {
     type: Number,

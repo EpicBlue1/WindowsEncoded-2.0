@@ -12,12 +12,13 @@
   transform: translate(-50%, -50%);
   z-index: 500;
   animation: fadeIn 1s;
-}
 
-p{
-  margin-bottom: 4%;
-  color: $Primary_DarkBlue;
-  font-size:  small !important;
+  p {
+    margin-bottom: 4%;
+    color: $Primary_DarkBlue;
+    font-size: small !important;
+    text-align: center;
+  }
 }
 
 @keyframes fadeIn {
@@ -152,4 +153,9 @@ p{
   top: 0;
   opacity: 0;
   // display: none;
+}
+
+.TextRed {
+  color: red;
+  text-align: center;
 }
