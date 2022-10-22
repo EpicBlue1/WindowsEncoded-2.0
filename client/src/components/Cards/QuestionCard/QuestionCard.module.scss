@@ -29,23 +29,59 @@
   width: 3%;
   height: auto;
   padding: 1%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
 }
 
-.BottomVote {
-  width: 65%;
-  height: 90px;
-  background-color: $Semantic_Red;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+.Gradient {
+  width: 90%;
+  height: 95%;
+  background-color: red;
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: center;
+  text-align: center;
 }
 
-.TopVote {
-  width: 65%;
-  height: 90px;
-  margin-top: 5px;
-  background-color: $Semantic_Green;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+.circle {
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  border-radius: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
+
+.Upvote {
+  width: 90%;
+  height: 20px;
+  font-weight: 800;
+  background-image: url("../../../Icons/like.svg");
+  @include backgroundImages() // background-image: ;
+;
+}
+
+.Downvote {
+  width: 90%;
+  height: 20px;
+  font-weight: 800;
+  background-image: url("../../../Icons/dislike.svg");
+  @include backgroundImages();
 }
 
 .profileImg {
@@ -79,9 +115,11 @@
   border-radius: 10px;
   font-size: smaller;
   padding: 0.5% 2%;
-  color: $Primary_DarkBlue;
+  background-color: #ff8d4b69;
+  color: #2b2b2b;
+  font-weight: 600;
   z-index: 100;
-  @include ModalColor;
+  // @include ModalColor;
 }
 
 // .tag {

@@ -28,7 +28,22 @@ const QuestionCard = (props) => {
 
         <p className={Style.questionDescription}>{props.questionDescription}</p>
       </div>
-      <div className={Style.Right}></div>
+      <div className={Style.Right}>
+        <div
+          className={Style.Gradient}
+          style={{
+            background: `linear-gradient(
+              0deg,
+              rgba(253, 30, 74, 1) 30%,
+              rgba(0, 200, 145, 1) 70%
+            )`,
+          }}
+        >
+          <div className={Style.Upvote}></div>
+          <div className={Style.circle}>10</div>
+          <div className={Style.Downvote}></div>
+        </div>
+      </div>
     </div>
   );
 };
