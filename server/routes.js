@@ -54,6 +54,9 @@ router.post(
       codeSnippet: data.codeSnippet,
       language: data.language,
       image: req.file.filename,
+      upvotes: 0,
+      downvotes: 0,
+      score: 0,
     });
 
     newQuestion
@@ -125,9 +128,10 @@ router.post(
       answerDescription: data.answerDescription,
       codeSnippet: data.codeSnippet,
       image: req.file.filename,
-      language: "Java",
+      language: data.language,
       upvotes: 0,
       downvotes: 0,
+      score: 0,
     });
 
     newAnswer
@@ -287,8 +291,6 @@ router.post("/api/login/", async (req, res) => {
     });
   }
 });
-
-
 
 //node mailer
 

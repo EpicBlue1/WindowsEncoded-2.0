@@ -105,7 +105,8 @@ const IndividualQuestion = () => {
         <br />
         <br />
 
-        <CodeArea language="html">
+        <p>({location.state.allData.language.toLowerCase()})</p>
+        <CodeArea language={location.state.allData.language.toLowerCase()}>
           {location.state.allData.codeSnippet}
         </CodeArea>
 

@@ -39,7 +39,10 @@ const Answer = (props) => {
             {data.answerDescription}
           </p>
           <div className={Style.CodeContainer}>
-            <CodeArea language="java">{data.codeSnippet}</CodeArea>
+            <CodeArea language={data.language.toLowerCase()}>
+              {data.codeSnippet}
+            </CodeArea>
+            <p>({data.language.toLowerCase()})</p>
           </div>
         </div>
       </div>

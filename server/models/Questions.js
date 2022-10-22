@@ -14,11 +14,11 @@ const QuestionSchema = mongoose.Schema({
   },
   upvotes: {
     type: Number,
-    // required: true
+    required: true,
   },
   downvotes: {
     type: Number,
-    // required: true
+    required: true,
   },
   score: {
     type: Number,
