@@ -3,17 +3,18 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AddAnswer from "../../subcomponents/AddAnswer/AddAnswer";
 import Answer from "../../subcomponents/Answers/Answers";
+import Button from "../../subcomponents/Buttons/Button";
 import CodeArea from "../../subcomponents/CodeArea/CodeArea";
 import ImagePreview from "../../subcomponents/ImagePreview/ImagePreview";
 import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
 import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
-import Button from "../../subcomponents/Buttons/Button";
 
 const IndividualQuestion = () => {
   let location = useLocation();
   let Navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState();
+  const [imagePrev, setImagePrev] = useState();
   const [answerModal, setAnswerModal] = useState();
   const [loginAlert, setLoginAlert] = useState();
   const [Answers, setAnswers] = useState();
@@ -26,6 +27,7 @@ const IndividualQuestion = () => {
     let URL =
       "http://localhost:2000/QuestionImages/" + location.state.allData.image;
     setImageUrl(URL);
+    setImagePrev(URL);
     console.log(location.state.allData);
   }, [location.state.allData.image]);
 
@@ -38,7 +40,14 @@ const IndividualQuestion = () => {
 
       let renderAnswers = questionData
         .filter((data) => data.ParentQuestionId === ChildId)
-        .map((item) => <Answer allData={item} />);
+        .map((item) => (
+          <Answer
+            setImageUrl={setImageUrl}
+            ShowPreview={ShowPreview}
+            setShowPreview={setShowPreview}
+            allData={item}
+          />
+        ));
 
       setAnswers(renderAnswers);
     });
@@ -60,7 +69,7 @@ const IndividualQuestion = () => {
         <div className={Style.White}>x</div>
       </div>
       <ImagePreview
-        IMG={""}
+        IMG={imageUrl}
         setShowPreview={setShowPreview}
         ShowPreview={ShowPreview}
       />
@@ -85,7 +94,7 @@ const IndividualQuestion = () => {
         <div
           onClick={() => setShowPreview(!ShowPreview)}
           className={Style.questionImage}
-          style={{ backgroundImage: `url(${imageUrl})` }}
+          style={{ backgroundImage: `url(${imagePrev})` }}
         ></div>
         <p className={Style.questionDescription}>
           {" "}
@@ -99,6 +108,7 @@ const IndividualQuestion = () => {
         <CodeArea language="html">
           {location.state.allData.codeSnippet}
         </CodeArea>
+
         <br />
         <div className="answerSection">
           <p className={Style.votes}>
@@ -107,12 +117,15 @@ const IndividualQuestion = () => {
           <p className={Style.votes}>
             <strong>Downvotes: </strong>100
           </p>
-          <Button type="Primary" className={Style.reply} onClick={reply}>
-            Reply
-          </Button>
         </div>
 
         <hr />
+        <br />
+
+        <Button type="Primary" className={Style.reply} onClick={reply}>
+          Reply
+        </Button>
+        <br />
 
         <br />
         <h2 className={Style.heading}>Answers</h2>

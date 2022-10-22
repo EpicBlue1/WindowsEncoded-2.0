@@ -12,19 +12,38 @@ const Answer = (props) => {
   console.log(props.allData);
 
   return (
-    <div className="Answer">
+    <>
       <ImagePreview
-        IMG={""}
+        IMG={`http://localhost:2000/QuestionImages/${data.image}`}
         setShowPreview={setShowPreview}
         ShowPreview={ShowPreview}
       />
-      <VotingSystem className={Style.left} />
-      <p className={Style.answerText}>
-        <strong>{data.username}</strong>
-        {data.answerDescription}
-      </p>
-      <CodeArea language="java">{data.codeSnippet}</CodeArea>
-    </div>
+
+      <div className={Style.Answer}>
+        <VotingSystem className={Style.left} />
+        <div
+          onClick={() => {
+            props.setShowPreview(!props.ShowPreview);
+            props.setImageUrl(
+              `http://localhost:2000/QuestionImages/${data.image}`
+            );
+          }}
+          style={{
+            backgroundImage: `url(${`http://localhost:2000/QuestionImages/${data.image}`})`,
+          }}
+          className={Style.QuesImage}
+        ></div>
+        <div>
+          <p className={Style.answerText}>
+            <strong className={Style.username}>{data.username}:</strong>
+            {data.answerDescription}
+          </p>
+          <div className={Style.CodeContainer}>
+            <CodeArea language="java">{data.codeSnippet}</CodeArea>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

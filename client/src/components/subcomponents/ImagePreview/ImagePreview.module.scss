@@ -1,14 +1,15 @@
 @import "../../../index.scss";
 
 .ContainerImage {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80vh;
+  width: 90%;
+  height: 84vh;
   padding: 15px;
-  background-color: red;
+  @include ModalColor;
+  backdrop-filter: blur(4px);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
