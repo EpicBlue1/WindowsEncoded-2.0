@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../../subcomponents/Buttons/Button";
 import Input from "../Inputs/Input";
 import Style from "./AddQuestion.module.scss";
@@ -7,7 +7,16 @@ import Style from "./AddQuestion.module.scss";
 const AddQuestion = (props) => {
   const [imageName, setImageName] = useState("Upload a file");
   const [questionInputs, setQuestionInputs] = useState();
+  const [Valid, setValid] = useState("");
   const [questionImage, setQuestionImage] = useState();
+
+  const Form = useRef();
+  const QuesTitle = useRef();
+  const Image = useRef();
+  const Desc = useRef();
+  const Code = useRef();
+  const LangSelect = useRef();
+
   let userData = sessionStorage.getItem("UserData");
 
   userData = JSON.parse(userData);
@@ -40,34 +49,43 @@ const AddQuestion = (props) => {
 
   const addQuestion = (e) => {
     e.preventDefault();
+    if (
+      QuesTitle.current.value === "" ||
+      Image.current.value === "" ||
+      Desc.current.value === "" ||
+      Code.current.value === "" ||
+      LangSelect.current.value === "Please Select the Language..."
+    ) {
+      setValid("Please make sure to fill in all the fields");
+    } else {
+      const payloadData = new FormData();
 
-    const payloadData = new FormData();
+      let payload = {
+        userId: userData._id,
+        username: userData.username,
+        questionTitle: questionInputs.questionTitle,
+        questionDescription: questionInputs.questionDescription,
+        codeSnippet: questionInputs.codeSnippet,
+        language: questionInputs.language,
+      };
 
-    let payload = {
-      userId: userData._id,
-      username: userData.username,
-      questionTitle: questionInputs.questionTitle,
-      questionDescription: questionInputs.questionDescription,
-      codeSnippet: questionInputs.codeSnippet,
-      language: questionInputs.language,
-    };
+      console.log(payload);
 
-    console.log(payload);
+      payloadData.append("information", JSON.stringify(payload));
+      payloadData.append("image", questionImage);
 
-    payloadData.append("information", JSON.stringify(payload));
-    payloadData.append("image", questionImage);
+      for (var pair of payloadData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
+      for (let [key, value] of payloadData) {
+        console.log(`${key}: ${value}`);
+      }
+      console.log(payload);
 
-    for (var pair of payloadData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
+      axios.post("http://localhost:2000/api/newQuestion/", payloadData);
+      props.rerender();
+      props.setUpdateRender(!props.updateRender);
     }
-    for (let [key, value] of payloadData) {
-      console.log(`${key}: ${value}`);
-    }
-    console.log(payload);
-
-    axios.post("http://localhost:2000/api/newQuestion/", payloadData);
-    props.rerender();
-    props.setUpdateRender(!props.updateRender);
   };
 
   return (
@@ -77,43 +95,48 @@ const AddQuestion = (props) => {
           <div>x</div>
         </div>
 
-        <form>
+        <form ref={Form}>
           <h2>Add a Question</h2>
-
-          <select name="language" onChange={questionInfo}>
-            <option>Please Select a Language...</option>
-            <option>Javascript</option>
-            <option>PHP</option>
-            <option>Swift</option>
-            <option>Kotlin</option>
-          </select>
 
           <Input
             Intype="ModalInput"
-            placeholder="eg. Making use of UseStates in React"
+            placeholder="Question Title"
             name="questionTitle"
+            ref={QuesTitle}
             onChange={questionInfo}
           />
+
           <p>Add a brief description of your Question</p>
 
           <div className={Style.PfBlockUp}>
             <div className={Style.upload_btn_wrapper}>
               <img id="prev_img" />
               <button className={Style.btn}>{imageName}</button>
-              <input type="file" name="image" onChange={getImage} />
+              <input ref={Image} type="file" name="image" onChange={getImage} />
             </div>
           </div>
 
           <textarea
             className={Style.textBox}
             name="questionDescription"
+            ref={Desc}
             onChange={questionInfo}
             placeholder="eg. I would like one of my components to pop up with the click of a button."
           ></textarea>
           <p>Explain your question in detail. Be specific.</p>
+
+          <select ref={LangSelect} name="language" onChange={questionInfo}>
+            <option>Please Select the Language...</option>
+            <option>Javascript</option>
+            <option>PHP</option>
+            <option>Swift</option>
+            <option>Kotlin</option>
+          </select>
+
           <textarea
             className={Style.codeBox}
             name="codeSnippet"
+            ref={Code}
             onChange={questionInfo}
             placeholder="eg. const [modal, setModal] = useState();"
           ></textarea>
@@ -121,9 +144,12 @@ const AddQuestion = (props) => {
 
           {/* TODO: Add Tags */}
 
-          <Button type="Primary" onClick={addQuestion}>
+          <Button className={Style.Auto} type="Primary" onClick={addQuestion}>
             Add Question
           </Button>
+          <br />
+          <br />
+          <h3 className={Style.TextRed}>{Valid}</h3>
         </form>
       </div>
     </div>
