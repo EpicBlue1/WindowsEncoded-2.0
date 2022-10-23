@@ -7,12 +7,11 @@ import DeleteModal from '../DeleteModal/DeleleModal';
 const ProfileQuestion = (props) => {
 
     let QuesData = props.alldata;
-    console.log(QuesData)
 
     const [deleteModal, setDeleteModal] = useState();
 
     const deleteAltert = () => {
-        setDeleteModal(<DeleteModal rerender={setDeleteModal} />);
+        setDeleteModal(<DeleteModal rerender={setDeleteModal} questionId={QuesData._id}/>);
     }
 
     return (

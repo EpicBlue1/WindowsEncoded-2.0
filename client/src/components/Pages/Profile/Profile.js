@@ -24,8 +24,6 @@ const Profile = (props) => {
       let UserId = user._id;
 
       axios.get("http://localhost:2000/api/allQuestions").then((res) => {
-        console.log(res.data[0].userId);
-        console.log(UserId);
 
         let data = res.data;
         let render = setProfileQuestions(
@@ -37,7 +35,6 @@ const Profile = (props) => {
     }
 
     setProfileData(user);
-    console.log(user);
   }, []);
 
   return Busy ? null : (
@@ -63,7 +60,7 @@ const Profile = (props) => {
       <h1>YOUR ACTIVITY</h1>
       <div className={Style.QuestionSection}>
         {ProfileQuestions}
-        {console.log(ProfileQuestions)}
+        {/* {console.log(ProfileQuestions)} */}
       </div>
       <div className={Style.ProfileSection}>
         <ProfileSection />

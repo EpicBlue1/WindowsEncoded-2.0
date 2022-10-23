@@ -85,6 +85,13 @@ router.get("/api/oneQuestion/:id", async (req, res) => {
   res.json(findQuestion);
 });
 
+// delete question
+// delete a product
+router.delete('/api/deleteQuestion/:id', async(req, res) => {
+  const findQuestion = await questionModel.remove({_id: req.params.id});
+  res.json(findQuestion);
+});
+
 // get all profile
 router.get("/api/allProfiles/", async (req, res) => {
   const findQuestion = await ProfileSchema.find();

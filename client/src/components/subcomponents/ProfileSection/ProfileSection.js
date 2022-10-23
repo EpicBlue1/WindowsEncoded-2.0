@@ -20,7 +20,6 @@ const ProfileSection = (props) => {
   const Navigate = useNavigate();
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
-  console.log(seshStorage)
 
   useEffect(() => {
     if (
@@ -46,7 +45,6 @@ const ProfileSection = (props) => {
       setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile}`);
       setuserData(seshStorage);
       setUserName(seshStorage.username);
-      console.log(seshStorage);
     }
   }, []);
 
@@ -56,23 +54,15 @@ const ProfileSection = (props) => {
     
     axios.get("http://localhost:2000/api/allQuestions")
     .then((res) => {
-      console.log(res.data)
-      
-
       let data = res.data;
         let render = 
         (data.filter((filterData)=> 
         seshStorage._id === filterData.userId))
-        console.log(render)
         setQuestionCount(render.length)
     });
     
 
   }, []);
- 
-
-
-
 
   // const EditProfile = () => {
   //     let user = sessionStorage.getItem('UserData');
