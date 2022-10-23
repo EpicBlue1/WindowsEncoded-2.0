@@ -60,7 +60,7 @@
   // padding: 2.5px;
   padding-left: 10px;
   padding-right: 10px;
-  border-bottom: 2px solid $Primary_LightBlue;
+  // border-bottom: 2px solid $Primary_LightBlue;
   cursor: pointer;
 }
 
@@ -69,6 +69,7 @@
   @include Shadow();
   color: white;
   background-color: $Primary_LightBlue;
+  border-radius: 20px;
 }
 
 .IconSpot1 {
@@ -143,4 +144,8 @@
   @include Shadow();
   background-color: $Primary_LightBlue;
   color: white;
+}
+
+.active h3{
+  color: $Primary_LightBlue;
 }

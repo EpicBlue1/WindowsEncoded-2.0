@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
 import Style from "./LeftNav.module.scss";
 
@@ -24,19 +24,15 @@ const LeftNav = (props) => {
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
       <div className={Style.leftNav}>
-        <Link to="/">
-          <div className={Style.Home}>
-            <div className={Style.IconSpot1}></div>
-            <h3 className={Style.homeText}>Home</h3>
-          </div>
-        </Link>
+        <NavLink to="/" className={Style.Home} activeClassName="active">
+          <div className={Style.IconSpot1}></div>
+          <h3 className={Style.homeText}>Home</h3>
+        </NavLink>
 
-        <Link to="/Questions">
-          <div className={Style.Questions}>
+        <NavLink to="/Questions" className={Style.Questions}>
             <div className={Style.IconSpot2}></div>
             <h3 className={Style.text}>Questions</h3>
-          </div>
-        </Link>
+        </NavLink>
 
         <div className={Style.Topics}>
           <h2>Topics</h2>
@@ -46,7 +42,7 @@ const LeftNav = (props) => {
           <CheckBox />
         </div>
 
-        <Link to="/LogNReg">
+        <NavLink to="/LogNReg">
           <div className={Style.Logout}>
             <div className={Style.LogImg}></div>
             <h3
@@ -58,7 +54,7 @@ const LeftNav = (props) => {
               {logOut}
             </h3>
           </div>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
