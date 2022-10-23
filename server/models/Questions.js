@@ -22,7 +22,6 @@ const QuestionSchema = mongoose.Schema({
   },
   score: {
     type: Number,
-    required: true,
   },
   image: { type: String, required: true },
 });
