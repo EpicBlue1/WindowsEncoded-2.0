@@ -5,8 +5,22 @@ import ProfilesCard from "../../Cards/ProfilesCard/ProfilesCard";
 import Button from "../../subcomponents/Buttons/Button";
 import Input from "../../subcomponents/Inputs/Input";
 import Style from "./LogNReg.module.scss";
+import show from "../../../Icons/eye-open.svg";
+import hide from "../../../Icons/eye-closed.svg";
 
 const Register = (props) => {
+
+    //Hide and Show Password
+    const [passwordType, setPasswordType] = useState("password");
+
+    const togglePassword = () => {
+      if(passwordType==="password"){
+        setPasswordType("text");
+        return;
+      }
+      setPasswordType("password")
+    }
+
   const Image = useRef(),
     username = useRef(),
     email = useRef(),
@@ -206,7 +220,9 @@ const Register = (props) => {
             required="true"
             placeholder="Password"
             Intype="Login"
+            type={passwordType}
           />
+          <div className="passwordShow" onClick={togglePassword}>{ passwordType === "password" ? <img src={hide}/> : <img src={show}/> }</div>
           <div className={Style.InSpacing}></div>
           <Input
             ref={passwordVal}

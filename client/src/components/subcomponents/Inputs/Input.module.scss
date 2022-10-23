@@ -55,6 +55,18 @@
   background-size: 60%;
 }
 
+.eyeOpen{
+  width: 3%;
+  margin-top: 1px;
+  position: relative;
+  right: 6vh;
+  float: left;
+  height: 35px;
+  background-image: url("../../../Icons/eye-closed.svg");
+  @include backgroundImages;
+  background-size: 60%;
+}
+
 .Valid {
   width: 3.8%;
   position: relative;
