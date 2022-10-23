@@ -1,7 +1,5 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import Button from "../Buttons/Button";
-import Input from "../Inputs/Input";
 import { useNavigate } from 'react-router-dom';
 import Style from "./LoginAlert.module.scss";
 

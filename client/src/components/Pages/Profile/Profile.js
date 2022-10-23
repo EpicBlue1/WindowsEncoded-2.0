@@ -30,8 +30,8 @@ const Profile = (props) => {
         let data = res.data;
         let render = setProfileQuestions(
           data
-            .filter((filterData) => UserId === filterData.userId)
-            .map((Ques) => <ProfileQuestion alldata={Ques} />)
+          .filter((filterData) => UserId === filterData.userId)
+          .map((Ques) => <ProfileQuestion alldata={Ques} />)
         );
       });
     }

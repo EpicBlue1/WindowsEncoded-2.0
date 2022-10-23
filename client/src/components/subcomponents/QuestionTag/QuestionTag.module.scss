@@ -1,14 +1,14 @@
 @import "../../../index.scss";
 
 .MainTag {
-  width: 100px;
-  height: 25px;
-  background-color: rgb(155, 153, 153);
-  background-color: #fd1e4b86;
-  border-radius: 5px;
-  text-align: center;
-  padding-top: 5px;
-  margin-left: 10px;
-  z-index: 100 !important;
   float: left;
+  margin-right: 1%;
+  width: fit-content;
+  border-radius: 10px;
+  font-size: smaller;
+  padding: 0.5% 2%;
+  color: $Primary_DarkBlue;
+  font-weight: 600;
+  z-index: 100;
+  @include ModalColor;
 }

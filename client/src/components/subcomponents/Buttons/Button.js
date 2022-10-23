@@ -8,10 +8,10 @@ const Button = (props) => {
       onClick={props.onClick}
       className={`${props.className ? props.classname : ""} ${
         props.type === "Primary"
-          ? Style.primary
-          : props.type === "Secondary"
-          ? Style.secondary
-          : Style.tertiary
+        ? Style.primary
+        : props.type === "Secondary"
+        ? Style.secondary
+        : Style.tertiary
       }`}
     >
       {props.children}
