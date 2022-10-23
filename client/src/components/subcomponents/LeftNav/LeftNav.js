@@ -24,7 +24,7 @@ const LeftNav = (props) => {
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
       <div className={Style.leftNav}>
-        <NavLink to="/" className={Style.Home} activeClassName="active">
+        <NavLink to="/" className={Style.Home} activeClassName={Style.active}>
           <div className={Style.IconSpot1}></div>
           <h3 className={Style.homeText}>Home</h3>
         </NavLink>

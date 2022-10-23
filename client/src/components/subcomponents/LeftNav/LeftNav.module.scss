@@ -146,6 +146,6 @@
   color: white;
 }
 
-.active h3{
-  color: $Primary_LightBlue;
+.active {
+  background: $Primary_LightBlue !important;
 }
