@@ -54,9 +54,8 @@ router.post(
       codeSnippet: data.codeSnippet,
       language: data.language,
       image: req.file.filename,
-      upvotes: 0,
-      downvotes: 0,
-      score: 0,
+      upvotes: 1,
+      downvotes: 1,
     });
 
     newQuestion
@@ -396,6 +395,34 @@ router.patch("/api/validate/:id", async (req, res) => {
       success: false,
       msg: "Verification failed: Contact System Admin",
     });
+  }
+});
+
+router.patch("/api/updateVotes/:id", async (req, res) => {
+  let data = req.body;
+
+  try {
+    const upVote = await questionModel.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          userId: data.userId,
+          username: data.username,
+          questionTitle: data.questionTitle,
+          questionDescription: data.questionDescription,
+          codeSnippet: data.codeSnippet,
+          language: data.language,
+          tags: data.tags,
+          upvotes: data.upvotes,
+          downvotes: data.downvotes,
+          score: data.score,
+          image: data.image,
+        },
+      }
+    );
+    res.json(upVote);
+  } catch (error) {
+    console.log(error);
   }
 });
 

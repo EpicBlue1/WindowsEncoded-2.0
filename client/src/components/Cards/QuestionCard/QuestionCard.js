@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Style from "./QuestionCard.module.scss";
@@ -7,11 +8,17 @@ const QuestionCard = (props) => {
 
   const [UpVote, setUpVote] = useState(0);
   const [DownVote, setDownVote] = useState(0);
-  const [Voting, setVoting] = useState(0);
-  const [Total, setTotal] = useState(0);
+  const [Voting, setVoting] = useState(
+    props.allData.upvotes + props.allData.downvotes
+  );
+  const [Total, setTotal] = useState(
+    props.allData.upvotes - props.allData.downvotes
+  );
 
   const [DownPerc, setDownPerc] = useState(50);
   const [UpPerc, setUpPerc] = useState(50);
+
+  console.log(props.allData);
 
   const viewQuestion = () => {
     sessionStorage.setItem("questionId", props.productId);
@@ -22,6 +29,8 @@ const QuestionCard = (props) => {
     //get values
     let upCount = UpVote;
     let downCount = DownVote;
+
+    console.log(upCount, downCount);
 
     //default
     let downPercentage = 0;
@@ -44,6 +53,38 @@ const QuestionCard = (props) => {
 
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
+
+    let data = props.allData;
+
+    let productId = data._id;
+    console.log(productId);
+
+    let template = {
+      userId: data.userId,
+      username: data.username,
+      questionTitle: data.questionTitle,
+      questionDescription: data.questionDescription,
+      codeSnippet: data.codeSnippet,
+      language: data.language,
+      tags: data.tags,
+      upvotes: +upCount,
+      downvotes: +downCount,
+      score: upCount + downCount,
+      image: data.image,
+    };
+
+    axios
+      .patch("http://localhost:2000/api/updateVotes/" + productId, template)
+      .then((res) => {
+        if (res) {
+          console.log("Updated");
+          // props.setShow(false);
+          // setRender((prev) => !prev);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
