@@ -22,16 +22,23 @@ const EditQuestion = (props) => {
     const [editValues, setEditValues] = useState(editFormValues);
 
     const updateValues = (e) => {
-       const [name, value] = e.target;
+       const {name, value} = e.target;
        setEditValues({...editValues, [name]: value});
     }
 
     const updateQuestion = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         let questionId = questionData._id;
 
-        console.log(editValues);
-        console.log(questionId);
+        axios.patch('http://localhost:2000/api/updateQuestion/' + questionId, editValues)
+        .then(res => {
+            console.log(res);
+            if(res){
+                console.log("Question Updated!");
+                props.rerender();
+            }
+        })
+        .catch(function(err) {console.log(err)});
     }
 
     return (
