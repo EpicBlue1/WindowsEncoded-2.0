@@ -5,39 +5,50 @@ import Style from "./QuestionCard.module.scss";
 const QuestionCard = (props) => {
   let navigate = useNavigate();
 
-  const [Voting, setVoting] = useState();
+  const [UpVote, setUpVote] = useState(0);
+  const [DownVote, setDownVote] = useState(0);
+  const [Voting, setVoting] = useState(0);
+  const [Total, setTotal] = useState(0);
+
+  const [DownPerc, setDownPerc] = useState(50);
+  const [UpPerc, setUpPerc] = useState(50);
 
   const viewQuestion = () => {
     sessionStorage.setItem("questionId", props.productId);
     navigate("/IndividualQuestion", { state: { allData: props.allData } });
   };
 
-  const UADVote = () => {
-    let upCount = 10;
-    let downCount = 10;
+  const updateVote = () => {
+    //get values
+    let upCount = UpVote;
+    let downCount = DownVote;
 
-    //convert 50 to 70
-    upCount = upCount * 1.4;
-
-    //convert 50 to 30
-    downCount = downCount * 0.6;
-
-    let total = upCount - downCount;
-
+    //default
     let downPercentage = 0;
+    let upPercentage = 0;
 
-    //make sure the smallest number is divided
-    if (downCount < upCount) {
-      //percentage of downvotes to calculate percentage of upvotes
-      downPercentage = (downCount / upCount) * 100;
-    } else {
-      downPercentage = (upCount / downCount) * 100;
+    //voting is the total downvotes and upvotes summed
+    //total is the upvotes minus the downvotes
+    downPercentage = (downCount / Voting) * 100;
+
+    upPercentage = (upCount / Voting) * 100;
+
+    //make sure green or red never disappears
+    if (downPercentage === 0) {
+      downPercentage = downPercentage + 10;
+      upPercentage = upPercentage - 10;
+    } else if (upPercentage === 0) {
+      downPercentage = downPercentage - 10;
+      upPercentage = upPercentage + 10;
     }
+
+    setDownPerc(Math.round(downPercentage));
+    setUpPerc(Math.round(upPercentage));
   };
 
   return (
-    <div className={Style.QuestionCard} onClick={viewQuestion}>
-      <div className={Style.Left}>
+    <div className={Style.QuestionCard}>
+      <div onClick={viewQuestion} className={Style.Left}>
         <div className={Style.profileImg}></div>
         <p className={Style.username}>{props.username}</p>
 
@@ -54,19 +65,32 @@ const QuestionCard = (props) => {
         <p className={Style.questionDescription}>{props.questionDescription}</p>
       </div>
       <div className={Style.Right}>
-        <div
-          className={Style.Gradient}
-          style={{
-            background: `linear-gradient(
-              0deg,
-              rgba(253, 30, 74, 1) 30%,
-              rgba(0, 200, 145, 1) 70%
-            )`,
-          }}
-        >
-          <div className={Style.Upvote}></div>
-          <div className={Style.circle}>0</div>
-          <div className={Style.Downvote}></div>
+        <div className={Style.Container}>
+          <div
+            onClick={() => {
+              setDownVote(DownVote + 1);
+              setTotal(Total + 1);
+              setVoting(Voting + 1);
+              updateVote();
+            }}
+            style={{
+              height: `${DownPerc}%`,
+            }}
+            className={Style.GradientUp}
+          ></div>
+          <div className={Style.Middle}>{Total}</div>
+          <div
+            onClick={() => {
+              setUpVote(UpVote + 1);
+              setTotal(Total - 1);
+              setVoting(Voting + 1);
+              updateVote();
+            }}
+            style={{
+              height: `${UpPerc}%`,
+            }}
+            className={Style.GradientDown}
+          ></div>
         </div>
       </div>
     </div>
