@@ -29,6 +29,7 @@ const Profile = (props) => {
         let render = setProfileQuestions(
           data
           .filter((filterData) => UserId === filterData.userId)
+          // TODO: Rerender after editing
           .map((Ques) => <ProfileQuestion key={Ques._id} alldata={Ques}/>)
         );
       });
