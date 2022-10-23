@@ -85,9 +85,24 @@ router.get("/api/oneQuestion/:id", async (req, res) => {
 });
 
 // delete question
-// delete a product
 router.delete('/api/deleteQuestion/:id', async(req, res) => {
   const findQuestion = await questionModel.remove({_id: req.params.id});
+  res.json(findQuestion);
+});
+
+// update a question
+router.patch('/api/updateQuestion/:id', async (req, res) => {
+
+  const findQuestion = await questionModel.updateOne(
+    {_id: req.params.id},
+    {$set: {
+      questionTitle: req.body.questionTitle,
+      questionDescription: req.body.questionDescription,
+      language: req.body.language,
+      codeSnippet: req.body.codeSnippet,
+    }}
+  );
+
   res.json(findQuestion);
 });
 
