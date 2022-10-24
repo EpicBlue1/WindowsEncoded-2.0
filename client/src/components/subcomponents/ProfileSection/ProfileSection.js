@@ -9,6 +9,12 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import Style from "./ProfileSection.module.scss";
 import ProfileQuestion from "../ProfileQuestion/ProfileQuestion";
 
+//badges
+import bronze from "../../../Img/Bronze.png";
+import silver from "../../../Img/Silver.png";
+import gold from "../../../Img/Gold.png";
+
+
 const ProfileSection = (props) => {
   const [EditProfileModal, setEditProfileModal] = useState();
   const [displayText, setDisplayText] = useState();
@@ -17,9 +23,40 @@ const ProfileSection = (props) => {
   const [userData, setuserData] = useState();
   const [userName, setUserName] = useState("No User");
   const [QuestionCount, setQuestionCount] = useState();
+  const [profileBadge, setprofileBadge] = useState();
   const Navigate = useNavigate();
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+
+
+  
+ 
+
+  useEffect(() => {
+
+    const badges = {
+      bronze: bronze,
+      silver: silver,
+      gold: gold,
+    };
+
+    let score = seshStorage.score;
+
+    console.log(score)
+
+    if(score <= 50) {
+      setprofileBadge(badges.bronze)
+    } else if (score <= 100) {
+      setprofileBadge(badges.silver)
+
+    } else if (score <= 150) {
+      setprofileBadge(badges.gold)
+
+    }
+
+  })
+
+
 
   useEffect(() => {
     if (
@@ -107,7 +144,10 @@ const ProfileSection = (props) => {
               backgroundPosition: `center`,
             }}
           ></div>
-          <div className={Style.ProfileDisplayBadge}></div>
+          <div className={Style.ProfileDisplayBadge}>
+            <img className={Style.badgee} src={profileBadge} />
+            
+          </div>
         </div>
 
         <h2 className={Style.Username}>{userName}</h2>

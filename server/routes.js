@@ -313,68 +313,6 @@ router.post("/api/login/", async (req, res) => {
   }
 });
 
-//node mailer
-
-// router.post("/api/newUser", (req, res) => {
-//   let data = req.body;
-
-//   const regUser = new newUser({
-//     first: data.first,
-//     last: data.last,
-//     email: data.email,
-//     username: data.username,
-//     password: data.password,
-//   });
-
-//   regUser
-//     .save()
-//     .then(async (item) => {
-//       res.json(item);
-
-//       const findUser = await addUser.findOne({
-//         username: req.body.username,
-//       });
-
-//       let userIdLink = "http://localhost:3000/auth?id=" + findUser._id;
-
-//       // Send confirmation email has moved here to only run on successful add
-//       const mailerOutput = `
-//       <h1>Welcome ${data.username} to Windows-Encoded</h1>
-//       <p>Before you can login, please verify your account using the link below</p>
-//       <a href=${userIdLink}>Click to Verify</a>
-//   `;
-//   // style a buttong instead of an Href - inline styling
-//   // use src with http link for image
-
-//       const transporter = nodemailer.createTransport({
-//         host: "hakushu.aserv.co.za",
-//         port: 465,
-//         secure: true,
-//         auth: {
-//           user: "mainaccount@encoded-noreply.co.za",
-//           pass: "wNyPan4qVd4fCBr",
-//         },
-//       });
-
-//       const mailOptions = {
-//         from: '"Windows-Encoded Register" <mainaccount@encoded-noreply.co.za>',
-//         to: data.email,
-//         subject: "New User Registration",
-//         html: mailerOutput,
-//       };
-
-//       transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//           return console.log(error);
-//         }
-//         console.log("Message Sent:", info.messageId);
-//       });
-//     })
-//     .catch((err) => {
-//       res.status(400).json({ msg: "There is an error", err });
-//     });
-// });
-
 router.patch("/api/validate/:id", async (req, res) => {
   let userId = req.params.id;
 
