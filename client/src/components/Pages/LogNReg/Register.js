@@ -10,16 +10,8 @@ import hide from "../../../Icons/eye-closed.svg";
 
 const Register = (props) => {
 
-    //Hide and Show Password
-    const [passwordType, setPasswordType] = useState("password");
-
-    const togglePassword = () => {
-      if(passwordType==="password"){
-        setPasswordType("text");
-        return;
-      }
-      setPasswordType("password")
-    }
+  //Hide and Show Password
+  const [passwordType, setPasswordType] = useState("password");
 
   const Image = useRef(),
     username = useRef(),
@@ -214,15 +206,15 @@ const Register = (props) => {
           />
           <div className={Style.InSpacing}></div>
           <Input
+            setPasswordType={setPasswordType}
+            type={passwordType}
             ref={password}
             text={PasswordText}
             Valid={passwordValid}
             required="true"
             placeholder="Password"
             Intype="Login"
-            type={passwordType}
           />
-          <div className="passwordShow" onClick={togglePassword}>{ passwordType === "password" ? <img src={hide}/> : <img src={show}/> }</div>
           <div className={Style.InSpacing}></div>
           <Input
             ref={passwordVal}

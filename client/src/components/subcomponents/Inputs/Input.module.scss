@@ -14,7 +14,6 @@
 
 .InputWidth {
   width: 99%;
-  background-color: aqua;
   height: 40px;
 }
 
@@ -26,8 +25,8 @@
   background-color: $Primary_White;
   border-radius: 20px;
   padding-left: 20px;
-  // background-color: #f2f2f2;
-  background-color: red;
+  background-color: #f2f2f2;
+  // background-color: red;
   @include InputShadow();
   border: none;
   float: left;
@@ -61,7 +60,7 @@
   width: 3.8%;
   margin-top: 1px;
   position: relative;
-  right: 6vh;
+  right: 8vh;
   float: left;
   height: 35px;
   background-image: url("../../../Icons/eye-open.svg");
@@ -73,7 +72,7 @@
   width: 3.8%;
   margin-top: 1px;
   position: relative;
-  right: 10vh;
+  right: 8vh;
   float: left;
   height: 35px;
   background-image: url("../../../Icons/eye-closed.svg");
@@ -89,7 +88,6 @@
   height: 35px;
   background-image: url("../../../Icons/InputValid.svg");
   @include backgroundImages;
-  background-color: purple;
   background-size: 110%;
   cursor: pointer;
 }
@@ -102,7 +100,6 @@
   height: 35px;
   background-image: url("../../../Icons/InputInValid.svg");
   @include backgroundImages;
-  background-color: purple;
   background-size: 110%;
   cursor: pointer;
 }
