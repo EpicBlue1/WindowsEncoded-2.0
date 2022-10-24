@@ -2,6 +2,7 @@ import { default as axios, default as Axios } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Badges from "../../subcomponents/Badges/Badges";
+
 import ProfileQuestion from "../../subcomponents/ProfileQuestion/ProfileQuestion";
 import ProfileSection from "../../subcomponents/ProfileSection/ProfileSection";
 import Style from "./Profile.module.scss";
@@ -38,11 +39,17 @@ const Profile = (props) => {
     setProfileData(user);
   }, []);
 
+
+
+
+
   return Busy ? null : (
     <div className={Style.body}>
-      <h1>BADGES</h1>
+      <h1>Badges to achive</h1>
       <div className={Style.BadgeSection}>
-        <Badges />
+    
+        {/* <Badges /> */}
+        
         <Badges />
         <Badges />
         <Badges />

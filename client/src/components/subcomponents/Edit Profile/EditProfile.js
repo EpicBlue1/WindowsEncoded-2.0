@@ -1,21 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Style from "./EditProfile.module.scss";
 import Input from "../Inputs/Input";
 import Button from "../../subcomponents/Buttons/Button";
+import axios from "axios";
 
 
 
 const EditProfile = (props) => {
 
-    const UserData = JSON.parse(sessionStorage.getItem("UserData"))
-
-    console.log(UserData)
 
 
+    let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
     const closeModal = () => {
         props.rerender();
     };
+
+
+    let ProfileData = seshStorage;
+
+    // console.log(ProfileData);
+
+    let editFormValues = {
+        username: ProfileData.username
+    }
+
+    const [editValues, setEditValues] = useState(editFormValues);
+
+    const updateValues = (e) => {
+        const {name, value} = e.target;
+        setEditValues({...editValues, [name]: value});
+     }
+
+    const updateProfile = (e) => {
+        e.preventDefault();
+        let ProfileId = ProfileData._id;
+        console.log(ProfileId);
+
+        axios.patch('http://localhost:2000/api/updateProfile/' + ProfileId, editValues)
+        .then(res => {
+            console.log(res);
+            if(res){
+                console.log("Profile Updated");
+                props.rerender();
+            }
+        })
+        .catch(function(err) {console.log(err)});
+    }
+ 
+  
+
+
 
 
     return (
@@ -28,30 +63,28 @@ const EditProfile = (props) => {
                         <div>x</div>
                     </div>
 
-                    <div className={Style.Image}>
+                    {/* <div className={Style.Image}>
                     <input type="file" name="image"  />
-                    </div>
+                    </div> */}
 
                     <Input
-                        Intype="ModalInput"
-                        placeholder={UserData.username}
-                        name="questionTitle"
-                    // onChange={questionInfo}
+                    Intype="ModalInput"
+                    name="username" 
+                    defaultValue={ProfileData.username} 
+                    onChange={updateValues}
+                    
                     />
 
 
-                    <Input
+                    {/* <Input
                         Intype="ModalInput"
-                        placeholder={UserData.email}
-
-                        name="questionTitle"
-                    // onChange={questionInfo}
-                    />
+                        placeholder={ProfileData.email}
+                    /> */}
 
                     
 
 
-                    <Button type="Primary" >
+                    <Button type="Primary" onClick={updateProfile}>
                         Edit Profile
                     </Button>
 

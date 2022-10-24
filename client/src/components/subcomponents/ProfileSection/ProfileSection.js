@@ -1,5 +1,4 @@
 import axios, { Axios } from "axios";
-import { Circle, Line } from "rc-progress";
 import React, { useEffect, useState } from "react";
 import Logo from "../../../Icons/Profile.svg";
 
@@ -101,38 +100,35 @@ const ProfileSection = (props) => {
 
   }, []);
 
-  // const EditProfile = () => {
-  //     let user = sessionStorage.getItem('UserData');
 
-  //     console.log(user)
 
-  //         // setEditProfileModal(<AddQuestion rerender={setAddQuestionModal}/>)
+  // const deleteProfile = () => {
 
-  // }
-  //   const UserData = JSON.parse(sessionStorage.getItem("UserData"));
+  // };
 
-  //   console.log(UserData);
 
-  //   const edit = () => {
-  //     setModal(
-  //       <EditProfile
-  //         close={setModal}
-  //         username={UserData.username}
-  //         email={UserData.email}
-  //         password={UserData.password}
-  //         profile={UserData.profile}
-  //       />
-  //     );
-  //   };
+    const edit = () => {
+      setModal(
+        <EditProfile
+          close={setModal}
+          rerender={setModal}
+          username={seshStorage.username}
+          email={seshStorage.email}
+          password={seshStorage.password}
+          profile={seshStorage.profile}
+        />
+      );
+    };
 
- 
+  
+
 
   return (
     <>
       {modalArea}
 
       <div className={Style.MainProfileSection}>
-        <div className={Style.EditButton}></div>
+        <div className={Style.EditButton} onClick={edit}></div>
 
         <div className={Style.ProfileImages}>
           <div

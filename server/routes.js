@@ -112,6 +112,18 @@ router.get("/api/allProfiles/", async (req, res) => {
   res.json(findQuestion);
 });
 
+//update profile
+router.patch('/api/updateProfile/:id', async (req, res) => {
+  const findUser = await usersSchema.updateOne(
+    {_id: req.params.id},
+    {$set: {
+      username: req.body.username,
+    }}
+  );
+  res.json(findUser)
+});
+
+
 router.patch("/api/newAnswer/:id", async (req, res) => {
   const addAnswer = await questionModel.updateOne(
     { id: req.params.id },
