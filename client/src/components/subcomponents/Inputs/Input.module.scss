@@ -66,6 +66,7 @@
   background-image: url("../../../Icons/eye-open.svg");
   @include backgroundImages;
   background-size: 120%;
+  cursor: pointer;
 }
 
 .eyeClosed {
@@ -78,6 +79,7 @@
   background-image: url("../../../Icons/eye-closed.svg");
   @include backgroundImages;
   background-size: 120%;
+  cursor: pointer;
 }
 
 .Valid {

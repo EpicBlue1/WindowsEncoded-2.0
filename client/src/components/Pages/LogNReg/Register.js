@@ -5,13 +5,12 @@ import ProfilesCard from "../../Cards/ProfilesCard/ProfilesCard";
 import Button from "../../subcomponents/Buttons/Button";
 import Input from "../../subcomponents/Inputs/Input";
 import Style from "./LogNReg.module.scss";
-import show from "../../../Icons/eye-open.svg";
-import hide from "../../../Icons/eye-closed.svg";
 
 const Register = (props) => {
 
   //Hide and Show Password
   const [passwordType, setPasswordType] = useState("password");
+  const [passwordConType, setPasswordConType] = useState("password");
 
   const Image = useRef(),
     username = useRef(),
@@ -207,6 +206,7 @@ const Register = (props) => {
           <div className={Style.InSpacing}></div>
           <Input
             setPasswordType={setPasswordType}
+            passwordType={passwordType}
             type={passwordType}
             ref={password}
             text={PasswordText}
@@ -217,6 +217,9 @@ const Register = (props) => {
           />
           <div className={Style.InSpacing}></div>
           <Input
+            setPasswordType={setPasswordConType}
+            passwordType={passwordConType}
+            type={passwordConType}
             ref={passwordVal}
             text={PasswordValText}
             Valid={passwordConValid}
