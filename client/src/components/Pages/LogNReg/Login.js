@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import hide from "../../../Icons/eye-closed.svg";
+import show from "../../../Icons/eye-open.svg";
 import Button from "../../subcomponents/Buttons/Button";
 import ForgetPassword from "../../subcomponents/ForgetPassword/ForgetPassword";
 import Input from "../../subcomponents/Inputs/Input";
 import Confirmation from "./Confirmation";
 import Style from "./LogNReg.module.scss";
-import show from "../../../Icons/eye-open.svg";
-import hide from "../../../Icons/eye-closed.svg";
 
 const Login = (props) => {
   const email = useRef(),
@@ -27,13 +27,13 @@ const Login = (props) => {
   //Hide and Show Password
   const [passwordType, setPasswordType] = useState("password");
 
-  const togglePassword = () => {
-    if(passwordType==="password"){
-      setPasswordType("text");
-      return;
-    }
-    setPasswordType("password")
-  }
+  // const togglePassword = () => {
+  //   if (passwordType === "password") {
+  //     setPasswordType("text");
+  //     return;
+  //   }
+  //   setPasswordType("password");
+  // };
 
   //Validation
   const FormValues = () => {
@@ -151,25 +151,32 @@ const Login = (props) => {
               Valid={emailValid}
               ref={email}
               placeholder="Email"
-              //className={Style.margin}
+              // className={Style.margin}
               Intype="Login"
             />
 
             <Input
+              setPasswordType={setPasswordType}
+              passwordType={passwordType}
               type={passwordType}
               text={PasswordText}
               Valid={passwordValid}
               ref={password}
               placeholder="Password"
-              // className={Style.margin}
               Intype="Login"
             />
-            <div className="passwordShow" onClick={togglePassword}>{ passwordType === "password" ? <img src={hide}/> : <img src={show}/> }</div>
+            {/* <div className="passwordShow" onClick={togglePassword}>
+              {passwordType === "password" ? (
+                <img src={hide} />
+              ) : (
+                <img src={show} />
+              )}
+            </div> */}
           </form>
           <p className={Style.Red}>{FormText}</p>
           <p
             onClick={() => {
-              setForgotPassword(true);   
+              setForgotPassword(true);
             }}
           >
             Forgot Password?
