@@ -33,31 +33,31 @@ const Questions = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/allQuestions")
-      .then((res) => {
-        let questionData = res.data;
-        console.log("Updated");
+    .get("http://localhost:2000/api/allQuestions")
+    .then((res) => {
+      let questionData = res.data;
+      console.log("Updated");
 
-        let renderQuestions = questionData.map((item) => (
-          <QuestionCard
-            key={item._id}
-            userId={item.userId}
-            username={item.username}
-            questionId={item._id}
-            questionTitle={item.questionTitle}
-            questionDescription={item.questionDescription}
-            codeSnippet={item.codeSnippet}
-            language={item.language}
-            image={URL + item.image}
-            editRender={setRenderQuestions}
-            allData={item}
-          />
-        ));
+      let renderQuestions = questionData.map((item) => (
+        <QuestionCard
+          key={item._id}
+          userId={item.userId}
+          username={item.username}
+          questionId={item._id}
+          questionTitle={item.questionTitle}
+          questionDescription={item.questionDescription}
+          codeSnippet={item.codeSnippet}
+          language={item.language}
+          image={URL + item.image}
+          editRender={setRenderQuestions}
+          allData={item}
+        />
+      ));
 
-        setQuestions(renderQuestions);
-        setRenderQuestions(false);
-      })
-      .catch((err) => console.log(err));
+      setQuestions(renderQuestions);
+      setRenderQuestions(false);
+    })
+    .catch((err) => console.log(err));
   }, [updateRender, addQuestionModal]);
 
   return (

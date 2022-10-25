@@ -10,6 +10,7 @@ import Style from "./Profile.module.scss";
 const Profile = (props) => {
   const [ProfileData, setProfileData] = useState();
   const [ProfileQuestions, setProfileQuestions] = useState();
+  const [updateRender, setUpdateRender] = useState(false);
 
   const Navigate = useNavigate();
   const [Busy, setBusy] = useState(true);
@@ -31,11 +32,12 @@ const Profile = (props) => {
           data
           .filter((filterData) => UserId === filterData.userId)
           // TODO: Rerender after editing
-          .map((Ques) => <ProfileQuestion key={Ques._id} alldata={Ques}/>)
+          .map((Ques) => <ProfileQuestion key={Ques._id} alldata={Ques} updateRender={updateRender}
+          setUpdateRender={setUpdateRender}/>)
         );
       });
     }
-  }, []);
+  }, [updateRender]);
 
 
 

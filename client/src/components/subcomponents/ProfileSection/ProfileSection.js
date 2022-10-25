@@ -17,29 +17,28 @@ import gold from "../../../Img/Gold.png";
 const ProfileSection = (props) => {
   const [EditProfileModal, setEditProfileModal] = useState();
   const [displayText, setDisplayText] = useState();
-  const [modalArea, setModal] = useState();
+  const [editModal, setEditModal] = useState();
   const [profile, setProfile] = useState(Logo);
   const [userData, setuserData] = useState();
   const [userName, setUserName] = useState("No User");
   const [QuestionCount, setQuestionCount] = useState();
   const [profileBadge, setprofileBadge] = useState();
   const Navigate = useNavigate();
-  const [updateRender, setUpdateRender] = useState(false);
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
 
   const edit = () => {
-    setModal(
+    setEditModal(
       <EditProfile
-        close={setModal}
-        rerender={setModal}
+        close={setEditModal}
+        rerender={setEditModal}
         username={seshStorage.username}
         email={seshStorage.email}
         password={seshStorage.password}
         profile={seshStorage.profile}
-        updateRender={updateRender}
-        setUpdateRender={setUpdateRender}
+        updateRender={props.updateRender}
+        setUpdateRender={props.setUpdateRender}
       />
     );
   };
@@ -64,9 +63,7 @@ const ProfileSection = (props) => {
 
     } else if (score <= 150) {
       setprofileBadge(badges.gold)
-
     }
-
   })
 
 
@@ -101,7 +98,6 @@ const ProfileSection = (props) => {
 
 
   useEffect(() => {
-    
     axios.get("http://localhost:2000/api/allQuestions")
     .then((res) => {
       let data = res.data;
@@ -110,9 +106,7 @@ const ProfileSection = (props) => {
         seshStorage._id === filterData.userId))
         setQuestionCount(render.length)
     });
-    
-
-  }, [updateRender]);
+  }, []);
 
 
 
@@ -121,7 +115,7 @@ const ProfileSection = (props) => {
   // };
   return (
     <>
-      {modalArea}
+      {editModal}
 
       <div className={Style.MainProfileSection}>
         <div className={Style.EditButton} onClick={edit}></div>
