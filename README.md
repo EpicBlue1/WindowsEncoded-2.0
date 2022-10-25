@@ -86,7 +86,7 @@ Run the following in the command-line to install all the required dependencies i
 
 ### Ideation
 <p align="center">
-    <img src="assets/ConceptIdeation.png" align="center" height="900" >
+    <img src="assets/ConceptIdeation.png" align="center" height="800" >
 </p>
 
 ### Wireframes
