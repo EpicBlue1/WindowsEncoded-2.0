@@ -30,16 +30,16 @@ const LeftNav = (props) => {
         </NavLink>
 
         <NavLink to="/Questions" className={Style.Questions}>
-            <div className={Style.IconSpot2}></div>
-            <h3 className={Style.text}>Questions</h3>
+          <div className={Style.IconSpot2}></div>
+          <h3 className={Style.text}>Questions</h3>
         </NavLink>
 
         <div className={Style.Topics}>
           <h2>Topics</h2>
-          <CheckBox />
-          <CheckBox />
-          <CheckBox />
-          <CheckBox />
+          <CheckBox text="Javascript" />
+          <CheckBox text="React" />
+          <CheckBox text="Html" />
+          <CheckBox text="Css" />
         </div>
 
         <NavLink to="/LogNReg">

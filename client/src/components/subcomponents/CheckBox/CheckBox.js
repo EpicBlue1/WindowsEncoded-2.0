@@ -12,7 +12,7 @@ const CheckBox = (props) => {
         }}
         className={Checked ? Style.Checked : Style.Unchecked}
       ></div>
-      <h4 className={Style.Text}>Javascript</h4>
+      <h4 className={Style.Text}>{props.text}</h4>
     </div>
   );
 };
