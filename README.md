@@ -140,9 +140,9 @@ To see a run through of the application, click below:
 
 ## Authors
 
-* **Bronwyn Potgieter** - [EpicBlue1](https://github.com/bee2805)
-* **Justin Koster** - [EpicBlue1](https://github.com/Justin-OwiStudent)
-* **Natasha Jansen van Rensbug** - [EpicBlue1](https://github.com/T2sha)
+* **Bronwyn Potgieter** - [bee2805](https://github.com/bee2805)
+* **Justin Koster** - [Justin-OwiStudent](https://github.com/Justin-OwiStudent)
+* **Natasha Jansen van Rensbug** - [T2sha](https://github.com/T2sha)
 * **Reinhardt de Beer** - [EpicBlue1](https://github.com/EpicBlue1)
 
 ## License
