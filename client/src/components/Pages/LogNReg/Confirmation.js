@@ -14,18 +14,16 @@ const Confirmation = (props) => {
         props.showConfirm ? Style.ConfirmationStart : Style.Confirmation
       }
     >
-      <h1>
-        {props.AreSure ===
-        "Are you sure? You wont be able to ask or answer questions."
-          ? ""
-          : "You are almost there"}
-        {/* Your almost in! */}
-      </h1>
       <h3>{props.AreSure}</h3>
       <Button
         onClick={() => {
-          Navigate("/");
-          console.log("Lol");
+          Navigate(
+            props.AreSure ===
+              "Are you sure? You wont be able to ask or answer questions."
+              ? "/"
+              : "/LogNReg"
+          );
+          props.setShowConfirm(false);
         }}
         type="Primary"
       >
@@ -36,7 +34,6 @@ const Confirmation = (props) => {
         <Button
           onClick={() => {
             props.setShowConfirm(!props.showConfirm);
-            console.log("Lol");
           }}
           type="Primary"
         >

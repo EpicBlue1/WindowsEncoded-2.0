@@ -24,6 +24,11 @@ const Login = (props) => {
     [PasswordText, setPasswordText] = useState(),
     [FormText, setFormText] = useState();
 
+  const [showConfirm, setShowConfirm] = useState(false),
+    [AreSure, setAreSure] = useState(
+      "Make sure you check your email before you continue to log in!"
+    );
+
   //Hide and Show Password
   const [passwordType, setPasswordType] = useState("password");
 
@@ -121,17 +126,18 @@ const Login = (props) => {
 
   return (
     <>
-      <Confirmation />
+      <Confirmation
+        AreSure={"Are you sure? You wont be able to ask or answer questions."}
+        showConfirm={showConfirm}
+        setShowConfirm={setShowConfirm}
+      />
       <div className=""></div>
       <div className={props.changeCards ? Style.Login : Style.LoginBack}>
         <div className={Style.closeButton}>
           <div
             className={Style.White}
             onClick={() => {
-              props.setShowConfirm(true);
-              props.setAreSure(
-                "Are you sure? You wont be able to ask or answer questions."
-              );
+              setShowConfirm(true);
             }}
           >
             x

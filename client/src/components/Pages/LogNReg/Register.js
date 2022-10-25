@@ -7,7 +7,6 @@ import Input from "../../subcomponents/Inputs/Input";
 import Style from "./LogNReg.module.scss";
 
 const Register = (props) => {
-
   //Hide and Show Password
   const [passwordType, setPasswordType] = useState("password");
   const [passwordConType, setPasswordConType] = useState("password");
@@ -59,9 +58,6 @@ const Register = (props) => {
         admin: false,
       };
 
-      
-
-
       axios
         .post("http://localhost:2000/register", userCreds)
         .then((res) => {
@@ -81,7 +77,7 @@ const Register = (props) => {
             console.log(res.data);
             RegisterForm.current.reset();
             props.setChangeCard(!props.changeCards);
-            props.setShowConfirm(!props.showConfirm);
+            props.setShowConfirm(true);
           }
           // setRender(prev => !prev)
         })

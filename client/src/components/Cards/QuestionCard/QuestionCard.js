@@ -1,10 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
   let navigate = useNavigate();
+
+  const Upvote = useRef();
+  const DownVote = useRef();
 
   const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
   const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
@@ -18,17 +21,19 @@ const QuestionCard = (props) => {
     let downPercentage = 0;
     let upPercentage = 0;
 
-    setTotal(TotalDownVotes + TotalUpVotes);
+    setTotal(TotalUpVotes - TotalDownVotes);
 
-    console.log(Total);
+    console.log(props.questionTitle);
+    console.log("Up: " + TotalUpVotes, "Down: " + TotalDownVotes);
+    console.log("UpPerc: " + upPercentage, "Down: " + downPercentage);
+
+    let TotalSum = TotalDownVotes + TotalUpVotes;
 
     //voting is the total downvotes and upvotes summed
     //total is the upvotes minus the downvotes
-    downPercentage = (TotalDownVotes / Total) * 100;
+    downPercentage = (TotalDownVotes / TotalSum) * 100;
 
-    upPercentage = (TotalUpVotes / Total) * 100;
-
-    console.log(downPercentage, upPercentage);
+    upPercentage = (TotalUpVotes / TotalSum) * 100;
 
     //make sure green or red never disappears
     if (downPercentage === 0) {
@@ -41,9 +46,7 @@ const QuestionCard = (props) => {
 
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
-  }, [TotalUpVotes, TotalDownVotes]);
 
-  const updateVote = () => {
     let data = props.allData;
 
     let productId = data._id;
@@ -58,7 +61,7 @@ const QuestionCard = (props) => {
       tags: data.tags,
       upvotes: +TotalUpVotes,
       downvotes: +TotalDownVotes,
-      score: 10,
+      score: TotalSum,
       image: data.image,
     };
 
@@ -70,6 +73,42 @@ const QuestionCard = (props) => {
       .catch(function (error) {
         console.log(error);
       });
+  }, [TotalUpVotes, TotalDownVotes]);
+
+  const updateVote = (e) => {
+    console.log(e);
+
+    if (e === "Upvote") {
+      console.log("yes");
+      Upvote.current.onClick = "";
+    }
+
+    if (e === "Downvote") {
+      console.log("No");
+      DownVote.current.onClick = "";
+    }
+    // let productId = data._id;
+    // let template = {
+    //   userId: data.userId,
+    //   username: data.username,
+    //   questionTitle: data.questionTitle,
+    //   questionDescription: data.questionDescription,
+    //   codeSnippet: data.codeSnippet,
+    //   language: data.language,
+    //   tags: data.tags,
+    //   upvotes: +TotalUpVotes,
+    //   downvotes: +TotalDownVotes,
+    //   score: 10,
+    //   image: data.image,
+    // };
+    // axios
+    //   .patch("http://localhost:2000/api/updateVotes/" + productId, template)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   const viewQuestion = () => {
@@ -98,9 +137,10 @@ const QuestionCard = (props) => {
       <div className={Style.Right}>
         <div className={Style.Container}>
           <div
+            ref={Upvote}
             onClick={() => {
               setTotalUpVotes(TotalUpVotes + 1);
-              // updateVote();
+              updateVote("Upvote");
             }}
             style={{
               height: `${UpPerc}%`,
@@ -109,9 +149,10 @@ const QuestionCard = (props) => {
           ></div>
           <div className={Style.Middle}>{Total}</div>
           <div
+            ref={DownVote}
             onClick={() => {
               setTotalDownVotes(TotalDownVotes + 1);
-              // updateVote();
+              updateVote("Downvote");
             }}
             style={{
               height: `${DownPerc}%`,

@@ -8,17 +8,13 @@ const LogNReg = (props) => {
   const confirmDiv = useRef();
   const [changeCards, setChangeCard] = useState(true);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [AreSure, setAreSure] = useState(
-    "Make sure you check your email before you continue to log in!"
-  );
 
   return (
     <div className={Style.LogNReg}>
       <Confirmation
-        confirmDiv={confirmDiv}
-        setShowConfirm={setShowConfirm}
+        AreSure={"Make sure you confirm your email"}
         showConfirm={showConfirm}
-        AreSure={AreSure}
+        setShowConfirm={setShowConfirm}
       />
       <Register
         showConfirm={showConfirm}
@@ -32,8 +28,6 @@ const LogNReg = (props) => {
         setShowNav={props.setShowNav}
         changeCards={changeCards}
         setChangeCard={setChangeCard}
-        setAreSure={setAreSure}
-        AreSure={AreSure}
       />
     </div>
   );

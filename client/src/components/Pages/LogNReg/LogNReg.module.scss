@@ -273,7 +273,7 @@
   justify-content: space-between;
   align-content: space-around;
   align-items: center;
-  background-color: $Primary_LightBlue;
+  @include ModalColor();
   color: white;
   position: absolute;
   padding-top: 30px;
@@ -300,7 +300,7 @@
   justify-content: space-between;
   align-content: space-around;
   align-items: center;
-  background-color: white;
+  @include ModalColor();
   position: absolute;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -314,6 +314,6 @@
   transition: padding 0.5s, opacity 0.2s, width 0.5s, height 0.5s;
 }
 
-.passwordShow img{
+.passwordShow img {
   float: left !important;
 }
