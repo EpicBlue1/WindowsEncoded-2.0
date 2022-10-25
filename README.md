@@ -85,7 +85,9 @@ Run the following in the command-line to install all the required dependencies i
 ## Development Process
 
 ### Ideation
-[Pinterest Board For Concept](https://za.pinterest.com/debeer0072/dev_200-term-3/)
+<p align="center">
+    <img src="assets/ConceptIdeation.png" align="center" height="450" >
+</p>
 
 ### Wireframes
 
@@ -122,7 +124,7 @@ Final wireframes:
 ## Final Outcome
 
 ### Mockups
-
+<!-- TODO: Add Mockups -->
 <p align="center">
     <img src="assets/Mockup_1.jpg" align="left" height="200" >
     <img src="assets/Mockup_2.jpg" align="left" height="200" >
@@ -163,5 +165,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Acknowledgements
 
-* **Contexts and useReducers** - [Leander van Aarde Github](https://github.com/LeandervanAarde)
+* **Show/Hide Password** - [Programming With Prem](https://www.youtube.com/watch?v=4kx44fbNZ-Y&t=277s)
+* **Icons** - [SWM Icon Pack](https://www.figma.com/file/Y06WSIqH4hJ6UpGAlbBKvu/SWM-Icon-Pack-(Community)?node-id=202%3A304)
  
