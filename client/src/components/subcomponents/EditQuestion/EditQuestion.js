@@ -32,10 +32,9 @@ const EditQuestion = (props) => {
 
         axios.patch('http://localhost:2000/api/updateQuestion/' + questionId, editValues)
         .then(res => {
-            console.log(res);
             if(res){
-                console.log("Question Updated!");
                 props.rerender();
+                props.setUpdateRender(!props.updateRender);
             }
         })
         .catch(function(err) {console.log(err)});

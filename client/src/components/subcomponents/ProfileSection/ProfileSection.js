@@ -24,11 +24,25 @@ const ProfileSection = (props) => {
   const [QuestionCount, setQuestionCount] = useState();
   const [profileBadge, setprofileBadge] = useState();
   const Navigate = useNavigate();
+  const [updateRender, setUpdateRender] = useState(false);
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
 
-  
+  const edit = () => {
+    setModal(
+      <EditProfile
+        close={setModal}
+        rerender={setModal}
+        username={seshStorage.username}
+        email={seshStorage.email}
+        password={seshStorage.password}
+        profile={seshStorage.profile}
+        updateRender={updateRender}
+        setUpdateRender={setUpdateRender}
+      />
+    );
+  };
  
 
   useEffect(() => {
@@ -98,31 +112,13 @@ const ProfileSection = (props) => {
     });
     
 
-  }, []);
+  }, [updateRender]);
 
 
 
   // const deleteProfile = () => {
 
   // };
-
-
-    const edit = () => {
-      setModal(
-        <EditProfile
-          close={setModal}
-          rerender={setModal}
-          username={seshStorage.username}
-          email={seshStorage.email}
-          password={seshStorage.password}
-          profile={seshStorage.profile}
-        />
-      );
-    };
-
-  
-
-
   return (
     <>
       {modalArea}

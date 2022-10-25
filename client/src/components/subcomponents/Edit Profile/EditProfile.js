@@ -3,6 +3,7 @@ import Style from "./EditProfile.module.scss";
 import Input from "../Inputs/Input";
 import Button from "../../subcomponents/Buttons/Button";
 import axios from "axios";
+import { useEffect } from "react";
 
 
 
@@ -30,7 +31,7 @@ const EditProfile = (props) => {
     const updateValues = (e) => {
         const {name, value} = e.target;
         setEditValues({...editValues, [name]: value});
-     }
+    }
 
     const updateProfile = (e) => {
         e.preventDefault();
@@ -47,11 +48,6 @@ const EditProfile = (props) => {
         })
         .catch(function(err) {console.log(err)});
     }
- 
-  
-
-
-
 
     return (
         <>

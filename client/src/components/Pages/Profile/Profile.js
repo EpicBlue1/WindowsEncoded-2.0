@@ -35,8 +35,6 @@ const Profile = (props) => {
         );
       });
     }
-
-    setProfileData(user);
   }, []);
 
 

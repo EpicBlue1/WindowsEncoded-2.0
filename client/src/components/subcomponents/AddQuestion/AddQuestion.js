@@ -69,8 +69,6 @@ const AddQuestion = (props) => {
         language: questionInputs.language,
       };
 
-      console.log(payload);
-
       payloadData.append("information", JSON.stringify(payload));
       payloadData.append("image", questionImage);
 
@@ -80,11 +78,12 @@ const AddQuestion = (props) => {
       for (let [key, value] of payloadData) {
         console.log(`${key}: ${value}`);
       }
-      console.log(payload);
 
       axios.post("http://localhost:2000/api/newQuestion/", payloadData);
       props.rerender();
       props.setUpdateRender(!props.updateRender);
+      
+      alert("Your question has been posted!")
     }
   };
 
