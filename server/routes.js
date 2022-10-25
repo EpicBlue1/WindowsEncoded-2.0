@@ -85,22 +85,23 @@ router.get("/api/oneQuestion/:id", async (req, res) => {
 });
 
 // delete question
-router.delete('/api/deleteQuestion/:id', async(req, res) => {
-  const findQuestion = await questionModel.remove({_id: req.params.id});
+router.delete("/api/deleteQuestion/:id", async (req, res) => {
+  const findQuestion = await questionModel.remove({ _id: req.params.id });
   res.json(findQuestion);
 });
 
 // update a question
-router.patch('/api/updateQuestion/:id', async (req, res) => {
-
+router.patch("/api/updateQuestion/:id", async (req, res) => {
   const findQuestion = await questionModel.updateOne(
-    {_id: req.params.id},
-    {$set: {
-      questionTitle: req.body.questionTitle,
-      questionDescription: req.body.questionDescription,
-      language: req.body.language,
-      codeSnippet: req.body.codeSnippet,
-    }}
+    { _id: req.params.id },
+    {
+      $set: {
+        questionTitle: req.body.questionTitle,
+        questionDescription: req.body.questionDescription,
+        language: req.body.language,
+        codeSnippet: req.body.codeSnippet,
+      },
+    }
   );
 
   res.json(findQuestion);
@@ -113,21 +114,22 @@ router.get("/api/allProfiles/", async (req, res) => {
 });
 
 //update profile
-router.patch('/api/updateUser/:id', async (req, res) => {
+router.patch("/api/updateUser/:id", async (req, res) => {
   const findUser = await usersSchema.updateOne(
-    {_id: req.params.id},
-    {$set: {
-      username: req.body.username,
-    }}
+    { _id: req.params.id },
+    {
+      $set: {
+        username: req.body.username,
+      },
+    }
   );
-  res.json(findUser)
+  res.json(findUser);
 });
 
 //delete profile
 // router.delete('/api/deleteProfile/:id', async (req, res) => {
-//   const findUser 
+//   const findUser
 // })
-
 
 router.patch("/api/newAnswer/:id", async (req, res) => {
   const addAnswer = await questionModel.updateOne(
@@ -398,6 +400,7 @@ router.patch("/api/updateVotes/:id", async (req, res) => {
       }
     );
     res.json(upVote);
+    console.log(res);
   } catch (error) {
     console.log(error);
   }

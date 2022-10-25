@@ -79,11 +79,12 @@ const AddQuestion = (props) => {
         console.log(`${key}: ${value}`);
       }
 
-      axios.post("http://localhost:2000/api/newQuestion/", payloadData);
-      props.rerender();
-      props.setUpdateRender(!props.updateRender);
-      
-      alert("Your question has been posted!")
+      axios
+        .post("http://localhost:2000/api/newQuestion/", payloadData)
+        .then(() => {
+          props.rerender();
+          props.setUpdateRender(!props.updateRender);
+        });
     }
   };
 
@@ -97,7 +98,13 @@ const AddQuestion = (props) => {
         <form ref={Form}>
           <h2>Add a Question</h2>
 
-          <Input Intype="ModalInput" placeholder="Question Title" name="questionTitle" ref={QuesTitle} onChange={questionInfo}/>
+          <Input
+            Intype="ModalInput"
+            placeholder="Question Title"
+            name="questionTitle"
+            ref={QuesTitle}
+            onChange={questionInfo}
+          />
 
           <p>Add a brief description of your Question</p>
 
@@ -109,7 +116,13 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea className={Style.textBox} name="questionDescription" ref={Desc} onChange={questionInfo} placeholder="eg. I would like one of my components to pop up with the click of a button."></textarea>
+          <textarea
+            className={Style.textBox}
+            name="questionDescription"
+            ref={Desc}
+            onChange={questionInfo}
+            placeholder="eg. I would like one of my components to pop up with the click of a button."
+          ></textarea>
           <p>Explain your question in detail. Be specific.</p>
 
           <select ref={LangSelect} name="language" onChange={questionInfo}>
@@ -120,12 +133,20 @@ const AddQuestion = (props) => {
             <option>Kotlin</option>
           </select>
 
-          <textarea className={Style.codeBox} name="codeSnippet" ref={Code} onChange={questionInfo} placeholder="eg. const [modal, setModal] = useState();"></textarea>
+          <textarea
+            className={Style.codeBox}
+            name="codeSnippet"
+            ref={Code}
+            onChange={questionInfo}
+            placeholder="eg. const [modal, setModal] = useState();"
+          ></textarea>
           <p>Add your code here</p>
 
           {/* TODO: Add Tags */}
 
-          <Button className={Style.Auto} type="Primary" onClick={addQuestion}>Add Question</Button>
+          <Button className={Style.Auto} type="Primary" onClick={addQuestion}>
+            Add Question
+          </Button>
           <br />
           <br />
           <h3 className={Style.TextRed}>{Valid}</h3>

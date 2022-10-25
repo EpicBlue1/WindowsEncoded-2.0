@@ -1,46 +1,34 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
   let navigate = useNavigate();
 
-  const [UpVote, setUpVote] = useState(0);
-  const [DownVote, setDownVote] = useState(0);
-  const [Voting, setVoting] = useState(
-    props.allData.upvotes + props.allData.downvotes
-  );
-  const [Total, setTotal] = useState(
-    props.allData.upvotes - props.allData.downvotes
-  );
+  const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
+  const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
+  const [Total, setTotal] = useState(10);
 
-  const [DownPerc, setDownPerc] = useState(50);
-  const [UpPerc, setUpPerc] = useState(50);
+  const [DownPerc, setDownPerc] = useState();
+  const [UpPerc, setUpPerc] = useState();
 
-  console.log(props.allData);
-
-  const viewQuestion = () => {
-    sessionStorage.setItem("questionId", props.productId);
-    navigate("/IndividualQuestion", { state: { allData: props.allData } });
-  };
-
-  const updateVote = () => {
-    //get values
-    let upCount = UpVote;
-    let downCount = DownVote;
-
-    console.log(upCount, downCount);
-
+  useEffect(() => {
     //default
     let downPercentage = 0;
     let upPercentage = 0;
 
+    setTotal(TotalDownVotes + TotalUpVotes);
+
+    console.log(Total);
+
     //voting is the total downvotes and upvotes summed
     //total is the upvotes minus the downvotes
-    downPercentage = (downCount / Voting) * 100;
+    downPercentage = (TotalDownVotes / Total) * 100;
 
-    upPercentage = (upCount / Voting) * 100;
+    upPercentage = (TotalUpVotes / Total) * 100;
+
+    console.log(downPercentage, upPercentage);
 
     //make sure green or red never disappears
     if (downPercentage === 0) {
@@ -53,11 +41,12 @@ const QuestionCard = (props) => {
 
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
+  }, [TotalUpVotes, TotalDownVotes]);
 
+  const updateVote = () => {
     let data = props.allData;
 
     let productId = data._id;
-    console.log(productId);
 
     let template = {
       userId: data.userId,
@@ -67,24 +56,25 @@ const QuestionCard = (props) => {
       codeSnippet: data.codeSnippet,
       language: data.language,
       tags: data.tags,
-      upvotes: +upCount,
-      downvotes: +downCount,
-      score: upCount + downCount,
+      upvotes: +TotalUpVotes,
+      downvotes: +TotalDownVotes,
+      score: 10,
       image: data.image,
     };
 
     axios
       .patch("http://localhost:2000/api/updateVotes/" + productId, template)
       .then((res) => {
-        if (res) {
-          console.log("Updated");
-          // props.setShow(false);
-          // setRender((prev) => !prev);
-        }
+        console.log(res);
       })
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const viewQuestion = () => {
+    sessionStorage.setItem("questionId", props.productId);
+    navigate("/IndividualQuestion", { state: { allData: props.allData } });
   };
 
   return (
@@ -109,26 +99,22 @@ const QuestionCard = (props) => {
         <div className={Style.Container}>
           <div
             onClick={() => {
-              setDownVote(DownVote + 1);
-              setTotal(Total + 1);
-              setVoting(Voting + 1);
-              updateVote();
+              setTotalUpVotes(TotalUpVotes + 1);
+              // updateVote();
             }}
             style={{
-              height: `${DownPerc}%`,
+              height: `${UpPerc}%`,
             }}
             className={Style.GradientUp}
           ></div>
           <div className={Style.Middle}>{Total}</div>
           <div
             onClick={() => {
-              setUpVote(UpVote + 1);
-              setTotal(Total - 1);
-              setVoting(Voting + 1);
-              updateVote();
+              setTotalDownVotes(TotalDownVotes + 1);
+              // updateVote();
             }}
             style={{
-              height: `${UpPerc}%`,
+              height: `${DownPerc}%`,
             }}
             className={Style.GradientDown}
           ></div>
