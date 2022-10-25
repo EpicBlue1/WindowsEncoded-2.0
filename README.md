@@ -94,7 +94,7 @@ Run the following in the command-line to install all the required dependencies i
 <!-- TODO: Add Wireframes -->
 Initial wireframes:
 <p align="center">
-    <img src="assets/Initial_Wireframes.png" align="center" width="100%" >
+    <img src="assets/Initial_Wireframes.png" align="center" height="500" >
 </p>
 
 Final wireframes:
