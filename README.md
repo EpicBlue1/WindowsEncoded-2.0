@@ -69,9 +69,8 @@ Run the following in the command-line to install all the required dependencies i
 | <p>Node Js</p> |  https://nodejs.org/ |
 | <p>MongoDB</p> |  https://www.mongodb.com/ |
 | <p>multer</p> |  https://github.com/expressjs/multer |
-<!-- | <p>Bootstrap React</p> |  https://react-bootstrap.github.io/ | -->
 | <p>Express</p> |  https://expressjs.com/ |
-
+<!-- | <p>Bootstrap React</p> |  https://react-bootstrap.github.io/ | -->
 ## Features and Functions
 
 - Log, Register, Authenticate, Validate and Logout users
