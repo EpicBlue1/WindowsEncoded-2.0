@@ -5,7 +5,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/EpicBlue1/WindowsEncoded-2.0)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/EpicBlue1/WindowsEncoded-2.0)
 
-Bronwyn Potgieter 200089 - DV_200_T3
+Bronwyn Potgieter 200089
 <br/>
 Justin Koster 200100
 <br/>
@@ -24,14 +24,14 @@ Windows Encoded is a forum for Open Window Interactive Development Students wher
 ## Table of contents
 
 * [Installation](#Installation)
-* [Build With](#Build-With)
+* [Built With](#Build-With)
 * [Features](#Features-and-Functions)
 * [Development-Process](#Development-Process)
     * [Ideation](#Ideation)
     * [Wireframes](#Wireframes)
     * [Challenges](#Challenges)
-    * [Challenges](#Above-And-Beyond)
-    * [Challenges](#Future-Implementation)
+    * [Above and Beyond](#Above-And-Beyond)
+    * [Future Implementation](#Future-Implementation)
 * [Final-Outcome](#Final-Outcome)
     * [Mockups](#Mockups)
     * [Video-Demonstration](#Video-Demonstration)
@@ -86,7 +86,7 @@ Run the following in the command-line to install all the required dependencies i
 
 ### Ideation
 <p align="center">
-    <img src="assets/ConceptIdeation.png" align="center" height="750" >
+    <img src="assets/ConceptIdeation.png" align="center" height="730" >
 </p>
 
 ### Wireframes
