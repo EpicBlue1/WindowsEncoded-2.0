@@ -10,11 +10,13 @@ const ProfileImg = (props) => {
         props.setProfileSelection(Name);
         props.setProfileID(props.data.imageLocation);
         props.setPreviewImage(props.IMG);
+        // props.setShowModal(!props.showModal);
         props.setRender((prev) => !prev);
       }}
       className={Style.PfBlock}
       style={{
         backgroundImage: `url(${props.IMG})`,
+        border: `4px solid red`,
       }}
     >
       {/* {props.data} */}

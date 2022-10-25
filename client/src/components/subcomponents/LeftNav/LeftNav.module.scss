@@ -25,7 +25,7 @@
 
 .Home {
   width: 23vh;
-  // border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -42,7 +42,7 @@
 .Home:hover {
   transition: ease-in-out 0.3s;
   @include Shadow();
-  color: white;
+  color: white !important;
   background-color: $Primary_LightBlue;
   border-radius: 20px;
 }
@@ -50,7 +50,8 @@
 .Questions {
   margin-top: 10px;
   width: 23vh;
-  // border-radius: 20px;
+  border-radius: 10px;
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -67,7 +68,7 @@
 .Questions:hover {
   transition: ease-in-out 0.3s;
   @include Shadow();
-  color: white;
+  color: white !important;
   background-color: $Primary_LightBlue;
   border-radius: 20px;
 }

@@ -17,6 +17,7 @@ const ProfilesCard = (props) => {
     console.log(ProfileSelection);
     props.setImageName(ProfileSelection);
     props.setPreviewText(ProfileSelection);
+    console.log("this one ran");
     // props.setShowProfileModal(!props.ShowProfileModal);
   }, [render]);
 
@@ -36,6 +37,8 @@ const ProfilesCard = (props) => {
             setPreviewImage={props.setPreviewImage}
             setProfileSelection={setProfileSelection}
             IMG={URL + item.imageLocation}
+            setShowModal={props.setShowProfileModal}
+            showModal={props.ShowProfileModal}
           />
         ));
 
@@ -56,7 +59,6 @@ const ProfilesCard = (props) => {
         <h1>Select Profile Picture</h1>
         <div className={Style.Container}>{Images}</div>
         <br></br>
-        <Button type="Primary">Select</Button>
         <br></br>
         <br></br>
         <Button

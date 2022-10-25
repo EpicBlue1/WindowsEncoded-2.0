@@ -159,6 +159,11 @@ const Register = (props) => {
     }
   };
 
+  useEffect(() => {
+    setShowProfileModal(false);
+    // setPreviewText("");
+  }, [PreviewImage]);
+
   return (
     <>
       <ProfilesCard
