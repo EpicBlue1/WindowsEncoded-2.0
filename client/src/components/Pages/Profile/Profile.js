@@ -50,19 +50,10 @@ const Profile = (props) => {
     
         {/* <Badges /> */}
         
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
-        <Badges />
+        <Badges type="BadgeOne" className={Style.bigOne} />
+        <Badges type="BadgeTwo"/>
+        <Badges type="BadgeThree"/>
+        
       </div>
       <br></br>
       <h1>YOUR ACTIVITY</h1>

@@ -1,6 +1,30 @@
 @import "../../../index.scss";
 
-.BadgeBox {
+// .BadgeBox {
+//   float: left;
+//   margin-right: 25px;
+//   width: 100px;
+//   height: max-content;
+//   background-color: white;
+//   @include Shadow();
+//   border-radius: 20px;
+//   text-align: center;
+//   margin-bottom: 10px;
+//   cursor: pointer;
+// }
+
+// .Badge {
+//   margin: auto;
+//   margin-top: 10px;
+//   width: 70px;
+//   height: 70px;
+//   background-image: url("../../../Img/Silver.png");
+//   @include backgroundImages;
+  
+// }
+
+
+.BoxOne {
   float: left;
   margin-right: 25px;
   width: 100px;
@@ -10,17 +34,66 @@
   border-radius: 20px;
   text-align: center;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
-.Badge {
+.BoxTwo {
+  float: left;
+  margin-right: 25px;
+  width: 100px;
+  height: max-content;
+  background-color: rgb(236, 12, 12);
+  @include Shadow();
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+.badgeBox3 {
+  float: left;
+  margin-right: 25px;
+  width: 100px;
+  height: max-content;
+  background-color: rgb(4, 20, 238);
+  @include Shadow();
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+.BadgeOne {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Bronze.png");
+  @include backgroundImages;
+}
+
+
+.BadgeTwo {
   margin: auto;
   margin-top: 10px;
   width: 70px;
   height: 70px;
   background-image: url("../../../Img/Silver.png");
   @include backgroundImages;
-  
 }
+
+.BadgeThree {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Gold.png");
+  @include backgroundImages;
+}
+
+
 
 // .BadgeBox {
 //   float: left;

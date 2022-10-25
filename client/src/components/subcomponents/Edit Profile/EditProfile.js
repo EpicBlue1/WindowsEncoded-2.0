@@ -37,7 +37,7 @@ const EditProfile = (props) => {
         let ProfileId = ProfileData._id;
         console.log(ProfileId);
 
-        axios.patch('http://localhost:2000/api/updateProfile/' + ProfileId, editValues)
+        axios.patch('http://localhost:2000/api/updateUser/' + ProfileId, editValues)
         .then(res => {
             console.log(res);
             if(res){

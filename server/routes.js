@@ -113,7 +113,7 @@ router.get("/api/allProfiles/", async (req, res) => {
 });
 
 //update profile
-router.patch('/api/updateProfile/:id', async (req, res) => {
+router.patch('/api/updateUser/:id', async (req, res) => {
   const findUser = await usersSchema.updateOne(
     {_id: req.params.id},
     {$set: {
@@ -122,6 +122,11 @@ router.patch('/api/updateProfile/:id', async (req, res) => {
   );
   res.json(findUser)
 });
+
+//delete profile
+// router.delete('/api/deleteProfile/:id', async (req, res) => {
+//   const findUser 
+// })
 
 
 router.patch("/api/newAnswer/:id", async (req, res) => {
