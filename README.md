@@ -86,7 +86,7 @@ Run the following in the command-line to install all the required dependencies i
 
 ### Ideation
 <p align="center">
-    <img src="assets/ConceptIdeation.png" align="center" height="450" >
+    <img src="assets/ConceptIdeation.png" align="center" height="900" >
 </p>
 
 ### Wireframes
@@ -94,12 +94,12 @@ Run the following in the command-line to install all the required dependencies i
 <!-- TODO: Add Wireframes -->
 Initial wireframes:
 <p align="center">
-    <img src="assets/Initial_Wireframes.png" align="center" height="1000" >
+    <img src="assets/Initial_Wireframes.png" align="center" height="1500" >
 </p>
 
 Final wireframes:
 <p align="center">
-    <img src="assets/Final_Wireframs.png" align="center" height="450" >
+    <img src="assets/Final_Wireframs.png" align="center" height="1500" >
 </p>
 
 ## Challenges
