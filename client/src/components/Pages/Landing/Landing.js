@@ -63,6 +63,7 @@ const Landing = () => {
           <div className={Style.badge}></div>
         </div>
       </div>
+      <br></br>
 
       <h1 className={Style.Heading}>CATEGORIES/TAGS</h1>
 
@@ -80,6 +81,7 @@ const Landing = () => {
           <h2>React</h2>
         </div>
       </div>
+      <br></br>
     </div>
   );
 };
