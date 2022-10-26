@@ -56,15 +56,15 @@ const ProfileSection = (props) => {
 
     console.log(score)
 
-    if(score <= 50) {
+    if(score >= 10 && score <= 50) {
       setprofileBadge(badges.bronze)
+
     } else if (score <= 100) {
       setprofileBadge(badges.silver)
-
     } else if (score <= 150) {
       setprofileBadge(badges.gold)
     }
-  })
+  });
 
 
 

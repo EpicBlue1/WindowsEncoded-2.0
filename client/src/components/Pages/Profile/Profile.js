@@ -2,6 +2,9 @@ import { default as axios, default as Axios } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Badges from "../../subcomponents/Badges/Badges";
+import BagdeOne from "../../subcomponents/Badges/BagdeOne";
+import BadgeTwo from "../../subcomponents/Badges/BadgeTwo";
+import BadgeThree from "../../subcomponents/Badges/BadgeThree";
 
 import ProfileQuestion from "../../subcomponents/ProfileQuestion/ProfileQuestion";
 import ProfileSection from "../../subcomponents/ProfileSection/ProfileSection";
@@ -40,19 +43,48 @@ const Profile = (props) => {
   }, [updateRender]);
 
 
+  let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+  console.log(seshStorage);
+
+  let score = seshStorage.score;
 
 
+    
+    let badgeOne = <BagdeOne/>
+    let badgeoneCheck = false;
+
+    let badgeTwo = <BadgeTwo/>
+    let badgeTwoCheck = false;
+
+    let badgeThree = <BadgeThree/>
+    let badgeThreeCheck = false;
+
+
+
+    if(score <= 50) {
+      badgeoneCheck = true;
+      badgeTwoCheck = false;
+      badgeThreeCheck = false;
+    } else if (score <= 70) {
+      badgeoneCheck = true;
+      badgeTwoCheck = true;
+      badgeThreeCheck = false;
+    } else if (score <= 100) {
+      badgeoneCheck = true;
+      badgeTwoCheck = true;
+      badgeThreeCheck = true;
+    }
 
   return Busy ? null : (
     <div className={Style.body}>
       <h1>Badges to achive</h1>
       <div className={Style.BadgeSection}>
     
-        {/* <Badges /> */}
-        
-        <Badges type="BadgeOne" className={Style.bigOne} />
-        <Badges type="BadgeTwo"/>
-        <Badges type="BadgeThree"/>
+      
+        {badgeoneCheck == true ? badgeOne: ""}
+        {badgeTwoCheck == true ? badgeTwo: ""}
+        {badgeThreeCheck == true ? badgeThree: ""}
+
         
       </div>
       <br></br>
