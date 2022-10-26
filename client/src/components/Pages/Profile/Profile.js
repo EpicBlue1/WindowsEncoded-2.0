@@ -59,6 +59,10 @@ const Profile = (props) => {
     let badgeThree = <BadgeThree/>
     let badgeThreeCheck = false;
 
+    // add badge for asking 1 question
+    // add badge for 5 question
+    // add nbadge for one asnwer
+    // badge based om tags 
 
 
     if(score <= 50) {

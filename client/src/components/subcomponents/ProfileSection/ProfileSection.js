@@ -22,11 +22,20 @@ const ProfileSection = (props) => {
   const [userData, setuserData] = useState();
   const [userName, setUserName] = useState("No User");
   const [QuestionCount, setQuestionCount] = useState();
+  const [AnswerCount, setAnswerCount] = useState();
   const [profileBadge, setprofileBadge] = useState();
+
+  // const [DownVoteCount, setDownVoteCount] = useState();
+  // const [UpVoteCount, setUpVoteCount] = useState();
+  // const [NewScore, setNewScore] = useState();
+
+
+
   const Navigate = useNavigate();
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
+  let ReliabilityScore = seshStorage.score;
 
   const edit = () => {
     setEditModal(
@@ -105,14 +114,76 @@ const ProfileSection = (props) => {
         (data.filter((filterData)=> 
         seshStorage._id === filterData.userId))
         setQuestionCount(render.length)
+        console.log(render);
+
+        
     });
   }, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:2000/api/allAnswers")
+    .then((res) => {
+      let data = res.data;
+      console.log(data);
+        let AnswerRender = 
+        (data.filter((filterData)=> 
+        seshStorage._id === filterData.userId))
+        setAnswerCount(AnswerRender.length)
+        console.log(AnswerRender);
+    });
+  }, []);
+
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:2000/api/allQuestions")
+  //   .then((res) => {
+  //     let data = res.data;
+  //     console.log(data);
+  //       let Question =
+  //       (data.filter((filterData)=>
+  //       seshStorage._id === filterData.userId))
+  //       console.log(Question.length);
+
+
+  //       // let QuestionsScore = 
+  //       // (data.filter((filterData)=>
+  //       // seshStorage.upvotes === filterData._id))
+  //       // console.log(+QuestionsScore);
+
+  //       // setNewScore(QuestionsScore.length)
+  //       // console.log(+QuestionsScore);
+
+
+
+
+  //       // let QuestionsScore =
+  //       // (data.filter((filterData)=>
+  //       // seshStorage.score === filterData.userId))
+  //       // setNewScore(QuestionsScore.length)
+  //       // console.log(+QuestionsScore);
+
+
+  //       // let getUpVotes =
+  //       // (data.filter((filterData)=> 
+  //       // seshStorage.upvotes === filterData.userId))
+  //       // setDownVoteCount(getUpVotes.length)
+  //       // console.log(getUpVotes.length);
+
+  //       // let getDownVotes = 
+  //       // (data.filter((filterData)=> 
+  //       // seshStorage.downvotes === filterData.userId))
+  //       // setDownVoteCount(getDownVotes.length)
+  //       // console.log(getDownVotes);
+  //   });
+  // }, []);
 
 
 
   // const deleteProfile = () => {
 
   // };
+
+  
   return (
     <>
       {editModal}
@@ -149,12 +220,12 @@ const ProfileSection = (props) => {
         </div>
 
         <div className={Style.TotalAnswered}>
-          <h2 className={Style.Scores}>1</h2>
+          <h2 className={Style.Scores}>{AnswerCount}</h2>
           <h3 className={Style.ScoreText}>Questions Answered</h3>
         </div>
 
         <div className={Style.ReliabilityScore}>
-          <h2 className={Style.Scores}>1</h2>
+          <h2 className={Style.Scores}>{ReliabilityScore}</h2>
           <h3 className={Style.ScoreText}>Reliability Score</h3>
         </div>
       </div>
