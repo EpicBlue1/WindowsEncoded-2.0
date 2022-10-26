@@ -51,45 +51,43 @@ const EditProfile = (props) => {
 
     return (
         <>
-            <div className={Style.backGroundModal}>
-            
-                <div className={Style.EditProfile}>
+        <div className={Style.BackgroundBlur}>
+        
+            <div className={Style.EditProfile}>
 
                 <div className={Style.closeButton} onClick={closeModal}>
-                        <div>x</div>
-                    </div>
+                    <div>x</div>
+                </div>
+
+                <form>
+                    <h2>Edit your profile</h2>
 
                     {/* <div className={Style.Image}>
                     <input type="file" name="image"  />
                     </div> */}
 
                     <Input
+                    className={Style.usernameMargin}
                     Intype="ModalInput"
                     name="username" 
                     defaultValue={ProfileData.username} 
                     onChange={updateValues}
-                    
                     />
 
-
-                    {/* <Input
+                    <Input
+                        className={Style.emailMargin}
                         Intype="ModalInput"
                         placeholder={ProfileData.email}
-                    /> */}
-
-                    
-
+                    />
 
                     <Button type="Primary" onClick={updateProfile}>
                         Edit Profile
                     </Button>
 
-
-                    
-
                     <div className={Style.Del}> <h5>Delete Profile</h5></div>
-                </div>
+                    </form>
             </div>
+        </div>
         </>
     );
 };
