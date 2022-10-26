@@ -176,7 +176,9 @@ const AddQuestion = (props) => {
         <br />
 
         <div className={Style.questionDetails}>
-          <div className={Style.questionImage}></div>
+          <div className={Style.questionImage}>
+            {/* <img id="prev_img" /> */}
+          </div>
           <p className={Style.questionDescription}>{questionDescription}</p>
           <p>{questionLanguage}</p>
           <br />
