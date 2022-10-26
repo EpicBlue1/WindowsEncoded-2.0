@@ -12,6 +12,11 @@ const AddQuestion = (props) => {
   const [Valid, setValid] = useState("");
   const [questionImage, setQuestionImage] = useState();
 
+  const [questionTitle, setQuestionTitle] = useState("Question Title");
+  const [questionDescription, setQuestionDescription] = useState("Question Description");
+  const [questionLanguage, setQuestionLanguage] = useState("Language");
+  const [questionCode, setQuestionCode] = useState("props.setUpdateRender(!props.updateRender);");
+
   const Form = useRef();
   const QuesTitle = useRef();
   const Image = useRef();
@@ -165,18 +170,18 @@ const AddQuestion = (props) => {
           <div className={Style.profileImg}></div>
           <p className={Style.username}>Username</p>
           <br />
-          <h2 className={Style.headingQuestion}>Question Heading</h2>
+          <h2 className={Style.headingQuestion}>{questionTitle}</h2>
         </div>
 
         <br />
 
         <div className={Style.questionDetails}>
           <div className={Style.questionImage}></div>
-          <p className={Style.questionDescription}>Question description will showcase over here</p>
-          <p>Language</p>
+          <p className={Style.questionDescription}>{questionDescription}</p>
+          <p>{questionLanguage}</p>
           <br />
           <CodeArea language="Javascript">
-            const codeSnippet = 123;
+            {questionCode}
           </CodeArea>
         </div>
       </div>
