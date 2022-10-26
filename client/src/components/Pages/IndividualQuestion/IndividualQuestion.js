@@ -68,10 +68,7 @@ const IndividualQuestion = () => {
       <div onClick={() => Navigate(-1)} className={Style.closeButton}>
         <div className={Style.White}>x</div>
       </div>
-      <ImagePreview
-        IMG={imageUrl}
-        setShowPreview={setShowPreview}
-        ShowPreview={ShowPreview}
+      <ImagePreview IMG={imageUrl} setShowPreview={setShowPreview} ShowPreview={ShowPreview}
       />
 
       {loginAlert}

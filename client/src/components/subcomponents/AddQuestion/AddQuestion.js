@@ -3,6 +3,8 @@ import React, { useRef, useState } from "react";
 import Button from "../../subcomponents/Buttons/Button";
 import Input from "../Inputs/Input";
 import Style from "./AddQuestion.module.scss";
+import VotingSystem from "../VotingSystem/VotingSystem";
+import CodeArea from "../CodeArea/CodeArea";
 
 const AddQuestion = (props) => {
   const [imageName, setImageName] = useState("Upload a file");
@@ -90,11 +92,12 @@ const AddQuestion = (props) => {
 
   return (
     <div className={Style.BackgroundBlur}>
-      <div className={Style.addQuestionCard}>
-        <div className={Style.closeButton} onClick={closeModal}>
-          <div>x</div>
-        </div>
 
+      <div className={Style.closeButton} onClick={closeModal}>
+        <div>x</div>
+      </div>
+
+      <div className={Style.addQuestionCard}>
         <form ref={Form}>
           <h2>Add a Question</h2>
 
@@ -151,6 +154,31 @@ const AddQuestion = (props) => {
           <br />
           <h3 className={Style.TextRed}>{Valid}</h3>
         </form>
+      </div>
+
+      <div className={Style.questionPreview}>
+        <div className={Style.left}>
+          <VotingSystem />
+        </div>
+
+        <div className={Style.questionIntro}>
+          <div className={Style.profileImg}></div>
+          <p className={Style.username}>Username</p>
+          <br />
+          <h2 className={Style.headingQuestion}>Question Heading</h2>
+        </div>
+
+        <br />
+
+        <div className={Style.questionDetails}>
+          <div className={Style.questionImage}></div>
+          <p className={Style.questionDescription}>Question description will showcase over here</p>
+          <p>Language</p>
+          <br />
+          <CodeArea language="Javascript">
+            const codeSnippet = 123;
+          </CodeArea>
+        </div>
       </div>
     </div>
   );
