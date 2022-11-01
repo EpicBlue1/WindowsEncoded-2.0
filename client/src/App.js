@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 //pages
+import UpdatePass from "./UpdatePass"
 import Auth from "./Auth";
 import IndividualQuestion from "./components/Pages/IndividualQuestion/IndividualQuestion";
 import Landing from "./components/Pages/Landing/Landing";
@@ -69,6 +70,11 @@ function App() {
             />
             (
             <Route path="/auth" element={<Auth />} />)
+
+            <Route
+              path="/UpdatePass"
+              element={<UpdatePass/>}
+            />
           </Routes>
         </div>
       </div>

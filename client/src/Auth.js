@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "./components/subcomponents/Buttons/Button";
+import Style from "./Auth.module.scss"
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
@@ -34,6 +35,7 @@ const Auth = () => {
   return (
     <div>
       <h1>{welcome}</h1>
+      <div className={Style.img}></div>
       <p>{message}</p>
       <Button onClick={() => Navigate("/")} type="Primary">
         Continue to site

@@ -377,6 +377,105 @@ router.patch("/api/validate/:id", async (req, res) => {
   }
 });
 
+router.post('/api/resetpass', async (req, res) => {
+
+  console.log(req.body.email)
+  const findUser = await addUser.findOne({
+    email:req.body.email
+  });
+
+  if(findUser){
+    
+    let usersIdLink = "http://localhost:3000/updatepassword?id=" + findUser._id;
+
+    const mailerOutput = `
+    <h1>Welcome ${findUser.username} to Windows-Encoded</h1>
+    <p>Please click on the link below to update your password</p>
+    <a style="width: 200px; height: 50px; background-color: #5067EB;
+      border-radius: 20px; Color: White;" href=${usersIdLink}>Click to Verify </a>
+      <img src="https://drive.google.com/file/d/1XLTvZ9Nn1W39nGBc0CO7cMBRzrbxlhyW/view?usp=sharing"></img>
+   
+`;
+      const transporter = nodemailer.createTransport({
+        host: "mail.encoded-noreply.co.za",
+        port: 465,
+        secure: true,
+        secureConnection: true,
+        auth: {
+          user: "windows@encoded-noreply.co.za",
+          pass: "_#y#,)rb8,k^",
+        },
+        tls:{
+          rejectUnauthorized:false
+        }
+      });
+
+      const mailOptions = {
+        from: '"Windows-Encoded Register" <windows@encoded-noreply.co.za>',
+        to: req.body.email,
+        subject: "New User Registration",
+        html: mailerOutput,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log("Message Sent:", info.messageId);
+      });
+
+    }else {
+      res.json({success:false, msg:"Could not locate user on Database"})
+    }
+});
+
+router.patch('/api/updatepass/:id', async (req, res)=>{
+
+  let userId = req.params.id;
+
+  const findUser = await addUser.findOne({
+    _id:userId
+  });
+
+  if(findUser){
+
+    try{
+
+      const tokenDecrypt =jwt.verify(findUser.token, process.env.ACCESS_TOKEN_SECRET);
+
+      const authUser =await addUser.findOne({
+        _id:userId,
+        username:tokenDecrypt.username,
+        email: tokenDecrypt.email,
+
+      });
+
+      const salt = await bcrypt.genSalt(12);
+      const hashPass = await bcrypt.hash(req.body.password, salt);
+
+      if(authUser){
+        const updatePassword = await addUser.updateOne(
+          {_id:req.params.id},
+          {$set: {password:hashpass}}
+        )
+
+      } else {
+        res.json({success:false,msg:"Invalid User on Database"});
+
+        }
+
+    }catch(error){
+      res.json({success:false,msg:"Invalid Token"});
+
+    }
+
+  }else {
+    res.json({success:false,msg:"Verification Failed, please contact system admin"});
+
+  }
+  
+})
+
 router.patch("/api/updateVotes/:id", async (req, res) => {
   let data = req.body;
 
