@@ -35,6 +35,11 @@ const AddQuestion = (props) => {
   const questionInfo = (e) => {
     const { name, value } = e.target;
     setQuestionInputs({ ...questionInputs, [name]: value });
+
+    setQuestionTitle(questionInputs.questionTitle)
+    setQuestionDescription(questionInputs.questionDescription)
+    setQuestionLanguage(questionInputs.language)
+    setQuestionCode(questionInputs.codeSnippet)
   };
 
   const getImage = (e) => {
@@ -48,7 +53,9 @@ const AddQuestion = (props) => {
     let reader = new FileReader();
     reader.onload = () => {
       let output = document.getElementById("prev_img");
+      let previewOutput = document.getElementById("previewImage")
       output.src = reader.result;
+      previewOutput.src = reader.result;
     };
 
     reader.readAsDataURL(e.target.files[0]);
@@ -106,13 +113,7 @@ const AddQuestion = (props) => {
         <form ref={Form}>
           <h2>Add a Question</h2>
 
-          <Input
-            Intype="ModalInput"
-            placeholder="Question Title"
-            name="questionTitle"
-            ref={QuesTitle}
-            onChange={questionInfo}
-          />
+          <Input Intype="ModalInput" placeholder="Question Title" name="questionTitle" ref={QuesTitle} onChange={questionInfo}/>
 
           <p>Add a brief description of your Question</p>
 
@@ -124,13 +125,7 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea
-            className={Style.textBox}
-            name="questionDescription"
-            ref={Desc}
-            onChange={questionInfo}
-            placeholder="eg. I would like one of my components to pop up with the click of a button."
-          ></textarea>
+          <textarea className={Style.textBox} name="questionDescription" ref={Desc} onChange={questionInfo} placeholder="eg. I would like one of my components to pop up with the click of a button." ></textarea>
           <p>Explain your question in detail. Be specific.</p>
 
           <select ref={LangSelect} name="language" onChange={questionInfo}>
@@ -177,7 +172,7 @@ const AddQuestion = (props) => {
 
         <div className={Style.questionDetails}>
           <div className={Style.questionImage}>
-            {/* <img id="prev_img" /> */}
+            <img id="previewImage" />
           </div>
           <p className={Style.questionDescription}>{questionDescription}</p>
           <p>{questionLanguage}</p>
