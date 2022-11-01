@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import QuestionCard from "../../Cards/QuestionCard/QuestionCard";
 import AddQuestion from "../../subcomponents/AddQuestion/AddQuestion";
+import Button from "../../subcomponents/Buttons/Button";
 import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
 import Style from "./Questions.module.scss";
 
@@ -10,6 +11,7 @@ const Questions = (props) => {
   const [questions, setQuestions] = useState();
   const [imageUrl, setImageUrl] = useState();
   const [renderQuestions, setRenderQuestions] = useState(false);
+  const [Filter, setFilter] = useState();
   const [loginAlert, setLoginAlert] = useState();
   const [updateRender, setUpdateRender] = useState(false);
   let userData = sessionStorage.getItem("UserData");
@@ -59,17 +61,29 @@ const Questions = (props) => {
         setRenderQuestions(false);
       })
       .catch((err) => console.log(err));
-  }, [updateRender, addQuestionModal]);
+  }, [updateRender, addQuestionModal, Filter]);
 
   return (
     <div className={Style.body}>
       {loginAlert}
       {addQuestionModal}
 
-      <div className={Style.addButton} onClick={addQuestion}>
-        +
+      <div className={Style.addNFilter}>
+        <div className={Style.Add}>
+          <h2 className={Style.heading}>ASK A QUESTION</h2>
+
+          <div className={Style.addButton} onClick={addQuestion}>
+            +
+          </div>
+        </div>
+
+        <div className={Style.Dropdown}>
+          <h2 className={Style.headingTwo}>Sort by</h2>
+          <select>
+            <option>lol</option>
+          </select>
+        </div>
       </div>
-      <h2 className={Style.heading}>ASK A QUESTION</h2>
 
       {questions}
     </div>
