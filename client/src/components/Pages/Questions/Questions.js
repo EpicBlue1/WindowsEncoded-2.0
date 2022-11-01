@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import QuestionCard from "../../Cards/QuestionCard/QuestionCard";
 import AddQuestion from "../../subcomponents/AddQuestion/AddQuestion";
 import Button from "../../subcomponents/Buttons/Button";
@@ -16,6 +16,8 @@ const Questions = (props) => {
   const [updateRender, setUpdateRender] = useState(false);
   let userData = sessionStorage.getItem("UserData");
   let user = JSON.parse(userData);
+
+  const SortBy = useRef();
 
   const addQuestion = () => {
     let user = sessionStorage.getItem("UserData");
@@ -37,7 +39,29 @@ const Questions = (props) => {
     axios
       .get("http://localhost:2000/api/allQuestions")
       .then((res) => {
-        let questionData = res.data;
+        let questionData = res.data.reverse();
+        let Sort = SortBy.current.value;
+        let sortData = res.data.reverse();
+
+        console.log(sortData);
+
+        if (Sort === "Most recent") {
+          sortData = res.data.reverse();
+        } else if (Sort === "By highest score") {
+          sortData = questionData.sort((x, y) => y.score - x.score);
+        } else if (Sort === "By lowest score") {
+          sortData = questionData.sort((x, y) => x.score - y.score);
+        } else if (Sort === "By lowest upvotes") {
+          sortData = questionData.sort((x, y) => x.upvotes - y.upvotes);
+        } else if (Sort === "By highest upvotes") {
+          sortData = questionData.sort((x, y) => y.upvotes - x.upvotes);
+        } else if (Sort === "By lowest downvotes") {
+          sortData = questionData.sort((x, y) => x.downvotes - y.downvotes);
+        } else if (Sort === "By highest downvotes") {
+          sortData = questionData.sort((x, y) => y.downvotes - x.downvotes);
+        }
+        // console.log(SortBy.current.value);
+
         console.log("Updated");
 
         let renderQuestions = questionData.map((item) => (
@@ -79,8 +103,14 @@ const Questions = (props) => {
 
         <div className={Style.Dropdown}>
           <h2 className={Style.headingTwo}>Sort by</h2>
-          <select>
-            <option>lol</option>
+          <select onChange={() => setFilter(!Filter)} ref={SortBy}>
+            <option>Most recent</option>
+            <option>By highest score</option>
+            <option>By lowest score</option>
+            <option>By highest upvotes</option>
+            <option>By lowest upvotes</option>
+            <option>By highest downvotes</option>
+            <option>By lowest downvotes</option>
           </select>
         </div>
       </div>

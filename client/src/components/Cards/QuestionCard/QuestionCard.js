@@ -21,8 +21,6 @@ const QuestionCard = (props) => {
     let downPercentage = 0;
     let upPercentage = 0;
 
-    setTotal(TotalUpVotes - TotalDownVotes);
-
     console.log(props.questionTitle);
     console.log("Up: " + TotalUpVotes, "Down: " + TotalDownVotes);
     console.log("UpPerc: " + upPercentage, "Down: " + downPercentage);
@@ -48,6 +46,8 @@ const QuestionCard = (props) => {
     setUpPerc(Math.round(upPercentage));
 
     let data = props.allData;
+
+    setTotal(data.score);
 
     let productId = data._id;
 
