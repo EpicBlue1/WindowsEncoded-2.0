@@ -16,9 +16,15 @@ const QuestionSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  upvoted: {
+    type: Array,
+  },
   downvotes: {
     type: Number,
     required: true,
+  },
+  downvoted: {
+    type: Array,
   },
   score: {
     type: Number,
