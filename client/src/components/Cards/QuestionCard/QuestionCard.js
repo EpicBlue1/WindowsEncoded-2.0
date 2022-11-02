@@ -51,6 +51,12 @@ const QuestionCard = (props) => {
 
     let productId = data._id;
 
+    axios
+      .get("http://localhost:2000/api/singleUser/" + data.userId)
+      .then((res) => {
+        console.log(res.data);
+      });
+
     let template = {
       userId: data.userId,
       username: data.username,
@@ -65,6 +71,8 @@ const QuestionCard = (props) => {
       image: data.image,
     };
 
+    console.log(props.userData);
+
     axios
       .patch("http://localhost:2000/api/updateVotes/" + productId, template)
       .then((res) => {
@@ -72,6 +80,24 @@ const QuestionCard = (props) => {
       })
       .catch(function (error) {
         console.log(error);
+      });
+
+    let updateScore = {
+      userId: data.userId,
+      score: data.score,
+      userData: props.userData,
+    };
+
+    axios
+      .patch(
+        "http://localhost:2000/api/updateUserScore/" + data.userId,
+        updateScore
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [TotalUpVotes, TotalDownVotes]);
 

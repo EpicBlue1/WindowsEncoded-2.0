@@ -14,8 +14,6 @@ const Questions = (props) => {
   const [Filter, setFilter] = useState();
   const [loginAlert, setLoginAlert] = useState();
   const [updateRender, setUpdateRender] = useState(false);
-  let userData = sessionStorage.getItem("UserData");
-  let user = JSON.parse(userData);
 
   const SortBy = useRef();
 

@@ -278,7 +278,7 @@ router.post("/register", (req, res) => {
       });
 
       const mailOptions = {
-        from: '"Windows-Encoded Register" <windows@encoded-noreply.co.za>',
+        from: '"Windows-Encoded" <windows@encoded-noreply.co.za>',
         to: data.email,
         subject: "New User Registration",
         html: mailerOutput,
@@ -409,7 +409,7 @@ router.post("/api/resetpass", async (req, res) => {
     });
 
     const mailOptions = {
-      from: '"Windows-Encoded Register" <windows@encoded-noreply.co.za>',
+      from: '"Windows-Encoded" <windows@encoded-noreply.co.za>',
       to: req.body.email,
       subject: "New User Registration",
       html: mailerOutput,
@@ -495,9 +495,41 @@ router.patch("/api/updateVotes/:id", async (req, res) => {
       }
     );
     res.json(upVote);
-    console.log(res);
   } catch (error) {
     console.log(error);
+  }
+});
+
+router.patch("/api/updateUserScore/:id", async (req, res) => {
+  let data = req.body;
+
+  console.log(data);
+  console.log(req.params.id);
+  try {
+    const upVote = await usersSchema.updateOne(
+      { _id: data.userId },
+      {
+        $set: {
+          score: data.score,
+        },
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/api/singleUser/:id", async (req, res) => {
+  let userId = req.params.id;
+
+  const findUser = await usersSchema.findOne({
+    _id: userId,
+  });
+
+  try {
+    res.json("res: " + findUser);
+  } catch (error) {
+    res.json("err: " + error);
   }
 });
 
