@@ -172,7 +172,7 @@ const AddQuestion = (props) => {
 
         <div className={Style.questionDetails}>
           <div className={Style.questionImage}>
-            <img id="previewImage" />
+            <img id="previewImage" /> 
           </div>
           <p className={Style.questionDescription}>{questionDescription}</p>
           <p>{questionLanguage}</p>
