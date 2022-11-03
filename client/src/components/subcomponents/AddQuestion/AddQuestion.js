@@ -48,7 +48,7 @@ const AddQuestion = (props) => {
 
     let value = e.target.value;
     let imageName = value.substring(12);
-    setImageName(imageName);
+    setImageName("imageName");
 
     let reader = new FileReader();
     reader.onload = () => {
