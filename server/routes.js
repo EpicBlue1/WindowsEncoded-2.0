@@ -124,6 +124,7 @@ router.patch("/api/updateUser/:id", async (req, res) => {
     }
   );
   res.json(findUser);
+  console.log(findUser);
 });
 
 //delete profile
@@ -470,6 +471,23 @@ router.patch("/api/updatepass/:id", async (req, res) => {
 
 router.patch("/api/updateVotes/:id", async (req, res) => {
   let data = req.body;
+
+  // console.log(data);
+  // res.json("data.username")
+
+  // const user = await usersSchema.findById(data.userId)
+  // console.log(user);
+
+  // user.score = user?.score+ data.action;
+  // console.log(user);
+  // // const OldUserScore = user.score
+  // // // res.json(user.score);
+  // // console.log(OldUserScore);
+
+  // // user.score = OldUserScore + data.action;
+  // user.save();
+
+  
 
   try {
     const upVote = await questionModel.updateOne(

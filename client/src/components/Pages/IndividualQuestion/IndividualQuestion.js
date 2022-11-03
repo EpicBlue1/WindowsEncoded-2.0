@@ -102,7 +102,11 @@ const IndividualQuestion = () => {
         <br />
         <br />
 
-        <p>({location.state.allData.language.toLowerCase()})</p>
+
+        <div className={Style.tag}> {location.state.allData.language.toLowerCase()} </div>
+        <br />
+
+        <p></p>
         <CodeArea language={location.state.allData.language.toLowerCase()}>
           {location.state.allData.codeSnippet}
         </CodeArea>

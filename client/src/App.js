@@ -26,7 +26,14 @@ function App() {
     <div className="App">
       {hideNav.pathname === "/LogNReg" ||
       hideNav.pathname === "/auth" ? null : (
+        
+        <>
         <TopNav Render={render} setRender={setRender} show={ShowNav} />
+        <br/>
+        <br/>
+        <br/>
+
+        </>
       )}
 
       <div className="Containers">

@@ -186,3 +186,13 @@
   background-image: url("../../../Img/Gold.png");
   @include backgroundImages;
 }
+
+
+.FirstQuestionBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Gold.png");
+  @include backgroundImages;
+}

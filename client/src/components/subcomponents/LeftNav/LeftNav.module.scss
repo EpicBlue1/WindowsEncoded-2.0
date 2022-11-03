@@ -1,12 +1,13 @@
 @import "../../../index.scss";
 
 .Bounds {
-  width: 100%;
+  width: 17%;
   height: 100vh;
-  float: left;
+  position: fixed;
 }
 
 .leftNav {
+  margin-top: -11px;
   padding-top: 10%;
   width: 95%;
   height: 90vh;

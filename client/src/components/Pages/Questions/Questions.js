@@ -42,6 +42,8 @@ const Questions = (props) => {
         let sortData = res.data.reverse();
 
         console.log(sortData);
+        // console.log(questionData);
+
 
         if (Sort === "Most recent") {
           sortData = res.data.reverse();

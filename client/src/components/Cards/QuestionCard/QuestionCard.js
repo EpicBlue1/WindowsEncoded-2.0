@@ -9,6 +9,8 @@ const QuestionCard = (props) => {
   const Upvote = useRef();
   const DownVote = useRef();
 
+ 
+
   const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
   const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
   const [Total, setTotal] = useState(10);
@@ -16,7 +18,18 @@ const QuestionCard = (props) => {
   const [DownPerc, setDownPerc] = useState();
   const [UpPerc, setUpPerc] = useState();
 
+
+  //WAS WORKING ON SCORE STUFF
+  // const [action, setAction] = useState(0)
+  // let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+  
+
+
   useEffect(() => {
+
+    // let score = seshStorage.score;
+    // console.log(score);
+
     //default
     let downPercentage = 0;
     let upPercentage = 0;
@@ -58,6 +71,8 @@ const QuestionCard = (props) => {
       });
 
     let template = {
+      // userScore: seshStorage.score,
+      // action: action,
       userId: data.userId,
       username: data.username,
       questionTitle: data.questionTitle,
@@ -152,8 +167,8 @@ const QuestionCard = (props) => {
 
         <h2 className={Style.heading}>{props.questionTitle}</h2>
 
-        <div className={Style.tag}>CSS</div>
-        <div className={Style.tag}>JavaScript</div>
+        <div className={Style.tag}>{props.language}</div>
+        {/* <div className={Style.tag}>JavaScript</div> */}
 
         <br />
         <br />
@@ -165,6 +180,7 @@ const QuestionCard = (props) => {
           <div
             ref={Upvote}
             onClick={() => {
+              // setAction(1)
               setTotalUpVotes(TotalUpVotes + 1);
               updateVote("Upvote");
             }}
@@ -177,6 +193,7 @@ const QuestionCard = (props) => {
           <div
             ref={DownVote}
             onClick={() => {
+              // setAction(-1)
               setTotalDownVotes(TotalDownVotes + 1);
               updateVote("Downvote");
             }}

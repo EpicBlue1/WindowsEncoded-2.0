@@ -9,11 +9,15 @@ import BadgeThree from "../../subcomponents/Badges/BadgeThree";
 import ProfileQuestion from "../../subcomponents/ProfileQuestion/ProfileQuestion";
 import ProfileSection from "../../subcomponents/ProfileSection/ProfileSection";
 import Style from "./Profile.module.scss";
+import FirstQuestionBadge from "../../subcomponents/Badges/FirstQuestionBadge";
+import FiveQuestionsBadge from "../../subcomponents/Badges/FiveQuestionsBadge";
 
 const Profile = (props) => {
   const [ProfileData, setProfileData] = useState();
   const [ProfileQuestions, setProfileQuestions] = useState();
   const [updateRender, setUpdateRender] = useState(false);
+
+  const [AskedQuestions, setAskedQuestions] = useState();
 
   const Navigate = useNavigate();
   const [Busy, setBusy] = useState(true);
@@ -43,12 +47,30 @@ const Profile = (props) => {
   }, [updateRender]);
 
 
+  useEffect(() => {
+    axios.get("http://localhost:2000/api/allQuestions")
+    .then((res) => {
+      let data = res.data;
+        let Qasked = 
+        (data.filter((filterData)=> 
+        seshStorage._id === filterData.userId))
+        setAskedQuestions(Qasked.length)
+        console.log(Qasked);
+    });
+  }, []);
+
+  console.log(AskedQuestions);
+
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
   console.log(seshStorage);
 
   let score = seshStorage.score;
 
+    let OneQuestionAsked = <FirstQuestionBadge/>
+    let OneQuestionAskedCheck = false;
 
+    let fiveQuestionsBadge = <FiveQuestionsBadge/>;
+    let fiveQuestionsBadgeCheck = false;
     
     let badgeOne = <BagdeOne/>
     let badgeoneCheck = false;
@@ -63,6 +85,19 @@ const Profile = (props) => {
     // add badge for 5 question
     // add nbadge for one asnwer
     // badge based om tags 
+
+    if(AskedQuestions === 1){
+      OneQuestionAskedCheck = true;
+      fiveQuestionsBadgeCheck = false;
+    }  else if (AskedQuestions >= 2) {
+      OneQuestionAskedCheck = true;
+      fiveQuestionsBadgeCheck = true;
+    }
+    
+    // if(AskedQuestions === 5) {
+    //   FiveQuestionsBadgeCheck = true;
+
+    // }
 
 
     if(score <= 50) {
@@ -88,6 +123,10 @@ const Profile = (props) => {
         {badgeoneCheck == true ? badgeOne: ""}
         {badgeTwoCheck == true ? badgeTwo: ""}
         {badgeThreeCheck == true ? badgeThree: ""}
+        {OneQuestionAskedCheck == true ? OneQuestionAsked: ""}
+        {fiveQuestionsBadgeCheck == true ? fiveQuestionsBadge: ""}
+
+
 
         
       </div>
