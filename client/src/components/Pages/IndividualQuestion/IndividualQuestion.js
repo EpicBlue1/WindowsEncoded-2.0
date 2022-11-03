@@ -115,14 +115,14 @@ const IndividualQuestion = () => {
           <p className={Style.votes}>
             <strong>Downvotes: </strong>100
           </p>
-        </div>
-
-        <hr />
-        <br />
 
         <Button type="Primary" className={Style.reply} onClick={reply}>
           Reply
         </Button>
+        </div>
+
+        <hr />
+        <br />
         <br />
 
         <br />
