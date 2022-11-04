@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
+import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
@@ -12,6 +13,8 @@ const QuestionCard = (props) => {
   const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
   const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
   const [Total, setTotal] = useState(10);
+
+  const [loginAlert, setLoginAlert] = useState();
 
   const [DownPerc, setDownPerc] = useState();
   const [UpPerc, setUpPerc] = useState();
@@ -45,67 +48,75 @@ const QuestionCard = (props) => {
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
 
-    console.log(
-      "UseEffect: " + Upvote.current.innerText + "" + DownVote.current.innerText
-    );
-
     setTotal(TotalUpVotes - TotalDownVotes);
   }, [TotalUpVotes, TotalDownVotes]);
 
   function updateVote(e) {
-    let data = props.allData;
-    let productId = data._id;
+    let user = sessionStorage.getItem("UserData");
 
-    // let updateScore = {
-    //   userId: data.userId,
-    //   score: data.score,
-    //   userData: props.userData,
-    // };
+    if (user === "" || user === null) {
+      setLoginAlert(<LoginAlert rerender={setLoginAlert} />);
+    } else {
+      let data = props.allData;
+      let quesId = data._id;
 
-    // axios
-    //   .patch("/api/updateUserScore/" + data.userId, updateScore)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+      axios.get("/api/singleUser/" + data.userId).then((res) => {
+        console.log(res.data);
 
-    // axios.get("/api/singleUser/" + data.userId).then((res) => {
-    //   console.log(res.data);
-    // });
+        let updateScore = {
+          score: res.data.score,
+        };
 
-    let template = {
-      score: +TotalUpVotes - +TotalDownVotes,
-      upvotes: +TotalUpVotes,
-      downvotes: +TotalDownVotes,
-    };
+        if (e === "Upvote") {
+          updateScore = {
+            score: res.data.score + +TotalUpVotes + 1 - +TotalDownVotes,
+          };
+        } else if (e === "Downvote") {
+          updateScore = {
+            score: res.data.score + +TotalUpVotes - +TotalDownVotes - 1,
+          };
+        }
 
-    console.log(e);
-    if (e === "Upvote") {
-      template = {
-        score: +TotalUpVotes + 1 - +TotalDownVotes,
-        upvotes: +TotalUpVotes + 1,
+        axios
+          .patch("/api/updateUserScore/" + data.userId, updateScore)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+
+      // update Score
+      let template = {
+        score: +TotalUpVotes - +TotalDownVotes,
+        upvotes: +TotalUpVotes,
         downvotes: +TotalDownVotes,
       };
-    } else if (e === "Downvote") {
-      template = {
-        score: +TotalUpVotes - +TotalDownVotes - 1,
-        upvotes: +TotalUpVotes,
-        downvotes: +TotalDownVotes - 1,
-      };
+
+      if (e === "Upvote") {
+        template = {
+          score: +TotalUpVotes + 1 - +TotalDownVotes,
+          upvotes: +TotalUpVotes + 1,
+          downvotes: +TotalDownVotes,
+        };
+      } else if (e === "Downvote") {
+        template = {
+          score: +TotalUpVotes - +TotalDownVotes - 1,
+          upvotes: +TotalUpVotes,
+          downvotes: +TotalDownVotes - 1,
+        };
+      }
+
+      axios
+        .patch("/api/updateVotes/" + quesId, template)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
-    axios
-      .patch("/api/updateVotes/" + productId, template)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log(
-      "Function: " + Upvote.current.innerText + "" + DownVote.current.innerText
-    );
   }
 
   const viewQuestion = () => {
@@ -115,6 +126,8 @@ const QuestionCard = (props) => {
 
   return (
     <div className={Style.QuestionCard}>
+      {loginAlert}
+
       <div onClick={viewQuestion} className={Style.Left}>
         <div className={Style.profileImg}></div>
         <p className={Style.username}>{props.username}</p>
@@ -168,7 +181,7 @@ const QuestionCard = (props) => {
               style={{ color: "red" }}
               className={Style.totalUpNDown}
             >
-              -{TotalDownVotes}
+              {TotalDownVotes < 0 ? `${TotalDownVotes}` : `-${TotalDownVotes}`}
             </div>
           </div>
         </div>

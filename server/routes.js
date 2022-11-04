@@ -472,21 +472,6 @@ router.patch("/api/updatepass/:id", async (req, res) => {
 router.patch("/api/updateVotes/:id", async (req, res) => {
   let data = req.body;
 
-  // console.log(data);
-  // res.json("data.username")
-
-  // const user = await usersSchema.findById(data.userId)
-  // console.log(user);
-
-  // user.score = user?.score+ data.action;
-  // console.log(user);
-  // // const OldUserScore = user.score
-  // // // res.json(user.score);
-  // // console.log(OldUserScore);
-
-  // // user.score = OldUserScore + data.action;
-  // user.save();
-
   try {
     const upVote = await questionModel.updateOne(
       { _id: req.params.id },
@@ -501,24 +486,7 @@ router.patch("/api/updateVotes/:id", async (req, res) => {
         },
       }
     );
-    res.json(data.upvotes);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.patch("/api/updateUserScore/:id", async (req, res) => {
-  let data = req.body;
-
-  try {
-    const upVote = await usersSchema.updateOne(
-      { _id: data.userId },
-      {
-        $set: {
-          score: data.score,
-        },
-      }
-    );
+    res.json(`upvotes: ${data.upvotes} downvotes: ${data.downvotes}`);
   } catch (error) {
     console.log(error);
   }
@@ -526,15 +494,33 @@ router.patch("/api/updateUserScore/:id", async (req, res) => {
 
 router.get("/api/singleUser/:id", async (req, res) => {
   let userId = req.params.id;
-
-  const findUser = await usersSchema.findOne({
-    _id: userId,
-  });
+  console.log(userId);
 
   try {
-    res.json("res: " + findUser);
+    const findUser = await usersSchema.findById(userId);
+
+    res.json(findUser);
   } catch (error) {
     res.json("err: " + error);
+  }
+});
+
+router.patch("/api/updateUserScore/:id", async (req, res) => {
+  let data = req.body;
+  let userId = req.params.id;
+
+  try {
+    const upVote = await usersSchema.updateOne(
+      { _id: userId },
+      {
+        $set: {
+          score: data.score,
+        },
+      }
+    );
+    console.log("Updated");
+  } catch (error) {
+    console.log(error);
   }
 });
 

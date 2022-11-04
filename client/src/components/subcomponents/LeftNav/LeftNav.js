@@ -19,12 +19,12 @@ const LeftNav = (props) => {
       // setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile})`);
       setlogOut("Log Out");
     }
-  }, []);
+  }, [seshStorage]);
 
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
       <div className={Style.leftNav}>
-        <br/>
+        <br />
         <NavLink to="/" className={Style.Home} activeClassName={Style.active}>
           <div className={Style.IconSpot1}></div>
           <h3 className={Style.homeText}>Home</h3>
@@ -48,7 +48,7 @@ const LeftNav = (props) => {
             <div className={Style.LogImg}></div>
             <h3
               onClick={() => {
-                sessionStorage.clear("UserData");
+                sessionStorage.removeItem("UserData");
               }}
               className={Style.LogoutText}
             >
