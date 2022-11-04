@@ -487,32 +487,21 @@ router.patch("/api/updateVotes/:id", async (req, res) => {
   // // user.score = OldUserScore + data.action;
   // user.save();
 
-  
-
   try {
     const upVote = await questionModel.updateOne(
       { _id: req.params.id },
       {
         $set: {
-          userId: data.userId,
-          username: data.username,
-          questionTitle: data.questionTitle,
-          questionDescription: data.questionDescription,
-          codeSnippet: data.codeSnippet,
-          language: data.language,
-          tags: data.tags,
           upvotes: data.upvotes,
           downvotes: data.downvotes,
           score: data.score,
-          image: data.image,
         },
         $push: {
           upvoted: data.userId,
-          // downvoted,
         },
       }
     );
-    res.json(upVote);
+    res.json(data.upvotes);
   } catch (error) {
     console.log(error);
   }
@@ -521,8 +510,6 @@ router.patch("/api/updateVotes/:id", async (req, res) => {
 router.patch("/api/updateUserScore/:id", async (req, res) => {
   let data = req.body;
 
-  console.log(data);
-  console.log(req.params.id);
   try {
     const upVote = await usersSchema.updateOne(
       { _id: data.userId },

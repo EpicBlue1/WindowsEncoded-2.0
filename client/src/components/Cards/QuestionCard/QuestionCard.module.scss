@@ -115,6 +115,12 @@
   align-items: center;
 }
 
+.totalUpNDown {
+  position: relative;
+  left: -40px;
+  font-weight: bold;
+}
+
 .Upvote {
   width: 90%;
   background-image: url("../../../Icons/like.svg");

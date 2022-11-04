@@ -11,7 +11,7 @@ const Questions = (props) => {
   const [questions, setQuestions] = useState();
   const [imageUrl, setImageUrl] = useState();
   const [renderQuestions, setRenderQuestions] = useState(false);
-  const [Filter, setFilter] = useState();
+  const [Filter, setFilter] = useState([]);
   const [loginAlert, setLoginAlert] = useState();
   const [updateRender, setUpdateRender] = useState(false);
 
@@ -35,15 +35,14 @@ const Questions = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/allQuestions")
+      .get("/api/allQuestions")
       .then((res) => {
+        console.log(res);
         let questionData = res.data.reverse();
         let Sort = SortBy.current.value;
         let sortData = res.data.reverse();
 
-        console.log(sortData);
-        // console.log(questionData);
-
+        console.log("Filter");
 
         if (Sort === "Most recent") {
           sortData = res.data.reverse();
@@ -60,7 +59,6 @@ const Questions = (props) => {
         } else if (Sort === "By highest downvotes") {
           sortData = questionData.sort((x, y) => y.downvotes - x.downvotes);
         }
-        // console.log(SortBy.current.value);
 
         console.log("Updated");
 
@@ -81,11 +79,10 @@ const Questions = (props) => {
         ));
 
         setQuestions(renderQuestions);
-        console.log(questions);
         setRenderQuestions(false);
       })
       .catch((err) => console.log(err));
-  }, [updateRender, addQuestionModal, Filter]);
+  }, [updateRender, addQuestionModal, Filter, SortBy]);
 
   return (
     <div className={Style.body}>
@@ -103,7 +100,10 @@ const Questions = (props) => {
 
         <div className={Style.Dropdown}>
           <h2 className={Style.headingTwo}>Sort by</h2>
-          <select onChange={() => setFilter(!Filter)} ref={SortBy}>
+          <select
+            onChange={() => setFilter((prev) => [...prev, "update"])}
+            ref={SortBy}
+          >
             <option>Most recent</option>
             <option>By highest score</option>
             <option>By lowest score</option>

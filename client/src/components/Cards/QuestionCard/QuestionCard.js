@@ -9,8 +9,6 @@ const QuestionCard = (props) => {
   const Upvote = useRef();
   const DownVote = useRef();
 
- 
-
   const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
   const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
   const [Total, setTotal] = useState(10);
@@ -18,25 +16,14 @@ const QuestionCard = (props) => {
   const [DownPerc, setDownPerc] = useState();
   const [UpPerc, setUpPerc] = useState();
 
-
   //WAS WORKING ON SCORE STUFF
   // const [action, setAction] = useState(0)
   // let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
-  
-
 
   useEffect(() => {
-
-    // let score = seshStorage.score;
-    // console.log(score);
-
     //default
     let downPercentage = 0;
     let upPercentage = 0;
-
-    console.log(props.questionTitle);
-    console.log("Up: " + TotalUpVotes, "Down: " + TotalDownVotes);
-    console.log("UpPerc: " + upPercentage, "Down: " + downPercentage);
 
     let TotalSum = TotalDownVotes + TotalUpVotes;
 
@@ -58,99 +45,68 @@ const QuestionCard = (props) => {
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
 
+    console.log(
+      "UseEffect: " + Upvote.current.innerText + "" + DownVote.current.innerText
+    );
+
+    setTotal(TotalUpVotes - TotalDownVotes);
+  }, [TotalUpVotes, TotalDownVotes]);
+
+  function updateVote(e) {
     let data = props.allData;
-
-    setTotal(data.score);
-
     let productId = data._id;
 
-    axios
-      .get("http://localhost:2000/api/singleUser/" + data.userId)
-      .then((res) => {
-        console.log(res.data);
-      });
+    // let updateScore = {
+    //   userId: data.userId,
+    //   score: data.score,
+    //   userData: props.userData,
+    // };
+
+    // axios
+    //   .patch("/api/updateUserScore/" + data.userId, updateScore)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    // axios.get("/api/singleUser/" + data.userId).then((res) => {
+    //   console.log(res.data);
+    // });
 
     let template = {
-      // userScore: seshStorage.score,
-      // action: action,
-      userId: data.userId,
-      username: data.username,
-      questionTitle: data.questionTitle,
-      questionDescription: data.questionDescription,
-      codeSnippet: data.codeSnippet,
-      language: data.language,
-      tags: data.tags,
+      score: +TotalUpVotes - +TotalDownVotes,
       upvotes: +TotalUpVotes,
       downvotes: +TotalDownVotes,
-      score: TotalSum,
-      image: data.image,
     };
 
-    console.log(props.userData);
-
+    console.log(e);
+    if (e === "Upvote") {
+      template = {
+        score: +TotalUpVotes + 1 - +TotalDownVotes,
+        upvotes: +TotalUpVotes + 1,
+        downvotes: +TotalDownVotes,
+      };
+    } else if (e === "Downvote") {
+      template = {
+        score: +TotalUpVotes - +TotalDownVotes - 1,
+        upvotes: +TotalUpVotes,
+        downvotes: +TotalDownVotes - 1,
+      };
+    }
     axios
-      .patch("http://localhost:2000/api/updateVotes/" + productId, template)
+      .patch("/api/updateVotes/" + productId, template)
       .then((res) => {
         console.log(res);
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    let updateScore = {
-      userId: data.userId,
-      score: data.score,
-      userData: props.userData,
-    };
-
-    axios
-      .patch(
-        "http://localhost:2000/api/updateUserScore/" + data.userId,
-        updateScore
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [TotalUpVotes, TotalDownVotes]);
-
-  const updateVote = (e) => {
-    console.log(e);
-
-    if (e === "Upvote") {
-      console.log("yes");
-      Upvote.current.onClick = "";
-    }
-
-    if (e === "Downvote") {
-      console.log("No");
-      DownVote.current.onClick = "";
-    }
-    // let productId = data._id;
-    // let template = {
-    //   userId: data.userId,
-    //   username: data.username,
-    //   questionTitle: data.questionTitle,
-    //   questionDescription: data.questionDescription,
-    //   codeSnippet: data.codeSnippet,
-    //   language: data.language,
-    //   tags: data.tags,
-    //   upvotes: +TotalUpVotes,
-    //   downvotes: +TotalDownVotes,
-    //   score: 10,
-    //   image: data.image,
-    // };
-    // axios
-    //   .patch("http://localhost:2000/api/updateVotes/" + productId, template)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-  };
+    console.log(
+      "Function: " + Upvote.current.innerText + "" + DownVote.current.innerText
+    );
+  }
 
   const viewQuestion = () => {
     sessionStorage.setItem("questionId", props.productId);
@@ -178,9 +134,7 @@ const QuestionCard = (props) => {
       <div className={Style.Right}>
         <div className={Style.Container}>
           <div
-            ref={Upvote}
             onClick={() => {
-              // setAction(1)
               setTotalUpVotes(TotalUpVotes + 1);
               updateVote("Upvote");
             }}
@@ -188,12 +142,18 @@ const QuestionCard = (props) => {
               height: `${UpPerc}%`,
             }}
             className={Style.GradientUp}
-          ></div>
+          >
+            <div
+              ref={Upvote}
+              style={{ color: "#5067EB" }}
+              className={Style.totalUpNDown}
+            >
+              {TotalUpVotes}
+            </div>
+          </div>
           <div className={Style.Middle}>{Total}</div>
           <div
-            ref={DownVote}
             onClick={() => {
-              // setAction(-1)
               setTotalDownVotes(TotalDownVotes + 1);
               updateVote("Downvote");
             }}
@@ -201,7 +161,16 @@ const QuestionCard = (props) => {
               height: `${DownPerc}%`,
             }}
             className={Style.GradientDown}
-          ></div>
+          >
+            {" "}
+            <div
+              ref={DownVote}
+              style={{ color: "red" }}
+              className={Style.totalUpNDown}
+            >
+              -{TotalDownVotes}
+            </div>
+          </div>
         </div>
       </div>
     </div>

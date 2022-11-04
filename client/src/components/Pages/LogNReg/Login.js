@@ -84,10 +84,12 @@ const Login = (props) => {
         email: email.current.value,
         password: password.current.value,
       };
+      console.log("clicked");
 
       axios
-        .post("http://localhost:2000/api/login/", userCreds)
+        .post("/api/login/", userCreds)
         .then((res) => {
+          console.log(res);
           if (res.data.valid) {
             setFormText("");
             setEmailValid(true);
@@ -106,13 +108,10 @@ const Login = (props) => {
             setPasswordText("Double Check Password");
             setEmailText("Double Check Email");
           }
-          // form.current.reset();
-          // setRender(prev => !prev)
         })
         .catch((err) => {
           console.log(err);
         });
-      // props.setShow(false);
     } else {
       setFormText("Please add your details");
       setEmailText(
