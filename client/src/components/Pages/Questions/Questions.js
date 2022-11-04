@@ -14,6 +14,7 @@ const Questions = (props) => {
   const [Filter, setFilter] = useState([]);
   const [loginAlert, setLoginAlert] = useState();
   const [updateRender, setUpdateRender] = useState(false);
+  const [Updated, setUpdated] = useState("Not Updated");
 
   const SortBy = useRef();
 
@@ -43,6 +44,7 @@ const Questions = (props) => {
         let sortData = res.data.reverse();
 
         console.log("Filter");
+        setUpdated("Not Updated");
 
         if (Sort === "Most recent") {
           sortData = res.data.reverse();
@@ -59,8 +61,6 @@ const Questions = (props) => {
         } else if (Sort === "By highest downvotes") {
           sortData = questionData.sort((x, y) => y.downvotes - x.downvotes);
         }
-
-        console.log("Updated");
 
         let renderQuestions = questionData.map((item) => (
           <QuestionCard
@@ -98,10 +98,24 @@ const Questions = (props) => {
           </div>
         </div>
 
+        <div
+          className={
+            questions === "" ||
+            questions === "null" ||
+            questions === undefined ||
+            Updated === "Updated"
+              ? Style.Loading
+              : null
+          }
+        ></div>
+
         <div className={Style.Dropdown}>
           <h2 className={Style.headingTwo}>Sort by</h2>
           <select
-            onChange={() => setFilter((prev) => [...prev, "update"])}
+            onChange={() => {
+              setFilter(SortBy.current.value);
+              setUpdated("Updated");
+            }}
             ref={SortBy}
           >
             <option>Most recent</option>
