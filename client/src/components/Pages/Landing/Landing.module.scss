@@ -40,6 +40,10 @@
 }
 
 .Container {
+  background-image: url(../../../Img/5197173-01.png);
+  @include backgroundImages();
+  background-size: 25%;
+  background-position: center 70%;
   width: 25%;
   margin-right: 20px;
   height: 150px;
@@ -115,16 +119,10 @@
   background-color: $Semantic_Red;
 }
 
-.questions{
-  background-image: url("../../../Img/5197173-01.png");
-  position: absolute;
-  margin-left: -185px;
+.questions {
   background-position: center;
-  width: 45%;
-  height: 30%;
-  background-size: 20%;
+  @include backgroundImages();
+  width: 80%;
+  height: 80%;
   background-repeat: no-repeat;
-  margin-top: -80px;
 }
-
-
