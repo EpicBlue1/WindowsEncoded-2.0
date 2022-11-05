@@ -54,6 +54,7 @@ const Landing = () => {
       <div className={Style.Row}>
         <div className={Style.Container}>
           <h2 className={Style.text}>Ask Questions</h2>
+          <div className={Style.questions}></div>
         </div>
         <div className={Style.Container}>
           <h2>Answer Questions</h2>
