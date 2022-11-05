@@ -24,10 +24,6 @@ const QuestionCard = (props) => {
 
   const [AlVoted, setAlVoted] = useState(false);
 
-  //WAS WORKING ON SCORE STUFF
-  // const [action, setAction] = useState(0)
-  // let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
-
   useEffect(() => {
     //default
     let downPercentage = 0;
@@ -52,8 +48,10 @@ const QuestionCard = (props) => {
 
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
+    console.log(TotalUpVotes - TotalDownVotes);
 
     setTotal(TotalUpVotes - TotalDownVotes);
+    console.log("Total" + Total);
   }, [TotalUpVotes, TotalDownVotes]);
 
   function updateVote(e) {
@@ -66,9 +64,10 @@ const QuestionCard = (props) => {
       let data = props.allData;
       let quesId = data._id;
       let userId = userData._id;
-      console.log(data.userId);
+      console.log(data);
 
-      axios.get("/api/singleUser/" + data.userId).then((res) => {
+      axios.get("/api/singleUser/" + props.userId).then((res) => {
+        console.log(res);
         let updateScore = {
           score: res.data.score,
         };
@@ -89,30 +88,35 @@ const QuestionCard = (props) => {
             setAlVoted(true);
           } else {
             console.log("Not found");
+
             if (e === "Upvote") {
               setTotalUpVotes(TotalUpVotes + 1);
             } else if (e === "Downvote") {
               setTotalDownVotes(TotalDownVotes + 1);
             }
+
+            //update user score
             if (e === "Upvote") {
               updateScore = {
-                score: res.data.score + +TotalUpVotes + 1 - +TotalDownVotes,
+                score: res.data.score + TotalUpVotes + 1 - TotalDownVotes,
                 upvotes: +TotalUpVotes + 1,
                 downvotes: +TotalDownVotes,
               };
             } else if (e === "Downvote") {
               updateScore = {
-                score: res.data.score + +TotalUpVotes - +TotalDownVotes - 1,
+                score: res.data.score + TotalUpVotes - TotalDownVotes - 1,
                 upvotes: +TotalUpVotes,
                 downvotes: +TotalDownVotes - 1,
               };
             }
 
+            console.log(updateScore);
+
             setUpvoteColor(`#46C8A4`);
             setDownColor(`#FD6583`);
 
             axios
-              .patch("/api/updateUserScore/" + userId, updateScore)
+              .patch("/api/updateUserScore/" + props.userId, updateScore)
               .then((res) => {
                 console.log(res);
               })
@@ -138,12 +142,14 @@ const QuestionCard = (props) => {
               };
             } else if (e === "Downvote") {
               template = {
-                score: +TotalUpVotes - +TotalDownVotes - 1,
+                score: +TotalUpVotes - +TotalDownVotes + 1,
                 upvotes: +TotalUpVotes,
-                downvotes: +TotalDownVotes - 1,
+                downvotes: +TotalDownVotes + 1,
                 userId: userData._id,
               };
             }
+
+            console.log(template);
 
             axios
               .patch("/api/updateVotes/" + quesId, template)
