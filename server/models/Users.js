@@ -17,11 +17,17 @@ const UserSchema = mongoose.Schema({
   },
   accStatus: {
     type: Boolean,
-    default:false,
+    default: false,
   },
   profile: {
     type: String,
     required: true,
+  },
+  totalUpvotes: {
+    type: Number,
+  },
+  totalDownvotes: {
+    type: Number,
   },
   score: {
     type: Number,

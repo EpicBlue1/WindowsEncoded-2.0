@@ -70,10 +70,14 @@ const QuestionCard = (props) => {
         if (e === "Upvote") {
           updateScore = {
             score: res.data.score + +TotalUpVotes + 1 - +TotalDownVotes,
+            upvotes: +TotalUpVotes + 1,
+            downvotes: +TotalDownVotes,
           };
         } else if (e === "Downvote") {
           updateScore = {
             score: res.data.score + +TotalUpVotes - +TotalDownVotes - 1,
+            upvotes: +TotalUpVotes,
+            downvotes: +TotalDownVotes - 1,
           };
         }
 
