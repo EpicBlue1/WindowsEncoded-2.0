@@ -20,9 +20,8 @@
 //   height: 70px;
 //   background-image: url("../../../Img/Silver.png");
 //   @include backgroundImages;
-  
-// }
 
+// }
 
 // .BoxOne {
 //   float: left;
@@ -50,7 +49,6 @@
 //   cursor: pointer;
 // }
 
-
 // .badgeBox3 {
 //   float: left;
 //   margin-right: 25px;
@@ -64,7 +62,6 @@
 //   cursor: pointer;
 // }
 
-
 // .BadgeOne {
 //   margin: auto;
 //   margin-top: 10px;
@@ -73,7 +70,6 @@
 //   background-image: url("../../../Img/Bronze.png");
 //   @include backgroundImages;
 // }
-
 
 // .BadgeTwo {
 //   margin: auto;
@@ -92,8 +88,6 @@
 //   background-image: url("../../../Img/Gold.png");
 //   @include backgroundImages;
 // }
-
-
 
 // .BadgeBox {
 //   float: left;
@@ -116,23 +110,33 @@
 //   @include backgroundImages;
 // }
 
-
 // Badge One
 .Box {
   float: left;
   margin-right: 25px;
   width: 100px;
-  height: max-content;
+  // height: max-content;
+  height: 90px;
   background-color: white;
   @include Shadow();
   border-radius: 20px;
   text-align: center;
   margin-bottom: 10px;
   cursor: pointer;
+  // position: relative;
 }
 
+.Box:hover {
+  height: 150px;
+  transition: ease-in-out, 0.1s;
+}
 
-
+.Popup {
+  // position: absolute;
+  // top: 250px;
+  z-index: 500;
+  margin-top: 10px;
+}
 
 // Badge Two
 .BoxTwo {
@@ -166,7 +170,7 @@
   margin-top: 10px;
   width: 70px;
   height: 70px;
-  background-image: url("../../../Img/Badges/Bronze.png");
+  background-image: url("../../../Img/Badges/ScoreOne.png");
   @include backgroundImages;
 }
 
@@ -175,7 +179,7 @@
   margin-top: 10px;
   width: 70px;
   height: 70px;
-  background-image: url("../../../Img/Badges/Silver.png");
+  background-image: url("../../../Img/Badges/ScoreTwo.png");
   @include backgroundImages;
 }
 
@@ -184,10 +188,9 @@
   margin-top: 10px;
   width: 70px;
   height: 70px;
-  background-image: url("../../../Img/Badges/Gold.png");
+  background-image: url("../../../Img/Badges/ScoreThree.png");
   @include backgroundImages;
 }
-
 
 .FirstQuestionBadge {
   margin: auto;
@@ -233,7 +236,6 @@
   background-image: url("../../../Img/Badges/AsweredOne.png");
   @include backgroundImages;
 }
-
 
 .FiveAnsweredBadge {
   margin: auto;

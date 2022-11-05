@@ -1,18 +1,22 @@
-import React from 'react';
-import Style from './Badges.module.scss'
-
+import React, { useState } from "react";
+import Style from "./Badges.module.scss";
 
 const FiftyAsked = () => {
-    return (
-        <div className={Style.Box}>        
+  const [hide, setHide] = useState(true);
 
-        <div className={Style.FiftyAskedBadge}>
-
-        </div>
-        <h4>Answered 50 Question </h4>
-
-        </div>
-    );
+  return (
+    <>
+      <div
+        onMouseEnter={() => setHide(false)}
+        onMouseLeave={() => setHide(true)}
+        className={Style.Box}
+      >
+        <div className={Style.FiftyAskedBadge}></div>
+        {/* <h4>Bronze </h4> */}
+        <div className={hide ? "hide" : Style.Popup}>Fifty Asked</div>
+      </div>
+    </>
+  );
 };
 
 export default FiftyAsked;
