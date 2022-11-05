@@ -40,7 +40,6 @@
 }
 
 .Container {
-  background-image: url(../../../Img/5197173-01.png);
   @include backgroundImages();
   background-size: 25%;
   background-position: center 70%;
@@ -55,6 +54,10 @@
   padding: 20px;
   text-align: center;
   cursor: pointer;
+}
+
+.ContainerImageOne {
+  background-image: url(../../../Img/5197173-01.png);
 }
 
 .Container:hover {
