@@ -48,10 +48,8 @@ const QuestionCard = (props) => {
 
     setDownPerc(Math.round(downPercentage));
     setUpPerc(Math.round(upPercentage));
-    console.log(TotalUpVotes - TotalDownVotes);
 
     setTotal(TotalUpVotes - TotalDownVotes);
-    console.log("Total" + Total);
   }, [TotalUpVotes, TotalDownVotes]);
 
   function updateVote(e) {
@@ -64,31 +62,21 @@ const QuestionCard = (props) => {
       let data = props.allData;
       let quesId = data._id;
       let userId = userData._id;
-      console.log(data);
 
       axios.get("/api/singleUser/" + props.userId).then((res) => {
-        console.log(res);
         let updateScore = {
           score: res.data.score,
         };
         axios.get("/api/singleQuestion/" + quesId).then((res) => {
-          console.log(res);
           let data = res.data;
-          console.log(data);
-          console.log(userId);
-
-          console.log(data);
 
           const found = data.upvoted.find((e) => e === userId);
 
           if (found) {
-            console.log("Found");
             setUpvoteColor(`#46C8A4`);
             setDownColor(`#FD6583`);
             setAlVoted(true);
           } else {
-            console.log("Not found");
-
             if (e === "Upvote") {
               setTotalUpVotes(TotalUpVotes + 1);
             } else if (e === "Downvote") {
@@ -110,21 +98,10 @@ const QuestionCard = (props) => {
               };
             }
 
-            console.log(updateScore);
-
             setUpvoteColor(`#46C8A4`);
             setDownColor(`#FD6583`);
 
-            axios
-              .patch("/api/updateUserScore/" + props.userId, updateScore)
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-
-            console.log("run");
+            axios.patch("/api/updateUserScore/" + props.userId, updateScore);
 
             // update Score
             let template = {
@@ -149,16 +126,7 @@ const QuestionCard = (props) => {
               };
             }
 
-            console.log(template);
-
-            axios
-              .patch("/api/updateVotes/" + quesId, template)
-              .then((res) => {
-                console.log(res);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+            axios.patch("/api/updateVotes/" + quesId, template);
           }
         });
       });
