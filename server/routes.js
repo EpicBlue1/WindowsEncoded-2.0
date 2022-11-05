@@ -515,6 +515,8 @@ router.patch("/api/updateUserScore/:id", async (req, res) => {
       {
         $set: {
           score: data.score,
+          totalUpvotes: data.upvotes,
+          totalDownvotes: data.downvotes,
         },
       }
     );
