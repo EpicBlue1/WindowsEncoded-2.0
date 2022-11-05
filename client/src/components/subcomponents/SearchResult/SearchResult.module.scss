@@ -61,3 +61,22 @@
   padding-top: 10px;
   padding-left: 5%;
 }
+
+.Loading {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../../Icons/rotate-left.svg");
+  @include backgroundImages();
+  animation: rotation 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}

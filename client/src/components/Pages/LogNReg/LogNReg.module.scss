@@ -317,3 +317,23 @@
 .passwordShow img {
   float: left !important;
 }
+
+.Loading {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../../Icons/rotate-left.svg");
+  @include backgroundImages();
+  animation: rotation 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  margin: 0 auto;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}

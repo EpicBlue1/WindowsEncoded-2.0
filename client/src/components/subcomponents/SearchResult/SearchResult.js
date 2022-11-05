@@ -17,7 +17,7 @@ const SearchResult = (props) => {
     axios.get("http://localhost:2000/api/allQuestions").then((res) => {
       let data = res.data;
 
-      // let filteredData = res.data;
+      console.log(props.Loaded);
 
       let searchCard = data
         .filter((val) => {
@@ -49,14 +49,18 @@ const SearchResult = (props) => {
         ));
 
       setCard(searchCard);
+      console.log(searchCard.length);
 
       if (searchCard.length === 1) {
         setCount(searchCard.length + " Result");
       } else if (searchCard.length > 1) {
         setCount(searchCard.length + " Results");
+      } else if (searchCard.length < 1) {
+        setCount(searchCard.length + " Results");
       }
+      props.setLoaded("NotLoading");
     });
-  }, [props.ResultData]);
+  }, [props, props.ResultData, search]);
 
   return (
     <div
@@ -66,6 +70,9 @@ const SearchResult = (props) => {
         Showing Results For: <u className={Style.Underline}>{Result}</u>
       </h3>
       <p>{Count}</p>
+      <div
+        className={props.Loaded === "NotLoading" ? null : Style.Loading}
+      ></div>
       <hr></hr>
 
       <div className={Style.ResultContainer}>{Card}</div>

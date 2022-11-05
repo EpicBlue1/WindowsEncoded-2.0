@@ -14,6 +14,8 @@ const TopNav = (props) => {
   const [Navigate, setNavigate] = useState("/");
   const [ResultsModal, setResultsModal] = useState(false);
   const [ResultData, setResultData] = useState("");
+  const [Loaded, setLoaded] = useState("NotLoading");
+
   // const NavigatelOC = useLocation();
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
@@ -58,10 +60,15 @@ const TopNav = (props) => {
             ResultsModal={ResultsModal}
             setResultsModal={setResultsModal}
             ResultData={ResultData}
+            setLoaded={setLoaded}
+            Loaded={Loaded}
           />
         </div>
         <Input
-          onChange={Search}
+          onChange={() => {
+            Search();
+            setLoaded("Loading");
+          }}
           ref={Result}
           className="Search"
           Intype="Search"

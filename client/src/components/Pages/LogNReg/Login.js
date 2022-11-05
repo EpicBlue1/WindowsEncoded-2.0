@@ -29,16 +29,10 @@ const Login = (props) => {
       "Make sure you check your email before you continue to log in!"
     );
 
+  const [Loaded, setLoaded] = useState("NotLoading");
+
   //Hide and Show Password
   const [passwordType, setPasswordType] = useState("password");
-
-  // const togglePassword = () => {
-  //   if (passwordType === "password") {
-  //     setPasswordType("text");
-  //     return;
-  //   }
-  //   setPasswordType("password");
-  // };
 
   //Validation
   const FormValues = () => {
@@ -49,6 +43,7 @@ const Login = (props) => {
       setEmailText(
         "Please enter your student email (Student number + virtualwindow.co.za)"
       );
+      setLoaded("NotLoading");
     } else {
       setEmailValid(true);
     }
@@ -56,6 +51,7 @@ const Login = (props) => {
     if (email.current.value === "") {
       setEmailValid("");
       setFormText("");
+      setLoaded("NotLoading");
     }
 
     //Password
@@ -65,6 +61,7 @@ const Login = (props) => {
     ) {
       setPasswordValid(false);
       setPasswordText("Please enter Password");
+      setLoaded("NotLoading");
     } else {
       setPasswordValid(true);
       setPasswordText("All good");
@@ -73,6 +70,7 @@ const Login = (props) => {
     if (password.current.value === "") {
       setPasswordValid("");
       setFormText("");
+      setLoaded("NotLoading");
     }
   };
 
@@ -89,6 +87,7 @@ const Login = (props) => {
       axios
         .post("/api/login/", userCreds)
         .then((res) => {
+          setLoaded("NotLoading");
           console.log(res);
           if (res.data.valid) {
             setFormText("");
@@ -120,6 +119,7 @@ const Login = (props) => {
       setPasswordText("Please enter Password");
       setPasswordValid(false);
       setEmailValid(false);
+      setLoaded("Loading");
     }
   };
 
@@ -170,13 +170,6 @@ const Login = (props) => {
               placeholder="Password"
               Intype="Login"
             />
-            {/* <div className="passwordShow" onClick={togglePassword}>
-              {passwordType === "password" ? (
-                <img src={hide} />
-              ) : (
-                <img src={show} />
-              )}
-            </div> */}
           </form>
           <p className={Style.Red}>{FormText}</p>
           <p
@@ -187,7 +180,14 @@ const Login = (props) => {
             Forgot Password?
           </p>
           <br></br>
-          <Button onClick={login} className={Style.Button} type="Primary">
+          <Button
+            onClick={(e) => {
+              login(e);
+              setLoaded("Loading");
+            }}
+            className={Style.Button}
+            type="Primary"
+          >
             Log In
           </Button>
           <br></br>
@@ -200,6 +200,8 @@ const Login = (props) => {
           >
             Don't have an account? Register now!
           </p>
+          <br />
+          <div className={Loaded === "NotLoading" ? null : Style.Loading}></div>
         </div>
         <div className={Style.LogRight}>
           <div className={Style.LogImage}></div>
