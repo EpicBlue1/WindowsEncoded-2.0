@@ -3,6 +3,7 @@ const router = express();
 const path = require("path");
 const bcrypt = require("bcrypt");
 const usersSchema = require("./models/Users");
+const tagSchema = require("./models/Tags")
 const ProfileSchema = require("./models/ProfileImages");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
@@ -470,6 +471,53 @@ router.patch("/api/updatepass/:id", async (req, res) => {
     });
   }
 });
+
+router.get("/api/all-tags", async (req, res) => {
+  try {
+    const findTags = await tagSchema.find();
+    const availableTags = findTags.filter((tag) => {
+      return tag.tombstone === false;
+    });
+    res.json(availableTags);
+  } catch (err) {
+    res.json(500).json({ msg: err.message });
+  }
+});
+
+router.post("/api/add-tag", async (req, res) => {
+  const { tagName } = req.body;
+
+  const tagDuplicate = await tagSchema.findOne({ tagName: tagName }).exec();
+
+  if (tagDuplicate) {
+    console.log("dup detacted");
+    return res.sendStatus(409);
+  }
+  const newTag = new tagSchema({
+    tagName: tagName,
+  });
+  try {
+    const response = await newTag.save();
+    res.status(201).json({ success: `new tag: ${tagName} created!` });
+  } catch (err) {
+    res.json(500).json({ msg: err.message });
+  }
+});
+
+router.patch("/delete-tag", async (req, res) => {
+  const { tagId } = req.body;
+
+  //   const tag = await tagSchema.findOne({ _id: req.body.id }).exec();
+  //   if (!tag) {
+  //     res.status(204).json({ message: "No Tag Exists!" });
+  //   }
+  //   res.json(tagId);
+  const update = await tagSchema
+    .findByIdAndUpdate(tagId, { tombstone: true })
+    .exec();
+  res.json("tag has been removed");
+});
+
 
 router.patch("/api/updateVotes/:id", async (req, res) => {
   let data = req.body;

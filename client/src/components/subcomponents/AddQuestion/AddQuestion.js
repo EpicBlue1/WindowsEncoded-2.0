@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../../subcomponents/Buttons/Button";
 import Input from "../Inputs/Input";
 import Style from "./AddQuestion.module.scss";
@@ -18,6 +18,20 @@ const AddQuestion = (props) => {
   const [questionLanguage, setQuestionLanguage] = useState("Language");
   const [questionCode, setQuestionCode] = useState("props.setUpdateRender(!props.updateRender);");
 
+  const [tagList, setTagList] = useState([]);
+  const [tagsSelected, setTagsSelected] = useState([]);
+  const [tagId, setTagId] = useState([]);
+
+  const getTags = async () => {
+    const response = await axios.get("http://localhost:2000/api/all-tags");
+    console.log(response);
+    setTagList(response.data);
+  };
+
+  useEffect(() => {
+    getTags();
+  }, []);
+
   const Form = useRef();
   const QuesTitle = useRef();
   const Tags = useRef();
@@ -33,6 +47,39 @@ const AddQuestion = (props) => {
   const closeModal = () => {
     props.rerender();
   };
+
+  const addTagHandler = (e, key) => {
+    console.log(e);
+    console.log(key);
+    const arr = tagsSelected;
+    const idArr = tagId;
+    const tags = e.target.innerText;
+
+    if (!arr.includes(tags)) {
+      arr.push(tags);
+      idArr.push(key);
+      setTagsSelected(arr);
+      setTagId(idArr);
+      console.log(tagId);
+      setRerender(true);
+    }
+  };
+
+  const handleTagRemove = (index) => {
+    console.log('something in there');
+
+    const list = [...tagsSelected];
+    const listId = [...tagId];
+    listId.splice(index, 1);
+    list.splice(index, 1);
+    setTagsSelected(list);
+    setTagId(listId);
+
+
+  }
+  console.log(tagsSelected);
+  console.log(tagId);
+
 
   const questionInfo = (e) => {
     const { name, value } = e.target;

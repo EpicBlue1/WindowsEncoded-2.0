@@ -137,7 +137,7 @@ const QuestionCard = (props) => {
     sessionStorage.setItem("questionId", props.productId);
     navigate("/IndividualQuestion", { state: { allData: props.allData } });
   };
-
+  
   return (
     <div className={Style.QuestionCard}>
       {loginAlert}
