@@ -237,6 +237,8 @@ router.post("/register", (req, res) => {
     profile: req.body.profile,
     score: 50,
     admin: false,
+    totalUpvotes: 1,
+    totalDownvotes: -1,
   });
 
   newUser
@@ -498,6 +500,19 @@ router.get("/api/singleUser/:id", async (req, res) => {
 
   try {
     const findUser = await usersSchema.findById(userId);
+
+    res.json(findUser);
+  } catch (error) {
+    res.json("err: " + error);
+  }
+});
+
+router.get("/api/singleQuestion/:id", async (req, res) => {
+  let userId = req.params.id;
+  console.log(userId);
+
+  try {
+    const findUser = await questionModel.findById(userId);
 
     res.json(findUser);
   } catch (error) {

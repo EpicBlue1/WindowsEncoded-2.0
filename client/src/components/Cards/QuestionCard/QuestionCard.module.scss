@@ -46,7 +46,7 @@
 
 .GradientDown {
   width: 95%;
-  background-color: rgba(253, 30, 74, 1);
+  // background-color: rgba(253, 30, 74, 1);
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom-left-radius: 25px;
@@ -68,7 +68,7 @@
 
 .GradientUp {
   width: 95%;
-  background-color: rgba(0, 200, 145, 1);
+  // background-color: rgba(0, 200, 145, 1);
   padding-top: 10px;
   padding-bottom: 10px;
   border-top-left-radius: 25px;
@@ -189,4 +189,23 @@
   color: $Primary_DarkBlue !important;
   text-overflow: ellipsis;
   //   background-color: red;
+}
+
+.AlreadyUpCon {
+  width: 1px;
+  height: 1px;
+}
+
+.AlreadyUp {
+  position: relative;
+  width: 150px;
+  border-radius: 20px;
+  height: 29px;
+  top: -55px;
+  background-color: #4b4b4b;
+  left: 75px;
+  padding-top: 7px;
+  font-weight: 600;
+  color: white;
+  @include Shadow();
 }

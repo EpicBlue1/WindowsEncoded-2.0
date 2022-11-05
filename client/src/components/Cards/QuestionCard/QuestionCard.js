@@ -19,6 +19,11 @@ const QuestionCard = (props) => {
   const [DownPerc, setDownPerc] = useState();
   const [UpPerc, setUpPerc] = useState();
 
+  const [upvoteColor, setUpvoteColor] = useState(`rgba(0, 200, 145, 1)`);
+  const [downolor, setDownColor] = useState(`rgba(253, 30, 74, 1)`);
+
+  const [AlVoted, setAlVoted] = useState(false);
+
   //WAS WORKING ON SCORE STUFF
   // const [action, setAction] = useState(0)
   // let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
@@ -53,73 +58,104 @@ const QuestionCard = (props) => {
 
   function updateVote(e) {
     let user = sessionStorage.getItem("UserData");
+    let userData = JSON.parse(user);
 
     if (user === "" || user === null) {
       setLoginAlert(<LoginAlert rerender={setLoginAlert} />);
     } else {
       let data = props.allData;
       let quesId = data._id;
+      let userId = userData._id;
+      console.log(data.userId);
 
       axios.get("/api/singleUser/" + data.userId).then((res) => {
-        console.log(res.data);
-
         let updateScore = {
           score: res.data.score,
         };
-
-        if (e === "Upvote") {
-          updateScore = {
-            score: res.data.score + +TotalUpVotes + 1 - +TotalDownVotes,
-            upvotes: +TotalUpVotes + 1,
-            downvotes: +TotalDownVotes,
-          };
-        } else if (e === "Downvote") {
-          updateScore = {
-            score: res.data.score + +TotalUpVotes - +TotalDownVotes - 1,
-            upvotes: +TotalUpVotes,
-            downvotes: +TotalDownVotes - 1,
-          };
-        }
-
-        axios
-          .patch("/api/updateUserScore/" + data.userId, updateScore)
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-
-      // update Score
-      let template = {
-        score: +TotalUpVotes - +TotalDownVotes,
-        upvotes: +TotalUpVotes,
-        downvotes: +TotalDownVotes,
-      };
-
-      if (e === "Upvote") {
-        template = {
-          score: +TotalUpVotes + 1 - +TotalDownVotes,
-          upvotes: +TotalUpVotes + 1,
-          downvotes: +TotalDownVotes,
-        };
-      } else if (e === "Downvote") {
-        template = {
-          score: +TotalUpVotes - +TotalDownVotes - 1,
-          upvotes: +TotalUpVotes,
-          downvotes: +TotalDownVotes - 1,
-        };
-      }
-
-      axios
-        .patch("/api/updateVotes/" + quesId, template)
-        .then((res) => {
+        axios.get("/api/singleQuestion/" + quesId).then((res) => {
           console.log(res);
-        })
-        .catch(function (error) {
-          console.log(error);
+          let data = res.data;
+          console.log(data);
+          console.log(userId);
+
+          console.log(data);
+
+          const found = data.upvoted.find((e) => e === userId);
+
+          if (found) {
+            console.log("Found");
+            setUpvoteColor(`#46C8A4`);
+            setDownColor(`#FD6583`);
+            setAlVoted(true);
+          } else {
+            console.log("Not found");
+            if (e === "Upvote") {
+              setTotalUpVotes(TotalUpVotes + 1);
+            } else if (e === "Downvote") {
+              setTotalDownVotes(TotalDownVotes + 1);
+            }
+            if (e === "Upvote") {
+              updateScore = {
+                score: res.data.score + +TotalUpVotes + 1 - +TotalDownVotes,
+                upvotes: +TotalUpVotes + 1,
+                downvotes: +TotalDownVotes,
+              };
+            } else if (e === "Downvote") {
+              updateScore = {
+                score: res.data.score + +TotalUpVotes - +TotalDownVotes - 1,
+                upvotes: +TotalUpVotes,
+                downvotes: +TotalDownVotes - 1,
+              };
+            }
+
+            setUpvoteColor(`#46C8A4`);
+            setDownColor(`#FD6583`);
+
+            axios
+              .patch("/api/updateUserScore/" + userId, updateScore)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+
+            console.log("run");
+
+            // update Score
+            let template = {
+              score: +TotalUpVotes - +TotalDownVotes,
+              upvotes: +TotalUpVotes,
+              downvotes: +TotalDownVotes,
+            };
+
+            if (e === "Upvote") {
+              template = {
+                score: +TotalUpVotes + 1 - +TotalDownVotes,
+                upvotes: +TotalUpVotes + 1,
+                downvotes: +TotalDownVotes,
+                userId: userData._id,
+              };
+            } else if (e === "Downvote") {
+              template = {
+                score: +TotalUpVotes - +TotalDownVotes - 1,
+                upvotes: +TotalUpVotes,
+                downvotes: +TotalDownVotes - 1,
+                userId: userData._id,
+              };
+            }
+
+            axios
+              .patch("/api/updateVotes/" + quesId, template)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }
         });
+      });
     }
   }
 
@@ -152,11 +188,11 @@ const QuestionCard = (props) => {
         <div className={Style.Container}>
           <div
             onClick={() => {
-              setTotalUpVotes(TotalUpVotes + 1);
               updateVote("Upvote");
             }}
             style={{
               height: `${UpPerc}%`,
+              backgroundColor: `${upvoteColor}`,
             }}
             className={Style.GradientUp}
           >
@@ -168,14 +204,21 @@ const QuestionCard = (props) => {
               {TotalUpVotes}
             </div>
           </div>
-          <div className={Style.Middle}>{Total}</div>
+          <div className={Style.Middle}>
+            {Total}
+            <div className={Style.AlreadyUpCon}>
+              <div className={AlVoted ? Style.AlreadyUp : "hide"}>
+                Already Voted!
+              </div>
+            </div>
+          </div>
           <div
             onClick={() => {
-              setTotalDownVotes(TotalDownVotes + 1);
               updateVote("Downvote");
             }}
             style={{
               height: `${DownPerc}%`,
+              backgroundColor: `${downolor}`,
             }}
             className={Style.GradientDown}
           >
