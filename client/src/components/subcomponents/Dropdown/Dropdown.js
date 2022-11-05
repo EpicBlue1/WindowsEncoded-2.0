@@ -144,7 +144,7 @@ const Dropdown = ({
       {showMenu && (
         <div className={Style.dropdownMenu}>
           {isSearchable && (
-            <div className={Style.searchox}>
+            <div className={Style.searchBox}>
               <input onChange={onSearch} value={searchValue} ref={searchRef} />
             </div>
           )}

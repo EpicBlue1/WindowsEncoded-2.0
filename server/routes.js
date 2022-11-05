@@ -57,12 +57,14 @@ router.post(
       image: req.file.filename,
       upvotes: 1,
       downvotes: 1,
+      tags:data.tags,
     });
 
     newQuestion
       .save()
       .then((item) => {
         res.json(item);
+        console.log(item)
       })
       .catch((err) => {
         res.status(400).json({ msg: "There is an Error:", err });

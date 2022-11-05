@@ -17,6 +17,7 @@ const AddQuestion = (props) => {
   const [questionDescription, setQuestionDescription] = useState("Question Description");
   const [questionLanguage, setQuestionLanguage] = useState("Language");
   const [questionCode, setQuestionCode] = useState("props.setUpdateRender(!props.updateRender);");
+  const [tagValue,setTagValue]=useState();
 
   const [tagList, setTagList] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
@@ -62,6 +63,7 @@ const AddQuestion = (props) => {
       setTagId(idArr);
       console.log(tagId);
       // setRerender(true);
+      
     }
   };
 
@@ -131,6 +133,7 @@ const AddQuestion = (props) => {
         questionDescription: questionInputs.questionDescription,
         codeSnippet: questionInputs.codeSnippet,
         language: questionInputs.language,
+        tags:tagValue
       };
 
       payloadData.append("information", JSON.stringify(payload));
@@ -144,7 +147,7 @@ const AddQuestion = (props) => {
       }
 
       axios
-        .post("http://localhost:2000/api/newQuestion/", payloadData)
+        .post("/api/newQuestion/", payloadData)
         .then(() => {
           props.rerender();
           props.setUpdateRender(!props.updateRender);
@@ -199,7 +202,7 @@ const AddQuestion = (props) => {
              isMulti
              placeHolder="Please Select the tag..."
              options={options}
-             onChange={(value) => console.log(value)}
+             onChange={(value) => setTagValue(value)}
            />
            </div>
 
