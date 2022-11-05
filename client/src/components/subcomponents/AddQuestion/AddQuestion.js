@@ -5,6 +5,7 @@ import Input from "../Inputs/Input";
 import Style from "./AddQuestion.module.scss";
 import VotingSystem from "../VotingSystem/VotingSystem";
 import CodeArea from "../CodeArea/CodeArea";
+import Dropdown from "../Dropdown/Dropdown"
 
 const AddQuestion = (props) => {
   const [imageName, setImageName] = useState("Upload a file");
@@ -19,6 +20,7 @@ const AddQuestion = (props) => {
 
   const Form = useRef();
   const QuesTitle = useRef();
+  const Tags = useRef();
   const Image = useRef();
   const Desc = useRef();
   const Code = useRef();
@@ -66,6 +68,7 @@ const AddQuestion = (props) => {
     if (
       QuesTitle.current.value === "" ||
       Image.current.value === "" ||
+      Tags.current.value === "" ||
       Desc.current.value === "" ||
       Code.current.value === "" ||
       LangSelect.current.value === "Please Select the Language..."
@@ -101,6 +104,13 @@ const AddQuestion = (props) => {
         });
     }
   };
+   
+  const options = [
+    { value: "javaScript", label: "JavaScript" },
+    { value: "react", label: "React" },
+    { value: "html", label: "Html" },
+    { value: "css", label: "Css" },
+  ];
 
   return (
     <div className={Style.BackgroundBlur}>
@@ -135,6 +145,16 @@ const AddQuestion = (props) => {
             <option>Swift</option>
             <option>Kotlin</option>
           </select>
+
+          <div className={Style.App} ref={Tags}>
+             <Dropdown
+             isSearchable
+             isMulti
+             placeHolder="Select..."
+             options={options}
+             onChange={(value) => console.log(value)}
+           />
+           </div>
 
           <textarea
             className={Style.codeBox}
