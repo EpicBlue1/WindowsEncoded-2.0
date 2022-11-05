@@ -13,7 +13,7 @@ const FiveQuestionsBadge = () => {
       >
         <div className={Style.FiveAnsweredBadge}></div>
         {/* <h4>Bronze </h4> */}
-        <div className={hide ? "hide" : Style.Popup}>Five Asked</div>
+        <div className={hide ? "hide" : Style.Popup}>Five Questions Asked</div>
       </div>
     </>
   );

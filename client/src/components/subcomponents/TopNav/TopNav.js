@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import DefaultIcon from "../../../Icons/Profile.svg";
+import Admin from "../Admin/Admin";
 import Input from "../Inputs/Input";
 import SearchResult from "../SearchResult/SearchResult";
 import Style from "./TopNav.module.scss";
@@ -15,6 +16,13 @@ const TopNav = (props) => {
   const [ResultsModal, setResultsModal] = useState(false);
   const [ResultData, setResultData] = useState("");
   const [Loaded, setLoaded] = useState("NotLoading");
+
+  const [AdminModal, setAdminModal] = useState(true);
+
+
+  
+  
+
 
   // const NavigatelOC = useLocation();
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
@@ -51,6 +59,10 @@ const TopNav = (props) => {
     }
   }, []);
 
+  const openModal = () => {
+    setAdminModal(false)
+  }
+
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
       <div className={props.show ? Style.topNav : "hide"}>
@@ -74,6 +86,7 @@ const TopNav = (props) => {
           Intype="Search"
         />
         <h4 className={Style.Heading}>{userName}</h4>
+        <div className={Style.Admin} onClick={openModal}></div>
         <Link to="/Profile">
           <div
             className={Style.ProfileImage}
@@ -81,6 +94,7 @@ const TopNav = (props) => {
           ></div>
         </Link>
       </div>
+      <Admin setAdminModal={setAdminModal}  AdminModal={AdminModal}/>
     </div>
   );
 };

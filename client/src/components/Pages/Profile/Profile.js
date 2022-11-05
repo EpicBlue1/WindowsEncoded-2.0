@@ -152,22 +152,22 @@ const Profile = (props) => {
   }
 
   //ASKED QUEATIONS BADGES
-  if (AnsweredQeusitons >= 1) {
+  if (AskedQuestions >= 1) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = false;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } else if (AnsweredQeusitons >= 5) {
+  } else if (AskedQuestions >= 2) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } else if (AnsweredQeusitons >= 10) {
+  } else if (AskedQuestions >= 10) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = true;
     FiftyQuestionBadgeCheck = false;
-  } else if (AnsweredQeusitons >= 50) {
+  } else if (AskedQuestions >= 50) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = true;
@@ -179,7 +179,7 @@ const Profile = (props) => {
     badgeTwoCheck = false;
     badgeThreeCheck = false;
   } else if (score >= 15) {
-    badgeoneCheck = 20;
+    badgeoneCheck = true;
     badgeTwoCheck = true;
     badgeThreeCheck = false;
   } else if (score >= 50) {
@@ -202,7 +202,7 @@ const Profile = (props) => {
         {OneAnswerBadgeCheck === true ? OneAnswerBadge : ""}
         {FiveAnswerBadgeCheck === true ? FiveAnswerBadge : ""}
         {TenAnswerBadgeCheck === true ? TenAnswerBadge : ""}
-        {FiveAnswerBadgeCheck === true ? FiveAnswerBadge : ""}
+        {/* {FiveAnswerBadgeCheck === true ? FiveAnswerBadge : ""} */}
       </div>
       <br></br>
       <h1>YOUR ACTIVITY</h1>

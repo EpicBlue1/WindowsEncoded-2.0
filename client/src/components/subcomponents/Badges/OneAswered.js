@@ -13,7 +13,7 @@ const OneAswered = () => {
       >
         <div className={Style.OneAnsweredBadge}></div>
         {/* <h4>Bronze </h4> */}
-        <div className={hide ? "hide" : Style.Popup}>1st Answered</div>
+        <div className={hide ? "hide" : Style.Popup}>1st Question Answered</div>
       </div>
     </>
   );

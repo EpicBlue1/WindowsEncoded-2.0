@@ -61,7 +61,7 @@ const AddQuestion = (props) => {
       setTagsSelected(arr);
       setTagId(idArr);
       console.log(tagId);
-      setRerender(true);
+      // setRerender(true);
     }
   };
 

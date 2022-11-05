@@ -13,7 +13,7 @@ const TenAswered = () => {
       >
         <div className={Style.TenAnsweredBadge}></div>
         {/* <h4>Bronze </h4> */}
-        <div className={hide ? "hide" : Style.Popup}>Ten Answered</div>
+        <div className={hide ? "hide" : Style.Popup}>Ten Questions Answered</div>
       </div>
     </>
   );
