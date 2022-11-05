@@ -150,7 +150,7 @@ const AddQuestion = (props) => {
              <Dropdown
              isSearchable
              isMulti
-             placeHolder="Select..."
+             placeHolder="Please Select the tag..."
              options={options}
              onChange={(value) => console.log(value)}
            />

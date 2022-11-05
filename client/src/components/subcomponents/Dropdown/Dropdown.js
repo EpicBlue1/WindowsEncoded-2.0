@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Style from "./Dropdown.scss";
+import Style from "./Dropdown.module.scss";
 
 const Icon = () => {
   return (
@@ -135,8 +135,8 @@ const Dropdown = ({
     <div className={Style.dropdownContainer}>
       <div ref={inputRef} onClick={handleInputClick} className={Style.dropdownInput}>
         <div className={Style.dropdownSelectedValue}>{getDisplay()}</div>
-        <div className="dropdown-tools">
-          <div className="dropdown-tool">
+        <div className={Style.dropdownTools}>
+          <div className={Style.dropdownTool}>
             <Icon />
           </div>
         </div>
