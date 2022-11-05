@@ -9,9 +9,9 @@ import Style from "./ProfileSection.module.scss";
 import ProfileQuestion from "../ProfileQuestion/ProfileQuestion";
 
 //badges
-import bronze from "../../../Img/Bronze.png";
-import silver from "../../../Img/Silver.png";
-import gold from "../../../Img/Gold.png";
+import bronze from "../../../Img/Badges/Bronze.png";
+import silver from "../../../Img/Badges/Silver.png";
+import gold from "../../../Img/Badges/Gold.png";
 
 
 const ProfileSection = (props) => {

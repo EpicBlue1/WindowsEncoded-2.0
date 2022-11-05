@@ -1,7 +1,6 @@
 import { default as axios, default as Axios } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Badges from "../../subcomponents/Badges/Badges";
 import BagdeOne from "../../subcomponents/Badges/BagdeOne";
 import BadgeTwo from "../../subcomponents/Badges/BadgeTwo";
 import BadgeThree from "../../subcomponents/Badges/BadgeThree";
@@ -11,6 +10,8 @@ import ProfileSection from "../../subcomponents/ProfileSection/ProfileSection";
 import Style from "./Profile.module.scss";
 import FirstQuestionBadge from "../../subcomponents/Badges/FirstQuestionBadge";
 import FiveQuestionsBadge from "../../subcomponents/Badges/FiveQuestionsBadge";
+// import TenQuestionsBadge from "../../subcomponents/Badges/TenQuestionsBadge";
+
 
 const Profile = (props) => {
   const [ProfileData, setProfileData] = useState();
@@ -66,11 +67,7 @@ const Profile = (props) => {
 
   let score = seshStorage.score;
 
-    let OneQuestionAsked = <FirstQuestionBadge/>
-    let OneQuestionAskedCheck = false;
-
-    let fiveQuestionsBadge = <FiveQuestionsBadge/>;
-    let fiveQuestionsBadgeCheck = false;
+   
     
     let badgeOne = <BagdeOne/>
     let badgeoneCheck = false;
@@ -81,23 +78,43 @@ const Profile = (props) => {
     let badgeThree = <BadgeThree/>
     let badgeThreeCheck = false;
 
-    // add badge for asking 1 question
-    // add badge for 5 question
-    // add nbadge for one asnwer
-    // badge based om tags 
+    let OneQuestionAsked = <FirstQuestionBadge/>
+    let OneQuestionAskedCheck = false;
+
+    let fiveQuestionsBadge = <FiveQuestionsBadge/>;
+    let fiveQuestionsBadgeCheck = false;
+
+    // let TenQuestionsBadge = <TenQuestionsBadge/>;
+    // let TenQuestionsBadgeCheck = false;
+
+    // let FiftyQuestionsBadge = <FiftyQuestionsBadge/>;
+    // let FiftyQuestionsBadgeCheck = false;
+
 
     if(AskedQuestions === 1){
       OneQuestionAskedCheck = true;
       fiveQuestionsBadgeCheck = false;
-    }  else if (AskedQuestions >= 2) {
+      // TenQuestionsBadgeCheck = false
+      // FiftyQuestionsBadgeCheck = false
+    }  else if (AskedQuestions >= 5) {
       OneQuestionAskedCheck = true;
       fiveQuestionsBadgeCheck = true;
-    }
-    
-    // if(AskedQuestions === 5) {
-    //   FiveQuestionsBadgeCheck = true;
-
+      // TenQuestionsBadgeCheck = false
+      // FiftyQuestionsBadgeCheck = false
+    } 
+    // else if (AskedQuestions >= 10) {
+    //   OneQuestionAskedCheck = true;
+    //   fiveQuestionsBadgeCheck = true;
+    //   // TenQuestionsBadgeCheck = true
+    //   // FiftyQuestionsBadgeCheck = false
+    // } else if (AskedQuestions >= 50) {
+    //   OneQuestionAskedCheck = true;
+    //   fiveQuestionsBadgeCheck = true;
+    //   // TenQuestionsBadgeCheck = true
+    //   // FiftyQuestionsBadgeCheck = true
     // }
+    
+   
 
 
     if(score <= 50) {
@@ -125,6 +142,9 @@ const Profile = (props) => {
         {badgeThreeCheck == true ? badgeThree: ""}
         {OneQuestionAskedCheck == true ? OneQuestionAsked: ""}
         {fiveQuestionsBadgeCheck == true ? fiveQuestionsBadge: ""}
+        {/* {TenQuestionsBadgeCheck == true ? TenQuestionsBadge: ""} */}
+        {/* {FiftyQuestionsBadgeCheck == true ? FiftyQuestionsBadge: ""} */}
+
 
 
 

@@ -4,7 +4,7 @@ import Style from './Badges.module.scss'
 
 const BadgeTwo = () => {
     return (
-        <div className={Style.BoxTwo}>        
+        <div className={Style.Box}>        
 
         <div className={Style.badgeTwo}>
 

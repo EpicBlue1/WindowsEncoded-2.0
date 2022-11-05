@@ -131,14 +131,7 @@
   cursor: pointer;
 }
 
-.badge {
-  margin: auto;
-  margin-top: 10px;
-  width: 70px;
-  height: 70px;
-  background-image: url("../../../Img/Bronze.png");
-  @include backgroundImages;
-}
+
 
 
 // Badge Two
@@ -155,16 +148,6 @@
   cursor: pointer;
 }
 
-.badgeTwo {
-  margin: auto;
-  margin-top: 10px;
-  width: 70px;
-  height: 70px;
-  background-image: url("../../../Img/Silver.png");
-  @include backgroundImages;
-}
-
-// badge three
 .BoxThree {
   float: left;
   margin-right: 25px;
@@ -178,12 +161,30 @@
   cursor: pointer;
 }
 
+.badge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/Bronze.png");
+  @include backgroundImages;
+}
+
+.badgeTwo {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/Silver.png");
+  @include backgroundImages;
+}
+
 .badgeThree {
   margin: auto;
   margin-top: 10px;
   width: 70px;
   height: 70px;
-  background-image: url("../../../Img/Gold.png");
+  background-image: url("../../../Img/Badges/Gold.png");
   @include backgroundImages;
 }
 
@@ -193,6 +194,70 @@
   margin-top: 10px;
   width: 70px;
   height: 70px;
-  background-image: url("../../../Img/Gold.png");
+  background-image: url("../../../Img/Badges/AskedOne.png");
+  @include backgroundImages;
+}
+
+.FiveQuestionBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AskedTwo.png");
+  @include backgroundImages;
+}
+
+.TenQuestionBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AskedThree.png");
+  @include backgroundImages;
+}
+
+.FiftyAskedBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AskedFour.png");
+  @include backgroundImages;
+}
+
+.OneAnsweredBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AsweredOne.png");
+  @include backgroundImages;
+}
+
+
+.FiveAnsweredBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AnsweredTwo.png");
+  @include backgroundImages;
+}
+
+.TenAnsweredBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AnsweredThree.png");
+  @include backgroundImages;
+}
+
+.FiftyAnsweredBadge {
+  margin: auto;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../Img/Badges/AnsweredFour.png");
   @include backgroundImages;
 }

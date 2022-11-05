@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import ProfileImg from "../../../Img/Bronze.png";
+import ProfileImg from "../../../Img/Badges/Bronze.png";
 import QuestionCard from "../../Cards/QuestionCard/QuestionCard";
 import Button from "../../subcomponents/Buttons/Button";
 import CodeArea from "../../subcomponents/CodeArea/CodeArea";

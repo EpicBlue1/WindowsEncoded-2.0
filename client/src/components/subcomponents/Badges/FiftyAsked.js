@@ -2,17 +2,17 @@ import React from 'react';
 import Style from './Badges.module.scss'
 
 
-const FiveQuestionsBadge = () => {
+const FiftyAsked = () => {
     return (
         <div className={Style.Box}>        
 
-        <div className={Style.FiveQuestionBadge}>
+        <div className={Style.FiftyAskedBadge}>
 
         </div>
-        <h4>Asked 5 Question </h4>
+        <h4>Answered 50 Question </h4>
 
         </div>
     );
 };
 
-export default FiveQuestionsBadge;
+export default FiftyAsked;
