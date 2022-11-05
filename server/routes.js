@@ -3,7 +3,7 @@ const router = express();
 const path = require("path");
 const bcrypt = require("bcrypt");
 const usersSchema = require("./models/Users");
-const tagSchema = require("./models/Tags")
+const tagSchema = require("./models/Tags");
 const ProfileSchema = require("./models/ProfileImages");
 const multer = require("multer");
 const questionModel = require("./models/Questions");
@@ -57,14 +57,16 @@ router.post(
       image: req.file.filename,
       upvotes: 1,
       downvotes: 1,
-      tags:data.tags,
+      score: 0,
+      tags: data.tags,
+      reported: false,
     });
 
     newQuestion
       .save()
       .then((item) => {
         res.json(item);
-        console.log(item)
+        console.log(item);
       })
       .catch((err) => {
         res.status(400).json({ msg: "There is an Error:", err });
@@ -509,17 +511,11 @@ router.post("/api/add-tag", async (req, res) => {
 router.patch("/delete-tag", async (req, res) => {
   const { tagId } = req.body;
 
-  //   const tag = await tagSchema.findOne({ _id: req.body.id }).exec();
-  //   if (!tag) {
-  //     res.status(204).json({ message: "No Tag Exists!" });
-  //   }
-  //   res.json(tagId);
   const update = await tagSchema
     .findByIdAndUpdate(tagId, { tombstone: true })
     .exec();
   res.json("tag has been removed");
 });
-
 
 router.patch("/api/updateVotes/:id", async (req, res) => {
   let data = req.body;
@@ -539,6 +535,23 @@ router.patch("/api/updateVotes/:id", async (req, res) => {
       }
     );
     res.json(`upvotes: ${data.upvotes} downvotes: ${data.downvotes}`);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.patch("/api/report/:id", async (req, res) => {
+  console.log("maybe");
+  try {
+    const upVote = await questionModel.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          reported: true,
+        },
+      }
+    );
+    res.json("it has been set");
   } catch (error) {
     console.log(error);
   }

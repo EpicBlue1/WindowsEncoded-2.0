@@ -29,6 +29,9 @@ const QuestionSchema = mongoose.Schema({
   score: {
     type: Number,
   },
+  reported: {
+    type: Boolean,
+  },
   image: { type: String, required: true },
 });
 

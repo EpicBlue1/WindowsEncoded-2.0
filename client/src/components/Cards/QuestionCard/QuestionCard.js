@@ -5,6 +5,7 @@ import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
+  console.log(props.allData);
   let navigate = useNavigate();
 
   const Upvote = useRef();
@@ -13,6 +14,8 @@ const QuestionCard = (props) => {
   const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
   const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
   const [Total, setTotal] = useState(10);
+  const [QuesID, setQuesID] = useState(props.allData._id);
+  const [Reported, setReported] = useState(false);
 
   const [loginAlert, setLoginAlert] = useState();
 
@@ -137,7 +140,7 @@ const QuestionCard = (props) => {
     sessionStorage.setItem("questionId", props.productId);
     navigate("/IndividualQuestion", { state: { allData: props.allData } });
   };
-  
+
   return (
     <div className={Style.QuestionCard}>
       {loginAlert}
@@ -149,14 +152,13 @@ const QuestionCard = (props) => {
         <br />
 
         <h2 className={Style.heading}>{props.questionTitle}</h2>
-
-        <div className={Style.tag}>{props.language}</div>
-        {/* <div className={Style.tag}>JavaScript</div> */}
-
-        <br />
         <br />
 
         <p className={Style.questionDescription}>{props.questionDescription}</p>
+
+        {/* <div className={Style.tag}>JavaScript</div> */}
+
+        <div className={Style.tag}>{props.language}</div>
       </div>
       <div className={Style.Right}>
         <div className={Style.Container}>
@@ -206,6 +208,23 @@ const QuestionCard = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className={Style.Report}
+        onClick={() => {
+          axios
+            .patch("/api/report/" + props.allData._id)
+            .then((res) => {
+              console.log(res);
+              setReported(true);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      ></div>
+      <div className={Style.AlreadyUpCon}>
+        <div className={Reported ? Style.Reported : "hide"}>Reported</div>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../../subcomponents/Buttons/Button";
-import Input from "../Inputs/Input";
-import Style from "./AddQuestion.module.scss";
-import VotingSystem from "../VotingSystem/VotingSystem";
 import CodeArea from "../CodeArea/CodeArea";
-import Dropdown from "../Dropdown/Dropdown"
+import Dropdown from "../Dropdown/Dropdown";
+import Input from "../Inputs/Input";
+import VotingSystem from "../VotingSystem/VotingSystem";
+import Style from "./AddQuestion.module.scss";
 
 const AddQuestion = (props) => {
   const [imageName, setImageName] = useState("Upload a file");
@@ -14,10 +14,14 @@ const AddQuestion = (props) => {
   const [questionImage, setQuestionImage] = useState();
 
   const [questionTitle, setQuestionTitle] = useState("Question Title");
-  const [questionDescription, setQuestionDescription] = useState("Question Description");
+  const [questionDescription, setQuestionDescription] = useState(
+    "Question Description"
+  );
   const [questionLanguage, setQuestionLanguage] = useState("Language");
-  const [questionCode, setQuestionCode] = useState("props.setUpdateRender(!props.updateRender);");
-  const [tagValue,setTagValue]=useState();
+  const [questionCode, setQuestionCode] = useState(
+    "props.setUpdateRender(!props.updateRender);"
+  );
+  const [tagValue, setTagValue] = useState();
 
   const [tagList, setTagList] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
@@ -63,12 +67,11 @@ const AddQuestion = (props) => {
       setTagId(idArr);
       console.log(tagId);
       // setRerender(true);
-      
     }
   };
 
   const handleTagRemove = (index) => {
-    console.log('something in there');
+    console.log("something in there");
 
     const list = [...tagsSelected];
     const listId = [...tagId];
@@ -76,21 +79,18 @@ const AddQuestion = (props) => {
     list.splice(index, 1);
     setTagsSelected(list);
     setTagId(listId);
-
-
-  }
+  };
   console.log(tagsSelected);
   console.log(tagId);
-
 
   const questionInfo = (e) => {
     const { name, value } = e.target;
     setQuestionInputs({ ...questionInputs, [name]: value });
 
-    setQuestionTitle(questionInputs.questionTitle)
-    setQuestionDescription(questionInputs.questionDescription)
-    setQuestionLanguage(questionInputs.language)
-    setQuestionCode(questionInputs.codeSnippet)
+    setQuestionTitle(questionInputs.questionTitle);
+    setQuestionDescription(questionInputs.questionDescription);
+    setQuestionLanguage(questionInputs.language);
+    setQuestionCode(questionInputs.codeSnippet);
   };
 
   const getImage = (e) => {
@@ -104,7 +104,7 @@ const AddQuestion = (props) => {
     let reader = new FileReader();
     reader.onload = () => {
       let output = document.getElementById("prev_img");
-      let previewOutput = document.getElementById("previewImage")
+      let previewOutput = document.getElementById("previewImage");
       output.src = reader.result;
       previewOutput.src = reader.result;
     };
@@ -133,7 +133,7 @@ const AddQuestion = (props) => {
         questionDescription: questionInputs.questionDescription,
         codeSnippet: questionInputs.codeSnippet,
         language: questionInputs.language,
-        tags:tagValue
+        tags: tagValue,
       };
 
       payloadData.append("information", JSON.stringify(payload));
@@ -146,15 +146,13 @@ const AddQuestion = (props) => {
         console.log(`${key}: ${value}`);
       }
 
-      axios
-        .post("/api/newQuestion/", payloadData)
-        .then(() => {
-          props.rerender();
-          props.setUpdateRender(!props.updateRender);
-        });
+      axios.post("/api/newQuestion/", payloadData).then(() => {
+        props.rerender();
+        props.setUpdateRender(!props.updateRender);
+      });
     }
   };
-   
+
   const options = [
     { value: "javaScript", label: "JavaScript" },
     { value: "react", label: "React" },
@@ -164,7 +162,6 @@ const AddQuestion = (props) => {
 
   return (
     <div className={Style.BackgroundBlur}>
-
       <div className={Style.closeButton} onClick={closeModal}>
         <div>x</div>
       </div>
@@ -173,7 +170,13 @@ const AddQuestion = (props) => {
         <form ref={Form}>
           <h2>Add a Question</h2>
 
-          <Input Intype="ModalInput" placeholder="Question Title" name="questionTitle" ref={QuesTitle} onChange={questionInfo}/>
+          <Input
+            Intype="ModalInput"
+            placeholder="Question Title"
+            name="questionTitle"
+            ref={QuesTitle}
+            onChange={questionInfo}
+          />
 
           <p>Add a brief description of your Question</p>
 
@@ -185,7 +188,13 @@ const AddQuestion = (props) => {
             </div>
           </div>
 
-          <textarea className={Style.textBox} name="questionDescription" ref={Desc} onChange={questionInfo} placeholder="eg. I would like one of my components to pop up with the click of a button." ></textarea>
+          <textarea
+            className={Style.textBox}
+            name="questionDescription"
+            ref={Desc}
+            onChange={questionInfo}
+            placeholder="eg. I would like one of my components to pop up with the click of a button."
+          ></textarea>
           <p>Explain your question in detail. Be specific.</p>
 
           <select ref={LangSelect} name="language" onChange={questionInfo}>
@@ -197,14 +206,14 @@ const AddQuestion = (props) => {
           </select>
 
           <div className={Style.App} ref={Tags}>
-             <Dropdown
-             isSearchable
-             isMulti
-             placeHolder="Please Select the tag..."
-             options={options}
-             onChange={(value) => setTagValue(value)}
-           />
-           </div>
+            <Dropdown
+              isSearchable
+              isMulti
+              placeHolder="Please Select the tag..."
+              options={options}
+              onChange={(value) => setTagValue(value)}
+            />
+          </div>
 
           <textarea
             className={Style.codeBox}
@@ -242,14 +251,12 @@ const AddQuestion = (props) => {
 
         <div className={Style.questionDetails}>
           <div className={Style.questionImage}>
-            <img id="previewImage" /> 
+            <img id="previewImage" />
           </div>
           <p className={Style.questionDescription}>{questionDescription}</p>
           <p>{questionLanguage}</p>
           <br />
-          <CodeArea language="Javascript">
-            {questionCode}
-          </CodeArea>
+          <CodeArea language="Javascript">{questionCode}</CodeArea>
         </div>
       </div>
     </div>
