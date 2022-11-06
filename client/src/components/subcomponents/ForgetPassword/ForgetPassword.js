@@ -50,9 +50,7 @@ const sendPassReset = (e) => {
 
             <form onSubmit={sendPassReset}>
             <Input name="email" className={Style.input} Intype="Login" placeholder="Fill in your email..." onChange={getValues} />
-            <div className={Style.space}>
-            </div>
-            <Button className="button" type="submit" >Send email</Button>
+            <Button className="button" type="Primary">Send email</Button>
             </form>
            
             
