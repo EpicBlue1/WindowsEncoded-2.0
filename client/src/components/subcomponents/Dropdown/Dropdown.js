@@ -141,11 +141,11 @@ const Dropdown = ({
       </div>
       {showMenu && (
         <div className={Style.dropdownMenu}>
-          {isSearchable && (
+          {/* {isSearchable && (
             <div className={Style.searchBox}>
               <input onChange={onSearch} value={searchValue} ref={searchRef} />
             </div>
-          )}
+          )} */}
           {getOptions().map((option) => (
             <div
               onClick={() => onItemClick(option)}

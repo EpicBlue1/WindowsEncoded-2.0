@@ -1,8 +1,8 @@
 @import "../../../index.scss";
 
 .QuestionCard {
-  width: 100%;
-  height: auto;
+  width: 125vh;
+  height: 190px;
   border-radius: 20px;
   display: flex;
   background-color: white;
@@ -19,13 +19,15 @@
 }
 
 .Left {
-  width: 90%;
+  width: 90vh;
   padding: 1.5%;
   height: auto;
+  flex: 0 1 90%;
+  align-self: auto;
 }
 
 .Right {
-  width: 3%;
+  width: 3vh;
   height: auto;
   padding: 1%;
   display: flex;
@@ -38,7 +40,7 @@
 
 .Container {
   height: 95%;
-  width: 95%;
+  width: 25px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
