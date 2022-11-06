@@ -19,14 +19,19 @@ const TopNav = (props) => {
   const [Loaded, setLoaded] = useState("NotLoading");
 
   const [AdminModal, setAdminModal] = useState(true);
+  const [AdminLogo, setAdminLogo] = useState(false);
 
-
-  
-
-
-
-  // const NavigatelOC = useLocation();
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+
+  console.log(seshStorage);
+
+  useEffect(() => {
+    if (seshStorage.admin) {
+      setAdminLogo(seshStorage.admin);
+    } else {
+      setAdminLogo(seshStorage.admin);
+    }
+  });
 
   const Search = () => {
     if (Result.current.value === "") {
@@ -61,8 +66,8 @@ const TopNav = (props) => {
   }, []);
 
   const openModal = () => {
-    setAdminModal(false)
-  }
+    setAdminModal(false);
+  };
 
   return (
     <div className={props.show ? Style.Bounds : "hide"}>
@@ -87,7 +92,10 @@ const TopNav = (props) => {
           Intype="Search"
         />
         <h4 className={Style.Heading}>{userName}</h4>
-        <div className={Style.Admin} onClick={openModal}></div>
+        <div
+          className={AdminLogo ? Style.Admin : "hide"}
+          onClick={openModal}
+        ></div>
         <Link to="/Profile">
           <div
             className={Style.ProfileImage}
@@ -95,7 +103,7 @@ const TopNav = (props) => {
           ></div>
         </Link>
       </div>
-      <Admin setAdminModal={setAdminModal}  AdminModal={AdminModal}/>
+      <Admin setAdminModal={setAdminModal} AdminModal={AdminModal} />
     </div>
   );
 };

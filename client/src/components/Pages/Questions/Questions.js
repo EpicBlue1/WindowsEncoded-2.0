@@ -173,36 +173,36 @@ const Questions = (props) => {
               <label for="checkboxFour">jQuery</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="Html" />
-              <label for="checkboxFour">Html</label>
+              <input type="checkbox" id="checkboxFive" value="Html" />
+              <label for="checkboxFive">Html</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="Swift" />
-              <label for="checkboxFour">Swift</label>
+              <input type="checkbox" id="checkboxSix" value="Swift" />
+              <label for="checkboxSix">Swift</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="Kotlin" />
-              <label for="checkboxFour">Kotlin</label>
+              <input type="checkbox" id="checkboxSeven" value="Kotlin" />
+              <label for="checkboxSeven">Kotlin</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="Android" />
-              <label for="checkboxFour">Android</label>
+              <input type="checkbox" id="checkboxEight" value="Android" />
+              <label for="checkboxEight">Android</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="First Year" />
-              <label for="checkboxFour">First Year</label>
+              <input type="checkbox" id="checkboxNine" value="First Year" />
+              <label for="checkboxNine">First Year</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="Second Year" />
-              <label for="checkboxFour">Second Year</label>
+              <input type="checkbox" id="checkboxTen" value="Second Year" />
+              <label for="checkboxTen">Second Year</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="Third Year" />
-              <label for="checkboxFour">Third Year</label>
+              <input type="checkbox" id="checkboxEleven" value="Third Year" />
+              <label for="checkboxEleven">Third Year</label>
             </li>
             <li onClick={() => setRerender(!rerender)}>
-              <input type="checkbox" id="checkboxFour" value="jQuery" />
-              <label for="checkboxFour">Third Year</label>
+              <input type="checkbox" id="checkboxTwelve" value="jQuery" />
+              <label for="checkboxTwelve">Third Year</label>
             </li>
           </ul>
           <Button type="Primary">Clear Filter</Button>
