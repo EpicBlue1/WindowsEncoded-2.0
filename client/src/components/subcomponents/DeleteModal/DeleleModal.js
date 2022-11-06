@@ -13,7 +13,7 @@ const DeleteModal = (props) => {
     axios.delete('http://localhost:2000/api/deleteQuestion/' + props.questionId)
     .then(res => {
         props.rerender();
-        alert('Your Question has been Deleted')
+        alert('Your Question has been Deleted! You will see changes on your next visit to the profile page!!')
     })
     .catch(function(err) {console.log(err)});
   }

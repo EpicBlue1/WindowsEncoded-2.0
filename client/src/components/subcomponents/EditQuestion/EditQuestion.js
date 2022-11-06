@@ -35,6 +35,8 @@ const EditQuestion = (props) => {
             if(res){
                 props.rerender();
                 props.setUpdateRender(!props.updateRender);
+
+                alert('Your Question has been edited! You will see changes on your next visit to the profile page!')
             }
         })
         .catch(function(err) {console.log(err)});
