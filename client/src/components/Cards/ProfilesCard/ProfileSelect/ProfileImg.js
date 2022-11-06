@@ -15,8 +15,7 @@ const ProfileImg = (props) => {
       }}
       className={Style.PfBlock}
       style={{
-        backgroundImage: `url(${props.IMG})`,
-        border: `4px solid red`,
+        backgroundImage: `url(${props.IMG})`
       }}
     >
       {/* {props.data} */}
