@@ -115,26 +115,18 @@
 }
 
 .Logout {
-  // flex-direction: row;
-  // flex-wrap: nowrap;
-  // justify-content: flex-start;
-  // align-content: stretch;
-  // align-items: center;
-  display: block;
-  margin: auto;
-  position: absolute;
-  bottom: 100px;
-  
-  left: 20%;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
   padding: 5px;
-  // padding-left: 10px;
-  // padding-right: 10px;
   width: 25vh;
   height: 50px;
-  // margin-top: 15vh;
-  // padding-top: 5px;
   border-radius: 15px;
-  // margin-bottom: 15%;
+}
+
+.Spacer {
+  height: 55vh;
 }
 
 .LogImg {

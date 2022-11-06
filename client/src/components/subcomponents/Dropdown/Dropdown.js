@@ -22,7 +22,7 @@ const Dropdown = ({
   options,
   isMulti,
   isSearchable,
-  onChange
+  onChange,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
@@ -62,7 +62,7 @@ const Dropdown = ({
         <div className={Style.dropdownTags}>
           {selectedValue.map((option) => (
             <div key={option.value} className={Style.DropdownTagItem}>
-              {option.label}
+              {option}
               <span
                 onClick={(e) => onTagRemove(e, option)}
                 className={Style.dropdownTagClose}
@@ -74,7 +74,7 @@ const Dropdown = ({
         </div>
       );
     }
-    return selectedValue.label;
+    return selectedValue;
   };
 
   const removeOption = (option) => {
@@ -125,15 +125,17 @@ const Dropdown = ({
     }
 
     return options.filter(
-      (option) =>
-        option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
+      (option) => option.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
     );
   };
 
   return (
-
     <div className={Style.dropdownContainer}>
-      <div ref={inputRef} onClick={handleInputClick} className={Style.dropdownInput}>
+      <div
+        ref={inputRef}
+        onClick={handleInputClick}
+        className={Style.dropdownInput}
+      >
         <div className={Style.dropdownSelectedValue}>{getDisplay()}</div>
         <div className={Style.dropdownTools}>
           <div className={Style.dropdownTool}>
@@ -152,15 +154,16 @@ const Dropdown = ({
             <div
               onClick={() => onItemClick(option)}
               key={option.value}
-              className={`Style.dropdownItem ${isSelected(option) && "selected"}`}
+              className={`Style.dropdownItem ${
+                isSelected(option) && "selected"
+              }`}
             >
-              {option.label}
+              {option}
             </div>
           ))}
         </div>
       )}
     </div>
-    
   );
 };
 

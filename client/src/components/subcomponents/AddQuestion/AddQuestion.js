@@ -155,10 +155,17 @@ const AddQuestion = (props) => {
   };
 
   const options = [
-    { value: "javaScript", label: "JavaScript" },
-    { value: "react", label: "React" },
-    { value: "html", label: "Html" },
-    { value: "css", label: "Css" },
+    "JavaScript",
+    "jQuery",
+    "React",
+    "Html",
+    "Css",
+    "Swift",
+    "Kotlin",
+    "Android",
+    "First Year",
+    "Second Year",
+    "Third Year",
   ];
 
   return (

@@ -15,8 +15,10 @@ const Questions = (props) => {
   const [loginAlert, setLoginAlert] = useState();
   const [updateRender, setUpdateRender] = useState(false);
   const [Updated, setUpdated] = useState("Not Updated");
+  const [rerender, setRerender] = useState();
 
   const SortBy = useRef();
+  const FormValues = useRef();
 
   const addQuestion = () => {
     let user = sessionStorage.getItem("UserData");
@@ -35,6 +37,7 @@ const Questions = (props) => {
   };
 
   useEffect(() => {
+    console.log(FormValues.current);
     axios
       .get("/api/allQuestions")
       .then((res) => {
@@ -42,8 +45,6 @@ const Questions = (props) => {
         let questionData = res.data.reverse();
         let Sort = SortBy.current.value;
         let sortData = res.data.reverse();
-
-        
 
         console.log("Filter");
         setUpdated("Not Updated");
@@ -64,7 +65,27 @@ const Questions = (props) => {
           sortData = questionData.sort((x, y) => y.downvotes - x.downvotes);
         }
 
-        let renderQuestions = questionData.map((item) => (
+        let FilterBy = [];
+
+        Array.from(FormValues.current.elements).forEach((element) => {
+          if (element.checked) {
+            FilterBy.push(element.value);
+          }
+        });
+
+        let FiteredData = questionData;
+
+        console.log(FilterBy);
+        //Vian is boyfriend
+        if (FilterBy.length === 0) {
+          FiteredData = FiteredData;
+        } else {
+          FiteredData = questionData.filter((x) =>
+            FilterBy.some((filter) => x.tags.includes(filter))
+          );
+        }
+
+        let renderQuestions = FiteredData.map((item) => (
           <QuestionCard
             key={item._id}
             userId={item.userId}
@@ -84,7 +105,7 @@ const Questions = (props) => {
         setRenderQuestions(false);
       })
       .catch((err) => console.log(err));
-  }, [updateRender, addQuestionModal, Filter, SortBy]);
+  }, [updateRender, addQuestionModal, Filter, SortBy, rerender]);
 
   return (
     <div className={Style.body}>
@@ -133,35 +154,55 @@ const Questions = (props) => {
       <div className={Style.Questions}>{questions}</div>
       <div className={Style.filterSec}>
         <h2>Filter By</h2>
-        <form>
+        <form ref={FormValues}>
           <ul class={Style.ks_cboxtags}>
-            <li>
-              <input type="checkbox" id="checkboxOne" value="Rainbow Dash" />
-              <label for="checkboxOne">Rainbow Dash</label>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxOne" value="JavaScript" />
+              <label for="checkboxOne">Javascript</label>
             </li>
-            <li>
-              <input type="checkbox" id="checkboxTwo" value="Cotton Candy" />
-              <label for="checkboxTwo">Cotton Candy</label>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxTwo" value="React" />
+              <label for="checkboxTwo">React</label>
             </li>
-            <li>
-              <input type="checkbox" id="checkboxThree" value="Rarity" />
-              <label for="checkboxThree">Rarity</label>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxThree" value="Css" />
+              <label for="checkboxThree">Css</label>
             </li>
-            <li>
-              <input type="checkbox" id="checkboxFour" value="Moondancer" />
-              <label for="checkboxFour">Moondancer</label>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="jQuery" />
+              <label for="checkboxFour">jQuery</label>
             </li>
-            <li>
-              <input type="checkbox" id="checkboxFive" value="Surprise" />
-              <label for="checkboxFive">Surprise</label>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="Html" />
+              <label for="checkboxFour">Html</label>
             </li>
-            <li>
-              <input
-                type="checkbox"
-                id="checkboxSix"
-                value="Twilight Sparkle"
-              />
-              <label for="checkboxSix">Twilight Sparkle</label>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="Swift" />
+              <label for="checkboxFour">Swift</label>
+            </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="Kotlin" />
+              <label for="checkboxFour">Kotlin</label>
+            </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="Android" />
+              <label for="checkboxFour">Android</label>
+            </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="First Year" />
+              <label for="checkboxFour">First Year</label>
+            </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="Second Year" />
+              <label for="checkboxFour">Second Year</label>
+            </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="Third Year" />
+              <label for="checkboxFour">Third Year</label>
+            </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxFour" value="jQuery" />
+              <label for="checkboxFour">Third Year</label>
             </li>
           </ul>
           <Button type="Primary">Clear Filter</Button>
