@@ -10,7 +10,7 @@
   margin-top: -11px;
   padding-top: 10%;
   width: 95%;
-  height: 800px;
+  height: max-content;
   @include Shadow();
   display: flex;
   flex-direction: column;
@@ -106,8 +106,10 @@
 }
 
 .Topics {
-  width: 25vh;
+  width: 27vh;
   height: 27vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   // background-color: green;
   margin-top: 10vh;
 }
@@ -123,13 +125,10 @@
   padding-right: 10px;
   width: 25vh;
   height: 50px;
-  // margin-top: 15vh;
-  // padding-top: 5px;
+  margin-top: 15vh;
+  padding-top: 5px;
   border-radius: 15px;
-  // margin-bottom: 15%;
-  position: absolute;
-  bottom: 10%;
-  left: 18%;
+  margin-bottom: 15%;
 }
 
 .LogImg {

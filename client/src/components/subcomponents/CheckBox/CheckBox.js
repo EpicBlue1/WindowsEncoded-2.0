@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import Style from "./CheckBox.module.scss";
 
-const CheckBox = (props) => {
+const CheckBox = forwardRef(({ ...props }, ref) => {
   const [Checked, setChecked] = useState(false);
 
   return (
-    <div className={Style.CheckContainer}>
+    <div data-value={Checked} className={Style.CheckContainer}>
       <div
+        ref={ref}
         onClick={() => {
           setChecked(!Checked);
         }}
@@ -15,6 +16,6 @@ const CheckBox = (props) => {
       <h4 className={Style.Text}>{props.text}</h4>
     </div>
   );
-};
+});
 
 export default CheckBox;
