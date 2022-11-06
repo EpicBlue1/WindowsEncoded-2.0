@@ -34,6 +34,7 @@ const ProfileSection = (props) => {
   const Navigate = useNavigate();
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+  console.log(seshStorage);
 
   let ReliabilityScore = seshStorage.score;
 

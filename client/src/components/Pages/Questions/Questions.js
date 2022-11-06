@@ -43,6 +43,8 @@ const Questions = (props) => {
         let Sort = SortBy.current.value;
         let sortData = res.data.reverse();
 
+        
+
         console.log("Filter");
         setUpdated("Not Updated");
 

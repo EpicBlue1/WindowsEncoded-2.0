@@ -61,7 +61,7 @@ const QuestionCard = (props) => {
     let tags = props.allData.tags.map((data) => (
       <div className={Style.tag}>{data.value}</div>
     ));
-    console.log(tags);
+    // console.log(tags);
     setTagDisp(tags);
   }, []);
 

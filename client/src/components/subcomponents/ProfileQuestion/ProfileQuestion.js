@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import QuestionTag from '../QuestionTag/QuestionTag';
 import Style from './ProfileQuestion.module.scss'
 import DeleteModal from '../DeleteModal/DeleleModal';
@@ -11,6 +11,8 @@ const ProfileQuestion = (props) => {
     const [deleteModal, setDeleteModal] = useState();
     const [editModal, setEditModal] = useState();
 
+    const [tagDisp, setTagDisp] = useState();
+
     const deleteAltert = () => {
         setDeleteModal(<DeleteModal rerender={setDeleteModal} questionId={QuesData._id}/>);
     }
@@ -18,6 +20,14 @@ const ProfileQuestion = (props) => {
     const editQuestion = () => {
         setEditModal(<EditQuestion rerender={setEditModal} allQuestionData={QuesData}/>);
     }
+
+    useEffect(() => {
+        let tags = QuesData.tags.map((data) => (
+          <div className={Style.tag}>{data.value}</div>
+        ));
+        console.log(tags);
+        setTagDisp(tags);
+      }, []);
 
     return (
         <>
@@ -27,9 +37,9 @@ const ProfileQuestion = (props) => {
             <h1 className={Style.Qtitle}>{QuesData.questionTitle}</h1>
 
             <div className={Style.TagSection}>
-                <div className={Style.profileTag}>
-                {QuesData.language}
-                </div>
+                
+                {tagDisp}
+               
                 
             
             </div>

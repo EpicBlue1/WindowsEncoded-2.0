@@ -11,7 +11,7 @@ const ProgressBar = () => {
 
   return (
     <>
-      <span>{(value / max) * 100}% Towards next badge !</span>
+      <span>{(value / max) * 100}% Towards Becoming a pro ! </span>
       <progress value={value} max={max} className={Style.bar} />
     </>
   );
