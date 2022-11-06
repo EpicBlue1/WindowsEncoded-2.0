@@ -55,10 +55,12 @@ const Landing = () => {
         <div className={`${Style.Container} ${Style.ContainerImageOne}`}>
           <h2 className={Style.text}>Ask Questions</h2>
         </div>
-        <div className={Style.Container}>
+
+        <div className={`${Style.Container} ${Style.ContainerImageTwo}`}>
+
           <h2>Answer Questions</h2>
         </div>
-        <div className={Style.Container}>
+        <div className={`${Style.Container} ${Style.ContainerImageThree}`}>
           <h2>Earn Badges</h2>
           <div className={Style.badge}></div>
         </div>

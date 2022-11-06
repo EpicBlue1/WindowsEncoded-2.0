@@ -41,23 +41,31 @@
 
 .Container {
   @include backgroundImages();
-  background-size: 25%;
-  background-position: center 70%;
+  background-size: 45%;
+  background-position: center 120%;
   width: 25%;
   margin-right: 20px;
   height: 150px;
   background-color: rgba(255, 255, 255, 1);
   @include Shadow();
   margin-left: 15px;
-  margin-top: -35px;
   border-radius: 20px;
   padding: 20px;
   text-align: center;
   cursor: pointer;
 }
 
+
 .ContainerImageOne {
-  background-image: url(../../../Img/5197173-01.png);
+  background-image: url(../../../Img/questions.png);
+}
+
+.ContainerImageTwo {
+  background-image: url(../../../Img/Answer1-01.png);
+}
+
+.ContainerImageThree {
+  background-image: url(../../../Img/Badges-01.png);
 }
 
 .Container:hover {
