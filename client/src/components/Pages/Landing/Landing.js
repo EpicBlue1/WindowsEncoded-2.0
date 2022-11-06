@@ -69,7 +69,7 @@ const Landing = () => {
       <br></br>
       <br></br>
 
-      <h1 className={Style.Heading}>CATEGORIES/TAGS</h1>
+      <h1 className={Style.Heading}>Courses</h1>
 
       <div className={Style.Row}>
         <div className={Style.Container}>
