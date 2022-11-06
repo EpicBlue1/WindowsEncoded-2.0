@@ -175,8 +175,8 @@ ul.ks_cboxtags li input[type="checkbox"]:checked + label::before {
 }
 
 ul.ks_cboxtags li input[type="checkbox"]:checked + label {
-  border: 2px solid #1bdbf8;
-  background-color: #12bbd4;
+  border: 2px solid $Primary_DarkBlue;
+  background-color: $Primary_LightBlue;
   color: #fff;
   transition: all 0.2s;
 }
@@ -189,11 +189,12 @@ ul.ks_cboxtags li input[type="checkbox"] {
   opacity: 0;
 }
 ul.ks_cboxtags li input[type="checkbox"]:focus + label {
-  border: 2px solid #e9a1ff;
+  border: 2px solid $Primary_LightBlue;
 }
 
 .Questions {
   width: 75%;
+  height: 100%;
   float: left;
 }
 
@@ -201,7 +202,7 @@ ul.ks_cboxtags li input[type="checkbox"]:focus + label {
   float: left;
   width: 22%;
   margin-left: 1%;
-  margin-top: 5%;
+  margin-top: 8%;
   height: 50vh;
   text-align: center;
 }

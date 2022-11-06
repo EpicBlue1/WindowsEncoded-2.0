@@ -59,7 +59,7 @@ const QuestionCard = (props) => {
 
   useEffect(() => {
     let tags = props.allData.tags.map((data) => (
-      <div className={Style.tag}>{data.value}</div>
+      <div className={Style.tag}>{data}</div>
     ));
     // console.log(tags);
     setTagDisp(tags);

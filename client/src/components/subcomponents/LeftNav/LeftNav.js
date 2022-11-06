@@ -32,11 +32,13 @@ const LeftNav = (props) => {
           <div className={Style.IconSpot1}></div>
           <h3 className={Style.homeText}>Home</h3>
         </NavLink>
+        <br />
 
         <NavLink to="/Questions" className={Style.Questions}>
           <div className={Style.IconSpot2}></div>
           <h3 className={Style.text}>Questions</h3>
         </NavLink>
+        <div className={Style.Spacer}></div>
 
         <NavLink to="/LogNReg">
           <div className={Style.Logout}>
