@@ -1,7 +1,7 @@
 @import "../../../index.scss";
 
 .QuestionCard {
-  width: 125vh;
+  width: 120vh;
   height: 190px;
   border-radius: 20px;
   display: flex;
@@ -243,4 +243,16 @@
   z-index: 999;
   cursor: pointer;
   @include Shadow();
+}
+
+@media (min-height: 1080px) {
+  .QuestionCard {
+    width: 110vh;
+    height: 190px;
+    border-radius: 20px;
+    display: flex;
+    background-color: white;
+    @include Shadow();
+    margin-bottom: 2%;
+  }
 }
