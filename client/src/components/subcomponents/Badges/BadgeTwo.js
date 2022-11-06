@@ -12,7 +12,7 @@ const BadgeTwo = () => {
         className={Style.Box}
       >
         <div className={Style.badgeTwo}></div>
-        {/* <h4>Bronze </h4> */}
+        
         <div className={hide ? "hide" : Style.Popup}>Silver</div>
       </div>
     </>

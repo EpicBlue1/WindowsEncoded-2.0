@@ -125,22 +125,26 @@ const Profile = (props) => {
   let FiftyAnswerbadgeCheck = false;
 
   //ANSWERED QUEATIONS BADGES
+  console.log(AnsweredQeusitons);
   if (AnsweredQeusitons >= 1) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = false;
     TenAnswerBadgeCheck = false;
     FiftyAnswerbadgeCheck = false;
-  } else if (AnsweredQeusitons >= 5) {
+  } 
+  if (AnsweredQeusitons >= 5) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
     TenAnswerBadgeCheck = false;
     FiftyAnswerbadgeCheck = false;
-  } else if (AnsweredQeusitons >= 10) {
+  } 
+  if (AnsweredQeusitons >= 10) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
     TenAnswerBadgeCheck = true;
     FiftyAnswerbadgeCheck = false;
-  } else if (AnsweredQeusitons >= 50) {
+  } 
+  if (AnsweredQeusitons >= 50) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
     TenAnswerBadgeCheck = true;
@@ -153,17 +157,21 @@ const Profile = (props) => {
     fiveQuestionsBadgeCheck = false;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } else if (AskedQuestions >= 5) {
+  } 
+  
+  if (AskedQuestions >= 5) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } else if (AskedQuestions >= 10) {
+  } 
+  if (AskedQuestions >= 10) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = true;
     FiftyQuestionBadgeCheck = false;
-  } else if (AskedQuestions >= 50) {
+  } 
+  if (AskedQuestions >= 50) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = true;
@@ -174,11 +182,13 @@ const Profile = (props) => {
     badgeoneCheck = true;
     badgeTwoCheck = false;
     badgeThreeCheck = false;
-  } else if (score >= 15) {
+  } 
+  if (score >= 15) {
     badgeoneCheck = true;
     badgeTwoCheck = true;
     badgeThreeCheck = false;
-  } else if (score >= 50) {
+  } 
+  if (score >= 50) {
     badgeoneCheck = true;
     badgeTwoCheck = true;
     badgeThreeCheck = true;

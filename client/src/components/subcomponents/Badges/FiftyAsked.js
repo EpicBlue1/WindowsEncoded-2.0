@@ -12,7 +12,7 @@ const FiftyAsked = () => {
         className={Style.Box}
       >
         <div className={Style.FiftyAskedBadge}></div>
-        {/* <h4>Bronze </h4> */}
+        
         <div className={hide ? "hide" : Style.Popup}>Fifty Asked</div>
       </div>
     </>

@@ -18,8 +18,10 @@ const FlaggedModal = (props) => {
                 // props.rerender();
                 // window.confirm("Are you sure you want to delete this question ?")
                 alert('Your Question has been Deleted')
+                props.rerender();
             })
             .catch(function (err) { console.log(err) });
+        
     }
 
 

@@ -6,29 +6,15 @@ import Style from "./Admin.module.scss";
 
 const Admin = (props) => {
 
-    // console.log(props);
-
-
-    
-
     const [Flagged, setFlagged] = useState();
     
-    
- 
-   
- 
-
-
     useEffect(() => {
        
-    
           axios.get("/api/allQuestions").then((res) => {
-            let data = res.data;
-            // console.log(data);
-            
+            let data = res.data;            
 
             const flagged = data.filter(data => data.reported)
-            console.log(flagged)
+            
 
            let rendeFlagged = flagged.map((item) => (
             <FlaggedQuestions
@@ -40,22 +26,7 @@ const Admin = (props) => {
 
            setFlagged(rendeFlagged)
           });
-
-          
-
-            //   const deleteQuestion = () => {
-        //     axios.delete('/api/deleteQuestion/' + data.questionId)
-        //     .then(res => {
-                
-        //         alert('Your Question has been Deleted')
-        //     })
-        //     .catch(function(err) {console.log(err)});
-        //   }
-    
-        // const DeleteQuestion = () => {
-        //     window.confirm('Delete Question?')
-        // }
-        
+       
       }, []);
 
       
@@ -69,10 +40,7 @@ const Admin = (props) => {
                 
                 {Flagged}
 
-                
-
             </div>
-            
         </div>
     );
 };

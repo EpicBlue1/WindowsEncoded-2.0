@@ -12,7 +12,7 @@ const TenAswered = () => {
         className={Style.Box}
       >
         <div className={Style.TenAnsweredBadge}></div>
-        {/* <h4>Bronze </h4> */}
+       
         <div className={hide ? "hide" : Style.Popup}>Ten Questions Answered</div>
       </div>
     </>

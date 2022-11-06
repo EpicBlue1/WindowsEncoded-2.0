@@ -12,6 +12,9 @@ import ProfileQuestion from "../ProfileQuestion/ProfileQuestion";
 import bronze from "../../../Img/Badges/Bronze.png";
 import silver from "../../../Img/Badges/Silver.png";
 import gold from "../../../Img/Badges/Gold.png";
+import ScoreOne from "../../../Img/Badges/ScoreOne.png"
+import ScoreTwo from "../../../Img/Badges/ScoreTwo.png"
+import ScoreThree from "../../../Img/Badges/ScoreThree.png"
 
 
 const ProfileSection = (props) => {
@@ -57,23 +60,27 @@ const ProfileSection = (props) => {
   useEffect(() => {
 
     const badges = {
-      bronze: bronze,
-      silver: silver,
-      gold: gold,
+      ScoreOne: ScoreOne,
+      ScoreTwo: ScoreTwo,
+      ScoreThree: ScoreThree
     };
 
     let score = seshStorage.score;
 
     console.log(score)
 
-    if(score >= 10 && score <= 50) {
-      setprofileBadge(badges.bronze)
-
-    } else if (score <= 100) {
-      setprofileBadge(badges.silver)
-    } else if (score <= 150) {
-      setprofileBadge(badges.gold)
+    if(score >= 1){
+      setprofileBadge(badges.ScoreOne)
     }
+    if(score >= 15) {
+      setprofileBadge(badges.ScoreTwo)
+    }
+
+    if (score >= 20) {
+      setprofileBadge(badges.ScoreThree)
+    }
+
+    
   });
 
 
@@ -133,56 +140,6 @@ const ProfileSection = (props) => {
         console.log(AnswerRender);
     });
   }, []);
-
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:2000/api/allQuestions")
-  //   .then((res) => {
-  //     let data = res.data;
-  //     console.log(data);
-  //       let Question =
-  //       (data.filter((filterData)=>
-  //       seshStorage._id === filterData.userId))
-  //       console.log(Question.length);
-
-
-  //       // let QuestionsScore = 
-  //       // (data.filter((filterData)=>
-  //       // seshStorage.upvotes === filterData._id))
-  //       // console.log(+QuestionsScore);
-
-  //       // setNewScore(QuestionsScore.length)
-  //       // console.log(+QuestionsScore);
-
-
-
-
-  //       // let QuestionsScore =
-  //       // (data.filter((filterData)=>
-  //       // seshStorage.score === filterData.userId))
-  //       // setNewScore(QuestionsScore.length)
-  //       // console.log(+QuestionsScore);
-
-
-  //       // let getUpVotes =
-  //       // (data.filter((filterData)=> 
-  //       // seshStorage.upvotes === filterData.userId))
-  //       // setDownVoteCount(getUpVotes.length)
-  //       // console.log(getUpVotes.length);
-
-  //       // let getDownVotes = 
-  //       // (data.filter((filterData)=> 
-  //       // seshStorage.downvotes === filterData.userId))
-  //       // setDownVoteCount(getDownVotes.length)
-  //       // console.log(getDownVotes);
-  //   });
-  // }, []);
-
-
-
-  // const deleteProfile = () => {
-
-  // };
 
   
   return (

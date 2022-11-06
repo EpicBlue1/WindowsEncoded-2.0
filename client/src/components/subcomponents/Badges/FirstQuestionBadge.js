@@ -12,7 +12,7 @@ const FirstQuestionBadge = () => {
         className={Style.Box}
       >
         <div className={Style.FirstQuestionBadge}></div>
-        {/* <h4>Bronze </h4> */}
+        
         <div className={hide ? "hide" : Style.Popup}>
           <h4>Asked 1st Question </h4>
         </div>
