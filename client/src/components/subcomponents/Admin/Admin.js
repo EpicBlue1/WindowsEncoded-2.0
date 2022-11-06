@@ -6,36 +6,59 @@ import Style from "./Admin.module.scss";
 
 const Admin = (props) => {
 
-    const [Flagged, setFlagged] = useState();
+    // console.log(props);
 
+
+    
+
+    const [Flagged, setFlagged] = useState();
+    
+    
+ 
+   
  
 
 
     useEffect(() => {
        
     
-          axios.get("http://localhost:2000/api/allQuestions").then((res) => {
+          axios.get("/api/allQuestions").then((res) => {
             let data = res.data;
-            console.log(data);
-
+            // console.log(data);
+            
 
             const flagged = data.filter(data => data.reported)
             console.log(flagged)
 
-           let rendeFlagged = flagged.map((item) => {
-            < FlaggedQuestions 
+           let rendeFlagged = flagged.map((item) => (
+            <FlaggedQuestions
                 key={item._id}
-                userId={item.userId}
-                questionId={item._id}
-                allData={item}
+                QuesId={item._id}
+                alldata={item}
             />
-                
-           });
+           ));
 
            setFlagged(rendeFlagged)
           });
+
+          
+
+            //   const deleteQuestion = () => {
+        //     axios.delete('/api/deleteQuestion/' + data.questionId)
+        //     .then(res => {
+                
+        //         alert('Your Question has been Deleted')
+        //     })
+        //     .catch(function(err) {console.log(err)});
+        //   }
+    
+        // const DeleteQuestion = () => {
+        //     window.confirm('Delete Question?')
+        // }
         
       }, []);
+
+      
 
     return (
         <div className={props.AdminModal ? "hide" : Style.BackgroundBlur}>
@@ -43,9 +66,7 @@ const Admin = (props) => {
             
             <div className={Style.Modal}>
             <h1 className={Style.flaggedName}>Flagged Questions</h1>
-                {/* <div className={Style.FlaggedQuestion}></div> */}
-                {/* < FlaggedQuestions /> */}
-                {/* <div>hehe</div> */}
+                
                 {Flagged}
 
                 

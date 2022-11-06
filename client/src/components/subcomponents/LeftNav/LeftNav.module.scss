@@ -10,7 +10,7 @@
   margin-top: -11px;
   padding-top: 10%;
   width: 95%;
-  height: 100vh;
+  height: 90vh;
   @include Shadow();
   display: flex;
   flex-direction: column;
@@ -120,15 +120,21 @@
   // justify-content: flex-start;
   // align-content: stretch;
   // align-items: center;
+  display: block;
+  margin: auto;
+  position: absolute;
+  bottom: 100px;
+  
+  left: 20%;
   padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  // padding-left: 10px;
+  // padding-right: 10px;
   width: 25vh;
   height: 50px;
-  margin-top: 15vh;
-  padding-top: 5px;
+  // margin-top: 15vh;
+  // padding-top: 5px;
   border-radius: 15px;
-  margin-bottom: 15%;
+  // margin-bottom: 15%;
 }
 
 .LogImg {

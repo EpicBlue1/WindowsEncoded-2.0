@@ -52,23 +52,60 @@
     z-index: 500;
     width: 50%;
     height: 600px;
-   
+    position: relative;
     border-radius: 20px;
     @include ModalColor;
+    overflow: scroll;
 }
 
 
 .FlaggedQuestion {
     width: 95%;
-    height: 80px;
+    height: 90px;
     border-radius: 10px;
     background-color: white;
-   
+    margin-top: 10px;
+    padding-left: 10px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+
 }
 
-.flaggedName {
-    color: black;
-    
+
+
+.UserName {
+  margin: 0;
+}
+
+.Title {
+  margin: 0;
 }
 
 
+
+.Tag {
+  float: left;
+  margin-right: 1%;
+  width: fit-content;
+  border-radius: 10px;
+  font-size: smaller;
+  padding: 0.5% 2%;
+  color: $Primary_DarkBlue;
+  font-weight: 600;
+  z-index: 100;
+  @include ModalColor;
+}
+
+
+.DeleteButton {
+  float: right;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: $Semantic_Red;
+  border-radius: 10px;
+  background-image: url(../../../Icons/bin.svg);
+  @include backgroundImages;
+  background-size: 70%;
+}

@@ -28,6 +28,8 @@ const Profile = (props) => {
   const Navigate = useNavigate();
   const [Busy, setBusy] = useState(true);
 
+  
+
   useEffect(() => {
     const USER = sessionStorage.getItem("UserData");
     let user = JSON.parse(USER);
@@ -92,7 +94,7 @@ const Profile = (props) => {
   console.log(AskedQuestions);
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
-  console.log(seshStorage);
+  // console.log(seshStorage);
 
   let score = seshStorage.score;
 
