@@ -40,6 +40,7 @@ const Profile = (props) => {
 
       axios.get("http://localhost:2000/api/allQuestions").then((res) => {
         let data = res.data;
+        console.log(data);
         let render = setProfileQuestions(
           data
             .filter((filterData) => UserId === filterData.userId)
@@ -134,7 +135,7 @@ const Profile = (props) => {
     FiveAnswerBadgeCheck = false;
     TenAnswerBadgeCheck = false;
     FiftyAnswerbadgeCheck = false;
-  } else if (AnsweredQeusitons >= 2) {
+  } else if (AnsweredQeusitons >= 5) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
     TenAnswerBadgeCheck = false;
@@ -157,7 +158,7 @@ const Profile = (props) => {
     fiveQuestionsBadgeCheck = false;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } else if (AskedQuestions >= 2) {
+  } else if (AskedQuestions >= 5) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = false;

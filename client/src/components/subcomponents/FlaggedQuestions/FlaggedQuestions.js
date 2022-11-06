@@ -2,7 +2,8 @@ import React from 'react';
 import Style from "./FlaggedQuestions.Module.scss";
 
 
-const FlaggedQuestions = () => {
+const FlaggedQuestions = (props) => {
+    console.log(props);
     return (
         <div className={Style.FlaggedQuestionAdmin}>
             

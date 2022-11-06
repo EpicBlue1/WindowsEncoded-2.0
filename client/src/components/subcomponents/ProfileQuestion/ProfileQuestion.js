@@ -27,9 +27,11 @@ const ProfileQuestion = (props) => {
             <h1 className={Style.Qtitle}>{QuesData.questionTitle}</h1>
 
             <div className={Style.TagSection}>
-            <QuestionTag/>
-            <QuestionTag/>
-            <QuestionTag/>
+                <div className={Style.profileTag}>
+                {QuesData.language}
+                </div>
+                
+            
             </div>
 
             <div className={Style.DeleteButton} onClick={deleteAltert}></div>
