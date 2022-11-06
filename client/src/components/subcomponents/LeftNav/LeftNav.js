@@ -38,19 +38,6 @@ const LeftNav = (props) => {
           <h3 className={Style.text}>Questions</h3>
         </NavLink>
 
-        {hideNav.pathname !== "/Questions" ? null : (
-          <>
-            <div className={Style.Topics}>
-              <h2>Filter by Tags</h2>
-              <CheckBox ref={JavaScript} text="Javascript" />
-              <CheckBox text="React" />
-              <CheckBox text="Html" />
-              <CheckBox text="Css" />
-            </div>
-            <Button type="Primary">Clear Filter</Button>
-          </>
-        )}
-
         <NavLink to="/LogNReg">
           <div className={Style.Logout}>
             <div className={Style.LogImg}></div>

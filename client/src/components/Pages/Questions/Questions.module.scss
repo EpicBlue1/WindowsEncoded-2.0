@@ -53,7 +53,7 @@ select {
 }
 
 .addNFilter {
-  width: 87%;
+  width: 90%;
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -92,4 +92,12 @@ select {
   to {
     transform: rotate(-359deg);
   }
+}
+
+.Filters {
+  width: 25%;
+  height: 50px;
+  background-color: red;
+  border-radius: 20px;
+  overflow-x: auto;
 }

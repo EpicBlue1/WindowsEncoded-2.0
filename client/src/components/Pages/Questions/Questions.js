@@ -109,6 +109,8 @@ const Questions = (props) => {
           }
         ></div>
 
+        <div className={Style.Filters}></div>
+
         <div className={Style.Dropdown}>
           <h2 className={Style.headingTwo}>Sort by</h2>
           <select
