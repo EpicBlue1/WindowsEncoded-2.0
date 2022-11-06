@@ -6,7 +6,7 @@ import ProfilePic from "../../subcomponents/ProfilePicture/ProfilePic";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
-  console.log(props.allData);
+  // console.log(props.allData);
   let navigate = useNavigate();
 
   const Upvote = useRef();
@@ -17,6 +17,7 @@ const QuestionCard = (props) => {
   const [Total, setTotal] = useState(10);
   const [QuesID, setQuesID] = useState(props.allData._id);
   const [Reported, setReported] = useState(false);
+  const [TagDisp, setTagDisp] = useState();
 
   const [loginAlert, setLoginAlert] = useState();
 
@@ -55,6 +56,14 @@ const QuestionCard = (props) => {
 
     setTotal(TotalUpVotes - TotalDownVotes);
   }, [TotalUpVotes, TotalDownVotes]);
+
+  useEffect(() => {
+    let tags = props.allData.tags.map((data) => (
+      <div className={Style.tag}>{data.value}</div>
+    ));
+    console.log(tags);
+    setTagDisp(tags);
+  }, []);
 
   function updateVote(e) {
     let user = sessionStorage.getItem("UserData");
@@ -164,7 +173,7 @@ const QuestionCard = (props) => {
 
         {/* <div className={Style.tag}>JavaScript</div> */}
 
-        <div className={Style.tag}>{props.language}</div>
+        {TagDisp}
       </div>
       <div className={Style.Right}>
         <div className={Style.Container}>

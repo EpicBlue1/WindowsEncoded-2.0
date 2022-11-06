@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
 import Style from "./LeftNav.module.scss";
 
 const LeftNav = (props) => {
   const [logOut, setlogOut] = useState("Log In");
+  const hideNav = useLocation();
   // const [profile, setProfile] = useState(Logo);
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
@@ -14,7 +15,6 @@ const LeftNav = (props) => {
       seshStorage === null ||
       seshStorage === ""
     ) {
-      console.log("nee tjommie");
     } else {
       // setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile})`);
       setlogOut("Log Out");
@@ -35,13 +35,15 @@ const LeftNav = (props) => {
           <h3 className={Style.text}>Questions</h3>
         </NavLink>
 
-        <div className={Style.Topics}>
-          <h2>Topics</h2>
-          <CheckBox text="Javascript" />
-          <CheckBox text="React" />
-          <CheckBox text="Html" />
-          <CheckBox text="Css" />
-        </div>
+        {hideNav.pathname !== "/Questions" ? null : (
+          <div className={Style.Topics}>
+            <h2>Filter by Tags</h2>
+            <CheckBox text="Javascript" />
+            <CheckBox text="React" />
+            <CheckBox text="Html" />
+            <CheckBox text="Css" />
+          </div>
+        )}
 
         <NavLink to="/LogNReg">
           <div className={Style.Logout}>

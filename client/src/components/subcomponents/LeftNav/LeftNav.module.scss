@@ -10,7 +10,7 @@
   margin-top: -11px;
   padding-top: 10%;
   width: 95%;
-  height: 90vh;
+  height: max-content;
   @include Shadow();
   display: flex;
   flex-direction: column;
@@ -106,6 +106,7 @@
 
 .Topics {
   width: 25vh;
+  height: 27vh;
   // background-color: green;
   margin-top: 10vh;
 }
