@@ -199,9 +199,11 @@ ul.ks_cboxtags li input[type="checkbox"]:focus + label {
 }
 
 .filterSec {
+  margin: 0 auto;
   float: left;
-  width: 22%;
+  width: 16%;
   margin-top: 8%;
   height: 50vh;
   text-align: center;
+  background-color: red;
 }
