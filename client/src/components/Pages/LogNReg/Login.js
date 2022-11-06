@@ -173,6 +173,7 @@ const Login = (props) => {
           </form>
           <p className={Style.Red}>{FormText}</p>
           <p
+            className={Style.Hover}
             onClick={() => {
               setForgotPassword(true);
             }}
@@ -193,7 +194,7 @@ const Login = (props) => {
           <br></br>
           <br></br>
           <p
-            className={Style.Spacing}
+            className={`${Style.Spacing} ${Style.Hover}`}
             onClick={() => {
               props.setChangeCard(!props.changeCards);
             }}
