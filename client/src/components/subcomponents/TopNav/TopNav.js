@@ -23,15 +23,21 @@ const TopNav = (props) => {
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
-  console.log(seshStorage);
-
   useEffect(() => {
-    if (seshStorage.admin) {
-      setAdminLogo(seshStorage.admin);
+    if (
+      seshStorage === "" ||
+      seshStorage === null ||
+      seshStorage === undefined ||
+      seshStorage === false
+    ) {
     } else {
-      setAdminLogo(seshStorage.admin);
+      if (seshStorage.admin) {
+        setAdminLogo(seshStorage.admin);
+      } else {
+        setAdminLogo(seshStorage.admin);
+      }
     }
-  });
+  }, []);
 
   const Search = () => {
     if (Result.current.value === "") {

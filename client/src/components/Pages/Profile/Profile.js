@@ -76,9 +76,20 @@ const Profile = (props) => {
   }, []);
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
-  // console.log(seshStorage);
+  let score = 0;
 
-  let score = seshStorage.score;
+  useEffect(() => {
+    if (
+      seshStorage === "" ||
+      seshStorage === null ||
+      seshStorage === undefined ||
+      seshStorage === false
+    ) {
+    } else {
+      score = seshStorage.score;
+    }
+  }, []);
+  // console.log(seshStorage);
 
   let badgeOne = <BagdeOne />;
   let badgeoneCheck = false;
