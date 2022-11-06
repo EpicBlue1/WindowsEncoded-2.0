@@ -1,21 +1,21 @@
 import { default as axios, default as Axios } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BagdeOne from "../../subcomponents/Badges/BagdeOne";
-import BadgeTwo from "../../subcomponents/Badges/BadgeTwo";
 import BadgeThree from "../../subcomponents/Badges/BadgeThree";
+import BadgeTwo from "../../subcomponents/Badges/BadgeTwo";
+import BagdeOne from "../../subcomponents/Badges/BagdeOne";
 
+import FiftyAnswered from "../../subcomponents/Badges/FiftyAnswered";
+import FiftyAsked from "../../subcomponents/Badges/FiftyAsked";
+import FirstQuestionBadge from "../../subcomponents/Badges/FirstQuestionBadge";
+import FiveAswered from "../../subcomponents/Badges/FiveAswered";
+import FiveQuestionsBadge from "../../subcomponents/Badges/FiveQuestionsBadge";
+import OneAswered from "../../subcomponents/Badges/OneAswered";
+import TenAswered from "../../subcomponents/Badges/TenAswered";
+import TenQuestionsBadge from "../../subcomponents/Badges/TenQuestionsBadge";
 import ProfileQuestion from "../../subcomponents/ProfileQuestion/ProfileQuestion";
 import ProfileSection from "../../subcomponents/ProfileSection/ProfileSection";
 import Style from "./Profile.module.scss";
-import FirstQuestionBadge from "../../subcomponents/Badges/FirstQuestionBadge";
-import FiveQuestionsBadge from "../../subcomponents/Badges/FiveQuestionsBadge";
-import TenQuestionsBadge from "../../subcomponents/Badges/TenQuestionsBadge";
-import FiftyAsked from "../../subcomponents/Badges/FiftyAsked";
-import OneAswered from "../../subcomponents/Badges/OneAswered";
-import FiveAswered from "../../subcomponents/Badges/FiveAswered";
-import TenAswered from "../../subcomponents/Badges/TenAswered";
-import FiftyAnswered from "../../subcomponents/Badges/FiftyAnswered";
 
 const Profile = (props) => {
   const [ProfileData, setProfileData] = useState();
@@ -28,8 +28,6 @@ const Profile = (props) => {
   const Navigate = useNavigate();
   const [Busy, setBusy] = useState(true);
 
-  
-
   useEffect(() => {
     const USER = sessionStorage.getItem("UserData");
     let user = JSON.parse(USER);
@@ -40,10 +38,10 @@ const Profile = (props) => {
       setBusy(false);
       let UserId = user._id;
 
-      axios.get("http://localhost:2000/api/allQuestions").then((res) => {
+      axios.get("/api/allQuestions").then((res) => {
         let data = res.data;
         console.log(data);
-        let render = setProfileQuestions(
+        setProfileQuestions(
           data
             .filter((filterData) => UserId === filterData.userId)
             // TODO: Rerender after editing
@@ -66,7 +64,7 @@ const Profile = (props) => {
   }, [updateRender]);
 
   useEffect(() => {
-    axios.get("http://localhost:2000/api/allAnswers").then((res) => {
+    axios.get("/api/allAnswers").then((res) => {
       let data = res.data;
       console.log(data);
       let Qanswered = data.filter(
@@ -76,22 +74,6 @@ const Profile = (props) => {
       console.log(Qanswered);
     });
   }, []);
-
-  console.log(AnsweredQeusitons);
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:2000/api/allQuestions")
-  //   .then((res) => {
-  //     let data = res.data;
-  //       let Qasked =
-  //       (data.filter((filterData)=>
-  //       seshStorage._id === filterData.userId))
-  //       setAskedQuestions(Qasked.length)
-  //       console.log(Qasked);
-  //   });
-  // }, []);
-
-  console.log(AskedQuestions);
 
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
   // console.log(seshStorage);

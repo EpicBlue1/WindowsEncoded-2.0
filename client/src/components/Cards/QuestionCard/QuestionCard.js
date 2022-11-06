@@ -83,6 +83,8 @@ const QuestionCard = (props) => {
         axios.get("/api/singleQuestion/" + quesId).then((res) => {
           let data = res.data;
 
+          console.log(res.data);
+
           const found = data.upvoted.find((e) => e === userId);
 
           if (found) {
@@ -107,7 +109,7 @@ const QuestionCard = (props) => {
               updateScore = {
                 score: res.data.score + TotalUpVotes - TotalDownVotes - 1,
                 upvotes: +TotalUpVotes,
-                downvotes: +TotalDownVotes - 1,
+                downvotes: +TotalDownVotes + 1,
               };
             }
 
@@ -167,7 +169,6 @@ const QuestionCard = (props) => {
         <br />
 
         <h2 className={Style.heading}>{props.questionTitle}</h2>
-        <br />
 
         <p className={Style.questionDescription}>{props.questionDescription}</p>
 

@@ -204,8 +204,11 @@ const Questions = (props) => {
               <input type="checkbox" id="checkboxTwelve" value="jQuery" />
               <label for="checkboxTwelve">Third Year</label>
             </li>
+            <li onClick={() => setRerender(!rerender)}>
+              <input type="checkbox" id="checkboxThirteen" value="PHP" />
+              <label for="checkboxTwelve">PHP</label>
+            </li>
           </ul>
-          <Button type="Primary">Clear Filter</Button>
         </form>
       </div>
     </div>

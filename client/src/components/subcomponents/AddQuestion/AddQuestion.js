@@ -190,7 +190,7 @@ const AddQuestion = (props) => {
 
           <div className={Style.PfBlockUp}>
             <div className={Style.upload_btn_wrapper}>
-              <img id="prev_img" />
+              <img id="prev_img" className={Style.prev_img} />
               <button className={Style.btn}>{imageName}</button>
               <input ref={Image} type="file" name="image" onChange={getImage} />
             </div>
@@ -205,19 +205,25 @@ const AddQuestion = (props) => {
           ></textarea>
           <p>Explain your question in detail. Be specific.</p>
 
+          <br />
+          <br />
+
           <select ref={LangSelect} name="language" onChange={questionInfo}>
             <option>Please Select the Language...</option>
-            <option>Javascript</option>
-            <option>PHP</option>
-            <option>Swift</option>
-            <option>Kotlin</option>
+            <option>javascript</option>
+            <option>php</option>
+            <option>swift</option>
+            <option>kotlin</option>
+            <option>css</option>
+            <option>html</option>
+            <option>jquery</option>
           </select>
 
           <div className={Style.App} ref={Tags}>
             <Dropdown
               isSearchable
               isMulti
-              placeHolder="Please Select the tag..."
+              placeHolder="Select Your Tags..."
               options={options}
               onChange={(value) => setTagValue(value)}
             />

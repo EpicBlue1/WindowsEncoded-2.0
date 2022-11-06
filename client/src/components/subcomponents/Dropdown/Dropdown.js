@@ -58,27 +58,23 @@ const Dropdown = ({
       return placeHolder;
     }
     if (isMulti) {
-      return (
-        <div className={Style.dropdownTags}>
-          {selectedValue.map((option) => (
-            <div key={option.value} className={Style.DropdownTagItem}>
-              {option}
-              <span
-                onClick={(e) => onTagRemove(e, option)}
-                className={Style.dropdownTagClose}
-              >
-                <CloseIcon />
-              </span>
-            </div>
-          ))}
+      return selectedValue.map((option) => (
+        <div key={option} className={Style.DropdownTagItem}>
+          {option}
+          <span
+            onClick={(e) => onTagRemove(e, option)}
+            className={Style.dropdownTagClose}
+          >
+            <CloseIcon />
+          </span>
         </div>
-      );
+      ));
     }
     return selectedValue;
   };
 
   const removeOption = (option) => {
-    return selectedValue.filter((o) => o.value !== option.value);
+    return selectedValue.filter((o) => o !== option);
   };
 
   const onTagRemove = (e, option) => {
@@ -91,7 +87,7 @@ const Dropdown = ({
   const onItemClick = (option) => {
     let newValue;
     if (isMulti) {
-      if (selectedValue.findIndex((o) => o.value === option.value) >= 0) {
+      if (selectedValue.findIndex((o) => o === option) >= 0) {
         newValue = removeOption(option);
       } else {
         newValue = [...selectedValue, option];
@@ -105,18 +101,18 @@ const Dropdown = ({
 
   const isSelected = (option) => {
     if (isMulti) {
-      return selectedValue.filter((o) => o.value === option.value).length > 0;
+      return selectedValue.filter((o) => o === option).length > 0;
     }
 
     if (!selectedValue) {
       return false;
     }
 
-    return selectedValue.value === option.value;
+    return selectedValue === option;
   };
 
   const onSearch = (e) => {
-    setSearchValue(e.target.value);
+    setSearchValue(e.target);
   };
 
   const getOptions = () => {
@@ -153,8 +149,8 @@ const Dropdown = ({
           {getOptions().map((option) => (
             <div
               onClick={() => onItemClick(option)}
-              key={option.value}
-              className={`Style.dropdownItem ${
+              key={option}
+              className={`${Style.dropdownItem} ${
                 isSelected(option) && "selected"
               }`}
             >

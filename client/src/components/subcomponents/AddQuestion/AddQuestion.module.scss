@@ -13,22 +13,22 @@
   z-index: 500;
   animation: fadeIn 0.35s;
   background-color: #f2f2f281;
-
-  p {
-    margin-bottom: 4%;
-    color: $Primary_DarkBlue;
-    font-size: small !important;
-  }
 }
 
-img{
+p {
+  margin-bottom: 4%;
+  color: $Primary_DarkBlue;
+  font-size: small !important;
+}
+
+img {
   margin-left: -20px;
   width: 100px;
   height: 100px;
   @include backgroundImages;
 }
 
-.upload_btn_wrapper img{
+.upload_btn_wrapper img {
   margin-top: -35px;
 }
 
@@ -63,7 +63,7 @@ img{
 .left {
   margin-top: -0.3%;
   float: left;
-  margin-right: 1.5%;
+  margin-right: 2%;
 }
 
 .closeButton {
@@ -90,7 +90,7 @@ img{
   margin-top: 2%;
   width: 100px;
   height: 100px;
-  background-color: white;
+  background-color: red;
   border-radius: 20px;
   border: 1px solid $Primary_LightGray;
   margin-bottom: 2vh !important;
@@ -184,7 +184,9 @@ select {
 }
 
 #prev_img {
-  width: 100%;
+  width: 95%;
+  height: 95%;
+  background-color: green;
   @include backgroundImages;
 }
 
@@ -238,7 +240,6 @@ select {
   width: 30%;
   height: 15vh;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 1);
   margin-right: 3%;
   float: left;
   @include backgroundImages;
