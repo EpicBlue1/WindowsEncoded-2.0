@@ -66,8 +66,6 @@ const Landing = () => {
         </div>
       </div>
       <br></br>
-      <br></br>
-      <br></br>
 
       <h1 className={Style.Heading}>Courses</h1>
 
