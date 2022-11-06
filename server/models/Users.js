@@ -25,9 +25,11 @@ const UserSchema = mongoose.Schema({
   },
   totalUpvotes: {
     type: Number,
+    require: true,
   },
   totalDownvotes: {
     type: Number,
+    require: true,
   },
   score: {
     type: Number,

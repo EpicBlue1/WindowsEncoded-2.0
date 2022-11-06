@@ -102,7 +102,7 @@ const QuestionCard = (props) => {
             if (e === "Upvote") {
               updateScore = {
                 score: res.data.score + TotalUpVotes + 1 - TotalDownVotes,
-                upvotes: +TotalUpVotes + 1,
+                upvotes: +res.data + 1,
                 downvotes: +TotalDownVotes,
               };
             } else if (e === "Downvote") {
@@ -116,7 +116,10 @@ const QuestionCard = (props) => {
             setUpvoteColor(`#46C8A4`);
             setDownColor(`#FD6583`);
 
-            axios.patch("/api/updateUserScore/" + props.userId, updateScore);
+            axios.patch(
+              "/api/updateUserScore/" + props.allData.userId,
+              updateScore
+            );
 
             // update Score
             let template = {
