@@ -224,6 +224,7 @@
   color: white;
   text-align: center;
   @include Shadow();
+  cursor: pointer;
 }
 
 .Reported {
@@ -237,5 +238,7 @@
   padding-top: 7px;
   font-weight: 600;
   color: white;
+  z-index: 999;
+  cursor: pointer;
   @include Shadow();
 }

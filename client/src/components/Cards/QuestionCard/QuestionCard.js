@@ -199,7 +199,10 @@ const QuestionCard = (props) => {
           <div className={Style.Middle}>
             {Total}
             <div className={Style.AlreadyUpCon}>
-              <div className={AlVoted ? Style.AlreadyUp : "hide"}>
+              <div
+                onClick={() => setAlVoted(false)}
+                className={AlVoted ? Style.AlreadyUp : "hide"}
+              >
                 Already Voted!
               </div>
             </div>
@@ -240,7 +243,12 @@ const QuestionCard = (props) => {
         }}
       ></div>
       <div className={Style.AlreadyUpCon}>
-        <div className={Reported ? Style.Reported : "hide"}>Reported</div>
+        <div
+          onClick={() => setReported(false)}
+          className={Reported ? Style.Reported : "hide"}
+        >
+          Reported
+        </div>
       </div>
     </div>
   );
