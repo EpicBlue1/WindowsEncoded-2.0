@@ -66,6 +66,8 @@ const Landing = () => {
         </div>
       </div>
       <br></br>
+      <br></br>
+      <br></br>
 
       <h1 className={Style.Heading}>CATEGORIES/TAGS</h1>
 
