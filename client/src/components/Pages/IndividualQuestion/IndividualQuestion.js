@@ -7,6 +7,7 @@ import Button from "../../subcomponents/Buttons/Button";
 import CodeArea from "../../subcomponents/CodeArea/CodeArea";
 import ImagePreview from "../../subcomponents/ImagePreview/ImagePreview";
 import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
+import ProfilePic from "../../subcomponents/ProfilePicture/ProfilePic";
 import VotingSystem from "../../subcomponents/VotingSystem/VotingSystem";
 import Style from "./IndividualQuestion.module.scss";
 
@@ -212,7 +213,12 @@ const IndividualQuestion = () => {
       {answerModal}
 
       <div className={Style.questionIntro}>
-        <div className={Style.profileImg}></div>
+        <div className={Style.profileImg}>
+          <ProfilePic
+            ProfilePic={`/ProfileImages/${location.state.allData.userProfileImg}`}
+            ProfileIcon={""}
+          />
+        </div>
         <p className={Style.username}>{location.state.allData.username}</p>
         <br />
         <h2 className={Style.headingQuestion}>
@@ -286,9 +292,8 @@ const IndividualQuestion = () => {
         <br />
         <br />
 
-        <div className={Style.tag}>
-          {location.state.allData.language.toLowerCase()}
-        </div>
+        {location.state.allData.language.toLowerCase()}
+
         <br />
 
         <p></p>
@@ -297,7 +302,7 @@ const IndividualQuestion = () => {
         </CodeArea>
 
         <br />
-        <div className="answerSection">
+        <div className={Style.answerSection}>
           <p className={Style.votes}>
             <strong>Upvotes: </strong>
             <b>{location.state.allData.upvotes}</b>
@@ -307,7 +312,7 @@ const IndividualQuestion = () => {
             <b>{location.state.allData.downvotes}</b>
           </p>
 
-          <Button type="Primary" className={Style.reply} onClick={reply}>
+          <Button type="Primary" onClick={reply}>
             Reply
           </Button>
         </div>

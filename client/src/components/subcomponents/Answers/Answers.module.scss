@@ -39,4 +39,10 @@
   width: 100px;
   height: 100px;
   @include backgroundImages();
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.QuesImage:hover {
+  border: 2px solid $Primary_DarkBlue;
 }

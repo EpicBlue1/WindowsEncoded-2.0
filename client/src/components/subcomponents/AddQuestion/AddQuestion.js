@@ -134,6 +134,7 @@ const AddQuestion = (props) => {
         codeSnippet: questionInputs.codeSnippet,
         language: questionInputs.language,
         tags: tagValue,
+        userProfileImg: userData.profile,
       };
 
       payloadData.append("information", JSON.stringify(payload));

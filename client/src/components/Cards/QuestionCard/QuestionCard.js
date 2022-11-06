@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { json, useNavigate } from "react-router-dom";
 import LoginAlert from "../../subcomponents/LoginModal/LoginAlert";
+import ProfilePic from "../../subcomponents/ProfilePicture/ProfilePic";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
@@ -146,7 +147,12 @@ const QuestionCard = (props) => {
       {loginAlert}
 
       <div onClick={viewQuestion} className={Style.Left}>
-        <div className={Style.profileImg}></div>
+        <div className={Style.profileImg}>
+          <ProfilePic
+            ProfilePic={`/ProfileImages/${props.allData.userProfileImg}`}
+            ProfileIcon={""}
+          />
+        </div>
         <p className={Style.username}>{props.username}</p>
 
         <br />

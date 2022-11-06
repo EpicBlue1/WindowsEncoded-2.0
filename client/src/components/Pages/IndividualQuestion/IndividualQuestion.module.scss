@@ -47,10 +47,10 @@
 }
 
 .profileImg {
-  width: 20px;
-  height: 20px;
-  background-image: url("../../../Icons/Profile.svg");
+  width: 78px;
+  height: 78px;
   float: left;
+  margin-right: 15px;
   @include backgroundImages;
 }
 
@@ -90,6 +90,11 @@
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 1);
   @include backgroundImages;
+  cursor: pointer;
+}
+
+.questionImage:hover {
+  border: 2px solid $Primary_DarkBlue;
 }
 
 .questionImage img {
@@ -99,12 +104,25 @@
 }
 
 .questionDescription {
+  padding-top: 8px;
   width: 90%;
-  height: 125px;
-  margin-top: 2%;
+  height: 100px;
+  margin-top: 3%;
+}
+
+.answerSection {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: stretch;
+  align-items: center;
 }
 
 .votes {
+  margin-top: 78px;
   float: left;
   margin-right: 2%;
   color: $Primary_gray;
@@ -182,7 +200,7 @@ textarea {
 
 .Container {
   height: 100%;
-  width: 10%;
+  width: 7%;
   margin-right: 10%;
   display: flex;
   flex-direction: column;

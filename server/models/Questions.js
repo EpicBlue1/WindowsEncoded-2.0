@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const QuestionSchema = mongoose.Schema({
   userId: { type: String, required: true },
+  userProfileImg: { type: String, required: true },
   username: { type: String, required: true },
   questionTitle: { type: String, required: true },
   questionDescription: { type: String, required: true },

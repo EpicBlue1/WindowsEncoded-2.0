@@ -60,6 +60,7 @@ router.post(
       score: 0,
       tags: data.tags,
       reported: false,
+      userProfileImg: data.userProfileImg,
     });
 
     newQuestion
