@@ -109,8 +109,6 @@ const Questions = (props) => {
           }
         ></div>
 
-        <div className={Style.Filters}></div>
-
         <div className={Style.Dropdown}>
           <h2 className={Style.headingTwo}>Sort by</h2>
           <select
@@ -130,8 +128,43 @@ const Questions = (props) => {
           </select>
         </div>
       </div>
-
-      {questions}
+      <div className={Style.Questions}>{questions}</div>
+      <div className={Style.filterSec}>
+        <h2>Filter By</h2>
+        <form>
+          <ul class={Style.ks_cboxtags}>
+            <li>
+              <input type="checkbox" id="checkboxOne" value="Rainbow Dash" />
+              <label for="checkboxOne">Rainbow Dash</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkboxTwo" value="Cotton Candy" />
+              <label for="checkboxTwo">Cotton Candy</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkboxThree" value="Rarity" />
+              <label for="checkboxThree">Rarity</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkboxFour" value="Moondancer" />
+              <label for="checkboxFour">Moondancer</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkboxFive" value="Surprise" />
+              <label for="checkboxFive">Surprise</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="checkboxSix"
+                value="Twilight Sparkle"
+              />
+              <label for="checkboxSix">Twilight Sparkle</label>
+            </li>
+          </ul>
+          <Button type="Primary">Clear Filter</Button>
+        </form>
+      </div>
     </div>
   );
 };
