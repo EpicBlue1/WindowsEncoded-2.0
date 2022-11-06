@@ -10,7 +10,7 @@
   margin-top: -11px;
   padding-top: 10%;
   width: 95%;
-  height: max-content;
+  height: 800px;
   @include Shadow();
   display: flex;
   flex-direction: column;
@@ -22,6 +22,7 @@
   // backdrop-filter: blur(16px);
   border-bottom-right-radius: 20px;
   // border-right: 3px solid black;
+  position: relative;
 }
 
 .Home {
@@ -112,20 +113,23 @@
 }
 
 .Logout {
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: center;
+  // flex-direction: row;
+  // flex-wrap: nowrap;
+  // justify-content: flex-start;
+  // align-content: stretch;
+  // align-items: center;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
   width: 25vh;
   height: 50px;
-  margin-top: 15vh;
-  padding-top: 5px;
+  // margin-top: 15vh;
+  // padding-top: 5px;
   border-radius: 15px;
-  margin-bottom: 15%;
+  // margin-bottom: 15%;
+  position: absolute;
+  bottom: 10%;
+  left: 18%;
 }
 
 .LogImg {
