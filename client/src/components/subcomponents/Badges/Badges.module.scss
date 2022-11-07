@@ -5,8 +5,8 @@
 .Box {
   float: left;
   margin-right: 25px;
-  width: 100px;
-  height: 90px;
+  width: 200px;
+  height: 140px;
   background-color: white;
   @include Shadow();
   border-radius: 20px;
@@ -16,7 +16,7 @@
 }
 
 .Box:hover {
-  height: 150px;
+  height: 170px;
   transition: ease-in-out, 0.1s;
 }
 
@@ -55,8 +55,8 @@
 .badge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/ScoreOne.png");
   @include backgroundImages;
 }
@@ -64,8 +64,8 @@
 .badgeTwo {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/ScoreTwo.png");
   @include backgroundImages;
 }
@@ -73,8 +73,8 @@
 .badgeThree {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/ScoreThree.png");
   @include backgroundImages;
 }
@@ -82,8 +82,8 @@
 .FirstQuestionBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AskedOne.png");
   @include backgroundImages;
 }
@@ -91,8 +91,8 @@
 .FiveQuestionBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AskedTwo.png");
   @include backgroundImages;
 }
@@ -100,8 +100,8 @@
 .TenQuestionBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AskedThree.png");
   @include backgroundImages;
 }
@@ -109,8 +109,8 @@
 .FiftyAskedBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AskedFour.png");
   @include backgroundImages;
 }
@@ -118,8 +118,8 @@
 .OneAnsweredBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AsweredOne.png");
   @include backgroundImages;
 }
@@ -127,8 +127,8 @@
 .FiveAnsweredBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AnsweredTwo.png");
   @include backgroundImages;
 }
@@ -136,8 +136,8 @@
 .TenAnsweredBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AnsweredThree.png");
   @include backgroundImages;
 }
@@ -145,8 +145,8 @@
 .FiftyAnsweredBadge {
   margin: auto;
   margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-image: url("../../../Img/Badges/AnsweredFour.png");
   @include backgroundImages;
 }
