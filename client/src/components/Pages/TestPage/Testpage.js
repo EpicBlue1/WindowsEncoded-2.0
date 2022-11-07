@@ -14,6 +14,23 @@ const Testpage = () => {
   const code = "const lolos = lol";
   const [added, setAddded] = useState();
   const [Images, setImages] = useState();
+  const [allData, setAllData] = useState({
+    userId: "acancj",
+    userProfileImg: "",
+    username: "Temp",
+    questionTitle: "Temp Title",
+    questionDescription: "Test description",
+    codeSnippet: "const temp = temp",
+    language: "javascript",
+    tags: ["tag"],
+    upvotes: 1,
+    upvoted: "",
+    downvotes: 1,
+    downvoted: "",
+    score: 0,
+    reported: false,
+    image: "",
+  });
 
   const addImage = (e) => {
     e.preventDefault();
@@ -31,25 +48,25 @@ const Testpage = () => {
     payloadData.append("imgData", JSON.stringify(payload));
     payloadData.append("pfp", Image);
 
-    axios.post("http://localhost:2000/api/addProfileImg", payloadData);
+    axios.post("/api/addProfileImg", payloadData);
     setAddded(!added);
   };
 
   useEffect(() => {
     console.log("Updated");
     axios
-      .get("http://localhost:2000/api/allProfiles/")
+      .get("/api/allProfiles/")
       .then((res) => {
         let data = res.data;
         console.log(res.data);
 
-        let URL = `http://localhost:2000/ProfileImages/${data[0].imageLocation}`;
+        let URL = `/ProfileImages/${data[0].imageLocation}`;
         console.log(URL);
 
         let images = data.map((item) => (
           <div
             style={{
-              backgroundImage: `url(http://localhost:2000/ProfileImages/${item.imageLocation})`,
+              backgroundImage: `url(/ProfileImages/${item.imageLocation})`,
               width: `200px`,
               height: `200px`,
               backgroundColor: `white`,
@@ -103,7 +120,8 @@ const Testpage = () => {
 
       <h2>Heading Two - QuestionCard</h2>
       <p> Width based on parent (80%)</p>
-      <QuestionCard />
+      {}
+      <QuestionCard allData={allData} />
 
       <h2>Heading Two - Profile Pic Component</h2>
       <p>
@@ -124,10 +142,7 @@ const Testpage = () => {
         </Button>
       </form>
 
-    <div className="EmailButton">
-      verfiy Account
-    </div>
-
+      <div className="EmailButton">verfiy Account</div>
     </div>
   );
 };

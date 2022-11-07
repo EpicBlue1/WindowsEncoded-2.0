@@ -15,7 +15,6 @@ const QuestionCard = (props) => {
   const [TotalUpVotes, setTotalUpVotes] = useState(props.allData.upvotes);
   const [TotalDownVotes, setTotalDownVotes] = useState(props.allData.downvotes);
   const [Total, setTotal] = useState(10);
-  const [QuesID, setQuesID] = useState(props.allData._id);
   const [Reported, setReported] = useState(false);
   const [TagDisp, setTagDisp] = useState();
 
