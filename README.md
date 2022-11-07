@@ -113,7 +113,12 @@ Final wireframes:
 ## Above And Beyond
 
 * Show and Hide Password
-* 
+* Edit UserName
+* Loading indicators on the LogIn and Question pages
+* Users are able to skip the LogIn process
+* Profile images are sorted on the DB for future uploads
+* Users can only upvote or downvote once
+* Test page for debugging and development
 
 ## Future Implementation
 
