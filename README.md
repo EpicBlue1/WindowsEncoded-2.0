@@ -16,7 +16,7 @@ Reinhardt de Beer 21100115
 
 # WINDOWS ENCODED - Development Term 4
 <p align="center">
-    <img src="assets/Logo.png" align="center" height="300" width="300" >
+    <img src="assets/Logo.png" align="center" height="200" width="600" >
 </p>
 
 Windows Encoded is a forum for Open Window Interactive Development Students where they can ask and answer questions based on the content being tought throughout the year. Questions and answers can be upvoded and downvoted which will impact the users reputation and overall score. Based on this score, badges can be earned leading the user one step closer to becoming an admin! This project was built using Mongo, Express, React and Node.js.
@@ -81,6 +81,8 @@ Run the following in the command-line to install all the required dependencies i
 - Filter Questions Based on Language
 - Users accumulate points based on their upvotes and downvotes
 - User earns badges based on accumulated points
+- Flagged questions 
+- Admins can delete flagged questions 
 
 ## Development Process
 
@@ -111,7 +113,12 @@ Final wireframes:
 ## Above And Beyond
 
 * Show and Hide Password
-* 
+* Edit UserName
+* Loading indicators on the LogIn and Question pages
+* Users are able to skip the LogIn process
+* Profile images are sorted on the DB for future uploads
+* Users can only upvote or downvote once
+* Test page for debugging and development
 
 ## Future Implementation
 
@@ -123,15 +130,17 @@ Final wireframes:
 
 ## Final Outcome
 
-### Mockups
+## Mockups
 <!-- TODO: Add Mockups -->
 <p align="center">
-    <img src="assets/Mockup_1.jpg" align="left" height="200" >
-    <img src="assets/Mockup_2.jpg" align="left" height="200" >
-    <img src="assets/Mockup_3.jpg" align="left" height="200" >
-    <img src="assets/Mockup_4.jpg" align="left" height="200" >
-    <img src="assets/Mockup_5.jpg" height="200" >
+    <img src="assets/Mockup_1.jpg" height="300"  >
+    <img src="assets/Mockup_2.jpg" height="300"  >
+    <br/>
+    <img src="assets/Mockup_3.jpg" height="300"  >
+    <img src="assets/Mockup_4.jpg" height="300"  >
 </p>
+
+<br/>
 
 ## Video Demonstration
 
