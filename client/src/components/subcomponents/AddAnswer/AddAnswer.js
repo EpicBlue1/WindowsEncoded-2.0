@@ -75,13 +75,11 @@ const AddAnswer = (props) => {
         console.log(`${key}: ${value}`);
       }
       setValid("");
-      axios
-        .post("http://localhost:2000/api/newAnswer", payloadData)
-        .then((res) => {
-          if (res) {
-            props.rerender();
-          }
-        });
+      axios.post("/api/newAnswer", payloadData).then((res) => {
+        if (res) {
+          props.rerender();
+        }
+      });
     }
   };
 

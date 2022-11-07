@@ -14,7 +14,7 @@ const SearchResult = (props) => {
   let Result = firstLetterUpper + search.slice(1, search.length).toLowerCase();
 
   useEffect(() => {
-    axios.get("http://localhost:2000/api/allQuestions").then((res) => {
+    axios.get("/api/allQuestions").then((res) => {
       let data = res.data;
 
       console.log(props.Loaded);

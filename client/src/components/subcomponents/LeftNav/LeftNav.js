@@ -18,7 +18,6 @@ const LeftNav = (props) => {
       seshStorage === ""
     ) {
     } else {
-      // setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile})`);
       setlogOut("Log Out");
     }
   }, [seshStorage]);

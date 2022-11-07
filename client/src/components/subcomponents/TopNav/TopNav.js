@@ -62,11 +62,10 @@ const TopNav = (props) => {
       seshStorage === null ||
       seshStorage === ""
     ) {
-      // setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile}`);
       setNavigate("/");
     } else {
       setNavigate("/Profile");
-      setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile}`);
+      setProfile(`/ProfileImages/${seshStorage.profile}`);
       setuserName(seshStorage.username);
     }
   }, []);

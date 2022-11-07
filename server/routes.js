@@ -606,4 +606,24 @@ router.patch("/api/updateUserScore/:id", async (req, res) => {
   }
 });
 
+router.patch("/api/admin/:id", async (req, res) => {
+  let data = req.body;
+  let userId = req.params.id;
+
+  try {
+    const upVote = await usersSchema.updateOne(
+      { _id: userId },
+      {
+        $set: {
+          admin: data.admin,
+        },
+      }
+    );
+    console.log("Updated");
+    res.json(upVote);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

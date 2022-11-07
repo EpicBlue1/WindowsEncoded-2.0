@@ -14,7 +14,7 @@ const Answer = (props) => {
   return (
     <>
       <ImagePreview
-        IMG={`http://localhost:2000/QuestionImages/${data.image}`}
+        IMG={`/QuestionImages/${data.image}`}
         setShowPreview={setShowPreview}
         ShowPreview={ShowPreview}
       />
@@ -24,12 +24,10 @@ const Answer = (props) => {
         <div
           onClick={() => {
             props.setShowPreview(!props.ShowPreview);
-            props.setImageUrl(
-              `http://localhost:2000/QuestionImages/${data.image}`
-            );
+            props.setImageUrl(`/QuestionImages/${data.image}`);
           }}
           style={{
-            backgroundImage: `url(${`http://localhost:2000/QuestionImages/${data.image}`})`,
+            backgroundImage: `url(${`/QuestionImages/${data.image}`})`,
           }}
           className={Style.QuesImage}
         ></div>

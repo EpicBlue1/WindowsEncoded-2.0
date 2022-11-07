@@ -59,7 +59,7 @@ const Register = (props) => {
       };
 
       axios
-        .post("http://localhost:2000/register", userCreds)
+        .post("/register", userCreds)
         .then((res) => {
           if (res.data.exists) {
             setFormValid(

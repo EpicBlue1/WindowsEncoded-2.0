@@ -4,18 +4,17 @@ import Logo from "../../../Icons/Profile.svg";
 
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../Edit Profile/EditProfile";
+import ProfileQuestion from "../ProfileQuestion/ProfileQuestion";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Style from "./ProfileSection.module.scss";
-import ProfileQuestion from "../ProfileQuestion/ProfileQuestion";
 
 //badges
 import bronze from "../../../Img/Badges/Bronze.png";
-import silver from "../../../Img/Badges/Silver.png";
 import gold from "../../../Img/Badges/Gold.png";
-import ScoreOne from "../../../Img/Badges/ScoreOne.png"
-import ScoreTwo from "../../../Img/Badges/ScoreTwo.png"
-import ScoreThree from "../../../Img/Badges/ScoreThree.png"
-
+import ScoreOne from "../../../Img/Badges/ScoreOne.png";
+import ScoreThree from "../../../Img/Badges/ScoreThree.png";
+import ScoreTwo from "../../../Img/Badges/ScoreTwo.png";
+import silver from "../../../Img/Badges/Silver.png";
 
 const ProfileSection = (props) => {
   const [EditProfileModal, setEditProfileModal] = useState();
@@ -27,12 +26,6 @@ const ProfileSection = (props) => {
   const [QuestionCount, setQuestionCount] = useState();
   const [AnswerCount, setAnswerCount] = useState();
   const [profileBadge, setprofileBadge] = useState();
-
-  // const [DownVoteCount, setDownVoteCount] = useState();
-  // const [UpVoteCount, setUpVoteCount] = useState();
-  // const [NewScore, setNewScore] = useState();
-
-
 
   const Navigate = useNavigate();
 
@@ -55,35 +48,29 @@ const ProfileSection = (props) => {
       />
     );
   };
- 
 
   useEffect(() => {
-
     const badges = {
       ScoreOne: ScoreOne,
       ScoreTwo: ScoreTwo,
-      ScoreThree: ScoreThree
+      ScoreThree: ScoreThree,
     };
 
     let score = seshStorage.score;
 
-    console.log(score)
+    console.log(score);
 
-    if(score >= 1){
-      setprofileBadge(badges.ScoreOne)
+    if (score >= 1) {
+      setprofileBadge(badges.ScoreOne);
     }
-    if(score >= 15) {
-      setprofileBadge(badges.ScoreTwo)
+    if (score >= 15) {
+      setprofileBadge(badges.ScoreTwo);
     }
 
     if (score >= 20) {
-      setprofileBadge(badges.ScoreThree)
+      setprofileBadge(badges.ScoreThree);
     }
-
-    
   });
-
-
 
   useEffect(() => {
     if (
@@ -106,42 +93,43 @@ const ProfileSection = (props) => {
     ) {
       Navigate("/");
     } else {
-      setProfile(`http://localhost:2000/ProfileImages/${seshStorage.profile}`);
+      setProfile(`/ProfileImages/${seshStorage.profile}`);
       setuserData(seshStorage);
       setUserName(seshStorage.username);
+      console.log(seshStorage);
+      let temp = {
+        admin: true,
+      };
+
+      if (seshStorage.score >= 100) {
+        axios.patch("/api/admin/" + seshStorage._id, temp);
+      }
     }
   }, []);
 
-
-
   useEffect(() => {
-    axios.get("http://localhost:2000/api/allQuestions")
-    .then((res) => {
+    axios.get("/api/allQuestions").then((res) => {
       let data = res.data;
-        let render = 
-        (data.filter((filterData)=> 
-        seshStorage._id === filterData.userId))
-        setQuestionCount(render.length)
-        console.log(render);
-
-        
+      let render = data.filter(
+        (filterData) => seshStorage._id === filterData.userId
+      );
+      setQuestionCount(render.length);
+      console.log(render);
     });
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:2000/api/allAnswers")
-    .then((res) => {
+    axios.get("/api/allAnswers").then((res) => {
       let data = res.data;
       console.log(data);
-        let AnswerRender = 
-        (data.filter((filterData)=> 
-        seshStorage._id === filterData.userId))
-        setAnswerCount(AnswerRender.length)
-        console.log(AnswerRender);
+      let AnswerRender = data.filter(
+        (filterData) => seshStorage._id === filterData.userId
+      );
+      setAnswerCount(AnswerRender.length);
+      console.log(AnswerRender);
     });
   }, []);
 
-  
   return (
     <>
       {editModal}
@@ -161,16 +149,13 @@ const ProfileSection = (props) => {
           ></div>
           <div className={Style.ProfileDisplayBadge}>
             <img className={Style.badgee} src={profileBadge} />
-            
           </div>
         </div>
 
         <h2 className={Style.Username}>{userName}</h2>
         {/* <Line percent={10} strokeWidth={4} strokeColor="#D3D3D3" /> */}
-        <ProgressBar/>
+        <ProgressBar />
         <h3 className={Style.MemberLength}>Member for 1 year, 2 months</h3>
-        
-        
 
         <div className={Style.TotalAsked}>
           <h2 className={Style.Scores}>{QuestionCount}</h2>

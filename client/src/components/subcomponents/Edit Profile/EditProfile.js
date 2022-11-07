@@ -5,91 +5,89 @@ import Button from "../../subcomponents/Buttons/Button";
 import axios from "axios";
 import { useEffect } from "react";
 
-
-
 const EditProfile = (props) => {
+  let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 
+  const closeModal = () => {
+    props.rerender();
+  };
 
+  let ProfileData = seshStorage;
 
-    let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
+  // console.log(ProfileData);
 
-    const closeModal = () => {
-        props.rerender();
-    };
+  let editFormValues = {
+    username: ProfileData.username,
+  };
 
+  const [editValues, setEditValues] = useState(editFormValues);
 
-    let ProfileData = seshStorage;
+  const updateValues = (e) => {
+    const { name, value } = e.target;
+    setEditValues({ ...editValues, [name]: value });
+  };
 
-    // console.log(ProfileData);
+  const updateProfile = (e) => {
+    e.preventDefault();
+    let ProfileId = ProfileData._id;
+    console.log(ProfileId);
 
-    let editFormValues = {
-        username: ProfileData.username
-    }
+    axios
+      .patch("/api/updateUser/" + ProfileId, editValues)
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          console.log("Profile Updated");
+          props.rerender();
+        }
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
 
-    const [editValues, setEditValues] = useState(editFormValues);
+  return (
+    <>
+      <div className={Style.BackgroundBlur}>
+        <div className={Style.EditProfile}>
+          <div className={Style.closeButton} onClick={closeModal}>
+            <div>x</div>
+          </div>
 
-    const updateValues = (e) => {
-        const {name, value} = e.target;
-        setEditValues({...editValues, [name]: value});
-    }
+          <form>
+            <h2>Edit your profile</h2>
 
-    const updateProfile = (e) => {
-        e.preventDefault();
-        let ProfileId = ProfileData._id;
-        console.log(ProfileId);
-
-        axios.patch('http://localhost:2000/api/updateUser/' + ProfileId, editValues)
-        .then(res => {
-            console.log(res);
-            if(res){
-                console.log("Profile Updated");
-                props.rerender();
-            }
-        })
-        .catch(function(err) {console.log(err)});
-    }
-
-    return (
-        <>
-        <div className={Style.BackgroundBlur}>
-        
-            <div className={Style.EditProfile}>
-
-                <div className={Style.closeButton} onClick={closeModal}>
-                    <div>x</div>
-                </div>
-
-                <form>
-                    <h2>Edit your profile</h2>
-
-                    {/* <div className={Style.Image}>
+            {/* <div className={Style.Image}>
                     <input type="file" name="image"  />
                     </div> */}
 
-                    <Input
-                    className={Style.usernameMargin}
-                    Intype="ModalInput"
-                    name="username" 
-                    defaultValue={ProfileData.username} 
-                    onChange={updateValues}
-                    />
+            <Input
+              className={Style.usernameMargin}
+              Intype="ModalInput"
+              name="username"
+              defaultValue={ProfileData.username}
+              onChange={updateValues}
+            />
 
-                    <Input
-                        className={Style.emailMargin}
-                        Intype="ModalInput"
-                        placeholder={ProfileData.email}
-                    />
+            <Input
+              className={Style.emailMargin}
+              Intype="ModalInput"
+              placeholder={ProfileData.email}
+            />
 
-                    <Button type="Primary" onClick={updateProfile}>
-                        Edit Profile
-                    </Button>
+            <Button type="Primary" onClick={updateProfile}>
+              Edit Profile
+            </Button>
 
-                    <div className={Style.Del}> <h5>Delete Profile</h5></div>
-                    </form>
+            <div className={Style.Del}>
+              {" "}
+              <h5>Delete Profile</h5>
             </div>
+          </form>
         </div>
-        </>
-    );
+      </div>
+    </>
+  );
 };
 
 export default EditProfile;
