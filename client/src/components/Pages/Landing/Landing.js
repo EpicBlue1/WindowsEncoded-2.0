@@ -70,18 +70,28 @@ const Landing = () => {
       <h1 className={Style.Heading}>Courses</h1>
 
       <div className={Style.Row}>
-        <div className={Style.Container}>
-          <div className={Style.ImageOne}></div>
-          <h2>HTML</h2>
+
+        <div className={Style.Container} >
+          <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">
+            <div className={Style.ImageOne}></div>
+            <h2 >HTML</h2>
+          </a>
         </div>
+        
         <div className={Style.Container}>
-          <div className={Style.ImageTwo}></div>
-          <h2>Javascript</h2>
+          <a href="https://www.w3schools.com/js/" target="_blank" rel="noopener noreferrer">
+            <div className={Style.ImageTwo}></div>
+            <h2>Javascript</h2>
+          </a>
         </div>
+
         <div className={Style.Container}>
-          <div className={Style.ImageThree}></div>
-          <h2>React</h2>
+          <a href="https://www.w3schools.com/REACT/DEFAULT.ASP" target="_blank" rel="noopener noreferrer">
+            <div className={Style.ImageThree}></div>
+            <h2>React</h2>
+          </a>
         </div>
+
       </div>
       <br></br>
     </div>
@@ -89,3 +99,4 @@ const Landing = () => {
 };
 
 export default Landing;
+
