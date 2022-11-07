@@ -48,7 +48,6 @@ const IndividualQuestion = () => {
       "http://localhost:2000/QuestionImages/" + location.state.allData.image;
     setImageUrl(URL);
     setImagePrev(URL);
-    console.log(location.state.allData);
   }, [location.state.allData.image]);
 
   useEffect(() => {

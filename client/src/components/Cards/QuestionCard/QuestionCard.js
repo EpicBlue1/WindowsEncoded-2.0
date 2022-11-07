@@ -6,7 +6,6 @@ import ProfilePic from "../../subcomponents/ProfilePicture/ProfilePic";
 import Style from "./QuestionCard.module.scss";
 
 const QuestionCard = (props) => {
-  // console.log(props.allData);
   let navigate = useNavigate();
 
   const Upvote = useRef();
@@ -60,7 +59,6 @@ const QuestionCard = (props) => {
     let tags = props.allData.tags.map((data) => (
       <div className={Style.tag}>{data}</div>
     ));
-    // console.log(tags);
     setTagDisp(tags);
   }, []);
 
@@ -81,8 +79,6 @@ const QuestionCard = (props) => {
         };
         axios.get("/api/singleQuestion/" + quesId).then((res) => {
           let data = res.data;
-
-          console.log(res.data);
 
           const found = data.upvoted.find((e) => e === userId);
 
@@ -236,12 +232,9 @@ const QuestionCard = (props) => {
           axios
             .patch("/api/report/" + props.allData._id)
             .then((res) => {
-              console.log(res);
               setReported(true);
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => {});
         }}
       ></div>
       <div className={Style.AlreadyUpCon}>

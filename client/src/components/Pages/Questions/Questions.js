@@ -37,16 +37,13 @@ const Questions = (props) => {
   };
 
   useEffect(() => {
-    console.log(FormValues.current);
     axios
       .get("/api/allQuestions")
       .then((res) => {
-        console.log(res);
         let questionData = res.data.reverse();
         let Sort = SortBy.current.value;
         let sortData = res.data.reverse();
 
-        console.log("Filter");
         setUpdated("Not Updated");
 
         if (Sort === "Most recent") {
@@ -75,7 +72,6 @@ const Questions = (props) => {
 
         let FiteredData = questionData;
 
-        console.log(FilterBy);
         //Vian is boyfriend
         if (FilterBy.length === 0) {
           FiteredData = FiteredData;
@@ -206,7 +202,7 @@ const Questions = (props) => {
             </li>
             <li onClick={() => setRerender(!rerender)}>
               <input type="checkbox" id="checkboxThirteen" value="PHP" />
-              <label for="checkboxTwelve">PHP</label>
+              <label for="checkboxThirteen">PHP</label>
             </li>
           </ul>
         </form>
