@@ -36,7 +36,6 @@ const Testpage = () => {
     e.preventDefault();
 
     let Image = Profile.current.files[0];
-    console.log(Image);
 
     const payloadData = new FormData();
 
@@ -44,7 +43,6 @@ const Testpage = () => {
       imageName: Image.name,
     };
 
-    // console.log(payload);
     payloadData.append("imgData", JSON.stringify(payload));
     payloadData.append("pfp", Image);
 
@@ -53,15 +51,12 @@ const Testpage = () => {
   };
 
   useEffect(() => {
-    console.log("Updated");
     axios
       .get("/api/allProfiles/")
       .then((res) => {
         let data = res.data;
-        console.log(res.data);
 
         let URL = `/ProfileImages/${data[0].imageLocation}`;
-        console.log(URL);
 
         let images = data.map((item) => (
           <div
@@ -75,9 +70,7 @@ const Testpage = () => {
               marginRight: `15px`,
               borderRadius: `25px`,
             }}
-          >
-            {console.log(item)}
-          </div>
+          ></div>
         ));
 
         setImages(images);

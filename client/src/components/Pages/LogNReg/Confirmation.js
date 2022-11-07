@@ -6,7 +6,6 @@ import Style from "./LogNReg.module.scss";
 const Confirmation = (props) => {
   const Navigate = useNavigate();
 
-  console.log(props.AreSure);
   return (
     <div
       ref={props.confirmDiv}

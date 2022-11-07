@@ -40,7 +40,6 @@ const Profile = (props) => {
 
       axios.get("/api/allQuestions").then((res) => {
         let data = res.data;
-        console.log(data);
         setProfileQuestions(
           data
             .filter((filterData) => UserId === filterData.userId)
@@ -58,7 +57,6 @@ const Profile = (props) => {
           (filterData) => seshStorage._id === filterData.userId
         );
         setAskedQuestions(Qasked.length);
-        console.log(Qasked);
       });
     }
   }, [updateRender]);
@@ -66,12 +64,10 @@ const Profile = (props) => {
   useEffect(() => {
     axios.get("/api/allAnswers").then((res) => {
       let data = res.data;
-      console.log(data);
       let Qanswered = data.filter(
         (filterData) => seshStorage._id === filterData.userId
       );
       setAnsweredQeusitons(Qanswered.length);
-      console.log(Qanswered);
     });
   }, []);
 
@@ -89,7 +85,6 @@ const Profile = (props) => {
       score = seshStorage.score;
     }
   }, []);
-  // console.log(seshStorage);
 
   let badgeOne = <BagdeOne />;
   let badgeoneCheck = false;
@@ -125,25 +120,24 @@ const Profile = (props) => {
   let FiftyAnswerbadgeCheck = false;
 
   //ANSWERED QUEATIONS BADGES
-  console.log(AnsweredQeusitons);
   if (AnsweredQeusitons >= 1) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = false;
     TenAnswerBadgeCheck = false;
     FiftyAnswerbadgeCheck = false;
-  } 
+  }
   if (AnsweredQeusitons >= 5) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
     TenAnswerBadgeCheck = false;
     FiftyAnswerbadgeCheck = false;
-  } 
+  }
   if (AnsweredQeusitons >= 10) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
     TenAnswerBadgeCheck = true;
     FiftyAnswerbadgeCheck = false;
-  } 
+  }
   if (AnsweredQeusitons >= 50) {
     OneAnswerBadgeCheck = true;
     FiveAnswerBadgeCheck = true;
@@ -157,20 +151,20 @@ const Profile = (props) => {
     fiveQuestionsBadgeCheck = false;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } 
-  
+  }
+
   if (AskedQuestions >= 5) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = false;
     FiftyQuestionBadgeCheck = false;
-  } 
+  }
   if (AskedQuestions >= 10) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
     TenQuestionBadgeCheck = true;
     FiftyQuestionBadgeCheck = false;
-  } 
+  }
   if (AskedQuestions >= 50) {
     OneQuestionAskedCheck = true;
     fiveQuestionsBadgeCheck = true;
@@ -182,12 +176,12 @@ const Profile = (props) => {
     badgeoneCheck = true;
     badgeTwoCheck = false;
     badgeThreeCheck = false;
-  } 
+  }
   if (score >= 15) {
     badgeoneCheck = true;
     badgeTwoCheck = true;
     badgeThreeCheck = false;
-  } 
+  }
   if (score >= 50) {
     badgeoneCheck = true;
     badgeTwoCheck = true;
@@ -212,10 +206,7 @@ const Profile = (props) => {
       </div>
       <br></br>
       <h1>YOUR ACTIVITY</h1>
-      <div className={Style.QuestionSection}>
-        {ProfileQuestions}
-        {/* {console.log(ProfileQuestions)} */}
-      </div>
+      <div className={Style.QuestionSection}>{ProfileQuestions}</div>
       <div className={Style.ProfileSection}>
         <ProfileSection />
       </div>

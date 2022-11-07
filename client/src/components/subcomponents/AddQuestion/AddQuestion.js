@@ -54,8 +54,6 @@ const AddQuestion = (props) => {
   };
 
   const addTagHandler = (e, key) => {
-    console.log(e);
-    console.log(key);
     const arr = tagsSelected;
     const idArr = tagId;
     const tags = e.target.innerText;
@@ -80,8 +78,6 @@ const AddQuestion = (props) => {
     setTagsSelected(list);
     setTagId(listId);
   };
-  console.log(tagsSelected);
-  console.log(tagId);
 
   const questionInfo = (e) => {
     const { name, value } = e.target;
@@ -160,6 +156,7 @@ const AddQuestion = (props) => {
     "React",
     "Html",
     "Css",
+    "PHP",
     "Swift",
     "Kotlin",
     "Android",

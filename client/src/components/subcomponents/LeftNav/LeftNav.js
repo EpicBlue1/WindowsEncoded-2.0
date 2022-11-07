@@ -8,7 +8,6 @@ const LeftNav = (props) => {
   const [logOut, setlogOut] = useState("Log In");
   const hideNav = useLocation();
   const JavaScript = useRef();
-  console.log(JavaScript.current);
   // const [profile, setProfile] = useState(Logo);
   let seshStorage = JSON.parse(sessionStorage.getItem("UserData"));
 

@@ -56,13 +56,16 @@
   cursor: pointer;
 }
 
-
 .ContainerImageOne {
   background-image: url(../../../Img/questions.png);
 }
 
 .ContainerImageTwo {
   background-image: url(../../../Img/Answer1-01.png);
+}
+
+.ContainerImageThree {
+  background-image: url(../../../Img/Badges-01.png);
 }
 
 .ContainerImageThree {
@@ -119,6 +122,16 @@
 
 .ImageThree {
   background-image: url("../../../Img/React-icon.png");
+  width: 100%;
+  height: 100px;
+  background-position: center center;
+  background-size: 25%;
+  background-repeat: no-repeat;
+  margin-bottom: 25px;
+}
+
+.ImageFour {
+  background-image: url("../../../Img//css.png");
   width: 100%;
   height: 100px;
   background-position: center center;

@@ -62,7 +62,6 @@ const Register = (props) => {
         .post("http://localhost:2000/register", userCreds)
         .then((res) => {
           if (res.data.exists) {
-            console.log("true");
             setFormValid(
               <p
                 onClick={() => {
@@ -74,16 +73,13 @@ const Register = (props) => {
               </p>
             );
           } else {
-            console.log(res.data);
             RegisterForm.current.reset();
             props.setChangeCard(!props.changeCards);
             props.setShowConfirm(true);
           }
           // setRender(prev => !prev)
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
 
       // // props.setShow(false);
     } else {

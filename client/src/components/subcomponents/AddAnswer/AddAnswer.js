@@ -46,7 +46,6 @@ const AddAnswer = (props) => {
 
   const addAnswer = (e) => {
     e.preventDefault();
-    console.log(Form.current.value);
     if (
       Form.current.value === "undefined" ||
       Image.current.value === "" ||
@@ -56,11 +55,7 @@ const AddAnswer = (props) => {
     ) {
       setValid("Please make sure to fill in all the fields");
     } else {
-      console.log(props.allData._id);
-
       const payloadData = new FormData();
-
-      console.log(answer.codeSnippet);
 
       let payload = {
         Answers: {
@@ -76,7 +71,6 @@ const AddAnswer = (props) => {
       payloadData.append("information", JSON.stringify(payload));
       payloadData.append("image", answerImage);
 
-      console.log(payload);
       for (let [key, value] of payloadData) {
         console.log(`${key}: ${value}`);
       }
